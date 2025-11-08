@@ -5,6 +5,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Globe } from "lucide-react";
+import { IoIosArrowForward } from "react-icons/io";
 
 export default function About() {
   const { theme, toggleTheme } = useTheme();
@@ -39,16 +40,16 @@ export default function About() {
       description:
         language === "pt"
           ? [
-              "Desenvolvi e mantive funcionalidades para a plataforma educacional NExTI, utilizando React.js no front-end e PHP com Laravel no back-end, garantindo uma experiência de usuário fluida e eficiente.",
-              "Implementei integrações com APIs externas para expandir as funcionalidades da plataforma, melhorando a experiência do usuário e a eficiência operacional.",
-              "Colaborei com equipes multidisciplinares para planejar, projetar e implementar novas funcionalidades, assegurando que os requisitos do projeto fossem atendidos dentro dos prazos estabelecidos.",
+              "Atuo como desenvolvedor full stack voluntário na construção da plataforma digital da Learn Skills, editora acadêmica dedicada à disseminação de conhecimento. No front-end, desenvolvo interfaces responsivas utilizando React.js e Vite, estruturando componentes de forma modular com CSS puro e contribuindo como UX Designer para interfaces intuitivas, acessíveis e alinhadas às boas práticas de usabilidade.",
+              "O projeto começou com back-end em Python (Flask), mas migramos para PHP com Laravel, garantindo maior escalabilidade e manutenção do sistema. Participei do desenvolvimento de APIs REST, com integração direta ao Discord via Webhook, permitindo o envio de alertas de bugs em tempo real.",
+              "Colaboro ativamente em decisões técnicas, discutindo arquitetura, propondo soluções e assegurando a integração entre todas as partes do sistema. Projeto já está em deploy.",
             ]
           : [
-              "Developed and maintained features for the NExTI educational platform using React.js on the front-end and PHP with Laravel on the back-end, ensuring a smooth and efficient user experience.",
-              "Implemented integrations with external APIs to expand platform functionality, improving user experience and operational efficiency.",
-              "Collaborated with multidisciplinary teams to plan, design, and implement new features, ensuring project requirements were met within established deadlines.",
+              "I work as a volunteer full-stack developer building the digital platform for Learn Skills, an academic publisher dedicated to disseminating knowledge. On the front-end, I develop responsive interfaces using React.js and Vite, structuring components in a modular way with pure CSS and contributing as a UX Designer to create intuitive, accessible interfaces aligned with usability best practices.",
+              "The project started with a Python (Flask) backend, but we migrated to PHP with Laravel, ensuring greater scalability and system maintainability. I participated in the development of REST APIs, with direct integration to Discord via Webhook, allowing for the sending of bug alerts in real time.",
+              "I actively collaborate in technical decisions, discussing architecture, proposing solutions, and ensuring integration between all parts of the system. The project is already being deployed.",
             ],
-      skills: ["React.js", "PHP", "Laravel", "MySQL", "TailwindCSS"],
+      skills: ["React.js", "PHP", "Laravel", "MySQL", "TailwindCSS", "Figma", "UI/UX"],
     },
     {
       company: "Carboon Cycle",
@@ -71,6 +72,26 @@ export default function About() {
       skills: [
         "React.js","Node.js","Next.js","TypeScript","TailwindCSS","ShadcnUI","Git","Jira",
       ],
+    },
+    {
+      company: "Freelance",
+      role: language === "pt"
+        ? "Desenvolvedor Web e UI/UX Designer"
+        : "Web developer and UI/UX designer",
+      period: language === "pt" ? "Mar 2025 - Atual" : "Mar 2025 - Present",
+      description:
+        language === "pt"
+          ? [
+              "Presto serviços personalizados de design e desenvolvimento digital, adaptados às necessidades e objetivos de cada cliente. Atuo na criação de sites responsivos, interfaces e experiências de usuário (UI/UX) que equilibram usabilidade e estética. Também desenvolvo materiais gráficos e conteúdos estratégicos para redes sociais, alinhando comunicação visual, posicionamento e engajamento de marca.",
+              "Entre os principais resultados, destaco o aumento de mais de 222 mil visualizações e 4,2 mil interações em um único mês em perfis gerenciados, além do crescimento de 258 novos seguidores e uma melhora significativa no alcance orgânico após a aplicação das estratégias de marketing e identidade visual.",
+            ]
+          : [
+              "I provide customized digital design and development services, tailored to the needs and objectives of each client. I work on creating responsive websites, user interfaces (UI/UX) that balance usability and aesthetics. I also develop graphic materials and strategic content for social media, aligning visual communication, brand positioning, and engagement.",
+              "Among the main results, I highlight the increase of over 222,000 views and 4,200 interactions in a single month on managed profiles, in addition to the growth of 258 new followers and a significant improvement in organic reach after the application of marketing and visual identity strategies.",
+            ],
+      skills: language === "pt"
+      ? ["HTML","CSS","JavaScript","UI/UX","TailwindCSS","Desenvolvimento Web","Figma","WordPress", "Gestão de projetos",]
+      : ["HTML","CSS","JavaScript","UI/UX","TailwindCSS","Web Development","Figma","WordPress", "Project management",],
     },
   ];
 
@@ -200,7 +221,7 @@ export default function About() {
                   transition-all duration-300 
                   hover:shadow-lg hover:shadow-black dark:hover:shadow-red-500">
                 <p className="flex items-start gap-3">
-                  <Sparkles className="w-5 h-5 dark:text-red-500 text-black  flex-shrink-0 mt-1" />
+                  <IoIosArrowForward className="w-5 h-5 dark:text-red-500 text-black  flex-shrink-0 mt-1" />
                   <span>
                   {language === "pt"
                       ? "Tenho 2 anos de experiência como "
@@ -225,7 +246,7 @@ export default function About() {
                   transition-all duration-300 
                   hover:shadow-lg hover:shadow-black dark:hover:shadow-red-500">
                 <p className="flex items-start gap-3">
-                  <Sparkles className="w-5 h-5 dark:text-red-400 text-gray-700 flex-shrink-0 mt-1" />
+                <IoIosArrowForward className="w-5 h-5 dark:text-red-500 text-black  flex-shrink-0 mt-1" />
                   <span>
                   {language === "pt"
                       ? "Sou "
@@ -252,7 +273,7 @@ export default function About() {
                   transition-all duration-300 
                   hover:shadow-lg hover:shadow-black dark:hover:shadow-red-500">
                 <p className="flex items-start gap-3">
-                  <Sparkles className="w-5 h-5 dark:text-red-500 text-black flex-shrink-0 mt-1" />
+                  <IoIosArrowForward className="w-5 h-5 dark:text-red-500 text-black  flex-shrink-0 mt-1" />
                   <span>
                   {language === "pt"
                       ? "Nascido e crescido em Pernambuco, agora se aventurando no Ceará."
@@ -288,8 +309,8 @@ export default function About() {
         <section>
           <h2 className="text-3xl md:text-4xl font-bold mb-12">                  
             {language === "pt"
-                      ? "Minha experiência:"
-                      : "My experience:"
+                      ? "Minha experiências:"
+                      : "My experiencies:"
                       }
           </h2>
 

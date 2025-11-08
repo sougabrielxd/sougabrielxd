@@ -1,6 +1,8 @@
 import { Link } from "wouter";
 import { useTheme } from "@/contexts/ThemeContext";
 import { Moon, Sun } from "lucide-react";
+import { IoMenu } from "react-icons/io5";
+import { useState } from "react";
 
 export default function Navigation() {
   const { theme, toggleTheme } = useTheme();
@@ -16,7 +18,22 @@ export default function Navigation() {
         </Link>
 
         {/* Navigation Links */}
-        <div className="hidden sm:flex gap-8">
+        {/* <div className="hidden md:flex gap-8 ">
+          <Link href="/">
+            <a className="text-sm hover:text-accent transition-colors">Home</a>
+          </Link>
+          <Link href="/about">
+            <a className="text-sm hover:text-accent transition-colors">Sobre</a>
+          </Link>
+          <Link href="/projects">
+            <a className="text-sm hover:text-accent transition-colors">Projetos</a>
+          </Link>
+          <Link href="/contact">
+            <a className="text-sm hover:text-accent transition-colors">Contato</a>
+          </Link>
+        </div> */}
+        {/* Mobile Menu Icon */}
+        <div className=" hidden md:flex gap-8 ">
           <Link href="/">
             <a className="text-sm hover:text-accent transition-colors">Home</a>
           </Link>
