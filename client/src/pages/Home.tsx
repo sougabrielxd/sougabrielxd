@@ -131,33 +131,37 @@ export default function Home() {
 
   {/* Menu Mobile Dropdown */}
   {isOpen && (
-    <div className="fixed top-16 left-6 z-[9999] border border-black dark:border-red-500/20 
-               hover:bg-black/10 dark:hover:bg-red-500/10 
-               transition-colors shadow-md flex flex-col items-start p-4 md:hidden 
-               dark:bg-red-500/20 rounded-lg bg-white">
+    <div
+      className="fixed top-16 left-6 z-[9999] border border-black dark:border-red-500/60 
+                 bg-white dark:bg-black 
+                 hover:bg-black/10 dark:hover:bg-red-500/20 
+                 transition-colors shadow-md flex flex-col items-start p-4 md:hidden 
+                 rounded-lg"
+    >
       <Link href="/">
-        <a className="text-sm hover:text-red-500 dark:text-white transition-colors font-semibold">
+        <a className="text-sm hover:text-red-500 dark:text-red-500 transition-colors font-semibold">
           {language === "pt" ? "Inicio" : "Home"}
         </a>
       </Link>
       <Link href="/about">
-        <a className="text-sm hover:text-red-500 dark:text-white transition-colors font-semibold">
+        <a className="text-sm hover:text-red-500 dark:text-red-500 transition-colors font-semibold">
           {language === "pt" ? "Sobre" : "About"}
         </a>
       </Link>
       <Link href="/projects">
-        <a className="text-sm hover:text-red-500 dark:text-white transition-colors font-semibold">
+        <a className="text-sm hover:text-red-500 dark:text-red-500 transition-colors font-semibold">
           {language === "pt" ? "Projetos" : "Projects"}
         </a>
       </Link>
       <Link href="/contact">
-        <a className="text-sm hover:text-red-500 dark:text-white transition-colors font-semibold">
+        <a className="text-sm hover:text-red-500 dark:text-red-500 transition-colors font-semibold">
           {language === "pt" ? "Contato" : "Contact"}
         </a>
       </Link>
     </div>
   )}
 </nav>
+
 
       {/* Hero Section */}
       <main className="flex flex-col items-center justify-center min-h-screen px-4 py-20 relative overflow-hidden">
