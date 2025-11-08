@@ -139,7 +139,7 @@ export default function Home() {
         {/* Decorative element - logo */}
         <div className="mb-8 text-6xl animate-float relative z-10">
           <img
-            src={theme === "dark" ? "src/img/x-red.svg" : "src/img/x-dark.svg"}
+            src={theme === "dark" ? "./img/x-red.svg" : "./img/x-dark.svg"}
             alt="Logo"
             className="transition-all duration-300 w-32 h-32"
           />

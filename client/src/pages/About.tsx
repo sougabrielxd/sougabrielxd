@@ -274,7 +274,7 @@ export default function About() {
                   hover:shadow-black dark:hover:shadow-red-500 
                   hover:scale-105">
                 <img
-                  src="/src/img/photo.jpg"
+                  src="./img/photo.jpg"
                   alt="Foto de perfil"
                   className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity duration-300"
                 />
