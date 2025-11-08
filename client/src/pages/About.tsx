@@ -6,11 +6,13 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Globe } from "lucide-react";
 import { IoIosArrowForward } from "react-icons/io";
+import { IoMenu } from "react-icons/io5";
 
 export default function About() {
   const { theme, toggleTheme } = useTheme();
   const { language, setLanguage } = useLanguage();
   const [showLanguageMenu, setShowLanguageMenu] = useState(false);
+  const [isOpen, setIsOpen] = useState(false);
 
   const experiences = [
     {
@@ -78,7 +80,7 @@ export default function About() {
       role: language === "pt"
         ? "Desenvolvedor Web e UI/UX Designer"
         : "Web developer and UI/UX designer",
-      period: language === "pt" ? "Mar 2025 - Atual" : "Mar 2025 - Present",
+      period: language === "pt" ? "Set 2023 - Atual" : "Sep 2023 - Present",
       description:
         language === "pt"
           ? [
@@ -171,35 +173,69 @@ export default function About() {
               </button>
       </div>
 
-      {/* Navigation Links */}
-      <div className="fixed top-6 left-6 z-50 flex gap-6">
-      <div className="fixed top-6 left-6 z-50 flex gap-6">
-        <Link href="/">
-          <a className="text-sm hover:text-red-500 transition-colors font-semibold">
-          {language === "pt"
-                      ? "Inicio"
-                      : "Home"
-                      }
-          </a>
-        </Link>
-        <Link href="/projects">
-          <a className="text-sm hover:text-red-500 transition-colors font-semibold">
-          {language === "pt"
-                      ? "Projetos"
-                      : "Projects"
-                      }
-          </a>
-        </Link>
-        <Link href="/contact">
-          <a className="text-sm hover:text-red-500 transition-colors font-semibold">
-          {language === "pt"
-                      ? "Contato"
-                      : "Contatc"
-                      }
-            </a>
-        </Link>
-      </div>
-      </div>
+      <nav className="fixed top-6 left-6 z-[9999] flex gap-6">
+  {/* Menu Desktop */}
+  <div className="hidden md:flex gap-8">
+    <Link href="/">
+      <a className="text-sm hover:text-red-500 transition-colors font-semibold">
+        {language === "pt" ? "Inicio" : "Home"}
+      </a>
+    </Link>
+    <Link href="/about">
+      <a className="text-sm hover:text-red-500 transition-colors font-semibold">
+        {language === "pt" ? "Sobre" : "About"}
+      </a>
+    </Link>
+    <Link href="/projects">
+      <a className="text-sm hover:text-red-500 transition-colors font-semibold">
+        {language === "pt" ? "Projetos" : "Projects"}
+      </a>
+    </Link>
+    <Link href="/contact">
+      <a className="text-sm hover:text-red-500 transition-colors font-semibold">
+        {language === "pt" ? "Contato" : "Contact"}
+      </a>
+    </Link>
+  </div>
+
+  {/* Menu Mobile */}
+  <button
+    className="md:hidden p-2 rounded-md hover:bg-accent/10 transition-colors z-50"
+    onClick={() => setIsOpen(!isOpen)}
+  >
+    <IoMenu size={26} className="dark:text-red-500 text-black" />
+  </button>
+
+  {/* Menu Mobile Dropdown */}
+  {isOpen && (
+    <div className="fixed top-16 left-6 z-[9999] border border-black dark:border-red-500/20 
+               hover:bg-black/10 dark:hover:bg-red-500/10 
+               transition-colors shadow-md flex flex-col items-start p-4 md:hidden 
+               dark:bg-red-500/20 rounded-lg bg-white">
+      <Link href="/">
+        <a className="text-sm hover:text-red-500 dark:text-white transition-colors font-semibold">
+          {language === "pt" ? "Inicio" : "Home"}
+        </a>
+      </Link>
+      <Link href="/about">
+        <a className="text-sm hover:text-red-500 dark:text-white transition-colors font-semibold">
+          {language === "pt" ? "Sobre" : "About"}
+        </a>
+      </Link>
+      <Link href="/projects">
+        <a className="text-sm hover:text-red-500 dark:text-white transition-colors font-semibold">
+          {language === "pt" ? "Projetos" : "Projects"}
+        </a>
+      </Link>
+      <Link href="/contact">
+        <a className="text-sm hover:text-red-500 dark:text-white transition-colors font-semibold">
+          {language === "pt" ? "Contato" : "Contact"}
+        </a>
+      </Link>
+    </div>
+  )}
+</nav>
+
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20">
         {/* About Section */}
