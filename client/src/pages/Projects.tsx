@@ -1,9 +1,9 @@
-import { ExternalLink, Github, Moon, Sun, ChevronDown } from "lucide-react";
+import { ExternalLink, Github, Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Globe } from "lucide-react";
 import { IoMenu } from "react-icons/io5";
 
@@ -12,6 +12,27 @@ export default function Projects() {
   const { language, setLanguage } = useLanguage();
   const [showLanguageMenu, setShowLanguageMenu] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  // Detecta scroll e esconde os botões + menu mobile
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.innerWidth <= 768) {
+        if (window.scrollY > lastScrollY) {
+          setIsVisible(false);
+          setIsOpen(false);
+        } else {
+          setIsVisible(true);
+        }
+        setLastScrollY(window.scrollY);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [lastScrollY]);
+
   const projects = [
     {
       title: "CoWatch",
@@ -48,7 +69,11 @@ export default function Projects() {
   return (
     <div className="min-h-screen bg-background text-foreground">
       {/* Theme & Language Buttons */}
-      <div className="fixed top-6 right-6 z-50 flex gap-3">
+      <div
+        className={`fixed top-6 right-6 z-50 flex gap-3 transition-all duration-500 ${
+          isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
+      >
         {/* Language Dropdown */}
         <div className="relative">
           <button
@@ -82,7 +107,9 @@ export default function Projects() {
                 transition-colors flex items-center gap-2"
               >
                 <span className="text-sm font-semibold">Português</span>
-                {language === "pt" && <span className="ml-auto text-black dark:text-red-500">✓</span>}
+                {language === "pt" && (
+                  <span className="ml-auto text-black dark:text-red-500">✓</span>
+                )}
               </button>
               <button
                 onClick={() => {
@@ -95,13 +122,15 @@ export default function Projects() {
                 transition-colors flex items-center gap-2"
               >
                 <span className="text-sm font-semibold">English</span>
-                {language === "en" && <span className="ml-auto text-black dark:text-red-500">✓</span>}
+                {language === "en" && (
+                  <span className="ml-auto text-black dark:text-red-500">✓</span>
+                )}
               </button>
             </div>
           )}
         </div>
 
-        {/* Theme Buttib */}
+        {/* Theme Button */}
         <button
           onClick={toggleTheme}
           className="p-3 rounded-full border border-black/50 dark:border-red-500/50 
@@ -112,106 +141,103 @@ export default function Projects() {
                     hover:text-black dark:hover:text-white 
                     transition-all duration-300 transform hover:scale-110 
                     hover:shadow-lg hover:shadow-black/40 dark:hover:shadow-red-500/40 group"
-              >
-                {theme === "dark" ? (
-                  <Sun className="w-5 h-5 text-white transition-transform duration-300 group-hover:rotate-180" />
-                ) : (
-                  <Moon className="w-5 h-5 text-black transition-transform duration-300 group-hover:rotate-180" />
-                )}
-              </button>
+        >
+          {theme === "dark" ? (
+            <Sun className="w-5 h-5 text-white transition-transform duration-300 group-hover:rotate-180" />
+          ) : (
+            <Moon className="w-5 h-5 text-black transition-transform duration-300 group-hover:rotate-180" />
+          )}
+        </button>
       </div>
 
- <nav className="fixed top-6 left-6 z-[9999] flex gap-6">
-  {/* Menu Desktop */}
-  <div className="hidden md:flex gap-8">
-    <Link href="/">
-      <a className="text-sm hover:text-red-500 transition-colors font-semibold">
-        {language === "pt" ? "Inicio" : "Home"}
-      </a>
-    </Link>
-    <Link href="/about">
-      <a className="text-sm hover:text-red-500 transition-colors font-semibold">
-        {language === "pt" ? "Sobre" : "About"}
-      </a>
-    </Link>
-    <Link href="/projects">
-      <a className="text-sm hover:text-red-500 transition-colors font-semibold">
-        {language === "pt" ? "Projetos" : "Projects"}
-      </a>
-    </Link>
-    <Link href="/contact">
-      <a className="text-sm hover:text-red-500 transition-colors font-semibold">
-        {language === "pt" ? "Contato" : "Contact"}
-      </a>
-    </Link>
-  </div>
+      <nav
+        className={`fixed top-6 left-6 z-[9999] flex gap-6 transition-all duration-500 ${
+          isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
+      >
+        {/* Menu Desktop */}
+        <div className="hidden md:flex gap-8">
+          <Link href="/">
+            <a className="text-sm hover:text-red-500 transition-colors font-semibold">
+              {language === "pt" ? "Inicio" : "Home"}
+            </a>
+          </Link>
+          <Link href="/about">
+            <a className="text-sm hover:text-red-500 transition-colors font-semibold">
+              {language === "pt" ? "Sobre" : "About"}
+            </a>
+          </Link>
+          <Link href="/projects">
+            <a className="text-sm hover:text-red-500 transition-colors font-semibold">
+              {language === "pt" ? "Projetos" : "Projects"}
+            </a>
+          </Link>
+          <Link href="/contact">
+            <a className="text-sm hover:text-red-500 transition-colors font-semibold">
+              {language === "pt" ? "Contato" : "Contact"}
+            </a>
+          </Link>
+        </div>
 
-  {/* Menu Mobile */}
-  <button
-    className="md:hidden p-2 rounded-md hover:bg-accent/10 transition-colors z-50"
-    onClick={() => setIsOpen(!isOpen)}
-  >
-    <IoMenu size={26} className="dark:text-red-500 text-black" />
-  </button>
+        {/* Menu Mobile */}
+        <button
+          className="md:hidden p-2 rounded-md hover:bg-accent/10 transition-colors z-50"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          <IoMenu size={26} className="dark:text-red-500 text-black" />
+        </button>
 
-  {/* Menu Mobile Dropdown */}
-  {isOpen && (
-    <div
-      className="fixed top-16 left-6 z-[9999] border border-black dark:border-red-500/60 
+        {/* Menu Mobile Dropdown */}
+        {isOpen && (
+          <div
+            className="fixed top-16 left-6 z-[9999] border border-black dark:border-red-500/60 
                  bg-white dark:bg-black 
                  hover:bg-black/10 dark:hover:bg-red-500/20 
                  transition-colors shadow-md flex flex-col items-start p-4 md:hidden 
                  rounded-lg"
-    >
-      <Link href="/">
-        <a className="text-sm hover:text-red-500 dark:text-red-500 transition-colors font-semibold">
-          {language === "pt" ? "Inicio" : "Home"}
-        </a>
-      </Link>
-      <Link href="/about">
-        <a className="text-sm hover:text-red-500 dark:text-red-500 transition-colors font-semibold">
-          {language === "pt" ? "Sobre" : "About"}
-        </a>
-      </Link>
-      <Link href="/projects">
-        <a className="text-sm hover:text-red-500 dark:text-red-500 transition-colors font-semibold">
-          {language === "pt" ? "Projetos" : "Projects"}
-        </a>
-      </Link>
-      <Link href="/contact">
-        <a className="text-sm hover:text-red-500 dark:text-red-500 transition-colors font-semibold">
-          {language === "pt" ? "Contato" : "Contact"}
-        </a>
-      </Link>
-    </div>
-  )}
-</nav>
-
+          >
+            <Link href="/">
+              <a className="text-sm hover:text-red-500 dark:text-red-500 transition-colors font-semibold">
+                {language === "pt" ? "Inicio" : "Home"}
+              </a>
+            </Link>
+            <Link href="/about">
+              <a className="text-sm hover:text-red-500 dark:text-red-500 transition-colors font-semibold">
+                {language === "pt" ? "Sobre" : "About"}
+              </a>
+            </Link>
+            <Link href="/projects">
+              <a className="text-sm hover:text-red-500 dark:text-red-500 transition-colors font-semibold">
+                {language === "pt" ? "Projetos" : "Projects"}
+              </a>
+            </Link>
+            <Link href="/contact">
+              <a className="text-sm hover:text-red-500 dark:text-red-500 transition-colors font-semibold">
+                {language === "pt" ? "Contato" : "Contact"}
+              </a>
+            </Link>
+          </div>
+        )}
+      </nav>
 
       {/* Conteúdo principal */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20">
         <section>
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
-          {language === "pt"
-                      ? "Projetos"
-                      : "Projects"
-                      }
+            {language === "pt" ? "Projetos" : "Projects"}
           </h1>
           <p className="text-lg text-muted-foreground mb-12">
             {language === "pt"
-                      ? "Confira alguns dos projetos que "
-                      : "Check out some of the projects that "
-                      }
+              ? "Confira alguns dos projetos que "
+              : "Check out some of the projects that "}
             <span className="text-black dark:text-red-500 font-semibold">
-            {language === "pt"
-                      ? "desenvolvi/participei"
-                      : "I developed/participated"
-                      }
+              {language === "pt"
+                ? "desenvolvi/participei"
+                : "I developed/participated"}
             </span>{" "}
             {language === "pt"
-                      ? "ao longo da minha carreira."
-                      : "throughout my career."
-                      }
+              ? "ao longo da minha carreira."
+              : "throughout my career."}
           </p>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -256,7 +282,12 @@ export default function Projects() {
                 </div>
 
                 <div className="flex gap-3">
-                  <a href={project.link} target="_blank" rel="noopener noreferrer" className="flex-1">
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1"
+                  >
                     <Button
                       size="sm"
                       variant="outline"
@@ -265,13 +296,15 @@ export default function Projects() {
   hover:shadow-lg hover:shadow-black/20 transition-all duration-300 transform hover:scale-105"
                     >
                       <ExternalLink className="w-4 h-4 mr-2" />
-                      {language === "pt"
-                      ? "Ver"
-                      : "View"
-                      }
+                      {language === "pt" ? "Ver" : "View"}
                     </Button>
                   </a>
-                  <a href={project.github} target="_blank" rel="noopener noreferrer" className="flex-1">
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1"
+                  >
                     <Button
                       size="sm"
                       variant="outline"
@@ -280,10 +313,7 @@ export default function Projects() {
   hover:shadow-lg hover:shadow-black/20 transition-all duration-300 transform hover:scale-105"
                     >
                       <Github className="w-4 h-4 mr-2" />
-                      {language === "pt"
-                      ? "Código"
-                      : "Code"
-                      }
+                      {language === "pt" ? "Código" : "Code"}
                     </Button>
                   </a>
                 </div>
