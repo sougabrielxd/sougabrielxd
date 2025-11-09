@@ -318,7 +318,7 @@ export default function About() {
                   bg-gradient-to-br from-black/5 to-black/10 dark:from-red-500/10 dark:to-red-500/10 
                   hover:border-black/60 dark:hover:border-red-500/60 
                   transition-all duration-300 
-                  hover:shadow-lg hover:shadow-black dark:hover:shadow-red-500">
+                  hover:shadow-lg hover:shadow-black dark:hover:shadow-red-400">
                 <p className="flex items-start gap-3">
                 <IoIosArrowForward className="w-5 h-5 dark:text-red-500 text-black  flex-shrink-0 mt-1" />
                   <span>

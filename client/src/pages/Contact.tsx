@@ -1,15 +1,14 @@
-import { useEffect,useState } from "react";
-import { Moon, Sun, ChevronDown } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Globe } from "lucide-react";
-import { IoMenu } from "react-icons/io5";
+import { Globe, Mail, Phone, Linkedin, Menu } from "lucide-react";
 
 export default function Contact() {
   const { theme, toggleTheme } = useTheme();
-  const { language, setLanguage } = useLanguage();
+  const { language, toggleLanguage } = useLanguage();
   const [showLanguageMenu, setShowLanguageMenu] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
@@ -23,7 +22,6 @@ export default function Contact() {
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
 
-  // Handle scroll to hide theme/language buttons and mobile navbar
   useEffect(() => {
     const handleScroll = () => {
       if (window.innerWidth <= 768) {
@@ -41,7 +39,6 @@ export default function Contact() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
-
   const handleInputChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
@@ -57,7 +54,6 @@ export default function Contact() {
     setLoading(true);
 
     try {
-      // Simulate submit (replace with actual API request)
       await new Promise((resolve) => setTimeout(resolve, 1000));
       setSubmitted(true);
       setFormData({ name: "", email: "", subject: "", message: "" });
@@ -69,160 +65,183 @@ export default function Contact() {
     }
   };
 
+  const contactMethods = [
+    {
+      icon: Mail,
+      label: language === "pt" ? "Email" : "Email",
+      value: "gabriellucasafb@gmail.com",
+      href: "mailto:gabrielxd@example.com",
+      color: "border dark:border-red-700 border-black",
+    },
+    {
+      icon: Phone,
+      label: language === "pt" ? "Telefone" : "Phone",
+      value: "+55 (87) 99181-1562",
+      href: "tel:+5587991811562",
+      color: "border dark:border-red-700 border-black",
+    },
+    {
+      icon: Linkedin,
+      label: "LinkedIn",
+      value: "gabriellucasafb",
+      href: "https://linkedin.com/in/gabriellucasafb",
+      color: "border dark:border-red-700 border-black",
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-background text-foreground">
-    {/* Theme & Language Buttons */}
-    <div
-      className={`fixed top-6 right-6 z-50 flex gap-3 transition-all duration-500 ${
-        isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
-      }`}
-    >
-      {/* Language Dropdown */}
-      <div className="relative">
-        <button
-          onClick={() => setShowLanguageMenu(!showLanguageMenu)}
-          className="p-3 rounded-full border border-black/50 dark:border-red-500/50 
-            hover:border-black dark:hover:border-red-500 
-            bg-gradient-to-br from-black/10 to-gray-700/10 dark:from-red-500/10 dark:to-red-400/10 
-            hover:from-black/20 hover:to-gray-800/20 dark:hover:from-red-400/20 dark:hover:to-red-400/20 
-            text-black dark:text-white 
-            hover:text-black dark:hover:text-red-500 
-            transition-all duration-300 transform hover:scale-110 
-            hover:shadow-lg hover:shadow-black/40 dark:hover:shadow-red-500/40 group"
-          aria-label="Select language"
-        >
-          <Globe className="w-5 h-5 transition-all duration-300 group-hover:rotate-6" />
-        </button>
-
-        {showLanguageMenu && (
-          <div
-            className="absolute right-0 mt-2 w-32 rounded-lg border border-black/60 dark:border-red-500/50 
-            bg-background shadow-lg shadow-black/40 dark:shadow-red-500/20 z-50 overflow-hidden transition-all duration-300"
+      {/* Theme & Language Buttons */}
+      <div
+        className={`fixed top-6 right-6 z-50 flex gap-3 transition-all duration-500 ${
+          isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
+      >
+        {/* Language Dropdown */}
+        <div className="relative">
+          <button
+            onClick={() => setShowLanguageMenu(!showLanguageMenu)}
+            className="p-3 rounded-full border border-black/50 dark:border-red-500/50 
+              hover:border-black dark:hover:border-red-500 
+              bg-gradient-to-br from-black/10 to-gray-700/10 dark:from-red-500/10 dark:to-red-400/10 
+              hover:from-black/20 hover:to-gray-800/20 dark:hover:from-red-400/20 dark:hover:to-red-400/20 
+              text-black dark:text-white 
+              hover:text-black dark:hover:text-red-500 
+              transition-all duration-300 transform hover:scale-110 
+              hover:shadow-lg hover:shadow-black/40 dark:hover:shadow-red-500/40 group"
+            aria-label="Select language"
           >
-            <button
-              onClick={() => {
-                setLanguage("pt");
-                setShowLanguageMenu(false);
-              }}
-              className="w-full px-4 py-2 text-left 
-              border-t border-black/20 dark:border-red-500/20 
-              hover:bg-black/10 dark:hover:bg-red-500/10 
-              transition-colors flex items-center gap-2"
+            <Globe className="w-5 h-5 transition-all duration-300 group-hover:rotate-6" />
+          </button>
+
+          {showLanguageMenu && (
+            <div
+              className="absolute right-0 mt-2 w-32 rounded-lg border border-black/60 dark:border-red-500/50 
+              bg-background shadow-lg shadow-black/40 dark:shadow-red-500/20 z-50 overflow-hidden transition-all duration-300"
             >
-              <span className="text-sm font-semibold">Português</span>
-              {language === "pt" && (
-                <span className="ml-auto text-black dark:text-red-500">✓</span>
-              )}
-            </button>
-            <button
-              onClick={() => {
-                setLanguage("en");
-                setShowLanguageMenu(false);
-              }}
-              className="w-full px-4 py-2 text-left 
-              border-t border-black/20 dark:border-red-500/20 
-              hover:bg-black/10 dark:hover:bg-red-500/10 
-              transition-colors flex items-center gap-2"
-            >
-              <span className="text-sm font-semibold">English</span>
-              {language === "en" && (
-                <span className="ml-auto text-black dark:text-red-500">✓</span>
-              )}
-            </button>
-          </div>
-        )}
-      </div>
+              <button
+                onClick={() => {
+                  toggleLanguage();
+                  setShowLanguageMenu(false);
+                }}
+                className="w-full px-4 py-2 text-left 
+                border-t border-black/20 dark:border-red-500/20 
+                hover:bg-black/10 dark:hover:bg-red-500/10 
+                transition-colors flex items-center gap-2"
+              >
+                <span className="text-sm font-semibold">Português</span>
+                {language === "pt" && (
+                  <span className="ml-auto text-black dark:text-red-500">✓</span>
+                )}
+              </button>
+              <button
+                onClick={() => {
+                  toggleLanguage();
+                  setShowLanguageMenu(false);
+                }}
+                className="w-full px-4 py-2 text-left 
+                border-t border-black/20 dark:border-red-500/20 
+                hover:bg-black/10 dark:hover:bg-red-500/10 
+                transition-colors flex items-center gap-2"
+              >
+                <span className="text-sm font-semibold">English</span>
+                {language === "en" && (
+                  <span className="ml-auto text-black dark:text-red-500">✓</span>
+                )}
+              </button>
+            </div>
+          )}
+        </div>
 
-      {/* Theme Button */}
-      <button
-        onClick={toggleTheme}
-        className="p-3 rounded-full border border-black/50 dark:border-red-500/50 
-                  hover:border-black dark:hover:border-red-500 
-                  bg-gradient-to-br from-black/10 to-gray-700/10 dark:from-red-500/10 dark:to-red-400/10 
-                  hover:from-black/20 hover:to-gray-800/20 dark:hover:from-red-400/20 dark:hover:to-red-400/20 
-                  text-black dark:text-white 
-                  hover:text-black dark:hover:text-white 
-                  transition-all duration-300 transform hover:scale-110 
-                  hover:shadow-lg hover:shadow-black/40 dark:hover:shadow-red-500/40 group"
-      >
-        {theme === "dark" ? (
-          <Sun className="w-5 h-5 text-white transition-transform duration-300 group-hover:rotate-180" />
-        ) : (
-          <Moon className="w-5 h-5 text-black transition-transform duration-300 group-hover:rotate-180" />
-        )}
-      </button>
-    </div>
-
-    <nav
-      className={`fixed top-6 left-6 z-[9999] flex gap-6 transition-all duration-500 ${
-        isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
-      }`}
-    >
-      {/* Menu Desktop */}
-      <div className="hidden md:flex gap-8">
-        <Link href="/">
-          <a className="text-sm hover:text-red-500 transition-colors font-semibold">
-            {language === "pt" ? "Inicio" : "Home"}
-          </a>
-        </Link>
-        <Link href="/about">
-          <a className="text-sm hover:text-red-500 transition-colors font-semibold">
-            {language === "pt" ? "Sobre" : "About"}
-          </a>
-        </Link>
-        <Link href="/projects">
-          <a className="text-sm hover:text-red-500 transition-colors font-semibold">
-            {language === "pt" ? "Projetos" : "Projects"}
-          </a>
-        </Link>
-        <Link href="/contact">
-          <a className="text-sm hover:text-red-500 transition-colors font-semibold">
-            {language === "pt" ? "Contato" : "Contact"}
-          </a>
-        </Link>
-      </div>
-
-      {/* Menu Mobile */}
-      <button
-        className="md:hidden p-2 rounded-md hover:bg-accent/10 transition-colors z-50"
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        <IoMenu size={26} className="dark:text-red-500 text-black" />
-      </button>
-
-      {/* Menu Mobile Dropdown */}
-      {isOpen && (
-        <div
-          className="fixed top-16 left-6 z-[9999] border border-black dark:border-red-500/60 
-               bg-white dark:bg-black 
-               hover:bg-black/10 dark:hover:bg-red-500/20 
-               transition-colors shadow-md flex flex-col items-start p-4 md:hidden 
-               rounded-lg"
+        {/* Theme Button */}
+        <button
+          onClick={toggleTheme}
+          className="p-3 rounded-full border border-black/50 dark:border-red-500/50 
+                    hover:border-black dark:hover:border-red-500 
+                    bg-gradient-to-br from-black/10 to-gray-700/10 dark:from-red-500/10 dark:to-red-400/10 
+                    hover:from-black/20 hover:to-gray-800/20 dark:hover:from-red-400/20 dark:hover:to-red-400/20 
+                    text-black dark:text-white 
+                    hover:text-black dark:hover:text-white 
+                    transition-all duration-300 transform hover:scale-110 
+                    hover:shadow-lg hover:shadow-black/40 dark:hover:shadow-red-500/40 group"
         >
+          {theme === "dark" ? (
+            <Sun className="w-5 h-5 text-white transition-transform duration-300 group-hover:rotate-180" />
+          ) : (
+            <Moon className="w-5 h-5 text-black transition-transform duration-300 group-hover:rotate-180" />
+          )}
+        </button>
+      </div>
+
+      <nav
+        className={`fixed top-6 left-6 z-[9999] flex gap-6 transition-all duration-500 ${
+          isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
+        }`}
+      >
+        {/* Menu Desktop */}
+        <div className="hidden md:flex gap-8">
           <Link href="/">
-            <a className="text-sm hover:text-red-500 dark:text-red-500 transition-colors font-semibold">
+            <a className="text-sm hover:text-red-500 transition-colors font-semibold">
               {language === "pt" ? "Inicio" : "Home"}
             </a>
           </Link>
           <Link href="/about">
-            <a className="text-sm hover:text-red-500 dark:text-red-500 transition-colors font-semibold">
+            <a className="text-sm hover:text-red-500 transition-colors font-semibold">
               {language === "pt" ? "Sobre" : "About"}
             </a>
           </Link>
           <Link href="/projects">
-            <a className="text-sm hover:text-red-500 dark:text-red-500 transition-colors font-semibold">
+            <a className="text-sm hover:text-red-500 transition-colors font-semibold">
               {language === "pt" ? "Projetos" : "Projects"}
             </a>
           </Link>
           <Link href="/contact">
-            <a className="text-sm hover:text-red-500 dark:text-red-500 transition-colors font-semibold">
+            <a className="text-sm hover:text-red-500 transition-colors font-semibold">
               {language === "pt" ? "Contato" : "Contact"}
             </a>
           </Link>
         </div>
-      )}
-    </nav>
 
+        {/* Menu Mobile */}
+        <button
+          className="md:hidden p-2 rounded-md hover:bg-accent/10 transition-colors z-50"
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          <Menu size={26} className="dark:text-red-500 text-black" />
+        </button>
+
+        {/* Menu Mobile Dropdown */}
+        {isOpen && (
+          <div
+            className="fixed top-16 left-6 z-[9999] border border-black dark:border-red-500/60 
+                 bg-white dark:bg-black 
+                 hover:bg-black/10 dark:hover:bg-red-500/20 
+                 transition-colors shadow-md flex flex-col items-start p-4 md:hidden 
+                 rounded-lg"
+          >
+            <Link href="/">
+              <a className="text-sm hover:text-red-500 dark:text-red-500 transition-colors font-semibold">
+                {language === "pt" ? "Inicio" : "Home"}
+              </a>
+            </Link>
+            <Link href="/about">
+              <a className="text-sm hover:text-red-500 dark:text-red-500 transition-colors font-semibold">
+                {language === "pt" ? "Sobre" : "About"}
+              </a>
+            </Link>
+            <Link href="/projects">
+              <a className="text-sm hover:text-red-500 dark:text-red-500 transition-colors font-semibold">
+                {language === "pt" ? "Projetos" : "Projects"}
+              </a>
+            </Link>
+            <Link href="/contact">
+              <a className="text-sm hover:text-red-500 dark:text-red-500 transition-colors font-semibold">
+                {language === "pt" ? "Contato" : "Contact"}
+              </a>
+            </Link>
+          </div>
+        )}
+      </nav>
 
       {/* Contact Form */}
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20">
@@ -264,10 +283,10 @@ export default function Contact() {
                   value={formData.name}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg border border-black/60 dark:border-red-500/30 
+                  className="w-full px-4 py-3 rounded-lg border border-black/20 dark:border-red-500/30 
                             bg-background text-black dark:text-white 
                             placeholder:text-black/60 dark:placeholder:text-white/60 
-                            hover:border-black dark:hover:border-red-500 
+                            hover:border-gray-900 dark:hover:border-red-500 
                             focus:border-black dark:focus:border-red-500 
                             focus:outline-none focus:ring-2 
                             focus:ring-black/20 dark:focus:ring-red-500/20 
@@ -280,7 +299,7 @@ export default function Contact() {
 
               <div>
                 <label className="block text-sm font-semibold mb-2">
-                  Email
+                  {language === "pt" ? "Email" : "Email"}
                 </label>
                 <input
                   type="email"
@@ -288,18 +307,16 @@ export default function Contact() {
                   value={formData.email}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg border border-black/60 dark:border-red-500/30 
+                  className="w-full px-4 py-3 rounded-lg border border-black/20 dark:border-red-500/30 
                             bg-background text-black dark:text-white 
                             placeholder:text-black/60 dark:placeholder:text-white/60 
-                            hover:border-black dark:hover:border-red-500 
+                            hover:border-gray-900 dark:hover:border-red-500 
                             focus:border-black dark:focus:border-red-500 
                             focus:outline-none focus:ring-2 
                             focus:ring-black/20 dark:focus:ring-red-500/20 
                             transition-all duration-300 resize-none"
                   placeholder={
-                    language === "pt"
-                      ? "seu@email.com"
-                      : "your@email.com"
+                    language === "pt" ? "seu@email.com" : "your@email.com"
                   }
                 />
               </div>
@@ -314,43 +331,43 @@ export default function Contact() {
                   value={formData.subject}
                   onChange={handleInputChange}
                   required
-                  className="w-full px-4 py-3 rounded-lg border border-black/60 dark:border-red-500/30 
+                  className="w-full px-4 py-3 rounded-lg border border-black/20 dark:border-red-500/30 
                             bg-background text-black dark:text-white 
                             placeholder:text-black/60 dark:placeholder:text-white/60 
-                            hover:border-black dark:hover:border-red-500 
+                            hover:border-gray-900 dark:hover:border-red-500 
                             focus:border-black dark:focus:border-red-500 
                             focus:outline-none focus:ring-2 
                             focus:ring-black/20 dark:focus:ring-red-500/20 
                             transition-all duration-300 resize-none"
                   placeholder={
-                    language === "pt"
-                      ? "Assunto da mensagem"
-                      : "Message subject"
+                    language === "pt" ? "Assunto da mensagem" : "Message subject"
                   }
                 />
               </div>
 
-              <textarea
-                name="message"
-                value={formData.message}
-                onChange={handleInputChange}
-                required
-                rows={6}
-                className="w-full px-4 py-3 rounded-lg border border-black/60 dark:border-red-500/30 
+              <div>
+                <label className="block text-sm font-semibold mb-2">
+                  {language === "pt" ? "Mensagem" : "Message"}
+                </label>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  required
+                  rows={6}
+                  className="w-full px-4 py-3 rounded-lg border border-black/20 dark:border-red-500/30 
                             bg-background text-black dark:text-white 
                             placeholder:text-black/60 dark:placeholder:text-white/60 
-                            hover:border-black dark:hover:border-red-500 
+                            hover:border-gray-900 dark:hover:border-red-500 
                             focus:border-black dark:focus:border-red-500 
                             focus:outline-none focus:ring-2 
                             focus:ring-black/20 dark:focus:ring-red-500/20 
                             transition-all duration-300 resize-none"
-                placeholder={
-                language === "pt"
-                      ? "Sua mensagem aqui..."
-                      : "Your message here..."
-                }   
-            />
-
+                  placeholder={
+                    language === "pt" ? "Sua mensagem..." : "Your message..."
+                  }
+                />
+              </div>
 
               <Button
                 type="submit"
@@ -368,10 +385,52 @@ export default function Contact() {
                     ? "Enviando..."
                     : "Sending..."
                   : language === "pt"
-                    ? "Enviar Mensagem"
-                    : "Send Message"}
+                  ? "Enviar Mensagem"
+                  : "Send Message"}
               </Button>
             </form>
+          </div>
+        </section>
+
+        {/* Contact Methods Section */}
+        <section className="mt-20">
+          <h2 className="text-3xl md:text-4xl font-bold mb-12">
+            {language === "pt" ? "Formas de Contato" : "Ways to Contact"}
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {contactMethods.map((method, idx) => {
+              const Icon = method.icon;
+              return (
+                <a
+                  key={idx}
+                  href={method.href}
+                  target={method.href.startsWith("http") ? "_blank" : undefined}
+                  rel={method.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                  className="group"
+                >
+                  <div className="border border-black/30 dark:border-red-500/30 rounded-lg p-6 
+                    bg-gradient-to-br from-black/5 to-black/5 dark:from-red-500/5 dark:to-red-400/5 
+                    hover:border-black dark:hover:border-red-500 
+                    hover:from-black/10 hover:to-black/10 dark:hover:from-red-500/10 dark:hover:to-red-400/10 
+                    transition-all duration-300 
+                    hover:shadow-lg hover:shadow-black/20 dark:hover:shadow-red-500/20
+                    transform hover:scale-105 hover:-translate-y-2">
+                    
+                    <div className={`inline-flex p-3 rounded-lg bg-gradient-to-r ${method.color} mb-4 dark:text-red-500`}>
+                      <Icon className="w-6 h-6" />
+                    </div>
+
+                    <h3 className="text-lg font-semibold mb-2 dark:group-hover:text-red-500 group-hover:text-gray-500 transition-colors">
+                      {method.label}
+                    </h3>
+                    <p className="text-muted-foreground group-hover:text-foreground transition-colors break-all">
+                      {method.value}
+                    </p>
+                  </div>
+                </a>
+              );
+            })}
           </div>
         </section>
       </main>
