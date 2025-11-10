@@ -75,6 +75,26 @@ export default function About() {
       skills: ["React.js", "PHP", "Laravel", "MySQL", "TailwindCSS", "Figma", "UI/UX"],
     },
     {
+      company: "Freelance",
+      role: language === "pt"
+        ? "Desenvolvedor Web e UI/UX Designer"
+        : "Web developer and UI/UX designer",
+      period: language === "pt" ? "Set 2023 - Atual" : "Sep 2023 - Present",
+      description:
+        language === "pt"
+          ? [
+              "Presto serviços personalizados de design e desenvolvimento digital, adaptados às necessidades e objetivos de cada cliente. Atuo na criação de sites responsivos, interfaces e experiências de usuário (UI/UX) que equilibram usabilidade e estética. Também desenvolvo materiais gráficos e conteúdos estratégicos para redes sociais, alinhando comunicação visual, posicionamento e engajamento de marca.",
+              "Entre os principais resultados, destaco o aumento de mais de 222 mil visualizações e 4,2 mil interações em um único mês em perfis gerenciados, além do crescimento de 258 novos seguidores e uma melhora significativa no alcance orgânico após a aplicação das estratégias de marketing e identidade visual.",
+            ]
+          : [
+              "I provide customized digital design and development services, tailored to the needs and objectives of each client. I work on creating responsive websites, user interfaces (UI/UX) that balance usability and aesthetics. I also develop graphic materials and strategic content for social media, aligning visual communication, brand positioning, and engagement.",
+              "Among the main results, I highlight the increase of over 222,000 views and 4,200 interactions in a single month on managed profiles, in addition to the growth of 258 new followers and a significant improvement in organic reach after the application of marketing and visual identity strategies.",
+            ],
+      skills: language === "pt"
+      ? ["HTML","CSS","JavaScript","UI/UX","TailwindCSS","Desenvolvimento Web","Figma","WordPress", "Gestão de projetos",]
+      : ["HTML","CSS","JavaScript","UI/UX","TailwindCSS","Web Development","Figma","WordPress", "Project management",],
+    },
+    {
       company: "Carboon Cycle",
       role: language === "pt"
         ? "Estágio em Desenvolvimento Full-Stack"
@@ -95,26 +115,6 @@ export default function About() {
       skills: [
         "React.js","Node.js","Next.js","TypeScript","TailwindCSS","ShadcnUI","Git","Jira",
       ],
-    },
-    {
-      company: "Freelance",
-      role: language === "pt"
-        ? "Desenvolvedor Web e UI/UX Designer"
-        : "Web developer and UI/UX designer",
-      period: language === "pt" ? "Set 2023 - Atual" : "Sep 2023 - Present",
-      description:
-        language === "pt"
-          ? [
-              "Presto serviços personalizados de design e desenvolvimento digital, adaptados às necessidades e objetivos de cada cliente. Atuo na criação de sites responsivos, interfaces e experiências de usuário (UI/UX) que equilibram usabilidade e estética. Também desenvolvo materiais gráficos e conteúdos estratégicos para redes sociais, alinhando comunicação visual, posicionamento e engajamento de marca.",
-              "Entre os principais resultados, destaco o aumento de mais de 222 mil visualizações e 4,2 mil interações em um único mês em perfis gerenciados, além do crescimento de 258 novos seguidores e uma melhora significativa no alcance orgânico após a aplicação das estratégias de marketing e identidade visual.",
-            ]
-          : [
-              "I provide customized digital design and development services, tailored to the needs and objectives of each client. I work on creating responsive websites, user interfaces (UI/UX) that balance usability and aesthetics. I also develop graphic materials and strategic content for social media, aligning visual communication, brand positioning, and engagement.",
-              "Among the main results, I highlight the increase of over 222,000 views and 4,200 interactions in a single month on managed profiles, in addition to the growth of 258 new followers and a significant improvement in organic reach after the application of marketing and visual identity strategies.",
-            ],
-      skills: language === "pt"
-      ? ["HTML","CSS","JavaScript","UI/UX","TailwindCSS","Desenvolvimento Web","Figma","WordPress", "Gestão de projetos",]
-      : ["HTML","CSS","JavaScript","UI/UX","TailwindCSS","Web Development","Figma","WordPress", "Project management",],
     },
   ];
 
