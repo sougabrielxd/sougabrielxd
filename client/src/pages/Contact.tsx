@@ -255,10 +255,10 @@ export default function Contact() {
               : "Send me a message and I'll get back to you soon."}
           </p>
 
-          <div className="border border-black/60 dark:border-red-500/30 
+          <div className="border border-black/20 dark:border-red-500/30 
             rounded-lg p-8 
             bg-gradient-to-br from-black/5 to-black/5 dark:from-red-500/5 dark:to-red-400/5 
-            hover:border-black hover:from-black/10 hover:to-black/10 
+            hover:border-gray-900 hover:from-black/10 hover:to-black/10 
             dark:hover:border-red-500 dark:hover:from-red-500/10 dark:hover:to-red-400/10 
             transition-all duration-300 
             shadow-lg shadow-black/30 dark:shadow-red-500/30">
