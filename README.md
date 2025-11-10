@@ -31,8 +31,8 @@ _Minhas principais habilidades são: Python, React, HTML, CSS, Javascript, MySQL
   </div><br>
       <div align="center">
         <a href="[https://github.com/sougabrielxd](https://github.com/sougabrielxd)"> 
-        <img height="140em" src="https://github-readme-stats.vercel.app/api?username=sougabrielxd&show_icons=true&theme=transparent&include_all_commits=true&count_private=true"/> <br> <br>
-        <img height="150em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=sougabrielxd&layout=compact&langs_count=16&theme=transparent"/>
+        <img height="140em" src="https://github-readme-stats.vercel.app/api?username=sougabrielxd&theme=dark&include_all_commits=true&count_private=true"/> <br> <br>
+        <img height="200em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=sougabrielxd&layout=compact&langs_count=16&theme=dark"/>
       </div><br>
           <div>
             </div><br>
