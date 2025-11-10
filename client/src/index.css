@@ -77,22 +77,22 @@ body {
   --muted: #f3f4f6;
   --muted-foreground: #4b5563;
 
-  --accent: #db2777;
+  --accent: #fff;
   --accent-foreground: #ffffff;
 
-  --destructive: #ef4444;
+  --destructive: #fff;
   --destructive-foreground: #ffffff;
 
   --border: #d1d5db;
   --input: #e5e7eb;
-  --ring: #ec4899;
+  --ring: #fff;
 
   --sidebar: #f3f4f6;
   --sidebar-foreground: #111111;
-  --sidebar-accent: #ec4899;
+  --sidebar-accent: #fff;
   --sidebar-accent-foreground: #ffffff;
   --sidebar-border: #d1d5db;
-  --sidebar-ring: #ec4899;
+  --sidebar-ring: #fff;
 }
 
 
