@@ -307,16 +307,16 @@ export default function Projects() {
           </h1>
           <p className="text-lg text-muted-foreground mb-8">
             {language === "pt"
-              ? "Confira alguns dos projetos que "
-              : "Check out some of the projects that "}
+              ? "Confira alguns dos projeto em que "
+              : "Check out some of the projects I've "}
             <span className="text-black dark:text-red-500 font-semibold">
               {language === "pt"
-                ? "desenvolvi/participei"
-                : "I developed/participated"}
+                ? "atuei e contribuí "
+                : "worked on and contributed"}
             </span>{" "}
             {language === "pt"
-              ? "ao longo da minha carreira."
-              : "throughout my career."}
+              ? "ao longo da minha trajetória profissional."
+              : "to throughout my professional career."}
           </p>
  
         </section>

@@ -43,7 +43,7 @@ export default function About() {
       description:
         language === "pt"
           ? [
-              "Presto suporte técnico aos usuários, realizando diagnóstico, resolução de problemas e otimização de desempenho em hardware e software, o que resultou na melhoria da velocidade de múltiplos computadores.",
+              "Atuo no suporte técnico aos usuários, realizando diagnóstico, resolução de problemas e otimização de desempenho em hardware e software, o que resultou na melhoria da velocidade de múltiplos computadores.",
               "Colaboro na elaboração de relatórios técnicos e analíticos para apoiar a gestão de desempenho e os processos internos.",
               "Executo atividades administrativas de apoio, como a produção de apresentações, certificados e documentação institucional.",
             ]
@@ -323,18 +323,18 @@ export default function About() {
                 <IoIosArrowForward className="w-5 h-5 dark:text-red-500 text-black  flex-shrink-0 mt-1" />
                   <span>
                   {language === "pt"
-                      ? "Sou "
-                      : "Am "
+                      ? "Sou uma pessoa "
+                      : "I am a person "
                       } 
                       <span className="dark:text-red-400 text-gray-700 font-semibold">
                   {language === "pt"
-                      ? "esforçado e dedicado "
-                      : "hardworking and dedicated "
+                      ? "dedicada e comprometida"
+                      : "dedicated and dedicated"
                       }
                       </span> 
                       {language === "pt"
-                      ? "e mantenho o foco na evolução contínua, sempre buscando melhorar a cada desafio."
-                      : "And I maintain my focus on continuous evolution, always seeking to improve with each challenge."
+                      ? ", com foco constante na evolução pessoal e profissional, buscando aprender e aprimorar minhas habilidades a cada novo desafio."
+                      : ", with a constant focus on personal and professional development, I strive to learn and improve my skills with each new challenge."
                       }
                   </span>
                 </p>
