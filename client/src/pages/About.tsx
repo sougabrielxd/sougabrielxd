@@ -159,7 +159,7 @@ const educationData = {
       {
         institution: "Paraíso University Center - UniFAP",
         course: "technologist in Systems Analysis and Development",
-        period: "2023 - 2027 (Expected)",
+        period: "2023 - 2026 (Expected)",
       },
     ],
   },
