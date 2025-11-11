@@ -4,7 +4,11 @@ import { Link } from "wouter";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useState, useEffect, ReactNode } from "react";
-import { SiReact, SiNextdotjs, SiTailwindcss, SiTypescript, SiJavascript, SiNodedotjs, SiMysql, SiMongodb, SiPhp, SiPython, SiLaravel, SiPostgresql, SiGit, SiGithub, SiGitlab, SiVite, SiDocker,SiPostman, SiVercel, SiFigma, SiJira, SiWordpress, } from "react-icons/si";
+import { SiReact, SiNextdotjs, SiTailwindcss, SiTypescript, SiJavascript, SiNodedotjs, SiMysql, SiMongodb, SiPhp, SiPython, SiLaravel, SiPostgresql, SiGit, SiGithub, SiGitlab, SiVite, SiDocker,SiPostman, SiVercel, SiFigma, SiJira, SiWordpress, SiFlask, SiDjango, SiHtml5, SiCss3, SiShadcnui, SiN8N, } from "react-icons/si";
+import { FaVuejs } from "react-icons/fa6";
+import { GrMysql } from "react-icons/gr";
+import { VscVscode } from "react-icons/vsc";
+import { AiOutlineFundProjectionScreen } from "react-icons/ai";
 
 export default function Projects() {
   const { theme, toggleTheme } = useTheme();
@@ -18,26 +22,27 @@ export default function Projects() {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const getTechIcon = (tech: string) => {
     const iconMap: Record<string, ReactNode> = {
-  
+
       JavaScript: <SiJavascript className="w-4 h-4 text-yellow-400" />,
       TypeScript: <SiTypescript className="w-4 h-4 text-blue-500" />,
       React: <SiReact className="w-4 h-4 text-sky-500" />,
       "React.js": <SiReact className="w-4 h-4 text-sky-500" />,
       "Next.js": <SiNextdotjs className="w-4 h-4 text-black dark:text-white" />,
-      "Vue.js": <Code className="w-4 h-4 text-green-500" />,
+      "Vue.js": <FaVuejs className="w-4 h-4 text-green-500" />,
       "Tailwind CSS": <SiTailwindcss className="w-4 h-4 text-sky-400" />,
       TailwindCSS: <SiTailwindcss className="w-4 h-4 text-sky-400" />,
       Python: <SiPython className="w-4 h-4 text-yellow-500" />,
       "Node.js": <SiNodedotjs className="w-4 h-4 text-green-500" />,
-      Flask: <Server className="w-4 h-4 text-gray-500" />,
-      Django: <Server className="w-4 h-4 text-green-700" />,
+      Flask: <SiFlask className="w-4 h-4 text-black" />,
+      Django: <SiDjango className="w-4 h-4 text-green-700" />,
       PHP: <SiPhp className="w-4 h-4 text-indigo-500" />,
       Laravel: <SiLaravel className="w-4 h-4 text-red-500" />,
-  
-      MySQL: <SiMysql className="w-4 h-4 text-blue-600" />,
+
+      MySQL: <GrMysql  className="w-4 h-4 text-blue-600" />,
       PostgreSQL: <SiPostgresql className="w-4 h-4 text-sky-700" />,
       MongoDB: <SiMongodb className="w-4 h-4 text-green-600" />,
-  
+      
+
       Git: <SiGit className="w-4 h-4 text-orange-500" />,
       GitHub: <SiGithub className="w-4 h-4 text-gray-800 dark:text-gray-200" />,
       GitLab: <SiGitlab className="w-4 h-4 text-orange-500" />,
@@ -48,18 +53,29 @@ export default function Projects() {
       Vercel: <SiVercel className="w-4 h-4 text-black dark:text-white" />,
       Figma: <SiFigma className="w-4 h-4 text-pink-500" />,
       WordPress: <SiWordpress className="w-4 h-4 text-sky-600" />,
-  
-      HTML: <Code className="w-4 h-4 text-orange-500" />,
-      CSS: <Code className="w-4 h-4 text-blue-400" />,
+      "VS Code": <VscVscode className="w-4 h-4 text-blue-500 "/>,
+      N8n: <SiN8N className="w-4 h-4 text-pink-400" />,
+
+      HTML: <SiHtml5 className="w-4 h-4 text-orange-500" />,
+      CSS: <SiCss3 className="w-4 h-4 text-blue-400" />,
       "UI/UX": <Monitor className="w-4 h-4" />,
       "Desenvolvimento Web": <Code className="w-4 h-4" />,
-      "Gestão de projetos": <Briefcase className="w-4 h-4" />,
+      "Web Development": <Code className="w-4 h-4" />,
+      "Gestão de Projetos": <AiOutlineFundProjectionScreen className="w-4 h-4" />,
+      "Project management": <AiOutlineFundProjectionScreen className="w-4 h-4" />,
       "Serviços de TI": <Server className="w-4 h-4" />,
-      "Manutenção de computadores": <Cpu className="w-4 h-4" />,
+      "IT Services": <Server className="w-4 h-4" />,
+      "Manutenção de computadores": <Cpu className="w-4 h-4"/>,
+      "Computer Maintenance": <Cpu className="w-4 h-4" />,
       "Suporte técnico": <Wrench className="w-4 h-4" />,
-      ShadcnUI: <Code className="w-4 h-4" />,
+      "Technical Support": <Wrench className="w-4 h-4" />,
+      "Engenharia de Prompt": <Code className="w-4 h-4 dark:text-purple-500 text-purple-950" />,
+      "Prompt Engineering": <Code className="w-4 h-4 dark:text-purple-500 text-purple-950" />,
+      "Automação de Processos": <Code className="w-4 h-4 dark:text-pink-400 text-black " />,
+      "Process Automation": <Code className="w-4 h-4 dark:text-pink-400 text-black " />,
+      ShadcnUI: <SiShadcnui className="w-4 h-4" />,
     };
-  
+
     return iconMap[tech] || <Code className="w-4 h-4 text-gray-400" />;
   };
 
@@ -107,7 +123,7 @@ export default function Projects() {
         duration: language === "pt" ? "Em adamento" : "In progress",
         team: language === "pt" ? "? Desenvolvedores" : "? Developers",
         role: language === "pt" ? "Desenvolvedor Front-end" : "Front-end Developer",
-        technologies: ["HTML5", "CSS3", "JavaScript",],
+        technologies: ["HTML", "CSS", "JavaScript",],
       }
     },
     {
@@ -158,11 +174,14 @@ export default function Projects() {
         "https://ik.imagekit.io/o8urkd2xn/logos.png",
       ],
       details: {
-        duration: language === "pt" ? "3 dias" : "3 dias",
+        duration: language === "pt" ? "3 dias" : "3 days",
         team: language === "pt" ? "1 Desenvolvedor" : "1 Developer",
         role: language === "pt" ? "Desenvolvedor Front-end" : "Front-end Developer",
-        technologies: ["HTML5", "CSS3", "Responsive Design"],
-      }
+        technologies:
+          language === "pt"
+            ? ["HTML", "CSS", "Design Responsivo", "Gestão de Projetos"]
+            : ["HTML", "CSS", "Responsive Design" , "Project management"],
+      },
     },
   ];
 
