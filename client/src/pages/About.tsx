@@ -10,7 +10,7 @@
   import { FaVuejs } from "react-icons/fa6";
   import { GrMysql } from "react-icons/gr";
   import { AiOutlineFundProjectionScreen } from "react-icons/ai";
-  import { SiReact, SiNextdotjs, SiHtml5, SiDjango, SiTailwindcss, SiCss3,  SiTypescript, SiJavascript, SiNodedotjs, SiMongodb, SiPhp, SiPython, SiLaravel, SiPostgresql, SiGit, SiGithub, SiGitlab, SiVite, SiDocker,SiPostman, SiVercel, SiFigma, SiJira, SiWordpress, SiN8N, SiShadcnui, SiFlask } from "react-icons/si";
+  import { SiReact, SiTrello, SiNotion, SiNextdotjs, SiHtml5, SiDjango, SiTailwindcss, SiCss3,  SiTypescript, SiJavascript, SiNodedotjs, SiMongodb, SiPhp, SiPython, SiLaravel, SiPostgresql, SiGit, SiGithub, SiGitlab, SiVite, SiDocker,SiPostman, SiVercel, SiFigma, SiJira, SiWordpress, SiN8N, SiShadcnui, SiFlask } from "react-icons/si";
 
   // ============================================================
   // Auxiliary function for mapping technologies to icons.
@@ -51,6 +51,8 @@
       WordPress: <SiWordpress className="w-4 h-4 text-sky-600" />,
       "VS Code": <VscVscode className="w-4 h-4 text-blue-500 "/>,
       N8n: <SiN8N className="w-4 h-4 text-pink-400" />,
+      Trello: <SiTrello className="w-4 h-4 text-blue-600" />,
+      Notion: <SiNotion className="w-4 h-4 text-black dark:text-black" />,
 
       HTML: <SiHtml5 className="w-4 h-4 text-orange-500" />,
       CSS: <SiCss3 className="w-4 h-4 text-blue-400" />,
@@ -107,14 +109,14 @@
         {
           name: "Ferramentas",
           icon: Wrench,
-          skills: ["Git", "GitHub", "GitLab", "VS Code", "Figma", "Docker", "Jira"],
+          skills: ["Git", "GitHub", "GitLab", "VS Code", "Figma", "Docker", "Jira", "Trello", ],
         },
       ],
       studying: {
         title: "Stacks em Estudo",
         description:
           "A tecnologia não para, e eu também não! Atualmente, estou aprofundando meus conhecimentos em:",
-        stacks: ["N8n", "Engenharia de Prompt", "Automação de Processos"],
+        stacks: ["N8n", "Engenharia de Prompt", "Automação de Processos", "Notion"],
       },
     },
     en: {
@@ -144,14 +146,14 @@
         {
           name: "Tools",
           icon: Wrench,
-          skills: ["Git", "GitHub", "GitLab", "VS Code", "Figma", "Docker", "Jira"],
+          skills: ["Git", "GitHub", "GitLab", "VS Code", "Figma", "Docker", "Jira", "Trello"],
         },
       ],
       studying: {
         title: "Stacks I'm Studying",
         description:
           "Technology never stops, and neither do I! I am currently deepening my knowledge in:",
-        stacks: ["N8n", "Prompt Engineering", "Process Automation"],
+        stacks: ["N8n", "Prompt Engineering", "Process Automation", "Notion"],
       },
     },
   };
@@ -722,7 +724,7 @@
                   shadow-xl shadow-black/20 dark:shadow-red-500/20 
                   transition-all duration-300"
               >
-                <h3 className="text-2xl font-bold mb-4 flex items-center gap-3 dark:text-red-400 text-black">
+                <h3 className="text-2xl font-bold mb-4 flex items-center gap-3 dark:text-white text-black">
                   <BookOpen className="w-7 h-7" />
                   {skillsData[language].studying.title}
                 </h3>
@@ -738,8 +740,7 @@
                         hover:border-black dark:hover:border-red-500  
                         from-black/10 to-gray-700/10 dark:from-red-500/10 dark:to-red-400/10 
                         hover:from-black/20 hover:to-gray-800/20 dark:hover:from-red-400/20 dark:hover:to-red-400/20 
-                        text-black dark:text-white 
-                        hover:text-black dark:hover:text-red-500 
+                        text-black dark:text-white   
                         transition-all duration-300 transform hover:scale-110 
                         hover:shadow-lg hover:shadow-black/40 dark:hover:shadow-red-500 group 
                         font-semibold shadow-md"
