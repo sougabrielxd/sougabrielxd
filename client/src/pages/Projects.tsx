@@ -1,9 +1,10 @@
-import { ExternalLink, Github, Moon, Sun, Globe, Menu, Star, GitBranch, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { Briefcase, Moon, Sun, Code, Award, BookOpen, Database, Monitor, Server, Wrench, Zap, Globe as GlobeIcon, FileText, Cpu, GitBranch, Globe, Menu, Star, X, ChevronLeft, ChevronRight, ExternalLink, Github, } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { useState, useEffect } from "react";
+import { useState, useEffect, ReactNode } from "react";
+import { SiReact, SiNextdotjs, SiTailwindcss, SiTypescript, SiJavascript, SiNodedotjs, SiMysql, SiMongodb, SiPhp, SiPython, SiLaravel, SiPostgresql, SiGit, SiGithub, SiGitlab, SiVite, SiDocker,SiPostman, SiVercel, SiFigma, SiJira, SiWordpress, } from "react-icons/si";
 
 export default function Projects() {
   const { theme, toggleTheme } = useTheme();
@@ -15,6 +16,53 @@ export default function Projects() {
   const [selectedTech, setSelectedTech] = useState<string | null>(null);
   const [selectedProject, setSelectedProject] = useState<number | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const getTechIcon = (tech: string) => {
+    const iconMap: Record<string, ReactNode> = {
+  
+      JavaScript: <SiJavascript className="w-4 h-4 text-yellow-400" />,
+      TypeScript: <SiTypescript className="w-4 h-4 text-blue-500" />,
+      React: <SiReact className="w-4 h-4 text-sky-500" />,
+      "React.js": <SiReact className="w-4 h-4 text-sky-500" />,
+      "Next.js": <SiNextdotjs className="w-4 h-4 text-black dark:text-white" />,
+      "Vue.js": <Code className="w-4 h-4 text-green-500" />,
+      "Tailwind CSS": <SiTailwindcss className="w-4 h-4 text-sky-400" />,
+      TailwindCSS: <SiTailwindcss className="w-4 h-4 text-sky-400" />,
+      Python: <SiPython className="w-4 h-4 text-yellow-500" />,
+      "Node.js": <SiNodedotjs className="w-4 h-4 text-green-500" />,
+      Flask: <Server className="w-4 h-4 text-gray-500" />,
+      Django: <Server className="w-4 h-4 text-green-700" />,
+      PHP: <SiPhp className="w-4 h-4 text-indigo-500" />,
+      Laravel: <SiLaravel className="w-4 h-4 text-red-500" />,
+  
+      MySQL: <SiMysql className="w-4 h-4 text-blue-600" />,
+      PostgreSQL: <SiPostgresql className="w-4 h-4 text-sky-700" />,
+      MongoDB: <SiMongodb className="w-4 h-4 text-green-600" />,
+  
+      Git: <SiGit className="w-4 h-4 text-orange-500" />,
+      GitHub: <SiGithub className="w-4 h-4 text-gray-800 dark:text-gray-200" />,
+      GitLab: <SiGitlab className="w-4 h-4 text-orange-500" />,
+      Docker: <SiDocker className="w-4 h-4 text-blue-400" />,
+      Postman: <SiPostman className="w-4 h-4 text-orange-500" />,
+      Jira: <SiJira className="w-4 h-4 text-blue-600" />,
+      Vite: <SiVite className="w-4 h-4 text-purple-500" />,
+      Vercel: <SiVercel className="w-4 h-4 text-black dark:text-white" />,
+      Figma: <SiFigma className="w-4 h-4 text-pink-500" />,
+      WordPress: <SiWordpress className="w-4 h-4 text-sky-600" />,
+  
+      HTML: <Code className="w-4 h-4 text-orange-500" />,
+      CSS: <Code className="w-4 h-4 text-blue-400" />,
+      "UI/UX": <Monitor className="w-4 h-4" />,
+      "Desenvolvimento Web": <Code className="w-4 h-4" />,
+      "Gestão de projetos": <Briefcase className="w-4 h-4" />,
+      "Serviços de TI": <Server className="w-4 h-4" />,
+      "Manutenção de computadores": <Cpu className="w-4 h-4" />,
+      "Suporte técnico": <Wrench className="w-4 h-4" />,
+      ShadcnUI: <Code className="w-4 h-4" />,
+    };
+  
+    return iconMap[tech] || <Code className="w-4 h-4 text-gray-400" />;
+  };
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -352,8 +400,9 @@ export default function Projects() {
                       {project.tags.map((tag, i) => (
                         <span
                           key={i}
-                          className="text-xs px-3 py-1 rounded-full bg-gradient-to-r dark:from-red-500/20 dark:to-red-400/20 border dark:border-red-500/50 dark:hover:border-red-500 text-black dark:text-white from-gray-700/20 to-black/20 border-black/50 hover:border-black transition-all duration-300 transform hover:scale-105"
+                          className="text-xs px-3 py-1 rounded-full flex items-center gap-2 bg-gradient-to-r dark:from-red-500/20 dark:to-red-400/20 border dark:border-red-500/50 dark:hover:border-red-500 text-black dark:text-white from-gray-700/20 to-black/20 border-black/50 hover:border-black transition-all duration-300 transform hover:scale-105"
                         >
+                          {getTechIcon(tag)}
                           {tag}
                         </span>
                       ))}
@@ -459,8 +508,9 @@ export default function Projects() {
                     {project.tags.map((tag, i) => (
                       <span
                         key={i}
-                        className="text-xs px-3 py-1 rounded-full bg-gradient-to-r dark:from-red-500/20 dark:to-red-400/20 dark:border-red-500/50 dark:hover:border-red-800 dark:hover:from-red-500/30 hover:to-black/30 from-black/20 to-black/20 text-accent-foreground border border-black/50 hover:border-black hover:from-black/30 dark:hover:to-red-400/30 transition-all duration-300 transform hover:scale-105"
+                        className="text-xs px-3 py-1 rounded-full flex items-center gap-2 bg-gradient-to-r dark:from-red-500/20 dark:to-red-400/20 dark:border-red-500/50 dark:hover:border-red-800 dark:hover:from-red-500/30 hover:to-black/30 from-black/20 to-black/20 text-black dark:text-white border border-black/50 hover:border-black hover:from-black/30 dark:hover:to-red-400/30 transition-all duration-300 transform hover:scale-105"
                       >
+                        {getTechIcon(tag)}
                         {tag}
                       </span>
                     ))}
@@ -576,8 +626,9 @@ export default function Projects() {
                     {currentProject.details.technologies.map((tech, i) => (
                       <span
                         key={i}
-                        className="text-xs px-3 py-1 rounded-full bg-gradient-to-r dark:from-red-500/20 dark:to-red-400/20 dark:border-red-500/50 from-black/20 text to-black/20 text-accent-foreground border border-black/50"
+                        className="text-xs px-3 py-1 rounded-full flex items-center gap-2 bg-gradient-to-r dark:from-red-500/20 dark:to-red-400/20 dark:border-red-500/50 from-black/20 text-black dark:text-white to-black/20  border border-black/50"
                       >
+                        {getTechIcon(tech)}
                         {tech}
                       </span>
                     ))}
