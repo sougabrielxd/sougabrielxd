@@ -76,7 +76,7 @@ const skillsData = {
       {
         name: "Front-end",
         icon: Monitor,
-        skills: ["React", "Vue.js", "Next.js", "Tailwind CSS"],
+        skills: ["React", "Vue.js", "Next.js", "Tailwind CSS", "ShadcnUI"],
       },
       {
         name: "Back-end",
