@@ -148,7 +148,7 @@ const educationData = {
       {
         institution: "Centro Universitário Paraíso - UniFAP",
         course: "Tecnólogo em Análise e Desenvolvimento de Sistemas",
-        period: "2023 - 2027 (Previsão)",
+        period: "2023 - 2026 (Previsão)",
       },
     ],
   },
