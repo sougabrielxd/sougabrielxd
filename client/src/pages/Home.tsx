@@ -169,11 +169,11 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-red-500/5 via-transparent to-red-400/5 pointer-events-none"></div>
 
         {/* Decorative element - logo */}
-        <div className="mb-8 text-6xl animate-float relative z-10">
+        <div className="mb-6 animate-float relative">
           <img
             src={theme === "dark" ? "./img/x-red.svg" : "./img/x-dark.svg"}
             alt="Logo"
-            className="transition-all duration-300 w-32 h-32"
+            className="transition-all duration-300 h-20"
           />
         </div>
 
@@ -187,10 +187,10 @@ export default function Home() {
 
           <h1
             className="
-              text-5xl md:text-7xl font-bold mb-6 font-zigatos
+              text-5xl md:text-6xl font-bold mb-3
               text-black
-              dark:bg-gradient-to-r dark:from-red-600 dark:via-red-700 dark:to-orange-500
-              dark:bg-clip-text dark:text-transparent dark:animate-pulse-glow
+              dark:bg-gradient-to-r dark:text-red-700
+              dark:bg-clip-text  dark:animate-pulse-glow
             "
           >
             Gabriel Lucas

@@ -160,9 +160,9 @@ export default function Projects() {
         ? "Freelance de uma Landing Page para uma retífica de motores."
         : "Freelance Landing Page for an engine repair company.",
       fullDescription: language === "pt"
-        ? "Logos é uma landing page profissional desenvolvida como projeto freelance para uma empresa de retífica de motores. O site foi construído com foco em performance e identidade visual moderna, apresentando as informações da empresa de forma clara e objetiva. O desenvolvimento foi concluído em 3 dias, utilizando HTML5 e CSS3 para criar uma interface leve, otimizada e com boa experiência do usuário. Pretendo adicionar responsividade completa e migrar o projeto para Tailwind CSS nas próximas atualizações."
-        : "Logos is a professional landing page developed as a freelance project for an engine reconditioning company. The website was built with a focus on performance and a modern visual identity, presenting the company’s information clearly and effectively. The development was completed in 3 days, using HTML5 and CSS3 to deliver a lightweight, optimized interface and a good user experience. I plan to add full responsiveness and migrate the project to Tailwind CSS in future updates.",
-      tags: ["HTML", "CSS"],
+        ? "Logos é uma landing page profissional desenvolvida como projeto freelance para uma empresa de retífica de motores. O site foi construído com foco em performance e identidade visual moderna, apresentando as informações da empresa de forma clara e objetiva. O desenvolvimento foi concluído em 3 dias, utilizando HTML e CSS para criar uma interface leve, otimizada e com boa experiência do usuário. Pretendo adicionar responsividade completa e migrar o projeto para Tailwind CSS nas próximas atualizações."
+        : "Logos is a professional landing page developed as a freelance project for an engine reconditioning company. The website was built with a focus on performance and a modern visual identity, presenting the company’s information clearly and effectively. The development was completed in 3 days, using HTML and CSS to deliver a lightweight, optimized interface and a good user experience. I plan to add full responsiveness and migrate the project to Tailwind CSS in future updates.",
+      tags: ["HTML", "TailwindCSS"],
       link: "https://sougabrielxd.github.io/logos/",
       github: "https://github.com/sougabrielxd/logos",
       status: language === "pt" ? "Concluído" : "Completed",
@@ -179,8 +179,8 @@ export default function Projects() {
         role: language === "pt" ? "Desenvolvedor Front-end" : "Front-end Developer",
         technologies:
           language === "pt"
-            ? ["HTML", "CSS", "Design Responsivo", "Gestão de Projetos"]
-            : ["HTML", "CSS", "Responsive Design" , "Project management"],
+            ? ["HTML", "TailwindCSS", "Design Responsivo", "Gestão de Projetos"]
+            : ["HTML", "TailwindCSS", "Responsive Design" , "Project management"],
       },
     },
   ];
