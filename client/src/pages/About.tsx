@@ -603,11 +603,20 @@ export default function About() {
         <section className="mb-20">
           <h2 className="text-3xl md:text-4xl font-bold mb-12 flex items-center justify-between">
             {language === "pt" ? "Minha experiências:" : "My experiencies:"}
-            <a href="/curriculo.pdf" download>
-              <Button variant="outline" className="bg-transparent border-black/30 dark:border-red-500/30 hover:bg-black/10 dark:hover:bg-red-500/10 transition-colors duration-300">
-                <FileText className="w-5 h-5 mr-2" />
-                {language === "pt" ? "Download Currículo" : "Download Resume"}
-              </Button>
+            <a href="./docs/Curriculo Full-stack.pdf" download>
+            <Button
+            variant="outline"
+            className="
+              bg-transparent border-black/30 dark:border-red-500/30 
+              hover:bg-black/10 dark:hover:bg-red-500/10 
+              transition-colors duration-300
+
+              h-8 px-2 text-xs           
+              md:h-10 md:px-4 md:text-sm 
+            ">
+            <FileText className="w-3 h-3 md:w-4 md:h-4" />
+            {language === "pt" ? "Download Currículo" : "Download Resume"}
+          </Button>
             </a>
           </h2>
 
@@ -802,7 +811,7 @@ export default function About() {
 
         {/* Certificates Section */}
         <section className="mb-20">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 flex items-center justify-between">
+          <h2 className=" text-2xl md:text-4xl font-bold flex items-center justify-between">
             {certificatesData[language].title}
             <a href="/Certificado.rar" download>
               <Button variant="outline" className="bg-transparent border-black/30 dark:border-red-500/30 hover:bg-black/10 dark:hover:bg-red-500/10 transition-colors duration-300">
@@ -844,7 +853,22 @@ export default function About() {
             ))}
           </div>
         </section>
-
+         {/* Closing Section */}
+        <section className="text-center py-12 border-t border-black/20 dark:border-red-500/20">
+          <p className="text-lg text-muted-foreground mb-4">
+            {language === "pt"
+              ? "Estou sempre em busca de novos desafios e oportunidades para crescer como desenvolvedor. Se você tem um projeto interessante ou quer conversar sobre tecnologia, "
+              : "I'm always looking for new challenges and opportunities to grow as a developer. If you have an interesting project or want to talk about technology, "}
+            <span className="text-black dark:text-red-500 font-semibold">
+              {language === "pt" ? "vamos conversar!" : "let's talk!"}
+            </span>
+          </p>
+          <Link href="/contact">
+            <a className="inline-block px-6 py-3 rounded-lg bg-gradient-to-r from-red-500 to-red-600 hover:from-red-600 hover:to-red-700 text-white font-semibold transition-all duration-300 transform hover:scale-105">
+              {language === "pt" ? "Entre em Contato" : "Get in Touch"}
+            </a>
+          </Link>
+        </section>
       </main>
     </div>
   );
