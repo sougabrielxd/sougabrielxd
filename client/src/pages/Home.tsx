@@ -4,20 +4,18 @@ import { Github, Linkedin, Instagram, Mail, ExternalLink, Moon, Sun, ChevronDown
 import { useTheme } from "@/contexts/ThemeContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useState } from "react";
-import { Globe } from "lucide-react";
-import { IoMenu } from "react-icons/io5";
+import { Globe, Menu } from "lucide-react";
+import Particles from "@/components/Particles";
 
 export default function Home() {
   const { theme, toggleTheme } = useTheme();
-  const { language, setLanguage } = useLanguage();
+  const { language, toggleLanguage } = useLanguage();
   const [showLanguageMenu, setShowLanguageMenu] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
-  const toggleLanguage = () => {
-    setLanguage(language === "en" ? "pt" : "en");
-  };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="min-h-screen bg-background text-foreground relative overflow-hidden">
+      <Particles />
       {/* Theme & Language Buttons */}
       <div className="fixed top-6 right-6 z-50 flex gap-3">
         {/* Language Dropdown */}
@@ -44,7 +42,7 @@ export default function Home() {
             >
               <button
                 onClick={() => {
-                  setLanguage("pt");
+                  if (language !== "pt") toggleLanguage();
                   setShowLanguageMenu(false);
                 }}
                 className="w-full px-4 py-2 text-left 
@@ -57,7 +55,7 @@ export default function Home() {
               </button>
               <button
                 onClick={() => {
-                  setLanguage("en");
+                  if (language !== "en") toggleLanguage();
                   setShowLanguageMenu(false);
                 }}
                 className="w-full px-4 py-2 text-left 
@@ -126,7 +124,7 @@ export default function Home() {
     className="md:hidden p-2 rounded-md hover:bg-accent/10 transition-colors z-50"
     onClick={() => setIsOpen(!isOpen)}
   >
-    <IoMenu size={26} className="dark:text-red-500 text-black" />
+    <Menu size={26} className="dark:text-red-500 text-black" />
   </button>
 
   {/* Menu Mobile Dropdown */}

@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
+
 import { Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useLanguage } from "@/contexts/LanguageContext";
-import { Globe, Mail, Phone, Linkedin, Menu } from "lucide-react";
+import { Globe, Mail, Phone, Linkedin, Menu, Send } from "lucide-react";
+import Particles from "@/components/Particles";
 
 export default function Contact() {
   const { theme, toggleTheme } = useTheme();
@@ -12,8 +14,9 @@ export default function Contact() {
   const [showLanguageMenu, setShowLanguageMenu] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
-    email: "",
-    subject: "",
+	    email: "",
+	    phone: "",  
+	    subject: "",
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
@@ -56,7 +59,7 @@ export default function Contact() {
     try {
       await new Promise((resolve) => setTimeout(resolve, 1000));
       setSubmitted(true);
-      setFormData({ name: "", email: "", subject: "", message: "" });
+      setFormData({ name: "", email: "", subject: "", message: "", phone: "" });
       setTimeout(() => setSubmitted(false), 5000);
     } catch (error) {
       console.error("Erro ao enviar mensagem:", error);
@@ -77,7 +80,7 @@ export default function Contact() {
       icon: Phone,
       label: language === "pt" ? "Telefone" : "Phone",
       value: "+55 (87) 99181-1562",
-      href: "tel:+5587991811562",
+      href: "https://wa.me//5587991811562?text=Ol%C3%A1,%20gostaria%20de%20tirar%20algumas%20d%C3%BAvidas%20sobre%20seu%20servi%C3%A7os",
       color: "border dark:border-red-700 border-black",
     },
     {
@@ -244,161 +247,15 @@ export default function Contact() {
       </nav>
 
       {/* Contact Form */}
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20">
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20">
+      <Particles />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
         <section>
-          <h1 className="text-4xl md:text-5xl font-bold mb-4">
-            {language === "pt" ? "Entre em Contato" : "Get in Touch"}
-          </h1>
-          <p className="text-lg text-muted-foreground mb-12">
-            {language === "pt"
-              ? "Envie uma mensagem e entrarei em contato em breve."
-              : "Send me a message and I'll get back to you soon."}
-          </p>
-
-          <div className="border border-black/20 dark:border-red-500/30 
-            rounded-lg p-8 
-            bg-gradient-to-br from-black/5 to-black/5 dark:from-red-500/5 dark:to-red-400/5 
-            hover:border-gray-900 hover:from-black/10 hover:to-black/10 
-            dark:hover:border-red-500 dark:hover:from-red-500/10 dark:hover:to-red-400/10 
-            transition-all duration-300 
-            shadow-lg shadow-black/30 dark:shadow-red-500/30">
-            {submitted && (
-              <div className="mb-6 p-4 rounded-lg bg-green-500/20 border border-green-500/50 text-green-400 animate-slide-up">
-                <p className="font-semibold">
-                  {language === "pt"
-                    ? "✓ Mensagem enviada com sucesso!"
-                    : "✓ Message sent successfully!"}
-                </p>
-              </div>
-            )}
-
-            <form onSubmit={handleSubmit} className="space-y-6">
-              <div>
-                <label className="block text-sm font-semibold mb-2">
-                  {language === "pt" ? "Nome" : "Name"}
-                </label>
-                <input
-                  type="text"
-                  name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-4 py-3 rounded-lg border border-black/20 dark:border-red-500/30 
-                            bg-background text-black dark:text-white 
-                            placeholder:text-black/60 dark:placeholder:text-white/60 
-                            hover:border-gray-900 dark:hover:border-red-500 
-                            focus:border-black dark:focus:border-red-500 
-                            focus:outline-none focus:ring-2 
-                            focus:ring-black/20 dark:focus:ring-red-500/20 
-                            transition-all duration-300 resize-none"
-                  placeholder={
-                    language === "pt" ? "Seu nome" : "Your name"
-                  }
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold mb-2">
-                  {language === "pt" ? "Email" : "Email"}
-                </label>
-                <input
-                  type="email"
-                  name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-4 py-3 rounded-lg border border-black/20 dark:border-red-500/30 
-                            bg-background text-black dark:text-white 
-                            placeholder:text-black/60 dark:placeholder:text-white/60 
-                            hover:border-gray-900 dark:hover:border-red-500 
-                            focus:border-black dark:focus:border-red-500 
-                            focus:outline-none focus:ring-2 
-                            focus:ring-black/20 dark:focus:ring-red-500/20 
-                            transition-all duration-300 resize-none"
-                  placeholder={
-                    language === "pt" ? "seu@email.com" : "your@email.com"
-                  }
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold mb-2">
-                  {language === "pt" ? "Assunto" : "Subject"}
-                </label>
-                <input
-                  type="text"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleInputChange}
-                  required
-                  className="w-full px-4 py-3 rounded-lg border border-black/20 dark:border-red-500/30 
-                            bg-background text-black dark:text-white 
-                            placeholder:text-black/60 dark:placeholder:text-white/60 
-                            hover:border-gray-900 dark:hover:border-red-500 
-                            focus:border-black dark:focus:border-red-500 
-                            focus:outline-none focus:ring-2 
-                            focus:ring-black/20 dark:focus:ring-red-500/20 
-                            transition-all duration-300 resize-none"
-                  placeholder={
-                    language === "pt" ? "Assunto da mensagem" : "Message subject"
-                  }
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-semibold mb-2">
-                  {language === "pt" ? "Mensagem" : "Message"}
-                </label>
-                <textarea
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  required
-                  rows={6}
-                  className="w-full px-4 py-3 rounded-lg border border-black/20 dark:border-red-500/30 
-                            bg-background text-black dark:text-white 
-                            placeholder:text-black/60 dark:placeholder:text-white/60 
-                            hover:border-gray-900 dark:hover:border-red-500 
-                            focus:border-black dark:focus:border-red-500 
-                            focus:outline-none focus:ring-2 
-                            focus:ring-black/20 dark:focus:ring-red-500/20 
-                            transition-all duration-300 resize-none"
-                  placeholder={
-                    language === "pt" ? "Sua mensagem..." : "Your message..."
-                  }
-                />
-              </div>
-
-              <Button
-                type="submit"
-                disabled={loading}
-                className="w-full rounded-lg px-6 py-3 
-                bg-gradient-to-r from-black to-gray-800 dark:from-red-500 dark:to-red-700 
-                hover:to-gray-900 dark:hover:to-red-800 
-                text-white border-0 shadow-sm 
-                hover:shadow-xl hover:shadow-black/20 dark:hover:shadow-red-500/20 
-                transition-all duration-300 transform hover:scale-105 
-                disabled:opacity-50 disabled:cursor-not-allowed"
-              >
-                {loading
-                  ? language === "pt"
-                    ? "Enviando..."
-                    : "Sending..."
-                  : language === "pt"
-                  ? "Enviar Mensagem"
-                  : "Send Message"}
-              </Button>
-            </form>
-          </div>
-        </section>
-
-        {/* Contact Methods Section */}
-        <section className="mt-20">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold mb-8">
             {language === "pt" ? "Formas de Contato" : "Ways to Contact"}
           </h2>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {contactMethods.map((method, idx) => {
               const Icon = method.icon;
               return (
@@ -409,7 +266,7 @@ export default function Contact() {
                   rel={method.href.startsWith("http") ? "noopener noreferrer" : undefined}
                   className="group"
                 >
-                  <div className="border border-black/30 dark:border-red-500/30 rounded-lg p-6 
+                  <div className="border border-black/30 text-sm dark:border-red-500/30 rounded-lg p-6 
                     bg-gradient-to-br from-black/5 to-black/5 dark:from-red-500/5 dark:to-red-400/5 
                     hover:border-black dark:hover:border-red-500 
                     hover:from-black/10 hover:to-black/10 dark:hover:from-red-500/10 dark:hover:to-red-400/10 
@@ -425,15 +282,142 @@ export default function Contact() {
                       {method.label}
                     </h3>
                     <p className="text-muted-foreground group-hover:text-foreground transition-colors break-all">
-                      {method.value}
-                    </p>
-                  </div>
-                </a>
-              );
-            })}
-          </div>
-        </section>
-      </main>
+	                      {method.value}
+	                    </p>
+	                  </div>
+	                </a>
+	              );
+	            })}
+	          </div>
+	        </section>
+	        <section>
+	          <h1 className="text-4xl md:text-5xl font-bold mb-4">
+	            {language === "pt" ? "Entre em Contato" : "Get in Touch"}
+	          </h1>
+	          <p className="text-lg text-muted-foreground mb-8">
+	            {language === "pt"
+	              ? "Envie uma mensagem e entrarei em contato em breve."
+	              : "Send me a message and I'll get back to you soon."}
+	          </p>
+
+	          <div className="border border-black/20 dark:border-red-500/30 
+	            rounded-lg p-6 md:p-8 
+	            bg-gradient-to-br from-black/5 to-black/5 dark:from-red-500/5 dark:to-red-400/5 
+	            hover:border-gray-900 hover:from-black/10 hover:to-black/10 
+	            dark:hover:border-red-500 dark:hover:from-red-500/10 dark:hover:to-red-400/10 
+	            transition-all duration-300 
+	            shadow-lg shadow-black/30 dark:shadow-red-500/30">     {submitted && (
+              <div className="mb-6 p-4 rounded-lg bg-green-500/20 border border-green-500/50 text-green-400 animate-slide-up">
+                <p className="font-semibold">
+                  {language === "pt"
+                    ? "✓ Mensagem enviada com sucesso!"
+                    : "✓ Message sent successfully!"}
+                </p>
+              </div>
+            )}
+
+            <form onSubmit={handleSubmit} className="space-y-4">
+              <div>
+                <label className="block text-sm font-semibold mb-1">
+                  {language === "pt" ? "Nome" : "Name"}
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-3 py-2 rounded-lg border border-black/20 dark:border-red-500/30 
+                            bg-background text-black dark:text-white 
+                            placeholder:text-black/60 dark:placeholder:text-white/60 
+                            hover:border-gray-900 dark:hover:border-red-500 
+                            focus:border-black dark:focus:border-red-500 
+                            focus:outline-none focus:ring-1 
+                            focus:ring-black/20 dark:focus:ring-red-500/20 
+                            transition-all duration-300 resize-none text-sm"
+                  placeholder={
+                    language === "pt" ? "Seu nome" : "Your name"
+                  }
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-semibold mb-1">
+                  {language === "pt" ? "Email" : "Email"}
+                </label>
+                <input
+                  type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  required
+                  className="w-full px-3 py-2 rounded-lg border border-black/20 dark:border-red-500/30 
+                            bg-background text-black dark:text-white 
+                            placeholder:text-black/60 dark:placeholder:text-white/60 
+                            hover:border-gray-900 dark:hover:border-red-500 
+                            focus:border-black dark:focus:border-red-500 
+                            focus:outline-none focus:ring-1 
+                            focus:ring-black/20 dark:focus:ring-red-500/20 
+                            transition-all duration-300 resize-none text-sm"
+                  placeholder={
+                    language === "pt" ? "seu@email.com" : "your@email.com"
+                  }
+                />
+              </div>
+
+              <div>
+                <label className="block text-sm font-semibold mb-1">
+                  {language === "pt" ? "Mensagem" : "Message"}
+                </label>
+                <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  required
+                  rows={4}
+                  className="w-full px-3 py-2 rounded-lg border border-black/20 dark:border-red-500/30 
+                            bg-background text-black dark:text-white 
+                            placeholder:text-black/60 dark:placeholder:text-white/60 
+                            hover:border-gray-900 dark:hover:border-red-500 
+                            focus:border-black dark:focus:border-red-500 
+                            focus:outline-none focus:ring-1 
+                            focus:ring-black/20 dark:focus:ring-red-500/20 
+                            transition-all duration-300 resize-none text-sm"
+                  placeholder={
+                    language === "pt" ? "Sua mensagem..." : "Your message..."
+                  }
+                />
+              </div>
+
+	              <Button
+	                type="submit"
+	                disabled={loading}
+	                className="w-full rounded-lg px-4 py-2 
+	                bg-gradient-to-r from-black to-gray-800 dark:from-red-500 dark:to-red-700 
+	                hover:to-gray-900 dark:hover:to-red-800 
+	                text-white border-0 shadow-sm 
+	                hover:shadow-xl hover:shadow-black/20 dark:hover:shadow-red-500/20 
+	                transition-all duration-300 transform hover:scale-105 
+	                disabled:opacity-50 disabled:cursor-not-allowed text-sm flex items-center justify-center gap-2"
+	              >
+	                {loading ? (
+	                  language === "pt" ? (
+	                    "Enviando..."
+	                  ) : (
+	                    "Sending..."
+	                  )
+	                ) : (
+	                  <>
+	                    <Send className="w-4 h-4" />
+	                    {language === "pt" ? "Enviar Mensagem" : "Send Message"}
+	                  </>
+	                )}
+	              </Button>
+	            </form>
+	          </div>
+	        </section>
+	        </div>
+	      </main>
     </div>
   );
 }

@@ -10,6 +10,7 @@ import { VscVscode } from "react-icons/vsc";
 import { FaVuejs } from "react-icons/fa6";
 import { GrMysql } from "react-icons/gr";
 import { AiOutlineFundProjectionScreen } from "react-icons/ai";
+import Particles from "@/components/Particles";
 import { SiReact, SiTrello, SiNotion, SiNextdotjs, SiHtml5, SiDjango, SiTailwindcss, SiCss3,  SiTypescript, SiJavascript, SiNodedotjs, SiMongodb, SiPhp, SiPython, SiLaravel, SiPostgresql, SiGit, SiGithub, SiGitlab, SiVite, SiDocker,SiPostman, SiVercel, SiFigma, SiJira, SiWordpress, SiN8N, SiShadcnui, SiFlask } from "react-icons/si";
 
 // ============================================================
@@ -507,6 +508,7 @@ export default function About() {
       </nav>
 
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20">
+      <Particles />
         {/* About Section */}
         <section className="mb-20">
           <h2 className="text-3xl md:text-4xl font-bold mb-12">

@@ -9,6 +9,7 @@ import { FaVuejs } from "react-icons/fa6";
 import { GrMysql } from "react-icons/gr";
 import { VscVscode } from "react-icons/vsc";
 import { AiOutlineFundProjectionScreen } from "react-icons/ai";
+import Particles from "@/components/Particles";
 
 export default function Projects() {
   const { theme, toggleTheme } = useTheme();
@@ -367,6 +368,7 @@ export default function Projects() {
 
       {/* Main Content */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20">
+      <Particles />
         {/* Header */}
         <section className="mb-16">
           <h1 className="text-4xl md:text-5xl font-bold mb-4">
