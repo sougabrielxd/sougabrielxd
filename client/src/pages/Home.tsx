@@ -1,10 +1,11 @@
 import { Button } from "@/components/ui/button";
-import { Github, Linkedin, Instagram, Mail, ExternalLink, Moon, Sun, Code, Monitor, Server, Database, Wrench, Globe as GlobeIcon, Briefcase, Award, BookOpen, Send, FileText, Download } from "lucide-react";
+import { Github, Linkedin, Instagram, Mail, ExternalLink, Moon, Sun, Code, Monitor, Server, Database, Wrench, Globe as GlobeIcon, Briefcase, Award, BookOpen, Send, FileText, Download, Phone } from "lucide-react";
 import { useTheme } from "@/contexts/ThemeContext";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useState, useEffect, ReactNode } from "react";
 import { Globe, Menu } from "lucide-react";
 import Particles from "@/components/Particles";
+import MobileMenu from "@/components/MobileMenu";
 import { IoIosArrowForward } from "react-icons/io";
 import { IoMenu } from "react-icons/io5";
 import { VscVscode } from "react-icons/vsc";
@@ -51,7 +52,7 @@ const getTechIcon = (tech: string): ReactNode => {
     "VS Code": <VscVscode className="w-4 h-4 text-blue-500" />,
     N8n: <SiN8N className="w-4 h-4 text-pink-400" />,
     Trello: <SiTrello className="w-4 h-4 text-blue-600" />,
-    Notion: <SiNotion className="w-4 h-4 text-black dark:text-black" />,
+    Notion: <SiNotion className="w-4 h-4 text-black dark:text-white" />,
     HTML: <SiHtml5 className="w-4 h-4 text-orange-500" />,
     CSS: <SiCss3 className="w-4 h-4 text-blue-400" />,
     "UI/UX": <Monitor className="w-4 h-4" />,
@@ -210,10 +211,10 @@ const certificatesData = {
     title: "Certificates",
     subtitle: "Validated knowledge",
     items: [
-      { name: "Training with Employees", institution: "Receita Federal", year: 2025 },
-      { name: "Generative AI", institution: "Santander Open Academy", year: 2025 },
-      { name: "IT Fundamentals: HARDWARE AND SOFTWARE", institution: "Fundação Bradesco", year: 2024 },
-      { name: "Object-Oriented Programming (OOP)", institution: "Fundação Bradesco", year: 2024 },
+      { name: "Training with Employees", institution: "Receita Federal", year: 2025, file: "treinamento_com_colaboradores.pdf" },
+      { name: "Generative AI", institution: "Santander Open Academy", year: 2025, file: "ia_generativa.pdf" },
+      { name: "IT Fundamentals: HARDWARE AND SOFTWARE", institution: "Fundação Bradesco", year: 2024, file: "fundamentos_de_ti_hardware_e_software.pdf" },
+      { name: "Object-Oriented Programming (OOP)", institution: "Fundação Bradesco", year: 2024, file: "programacao_orientada_a_objetos_poo.pdf" },
     ],
   },
 };
@@ -317,7 +318,7 @@ export default function Home() {
       tags: ["React.js", "PHP", "Laravel", "MySQL", "TailwindCSS"],
       link: "https://learnskills.com.br",
       github: "#",
-      status: language === "pt" ? "Concluído" : "Completed",
+      status: language === "pt" ? "Em produção" : "In production",
       featured: true,
       year: 2025,
       images: ["https://ik.imagekit.io/o8urkd2xn/learnskills3.jpg"],
@@ -367,7 +368,7 @@ export default function Home() {
       color: "border dark:border-red-700 border-black",
     },
     {
-      icon: Mail,
+      icon: Phone,
       label: language === "pt" ? "Telefone" : "Phone",
       value: "+55 (87) 99181-1562",
       href: "https://wa.me//5587991811562?text=Ol%C3%A1,%20gostaria%20de%20tirar%20algumas%20d%C3%BAvidas%20sobre%20seu%20servi%C3%A7os",
@@ -455,14 +456,20 @@ export default function Home() {
         <button className="md:hidden p-2 rounded-md hover:bg-accent/10 transition-colors z-50" onClick={() => setIsOpen(!isOpen)}>
           <IoMenu size={26} className="dark:text-red-500 text-black" />
         </button>
-        {isOpen && (
-          <div className="fixed top-16 left-6 z-[9999] border border-black dark:border-red-500/60 bg-white dark:bg-black hover:bg-black/10 dark:hover:bg-red-500/20 transition-colors shadow-md flex flex-col items-start p-4 md:hidden rounded-lg gap-4">
-            <button onClick={() => scrollToSection("hero")} className="text-sm hover:text-red-500 dark:text-red-500 transition-colors font-semibold">{language === "pt" ? "Inicio" : "Home"}</button>
-            <button onClick={() => scrollToSection("about")} className="text-sm hover:text-red-500 dark:text-red-500 transition-colors font-semibold">{language === "pt" ? "Sobre" : "About"}</button>
-            <button onClick={() => scrollToSection("projects")} className="text-sm hover:text-red-500 dark:text-red-500 transition-colors font-semibold">{language === "pt" ? "Projetos" : "Projects"}</button>
-            <button onClick={() => scrollToSection("contact")} className="text-sm hover:text-red-500 dark:text-red-500 transition-colors font-semibold">{language === "pt" ? "Contato" : "Contact"}</button>
-          </div>
-        )}
+      
+      {/* Mobile Menu Component */}
+      <MobileMenu
+        isOpen={isOpen}
+        onClose={() => setIsOpen(false)}
+        language={language}
+        onNavigate={scrollToSection}
+        socialLinks={{
+          github: "https://github.com/sougabrielxd",
+          linkedin: "https://linkedin.com/in/gabriellucasafb",
+          instagram: "https://instagram.com/sougabrielxd",
+          email: "mailto:gabriellucasafb@gmail.com",
+        }}
+      />
       </nav>
 
       {/* Hero Section */}
@@ -898,14 +905,14 @@ export default function Home() {
                           setSelectedProject(project);
                           setCurrentImageIndex(0);
                         }}
-                        className="flex-1 px-3 py-2 rounded-lg bg-gradient-to-r dark:from-green-500 dark:to-green-600 dark:hover:from-green-600 dark:hover:to-green-700 from-green-600 to-green-700 hover:from-green-700 hover:to-green-800 text-white text-sm font-semibold transition-all duration-300 transform hover:scale-105"
+                        className="px-6 py-2 rounded-lg border bg-gradient-to-r border-black/50 hover:border-black from-black/10 to-gray-800/10 dark:text-white hover:from-black/20 hover:to-gray-800/20 hover:text-black hover:shadow-lg hover:shadow-black/30 dark:border-red-500/50 dark:hover:border-red-500 dark:hover:bg-red-500/10 text-black text-sm font-semibold transition-all duration-300 transform hover:scale-105"
                       >
                         {language === "pt" ? "Detalhes" : "Details"}
                       </button>
                       {project.github !== "#" && (
                         <a href={project.github} target="_blank" rel="noopener noreferrer">
-                          <Button size="sm" variant="outline" className="dark:border-red-500/50 dark:hover:border-red-500 dark:hover:bg-red-500/10 border-black/50 hover:border-black hover:bg-black/10">
-                            <Github className="w-4 h-4" />
+                          <Button variant="outline" className="px-6 py-2 dark:border-red-500/50 dark:hover:border-red-500 dark:hover:bg-red-500/10 border-black/50 hover:border-black hover:bg-black/10">
+                            <Github className="w-5 h-5" />
                           </Button>
                         </a>
                       )}
@@ -1138,3 +1145,7 @@ export default function Home() {
     </div>
   );
 }
+function scrollToSection(section: string): void {
+  throw new Error("Function not implemented.");
+}
+
