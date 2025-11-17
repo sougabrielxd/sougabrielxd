@@ -25,7 +25,6 @@ const getTechIcon = (tech: string): ReactNode => {
     JavaScript: <SiJavascript className="w-4 h-4 text-yellow-400" />,
     TypeScript: <SiTypescript className="w-4 h-4 text-blue-500" />,
     React: <SiReact className="w-4 h-4 text-sky-500" />,
-    "React.js": <SiReact className="w-4 h-4 text-sky-500" />,
     "Next.js": <SiNextdotjs className="w-4 h-4 text-black dark:text-white" />,
     "Vue.js": <FaVuejs className="w-4 h-4 text-green-500" />,
     "Tailwind CSS": <SiTailwindcss className="w-4 h-4 text-sky-400" />,
@@ -283,7 +282,7 @@ export default function Home() {
       description: language === "pt"
         ? ["Atuo como desenvolvedor full stack voluntário na construção da plataforma digital da Learn Skills, editora acadêmica dedicada à disseminação de conhecimento.", "O projeto começou com back-end em Python (Flask), mas migramos para PHP com Laravel, garantindo maior escalabilidade e manutenção do sistema.", "Colaboro ativamente em decisões técnicas, discutindo arquitetura, propondo soluções e assegurando a integração entre todas as partes do sistema."]
         : ["I work as a volunteer full-stack developer building the digital platform for Learn Skills, an academic publisher dedicated to disseminating knowledge.", "The project started with a Python (Flask) backend, but we migrated to PHP with Laravel, ensuring greater scalability and system maintainability.", "I actively collaborate in technical decisions, discussing architecture, proposing solutions, and ensuring integration between all parts of the system."],
-      skills: ["React.js", "PHP", "Laravel", "MySQL", "TailwindCSS", "Figma", "UI/UX"],
+      skills: ["React", "PHP", "Laravel", "MySQL", "TailwindCSS", "Figma", "UI/UX"],
     },
     {
       company: "Freelance",
@@ -299,9 +298,9 @@ export default function Home() {
       role: language === "pt" ? "Estágio em Desenvolvimento Full-Stack" : "Full-Stack Development Internship",
       period: language === "pt" ? "Mar 2025 - Out 2025" : "Mar 2025 - Oct 2025",
       description: language === "pt"
-        ? ["Desenvolvi interfaces de usuário responsivas e interativas para aplicações web utilizando React.js e TailwindCSS.", "Colaborei com designers e desenvolvedores back-end para implementar funcionalidades completas, assegurando a integração perfeita entre front-end e back-end.", "Participei ativamente de revisões de código e testes para garantir a qualidade do software."]
-        : ["Developed responsive and interactive user interfaces for web applications using React.js and TailwindCSS.", "Collaborated with designers and back-end developers to implement complete features, ensuring seamless integration between front-end and back-end.", "Actively participated in code reviews and testing to ensure software quality."],
-      skills: ["React.js", "Node.js", "Next.js", "TypeScript", "TailwindCSS", "ShadcnUI", "Git", "Jira"],
+        ? ["Desenvolvi interfaces de usuário responsivas e interativas para aplicações web utilizando React e TailwindCSS.", "Colaborei com designers e desenvolvedores back-end para implementar funcionalidades completas, assegurando a integração perfeita entre front-end e back-end.", "Participei ativamente de revisões de código e testes para garantir a qualidade do software."]
+        : ["Developed responsive and interactive user interfaces for web applications using React and TailwindCSS.", "Collaborated with designers and back-end developers to implement complete features, ensuring seamless integration between front-end and back-end.", "Actively participated in code reviews and testing to ensure software quality."],
+      skills: ["React", "Node.js", "Next.js", "TypeScript", "TailwindCSS", "ShadcnUI", "Git", "Jira"],
     },
   ];
 
@@ -313,9 +312,9 @@ export default function Home() {
         ? "O Learn Skills é uma plataforma digital de editora que oferece uma estante virtual de livros e materiais educacionais gratuitos, com foco em tecnologia, programação e saúde."
         : "Learn Skills is a digital publishing platform offering a virtual bookshelf with free educational materials focused on technology, programming, and health.",
       fullDescription: language === "pt"
-        ? "O Learn Skills é uma plataforma inovadora de editora digital que oferece uma estante virtual completa de livros e materiais educacionais gratuitos. Com foco especial em tecnologia, programação e saúde, a plataforma foi desenvolvida como um projeto voluntário em colaboração com a NExTI UniFAP. O projeto começou com um backend em Python (Flask), mas foi migrado para PHP com Laravel para garantir maior escalabilidade e facilidade de manutenção. A interface foi desenvolvida com React.js e TailwindCSS, oferecendo uma experiência de usuário moderna e responsiva."
-        : "Learn Skills is an innovative digital publishing platform offering a complete virtual bookshelf of free educational materials. With a special focus on technology, programming, and health, the platform was developed as a volunteer project in collaboration with NExTI UniFAP. The project started with a Python (Flask) backend but was migrated to PHP with Laravel to ensure greater scalability and ease of maintenance. The interface was developed with React.js and TailwindCSS, offering a modern and responsive user experience.",
-      tags: ["React.js", "PHP", "Laravel", "MySQL", "TailwindCSS"],
+        ? "O Learn Skills é uma plataforma inovadora de editora digital que oferece uma estante virtual completa de livros e materiais educacionais gratuitos. Com foco especial em tecnologia, programação e saúde, a plataforma foi desenvolvida como um projeto voluntário em colaboração com a NExTI UniFAP. O projeto começou com um backend em Python (Flask), mas foi migrado para PHP com Laravel para garantir maior escalabilidade e facilidade de manutenção. A interface foi desenvolvida com React e TailwindCSS, oferecendo uma experiência de usuário moderna e responsiva."
+        : "Learn Skills is an innovative digital publishing platform offering a complete virtual bookshelf of free educational materials. With a special focus on technology, programming, and health, the platform was developed as a volunteer project in collaboration with NExTI UniFAP. The project started with a Python (Flask) backend but was migrated to PHP with Laravel to ensure greater scalability and ease of maintenance. The interface was developed with React and TailwindCSS, offering a modern and responsive user experience.",
+      tags: ["React", "PHP", "Laravel", "MySQL", "TailwindCSS"],
       link: "https://learnskills.com.br",
       github: "#",
       status: language === "pt" ? "Em produção" : "In production",
@@ -416,7 +415,11 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
+    <div className="relative min-h-screen bg-background text-foreground">
+      {/* Particles Background */}
+      <div className="fixed inset-0 -z-10 pointer-events-none">
+        <Particles />
+      </div>
       {/* Fixed Header */}
       <div className={`fixed top-6 right-6 z-50 flex gap-3 transition-all duration-500 ${isVisible ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
         <div className="relative">
