@@ -451,7 +451,7 @@ export default function Home() {
       {/* Navigation */}
       <nav className={`fixed top-6 left-6 z-[9999] flex gap-6 transition-all duration-500 ${isVisible ? "opacity-100" : "opacity-0 pointer-events-none"}`}>
         <div className="hidden md:flex gap-8">
-          <button onClick={() => scrollToSection("hero")} className="text-sm hover:text-red-500 transition-colors font-semibold">{language === "pt" ? "Inicio" : "Home"}</button>
+          <button onClick={() => scrollToSection("hero")} className="text-sm hover:text-red-500 transition-colors font-semibold">{language === "pt" ? "Início" : "Home"}</button>
           <button onClick={() => scrollToSection("about")} className="text-sm hover:text-red-500 transition-colors font-semibold">{language === "pt" ? "Sobre" : "About"}</button>
           <button onClick={() => scrollToSection("projects")} className="text-sm hover:text-red-500 transition-colors font-semibold">{language === "pt" ? "Projetos" : "Projects"}</button>
           <button onClick={() => scrollToSection("contact")} className="text-sm hover:text-red-500 transition-colors font-semibold">{language === "pt" ? "Contato" : "Contact"}</button>

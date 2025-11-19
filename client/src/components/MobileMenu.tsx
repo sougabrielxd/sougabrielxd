@@ -22,7 +22,7 @@ export default function MobileMenu({
   socialLinks = {
     github: "https://github.com/sougabrielxd",
     linkedin: "https://linkedin.com/in/gabriellucasafb",
-    instagram: "https://instagram.com/sougabrielxd",
+    instagram: "https://instagram.com/gabriellucasafb",
     email: "mailto:gabriellucasafb@gmail.com",
   },
 }: MobileMenuProps) {
@@ -61,11 +61,11 @@ export default function MobileMenu({
       href: socialLinks.linkedin,
       label: "LinkedIn",
     },
-    {
-      icon: <Instagram className="w-5 h-5" />,
-      href: socialLinks.instagram,
-      label: "Instagram",
-    },
+    //{
+    //  icon: <Instagram className="w-5 h-5" />,
+    //  href: socialLinks.instagram,
+    //  label: "Instagram",
+    //}, // Removido temporariamente
     {
       icon: <Mail className="w-5 h-5" />,
       href: socialLinks.email,
