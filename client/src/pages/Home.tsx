@@ -363,7 +363,7 @@ export default function Home() {
       icon: Mail,
       label: language === "pt" ? "Email" : "Email",
       value: "gabriellucasafb@gmail.com",
-      href: "mailto:gabrielxd@example.com",
+      href: "https://mail.google.com/mail/u/0/?fs=1&to=gabriellucasafb@gmail.com&su=Contato+do+Portf%C3%B3lio&body=Ol%C3%A1,+vim+pelo+seu+Portf%C3%B3lio+e+gostaria+de+falar+sobre...&tf=cm",
       color: "border dark:border-red-700 border-black",
     },
     {
@@ -470,7 +470,7 @@ export default function Home() {
           github: "https://github.com/sougabrielxd",
           linkedin: "https://linkedin.com/in/gabriellucasafb",
           instagram: "https://instagram.com/sougabrielxd",
-          email: "mailto:gabriellucasafb@gmail.com",
+          email: "https://mail.google.com/mail/u/0/?fs=1&to=gabriellucasafb@gmail.com&su=Contato+do+Portf%C3%B3lio&body=Ol%C3%A1,+vim+pelo+seu+Portf%C3%B3lio+e+gostaria+de+falar+sobre...&tf=cm",
         }}
       />
       </nav>
@@ -478,7 +478,7 @@ export default function Home() {
       {/* Hero Section */}
       <section id="hero" className="min-h-screen flex flex-col items-center justify-center px-4 py-20 relative overflow-hidden">
         <Particles />
-        <div className="absolute inset-0 bg-gradient-to-b from-red-500/5 via-transparent to-red-400/5 pointer-events-none"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/5 dark:from-red-500/5 via-transparent to-black/6 dark:to-red-400/5 pointer-events-none"></div>
         <div className="mb-6 animate-float relative">
           <img src={theme === "dark" ? "./img/x-red.svg" : "./img/x-dark.svg"} alt="Logo" className="transition-all duration-300 h-20" />
         </div>
