@@ -61,11 +61,11 @@ export default function MobileMenu({
       href: socialLinks.linkedin,
       label: "LinkedIn",
     },
-    //{
-    //  icon: <Instagram className="w-5 h-5" />,
-    //  href: socialLinks.instagram,
-    //  label: "Instagram",
-    //}, // Removido temporariamente
+    {
+      icon: <Instagram className="w-5 h-5" />,
+      href: socialLinks.instagram,
+      label: "Instagram",
+    }, 
     {
       icon: <Mail className="w-5 h-5" />,
       href: socialLinks.email,
