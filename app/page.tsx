@@ -7,7 +7,7 @@ import { LanguageProvider } from "@/contexts/LanguageContext"; // ⬅️ Importa
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { Route, Switch } from "wouter";
 import Home from "./pages/Home";
-import NotFound from "./pages/NotFound";
+
 
 function Router() {
   return (
@@ -18,7 +18,6 @@ function Router() {
       <Route path="/contact" component={Contact} />
       <Route path="/404" component={NotFound} />
       {/* Rota final de fallback */}
-      <Route component={NotFound} />
     </Switch>
   );
 }

@@ -18,7 +18,7 @@ const ParticlesComponent: React.FC = () => {
 
     // Particle array
     const particles: Particle[] = [];
-    const particleCount = 10;
+    const particleCount = 20;
 
     class Particle {
       x: number;

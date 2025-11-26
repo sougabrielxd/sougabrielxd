@@ -23,7 +23,7 @@ export default function MobileMenu({
     github: "https://github.com/sougabrielxd",
     linkedin: "https://linkedin.com/in/gabriellucasafb",
     instagram: "https://instagram.com/gabriellucasafb",
-    email: "mailto:gabriellucasafb@gmail.com",
+    email: "https://mail.google.com/mail/u/0/?fs=1&to=gabriellucasafb@gmail.com&su=Contato+do+Portf%C3%B3lio&body=Ol%C3%A1,+vim+pelo+seu+Portf%C3%B3lio+e+gostaria+de+falar+sobre...&tf=cm",
   },
 }: MobileMenuProps) {
   const menuItems = [

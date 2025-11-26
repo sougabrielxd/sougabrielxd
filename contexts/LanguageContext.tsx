@@ -30,8 +30,13 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
     setLanguage((prev) => (prev === "pt" ? "en" : "pt"));
   };
 
+  const translations: Record<Language, Record<string, string>> = {
+    pt: {},
+    en: {},
+  };
+
   const t = (key: string): string => {
-    return ([language] as Record<string, string>)[key] || key;
+    return translations[language][key] || key;
   };
 
   return (
