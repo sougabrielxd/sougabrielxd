@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<div>
+    <width="80%"><br>
+    <img width="260" align="right"  src="eu.png"> <br><br>
+</div></br>
 
-## Getting Started
 
-First, run the development server:
+<table width="100%"> 
+ 
+<div width="30%">    
+<h3> Olá, Seja Bem-vindo(a) ao meu perfil, eu sou o Gabriel.</h3>  
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+<b>No que estou trabalhando atualmente? 🍂 </b>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+>_Estou cursando o 5º período de Analise e desenvolvimento de sistemas pela UniFap-CE._ <br/>
+_Estou focado nos estudos de n8n e automação._ <br/>
+_Minhas principais habilidades são: Python, React, HTML, CSS, Javascript, MySQL, Figma e UI/UX._
+><br/>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+</div>
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+##
 
-## Learn More
+<b>🍂 Contributions: </b>
 
-To learn more about Next.js, take a look at the following resources:
+<table>
+  <tr>
+    <td width="50%" align="center">
+      <img width="130" src="https://68.media.tumblr.com/f84b578f1f41f78e880f60809260c235/tumblr_mjyxn0SdO01s5evlao1_1280.png">
+<br><br>
+      </div><br>
+  </div><br>
+      <div align="center">
+        <a href="[https://github.com/sougabrielxd](https://github.com/sougabrielxd)"> 
+        <img height="140em" src="https://github-readme-stats.vercel.app/api?username=sougabrielxd&theme=dark&include_all_commits=true&count_private=true"/> <br> <br>
+        <img height="200em" src="https://github-readme-stats.vercel.app/api/top-langs/?username=sougabrielxd&layout=compact&langs_count=16&theme=dark"/>
+      </div><br>
+          <div>
+            </div><br>
+          </div><br>
+          </div><br>
+<b>👾 Stacks <br><br>
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+<div align="center">
+  <img align="center" alt="Java" height="25" width="35" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/vuejs/vuejs-original.svg" />
+  <img align="center" alt="html" height="25" width="35" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg">
+  <img align="center" alt="css" height="25" width="35" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original.svg">
+  <img align="center" alt="javascript" height="25" width="35" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-plain.svg">
+  <img align="center" alt="typescript" height="25" width="35" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg">
+  <img align="center" alt="react" height="25" width="35" src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original.svg">
+  <img align="center" alt="nodejs" height="25" width="35" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg">
+  <img align="center" alt="tailwind" height="25" width="35" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg">
+  <img align="center" alt="nextjs" height="25" width="35" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg"> <br><br>
+  <img align="center" alt="gilab" height="25" width="35" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/gitlab/gitlab-original.svg">
+  <img align="center" alt="sql" height="25" width="35" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg">
+  <img align="center" alt="git" height="25" width="35" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg">
+  <img align="center" alt="php" height="25" width="35" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg">
+  <img align="center" alt="laravel" height="25" width="35" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg">
+  <img align="center" alt="jira" height="25" width="35" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jira/jira-original.svg">
+  <img align="center" alt="docker" height="25" width="35" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg">
+  <img align="center" alt="vscode" height="25" width="35" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg">
+  <img align="center" alt="figma" height="25" width="35" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg">
+  <img align="center" alt="python" height="25" width="35" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg">
+  <img align="center" alt="linux" height="25" width="35" src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg">
+</div><br>
+    </td>
+    <td width="40%">
+      <img width="100%" src="https://i.pinimg.com/736x/43/ba/63/43ba638459a4bcc911e71e5a573c8ea9.jpg">
+    </td>
+  </tr>
+</table>
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+##
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+<b>🌐 Redes Sociais: </b>
+ 
+ <div>
+   <a href="gitlab.com/sougabrielxd" target="_blank"><img src="https://img.shields.io/badge/GitLab-000000?style=for-the-badge&logo=gitlab&logoColor=white" target="_blank"></a>
+   <a href = "https://mail.google.com/mail/?view=cm&fs=1&to=gabriellucasafb@gmail.com&su=Contato%20do%20GitHub&body=Olá,%20vim%20pelo%20seu%20github%20e%20gostaria%20de%20falar%20sobre..."><img src="https://img.shields.io/badge/Gmail-000000?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
+   <a href="https://www.linkedin.com/in/gabriellucasafb/" target="_blank"><img src="https://img.shields.io/badge/Linkedin-000000?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a>
+</div>
