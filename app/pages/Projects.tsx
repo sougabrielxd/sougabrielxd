@@ -8,6 +8,11 @@ import {
   Github,
   Code,
   X,
+  User,
+  Zap,
+  Trophy,
+  AlertTriangle,
+  Workflow,
 } from "lucide-react";
 import { ReactNode, useState } from "react";
 import { FaVuejs } from "react-icons/fa6";
@@ -95,6 +100,26 @@ const getTechIcon = (tech: string): ReactNode => {
 
 const projects = [
   {
+    id: "cartorio-lcm",
+    title: "Cartório Alto Longá",
+    description:
+      "Em desenvolvimento",
+    fullDescription:
+      "Atuei como UI/UX Designer e Desenvolvedor Front-end na criação do site institucional para o Cartório Luciana Carrilho de Moraes Marinho. O projeto envolveu a concepção de um design moderno e responsivo, alinhado à identidade visual do cartório, utilizando React e TailwindCSS para garantir uma experiência de usuário fluida e acessível em diversos dispositivos. O site apresenta informações essenciais sobre os serviços oferecidos, equipe, localização e contato, facilitando o acesso dos usuários às informações do cartório.",
+    tags: ["React", "TailwindCSS"],
+    link: "#",
+    github: "https://github.com/sougabrielxd/cartorio-lcm",
+    status: "Em desenvolvimento",
+    featured: false,
+    year: 2025,
+    images: ["https://ik.imagekit.io/o8urkd2xn/cartorio-lcm.png", "https://ik.imagekit.io/o8urkd2xn/cartorio-lcm2.png"],
+    role: "UI/UX Designer e Desenvolvedor Front-end",
+    challenges: "Garantir um design moderno e responsivo alinhado à identidade visual do cartório, que é tradicional.",
+    solutions: "Utilização de uma paleta de cores sóbria e tipografia moderna, com foco em acessibilidade e performance (React + TailwindCSS).",
+    developmentProcess: "Design no Figma, desenvolvimento com React e TailwindCSS, gestão de tarefas via Trello.",
+    results: "Protótipo de alta fidelidade aprovado e desenvolvimento em andamento. Foco em SEO local.",
+  },
+  {
     id: "learn-skills",
     title: "Learn Skills",
     description:
@@ -108,6 +133,11 @@ const projects = [
     featured: false,
     year: 2025,
     images: ["https://ik.imagekit.io/o8urkd2xn/learnskills3.jpg", "https://ik.imagekit.io/o8urkd2xn/learnskills2.jpg"],
+    role: "Desenvolvedor Full-Stack",
+    challenges: "Integrar front-end moderno (React/Vite) com back-end em Laravel (PHP) e criar um sistema robusto de submissão de materiais.",
+    solutions: "Criação de uma API RESTful para comunicação entre as stacks e implementação de validações de formulário tanto no front quanto no back-end.",
+    developmentProcess: "Metodologia Scrum adaptada, utilizando Git/GitHub para controle de versão e Postman para testes de API.",
+    results: "Plataforma lançada com sucesso, com mais de 50 materiais submetidos na primeira semana. Melhoria de 30% na velocidade de carregamento da página inicial.",
   },
   {
     id: "cowatch",
@@ -123,6 +153,11 @@ const projects = [
     featured: true,
     year: 2024,
     images: ["https://ik.imagekit.io/o8urkd2xn/Cowatch.png", "https://ik.imagekit.io/o8urkd2xn/Cowatch2.png", "https://ik.imagekit.io/o8urkd2xn/Cowatch3.png"],
+    role: "Desenvolvedor Front-end Colaborador",
+    challenges: "Ajustar a responsividade do menu mobile em um projeto legado e integrar nova seção de acesso ao portal sem quebrar o layout existente.",
+    solutions: "Refatoração pontual do CSS do menu mobile e criação de um componente isolado para a seção 'Acessar Portal'.",
+    developmentProcess: "Contribuição via Pull Requests no GitHub, seguindo as diretrizes do projeto principal.",
+    results: "Menu mobile totalmente responsivo em diferentes dispositivos e nova seção integrada com sucesso.",
   },
   {
     id: "logos",
@@ -138,6 +173,11 @@ const projects = [
     featured: false,
     year: 2024,
     images: ["https://ik.imagekit.io/o8urkd2xn/logos.png"],
+    role: "Desenvolvedor Front-end Freelancer",
+    challenges: "Criar uma Landing Page de alta conversão com foco em SEO e performance para um cliente do setor industrial.",
+    solutions: "Utilização de HTML semântico e TailwindCSS para um design clean e responsivo, otimização de imagens e uso de meta tags para SEO.",
+    developmentProcess: "Briefing com o cliente, prototipação no Figma, desenvolvimento e deploy via GitHub Pages.",
+    results: "Landing Page entregue e aprovada. Cliente reportou aumento de 15% nos contatos via formulário na primeira semana.",
   },
 ];
 
@@ -173,11 +213,24 @@ export default function Projects() {
   const handleOpenProjectModal = (project: any) => {
     setSelectedProject(project);
     setCurrentImageIndex(0); // Reset image index when opening new modal
+    document.body.style.overflow = "hidden"; // Bloqueia o scroll do body
   };
 
   const handleCloseProjectModal = () => {
     setSelectedProject(null);
+    document.body.style.overflow = "unset"; // Restaura o scroll do body
   };
+  
+  // CSS para esconder a barra de rolagem (solução cross-browser)
+  const scrollbarHideStyle = `
+    .scrollbar-hide {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
+    .scrollbar-hide::-webkit-scrollbar {
+      display: none;  /* Chrome, Safari and Opera */
+    }
+  `;
 
   // Localiza os dados do projeto
   const localizedProjects = projects.map((project) => {
@@ -337,66 +390,69 @@ export default function Projects() {
 
       {/* Project Modal */}
       {selectedProject !== null && (
-        <div className="fixed inset-0 bg-black/80 z-[9999] flex items-center justify-center p-4 animate-fade-in">
-          <div className="bg-background border border-black/30 dark:border-red-500/30 rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+        <div className="fixed inset-0 bg-black/80 z-[9999] flex items-center justify-center p-4 transition-opacity duration-300" style={{ opacity: selectedProject ? 1 : 0 }}>
+          <style>{scrollbarHideStyle}</style>
+          <div className="bg-background border border-black/30 dark:border-red-500/30 rounded-lg max-w-6xl w-full max-h-[95vh] transition-transform duration-300 ease-out relative" style={{ transform: selectedProject ? 'scale(1)' : 'scale(0.95)' }}>
             {/* Modal Header */}
-            <div className="sticky top-0 flex items-center justify-between p-6 border-b border-black/10 dark:border-red-500/10 bg-background">
+            <div className="sticky top-0 flex items-center justify-between p-6 border-b border-black/10 dark:border-red-500/10 bg-background z-10">
               <h2 className="text-2xl font-bold">{selectedProject.title}</h2>
               <button
                 onClick={handleCloseProjectModal}
-                className="p-2 hover:bg-black/10 dark:hover:bg-red-500/10 rounded-lg transition-colors"
+                className="p-2 hover:bg-black/10 dark:hover:bg-red-500/10 cursor-pointer rounded-lg transition-colors"
               >
                 <X className="w-6 h-6" />
               </button>
             </div>
 
-            {/* Modal Content */}
-            <div className="p-6 space-y-6">
-              {/* Image Gallery */}
-              <div className="space-y-4 ">
-                <div className="relative h-96 rounded-lg overflow-hidden bg-black/10 dark:bg-red-500/10">
+            {/* Modal Content - Mini Case Study Layout */}
+            <div className="p-6 space-y-8 overflow-y-auto max-h-[calc(95vh-6rem)] scrollbar-hide">
+              {/* 1. Galeria de Imagens (Hero Section) */}
+              <div className="space-y-4">
+                <div className="relative h-96 rounded-xl overflow-hidden bg-black/10 dark:bg-red-500/10 shadow-xl">
                   <img
                     src={selectedProject.images[currentImageIndex]}
                     alt={`${selectedProject.title} - ${currentImageIndex + 1}`}
-                    className="w-full h-full object-cover "
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105 cursor-pointer"
+                    onClick={() => alert("Implementar Lightbox aqui!")} // Sugestão de Lightbox
                   />
                   {selectedProject.images.length > 1 && (
                     <>
                       <button
                         onClick={() =>
                           setCurrentImageIndex(
-                            (prev) =>
+                            (prev: number) =>
                               (prev - 1 + selectedProject.images.length) %
                               selectedProject.images.length
                           )
                         }
-                        className="absolute left-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 hover:bg-black/70 text-white transition-all duration-300 transform hover:scale-110"
+                        className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/50 hover:bg-black/70 text-white transition-all duration-300 transform hover:scale-110"
                       >
                         <ChevronLeft className="w-6 h-6" />
                       </button>
                       <button
                         onClick={() =>
                           setCurrentImageIndex(
-                            (prev) => (prev + 1) % selectedProject.images.length
+                            (prev: number) => (prev + 1) % selectedProject.images.length
                           )
                         }
-                        className="absolute right-4 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 hover:bg-black/70 text-white transition-all duration-300 transform hover:scale-110"
+                        className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/50 hover:bg-black/70 text-white transition-all duration-300 transform hover:scale-110"
                       >
                         <ChevronRight className="w-6 h-6" />
                       </button>
                     </>
                   )}
                 </div>
+                {/* Thumbnails */}
                 {selectedProject.images.length > 1 && (
-                  <div className="flex gap-2 overflow-x-auto">
+                  <div className="flex gap-3 overflow-x-auto p-1">
                     {selectedProject.images.map((img: string, idx: number) => (
                       <button
                         key={idx}
                         onClick={() => setCurrentImageIndex(idx)}
-                        className={`w-20 h-20 rounded-lg overflow-hidden flex-shrink-0 border-2 transition-all ${
+                        className={`w-24 h-16 rounded-lg overflow-hidden flex-shrink-0 border-2 transition-all ${
                           currentImageIndex === idx
-                            ? "border-red-500"
-                            : "border-black/20 dark:border-red-500/20 hover:border-black dark:hover:border-red-500"
+                            ? "border-red-500 shadow-md"
+                            : "border-black/20 dark:border-red-500/20 hover:border-red-500/50"
                         }`}
                       >
                         <img
@@ -410,76 +466,147 @@ export default function Projects() {
                 )}
               </div>
 
-              {/* Status & Details */}
-              <div className="flex items-center gap-4">
-                <span
-                  className={`px-3 py-1 rounded-full text-sm font-semibold border ${getStatusColor(
-                    selectedProject.status
-                  )}`}
-                >
-                  {selectedProject.status}
-                </span>
-                <span className="text-sm text-muted-foreground">
-                  {selectedProject.year}
-                </span>
-              </div>
-
-              {/* Description */}
-              <div>
-                <h3 className="text-lg font-semibold mb-2">
-                  {language === "pt" ? "Descrição" : "Description"}
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  {selectedProject.fullDescription}
-                </p>
-              </div>
-
-              {/* Technologies */}
-              <div>
-                <h3 className="text-lg font-semibold mb-3">
-                  {language === "pt"
-                    ? "Tecnologias Utilizadas"
-                    : "Technologies Used"}
-                </h3>
-                <div className="flex flex-wrap gap-2">
-                  {selectedProject.tags.map((tag: string, idx: number) => (
+              {/* 2. Visão Geral e Links */}
+              <div className="grid md:grid-cols-3 gap-6 border-b pb-6 border-black/10 dark:border-red-500/10">
+                {/* Coluna 1: Papel e Status */}
+                <div className="space-y-4">
+                  {/* Papel */}
+                  <div className="flex items-center gap-3 p-3 rounded-lg bg-gray-100/50 dark:bg-gray-800/50 border border-black/10 dark:border-red-500/10">
+                    <User className="w-5 h-5 text-red-500" />
+                    <div>
+                      <p className="text-xs font-medium text-muted-foreground">
+                        {language === "pt" ? "Meu Papel" : "My Role"}
+                      </p>
+                      <p className="font-semibold">{selectedProject.role}</p>
+                    </div>
+                  </div>
+                  {/* Status */}
+                  <div className="flex items-center gap-3 p-3 rounded-lg bg-gray-100/50 dark:bg-gray-800/50 border border-black/10 dark:border-red-500/10">
                     <span
-                      key={idx}
-                      className="px-3 py-1 rounded-full text-xs flex items-center gap-2 bg-gradient-to-r dark:from-red-500/20 dark:to-red-400/20 border dark:border-red-500/50 dark:hover:border-red-500 text-black dark:text-white from-gray-700/20 to-black/20 border-black/50 hover:border-black transition-all duration-300"
+                      className={`px-3 py-1 rounded-full text-sm font-semibold border ${getStatusColor(
+                        selectedProject.status
+                      )}`}
                     >
-                      {getTechIcon(tag)}
-                      {tag}
+                      {selectedProject.status}
                     </span>
-                  ))}
+                    <span className="text-sm text-muted-foreground">
+                      {selectedProject.year}
+                    </span>
+                  </div>
+                </div>
+
+                {/* Coluna 2 & 3: Tecnologias e Links */}
+                <div className="md:col-span-2 space-y-4">
+                  {/* Tecnologias */}
+                  <div>
+                    <h3 className="text-lg font-bold mb-3 flex items-center gap-2">
+                      <Code className="w-5 h-5 text-red-500" />
+                      {language === "pt"
+                        ? "Tecnologias Utilizadas"
+                        : "Technologies Used"}
+                    </h3>
+                    <div className="flex flex-wrap gap-2">
+                      {selectedProject.tags.map((tag: string, idx: number) => (
+                        <span
+                          key={idx}
+                          className="px-3 py-1 rounded-full text-xs flex items-center gap-2 bg-gradient-to-r dark:from-red-500/20 dark:to-red-400/20 border dark:border-red-500/50 dark:hover:border-red-500 text-black dark:text-white from-gray-700/20 to-black/20 border-black/50 hover:border-black transition-all duration-300"
+                        >
+                          {getTechIcon(tag)}
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+
+                  {/* Links */}
+                  <div className="flex gap-3 pt-2">
+                    <a
+                      href={selectedProject.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1"
+                    >
+                      <button className="w-full px-4 py-2 rounded-lg bg-red-500 hover:bg-red-600 text-white font-semibold transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center gap-2 shadow-md">
+                        <ExternalLink className="w-4 h-4" />
+                        {language === "pt" ? "Ver Projeto" : "View Project"}
+                      </button>
+                    </a>
+                    {selectedProject.github !== "#" && (
+                      <a
+                        href={selectedProject.github}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <button className="px-4 py-2 rounded-lg border border-black/20 cursor-pointer dark:border-red-500/30 hover:bg-black/5 dark:hover:bg-red-500/10 transition-colors shadow-md">
+                          <Github className="w-4 h-4" />
+                        </button>
+                      </a>
+                    )}
+                  </div>
                 </div>
               </div>
 
-              {/* Links */}
-              <div className="flex gap-3 pt-4">
-                <a
-                  href={selectedProject.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1"
-                >
-                  <button className="w-full px-4 py-2 rounded-lg bg-red-500 hover:bg-red-600 text-white font-semibold transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-2">
-                    <ExternalLink className="w-4 h-4" />
-                    {language === "pt" ? "Ver Projeto" : "View Project"}
-                  </button>
-                </a>
-                {selectedProject.github !== "#" && (
-                  <a
-                    href={selectedProject.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    <button className="px-4 py-2 rounded-lg border border-black/20 dark:border-red-500/30 hover:bg-black/5 dark:hover:bg-red-500/10 transition-colors">
-                      <Github className="w-4 h-4" />
-                    </button>
-                  </a>
-                )}
+              {/* 3. Visão Geral (Full Description) */}
+              <section className="space-y-4">
+                <h2 className="text-2xl font-bold flex items-center gap-2">
+                  <User className="w-6 h-6 text-red-500" />
+                  {language === "pt" ? "Visão Geral do Projeto" : "Project Overview"}
+                </h2>
+                <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
+                  {selectedProject.fullDescription}
+                </p>
+              </section>
+
+              {/* 4. Desafios e Soluções (Core Case Study) */}
+              <div className="grid md:grid-cols-2 gap-6">
+                {/* Desafios */}
+                <section className="space-y-4 p-4 rounded-xl bg-yellow-500/10 border border-yellow-500/20">
+                  <h2 className="text-xl font-bold flex items-center gap-2 text-yellow-600 dark:text-yellow-400">
+                    <AlertTriangle className="w-5 h-5" />
+                    {language === "pt" ? "Desafios" : "Challenges"}
+                  </h2>
+                  <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
+                    {selectedProject.challenges}
+                  </p>
+                </section>
+
+                {/* Soluções */}
+                <section className="space-y-4 p-4 rounded-xl bg-green-500/10 border border-green-500/20">
+                  <h2 className="text-xl font-bold flex items-center gap-2 text-green-600 dark:text-green-400">
+                    <Zap className="w-5 h-5" />
+                    {language === "pt" ? "Soluções Implementadas" : "Solutions Implemented"}
+                  </h2>
+                  <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
+                    {selectedProject.solutions}
+                  </p>
+                </section>
               </div>
+
+              {/* 5. Processo de Desenvolvimento */}
+              <section className="space-y-4">
+                <h2 className="text-2xl font-bold flex items-center gap-2">
+                  <Workflow className="w-6 h-6 text-red-500" />
+                  {language === "pt" ? "Processo de Desenvolvimento" : "Development Process"}
+                </h2>
+                <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
+                  {selectedProject.developmentProcess}
+                </p>
+              </section>
+
+              {/* 6. Resultados */}
+              <section className="space-y-4">
+                <h2 className="text-2xl font-bold flex items-center gap-2">
+                  <Trophy className="w-6 h-6 text-red-500" />
+                  {language === "pt" ? "Resultados e Impacto" : "Results and Impact"}
+                </h2>
+                <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
+                  {selectedProject.results}
+                </p>
+              </section>
             </div>
+            
+            {/* Scroll Fade-out Indicator */}
+            <div className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none rounded-b-lg bg-gradient-to-t from-white dark:from-gray-900 to-transparent"></div>
           </div>
         </div>
       )}

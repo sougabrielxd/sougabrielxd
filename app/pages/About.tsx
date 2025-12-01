@@ -263,62 +263,68 @@ const educationData = {
 const certificatesData = {
   pt: {
     title: "Certificados",
-    subtitle:
-      "Conhecimento validado(o download individual dos certificados ainda não está funcionando, vou ajustar isso depois)",
+    subtitle: "Conhecimento e competências validados por instituições de referência.",
     items: [
       {
         name: "Treinamento com Colaboradores",
         institution: "Receita Federal",
         year: 2025,
         file: "treinamento_com_colaboradores.pdf",
+        category: "Soft Skills",
       },
       {
         name: "IA Generativa",
         institution: "Santander Open Academy",
         year: 2025,
         file: "ia_generativa.pdf",
+        category: "Inteligência Artificial",
       },
       {
         name: "Fundamentos de TI: HARDWARE E SOFTWARE",
         institution: "Fundação Bradesco",
         year: 2024,
         file: "fundamentos_de_ti_hardware_e_software.pdf",
+        category: "Infraestrutura",
       },
       {
         name: "Programação Orientada a Objetos (POO)",
         institution: "Fundação Bradesco",
         year: 2024,
         file: "programacao_orientada_a_objetos_poo.pdf",
+        category: "Desenvolvimento Web",
       },
     ],
   },
   en: {
     title: "Certificates",
-    subtitle: "Validated knowledge",
-    items: [
+    subtitle: "Knowledge and competencies validated by reference institutions.",ms: [
       {
         name: "Training with Employees",
         institution: "Receita Federal",
         year: 2025,
         file: "treinamento_com_colaboradores.pdf",
+        category: "Soft Skills",
       },
       {
         name: "Generative AI",
         institution: "Santander Open Academy",
         year: 2025,
         file: "ia_generativa.pdf",
+        category: "Artificial Intelligence",
       },
       {
         name: "IT Fundamentals: HARDWARE AND SOFTWARE",
         institution: "Fundação Bradesco",
         year: 2024,
         file: "fundamentos_de_ti_hardware_e_software.pdf",
+        category: "Infrastructure",
       },
       {
         name: "Object-Oriented Programming (OOP)",
         institution: "Fundação Bradesco",
         year: 2024,
         file: "programacao_orientada_a_objetos_poo.pdf",
+        category: "Web Development",
       },
     ],
   },
@@ -326,32 +332,8 @@ const certificatesData = {
 
 const experiences = [
   {
-    company: "Receita Federal",
-    role: "IT Intern",
-    period: "Dec 2024 - Present",
-    logo: "/companies/receita-federal.png",
-    description: [
-      "Provide technical support to users by diagnosing and resolving hardware and software issues, improving the performance and speed of multiple computers.",
-      "Collaborate in creating technical and analytical reports to support performance management and internal processes.",
-      "Carry out administrative support tasks such as preparing presentations, certificates, and institutional documentation.",
-    ],
-    skills: ["IT Services", "Computer Maintenance", "Technical Support", "Python"],
-  },
-  {
-    company: "NExTI UniFAP",
-    role: "Full-Stack Developer",
-    period: "Mar 2025 - Present",
-    logo: "/companies/nexti-unifap.png",
-    description: [
-      "I work as a volunteer full-stack developer building the digital platform for Learn Skills, an academic publisher dedicated to disseminating knowledge.",
-      "The project started with a Python (Flask) backend, but we migrated to PHP with Laravel, ensuring greater scalability and system maintainability.",
-      "I actively collaborate in technical decisions, discussing architecture, proposing solutions, and ensuring integration between all parts of the system.",
-    ],
-    skills: ["React", "PHP", "Laravel", "MySQL", "TailwindCSS","GitHub", "Git"],
-  },
-  {
     company: "Freelancer",
-    role: "Web Developer and UI/UX Designer",
+    role: "Front-End Developer and UI/UX Designer",
     period: "Jul 2023 - Present",
     logo: "/companies/x-red.svg",
     description: [
@@ -372,6 +354,31 @@ const experiences = [
       "Project Management"
     ]
   },  
+  {
+    company: "Receita Federal",
+    role: "IT Intern",
+    period: "Dec 2024 - Dec 2025",
+    logo: "/companies/receita-federal.png",
+    description: [
+      "Provide technical support to users by diagnosing and resolving hardware and software issues, improving the performance and speed of multiple computers.",
+      "Collaborate in creating technical and analytical reports to support performance management and internal processes.",
+      "Carry out administrative support tasks such as preparing presentations, certificates, and institutional documentation.",
+    ],
+    skills: ["IT Services", "Computer Maintenance", "Technical Support", "Python"],
+  },
+  {
+    company: "NExTI UniFAP",
+    role: "Full-Stack Developer",
+    period: "Mar 2025 - Dec 2025",
+    logo: "/companies/nexti-unifap.png",
+    description: [
+      "I work as a volunteer full-stack developer building the digital platform for Learn Skills, an academic publisher dedicated to disseminating knowledge.",
+      "The project started with a Python (Flask) backend, but we migrated to PHP with Laravel, ensuring greater scalability and system maintainability.",
+      "I actively collaborate in technical decisions, discussing architecture, proposing solutions, and ensuring integration between all parts of the system.",
+    ],
+    skills: ["React", "PHP", "Laravel", "MySQL", "TailwindCSS","GitHub", "Git"],
+  },
+
   {
     company: "Carboon Cycle",
     role: "Full-Stack Developer",
@@ -442,8 +449,8 @@ export default function About() {
         ? "Desenvolvedor Front-End"
         : exp.role === "Full-Stack Developer"
         ? "Desenvolvedor Full-Stack"
-        : exp.role === "Web Developer and UI/UX Designer"
-        ? "Desenvolvedor Web e UI/UX Designer"
+        : exp.role === "Front-End Developer and UI/UX Designer"
+        ? "Desenvolvedor Front-End and UI/UX Designer"
         : exp.role
       : exp.role,
   
@@ -451,8 +458,8 @@ export default function About() {
     period:
       language === "pt"
         ? exp.period
-            .replace("Dec 2024 - Present", "Dez 2024 - Atual")
-            .replace("Mar 2025 - Present", "Mar 2025 - Atual")
+            .replace("Dec 2024 - Dec 2025", "Dez 2024 - Dez 2025")
+            .replace("Mar 2025 - Dec 2025", "Mar 2025 - Dez 2025")
             .replace("Jul 2023 - Present", "Jul 2023 - Atual")
             .replace("Mar 2025 - Oct 2025", "Jul 2023 - Atual")
         : exp.period,
@@ -805,36 +812,57 @@ export default function About() {
             {certificatesData[language].subtitle}
           </p>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+	          <div className="grid gap-6" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}>
             {certificatesData[language].items.map((cert, certIdx) => (
-              <div
-                key={certIdx}
-                className="relative p-6 rounded-xl border border-black/30 dark:border-red-500/30 bg-gradient-to-br from-black/5 to-black/10 dark:from-red-500/10 dark:to-red-500/10 hover:border-black/60 dark:hover:border-red-500/60 transition-all duration-300 hover:shadow-lg hover:shadow-black dark:hover:shadow-red-500/20"
-              >
-                {/* Ícone de download na direita embaixo */}
-                <a
-                  href={`/certificates/${cert.file}`}
-                  download
-                  className="absolute bottom-4 right-4 p-2 rounded-lg border border-black/20 dark:border-red-500/30 hover:bg-black/10 dark:hover:bg-red-500/10 transition-colors"
-                >
-                  <Download className="w-5 h-5 dark:text-white text-black" />
-                </a>
-
-                <div className="flex items-center gap-3 mb-3">
-                  <Award className="w-6 h-6 dark:text-red-500 text-black flex-shrink-0" />
-                  <h3 className="text-lg font-semibold leading-tight">
-                    {cert.name}
-                  </h3>
-                </div>
-
-                <p className="text-sm text-muted-foreground">
-                  {cert.institution}
-                </p>
-
-                <p className="text-xs font-bold mt-2 px-2 py-1 inline-block rounded-full bg-black/10 dark:bg-red-500/20 text-black dark:text-red-400">
-                  {cert.year}
-                </p>
-              </div>
+	              <div
+	                key={certIdx}
+	                // Card Design: Compacto, Elegante e com Hover Effect
+	                className="relative p-6 rounded-xl border border-black/30 dark:border-red-500/30 bg-gradient-to-br from-black/5 to-black/10 dark:from-red-500/10 dark:to-red-500/10 
+	                transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl hover:shadow-black/20 dark:hover:shadow-red-500/30 cursor-pointer flex flex-col justify-between h-full"
+	                // Ação: Fazer o card inteiro ser clicável para o modal de preview (futura implementação)
+	                onClick={() => alert(`Preview do certificado: ${cert.name} (Funcionalidade de Modal a ser implementada)`)}
+	              >
+	                {/* Conteúdo Principal do Card */}
+	                <div>
+	                  {/* Badge de Categoria (Micro-informação) */}
+	                  <span className="text-xs font-medium px-3 py-1 rounded-full mb-3 inline-flex items-center gap-2 bg-black/10 dark:bg-red-500/20 text-black dark:text-red-400 border border-black/20 dark:border-red-500/30">
+	                    {getTechIcon(cert.category)}
+	                    {cert.category}
+	                  </span>
+	
+	                  {/* Título do Curso (Hierarquia Visual 1) */}
+	                  <h3 className="text-lg font-bold leading-snug mt-2">
+	                    {cert.name}
+	                  </h3>
+	
+	                  {/* Instituição (Hierarquia Visual 2) */}
+	                  <p className="text-sm text-muted-foreground mt-1 flex items-center gap-2">
+	                    <BookOpen className="w-4 h-4 flex-shrink-0" />
+	                    {cert.institution}
+	                  </p>
+	                </div>
+	
+	                {/* Rodapé do Card (Ano e Botão de Ação) */}
+	                <div className="mt-4 flex justify-between items-center pt-3 border-t border-black/10 dark:border-red-500/10">
+	                  {/* Ano (Hierarquia Visual 3) */}
+	                  <p className="text-xs font-semibold text-muted-foreground/80">
+	                    {cert.year}
+	                  </p>
+	
+	                  {/* Botão de Preview/Download (Ação Primária) */}
+	                  <a
+	                    href={`/certificates/${cert.file}`}
+	                    // Download removido para forçar o modal de preview (melhor UX)
+	                    // download
+	                    target="_blank"
+	                    rel="noopener noreferrer"
+	                    className="text-sm font-medium flex items-center gap-1 dark:text-red-500 text-black hover:underline"
+	                    onClick={(e) => e.stopPropagation()} // Evita o clique duplo do card
+	                  >
+	                    Ver Certificado
+	                  </a>
+	                </div>
+	              </div>
             ))}
           </div>
         </section>
@@ -842,3 +870,4 @@ export default function About() {
     </section>
   );
 }
+  

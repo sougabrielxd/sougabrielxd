@@ -24,7 +24,7 @@ export default function Navigation({
       }`}
     >
       <div className="hidden md:flex gap-8">
-        <button className="text-sm hover:text-red-500 transition-colors font-semibold" onClick={() => scrollToSection("hero")}>Início</button>
+        <button className="text-sm hover:text-red-500 transition-colors font-semibold" onClick={() => scrollToSection("home")}>Início</button>
         <button className="text-sm hover:text-red-500 transition-colors font-semibold" onClick={() => scrollToSection("about")}>Sobre</button>
         <button className="text-sm hover:text-red-500 transition-colors font-semibold" onClick={() => scrollToSection("projects")}>Projetos</button>
         <button className="text-sm hover:text-red-500 transition-colors font-semibold" onClick={() => scrollToSection("contact")}>Contato</button>
