@@ -293,11 +293,19 @@ const certificatesData = {
         file: "programacao_orientada_a_objetos_poo.pdf",
         category: "Desenvolvimento Web",
       },
+      {
+        name: "Certificado de Inglês B1",
+        institution: "SmallTalk",
+        year: 2024,
+        file: "English_Certificate_B1.pdf",
+        category: "Langueges",
+      },
     ],
   },
   en: {
     title: "Certificates",
-    subtitle: "Knowledge and competencies validated by reference institutions.",ms: [
+    subtitle: "Knowledge and competencies validated by reference institutions.",
+    items: [
       {
         name: "Training with Employees",
         institution: "Receita Federal",
@@ -326,11 +334,32 @@ const certificatesData = {
         file: "programacao_orientada_a_objetos_poo.pdf",
         category: "Web Development",
       },
+      {
+        name: "English Certificate B1",
+        institution: "Fundação Bradesco",
+        year: 2024,
+        file: "English_Certificate_B1.pdf",
+        category: "Langueges",
+      },
     ],
-  },
+  }
 };
 
 const experiences = [
+  {
+    company: "Starke Vision",
+    role: "Trainee",
+    period: "Dec 2025 - Present",
+    logo: "/companies/logostarke.png",
+    description: [
+      "",
+      "",
+      "",
+    ],
+    
+    skills: [
+    ]
+  }, 
   {
     company: "Freelancer",
     role: "Front-End Developer and UI/UX Designer",
@@ -451,6 +480,8 @@ export default function About() {
         ? "Desenvolvedor Full-Stack"
         : exp.role === "Front-End Developer and UI/UX Designer"
         ? "Desenvolvedor Front-End and UI/UX Designer"
+        : exp.role === "Trainee"
+        ? "Estagiário"
         : exp.role
       : exp.role,
   
@@ -491,6 +522,12 @@ export default function About() {
               "Colaborei com designers e desenvolvedores back-end para implementar funcionalidades completas, assegurando a integração perfeita entre front-end e back-end.",
               "Participei ativamente de revisões de código e testes para garantir a qualidade do software.",
             ]
+            : exp.company === "StarkeVision"
+            ? [
+                "",
+                "",
+                "",
+              ]
           : exp.description
         : exp.description,
   
