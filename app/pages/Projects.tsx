@@ -51,7 +51,7 @@ import {
 import { VscVscode } from "react-icons/vsc";
 
 // ============================================================
-// TECH ICON MAPPING (Extraído de Home.tsx)
+// TECH ICON MAPPING 
 // ============================================================
 
 const getTechIcon = (tech: string): ReactNode => {
@@ -95,7 +95,7 @@ const getTechIcon = (tech: string): ReactNode => {
 };
 
 // ============================================================
-// DATA SECTIONS (Extraído de Home.tsx)
+// DATA SECTIONS 
 // ============================================================
 
 const projects = [
@@ -106,13 +106,13 @@ const projects = [
       "Em desenvolvimento",
     fullDescription:
       "Atuei como UI/UX Designer e Desenvolvedor Front-end na criação do site institucional para o Cartório Luciana Carrilho de Moraes Marinho. O projeto envolveu a concepção de um design moderno e responsivo, alinhado à identidade visual do cartório, utilizando React e TailwindCSS para garantir uma experiência de usuário fluida e acessível em diversos dispositivos. O site apresenta informações essenciais sobre os serviços oferecidos, equipe, localização e contato, facilitando o acesso dos usuários às informações do cartório.",
-    tags: ["React", "TailwindCSS"],
+    tags: ["TypeScript", "Next.js", "TailwindCSS"],
     link: "#",
     github: "https://github.com/sougabrielxd/cartorio-lcm",
     status: "Em desenvolvimento",
     featured: false,
     year: 2025,
-    images: ["https://ik.imagekit.io/o8urkd2xn/cartorio-lcm.png", "https://ik.imagekit.io/o8urkd2xn/cartorio-lcm2.png"],
+    images: ["https://ik.imagekit.io/o8urkd2xn/cartorio-lcm.png", ], //"https://ik.imagekit.io/o8urkd2xn/cartorio-lcm2.png"
     role: "UI/UX Designer e Desenvolvedor Front-end",
     challenges: "Garantir um design moderno e responsivo alinhado à identidade visual do cartório, que é tradicional.",
     solutions: "Utilização de uma paleta de cores sóbria e tipografia moderna, com foco em acessibilidade e performance (React + TailwindCSS).",
@@ -182,7 +182,7 @@ const projects = [
 ];
 
 // ============================================================
-// AUXILIARY FUNCTIONS (Extraído de Home.tsx)
+// AUXILIARY FUNCTIONS 
 // ============================================================
 
 const getStatusColor = (status: string) => {
@@ -202,7 +202,7 @@ const getStatusColor = (status: string) => {
 };
 
 // ============================================================
-// PROJECTS COMPONENT (Extraído de Home.tsx)
+// PROJECTS COMPONENT 
 // ============================================================
 
 export default function Projects() {

@@ -14,6 +14,7 @@ import {
   Wrench,
 } from "lucide-react";
 import { ReactNode } from "react";
+import { DiRedis } from "react-icons/di";
 import { AiOutlineFundProjectionScreen } from "react-icons/ai";
 import { FaVuejs } from "react-icons/fa6";
 import { GrMysql } from "react-icons/gr";
@@ -48,9 +49,12 @@ import {
   SiVercel,
   SiVite,
   SiWordpress,
+  SiChatwoot,
 } from "react-icons/si";
 import { VscVscode } from "react-icons/vsc";
 import { Button } from "@/components/ui/button";
+import { MdIntegrationInstructions } from "react-icons/md";
+
 
 // ============================================================
 // TECH ICON MAPPING (Extraído de Home.tsx)
@@ -86,6 +90,9 @@ const getTechIcon = (tech: string): ReactNode => {
     WordPress: <SiWordpress className="w-4 h-4 text-sky-600" />,
     "VS Code": <VscVscode className="w-4 h-4 text-blue-500" />,
     N8n: <SiN8N className="w-4 h-4 text-pink-400" />,
+    Redis: <DiRedis className="w-4 h-4 text-red-500" />,
+    Integration: <MdIntegrationInstructions className="w-4 h-4 text-blue-500" />,
+    Chatwoot: <SiChatwoot className="w-4 h-4 text-green-500" />,
     Trello: <SiTrello className="w-4 h-4 text-blue-600" />,
     Notion: <SiNotion className="w-4 h-4 text-black dark:text-white" />,
     HTML: <SiHtml5 className="w-4 h-4 text-orange-500" />,
@@ -352,12 +359,28 @@ const experiences = [
     period: "Dec 2025 - Present",
     logo: "/companies/logostarke.png",
     description: [
-      "",
-      "",
-      "",
+      "Implementação de fluxos de automação complexos via n8n, integrando CRMs e ferramentas de comunicação como Chatwoot e EvolutionAPI.",
+      "Gerenciamento de bancos de dados PostgreSQL e otimização de cache com Redis para garantir escalabilidade das aplicações.",
+      "Participação ativa em rituais Scrum, colaborando no planejamento de sprints e organização de tarefas via gestão ágil.",
+      "Implantação e gerenciamento de serviços utilizando Easypanel.",
     ],
     
     skills: [
+      "WordPress",
+      "Vue.js",
+      "N8n",
+      "PostgreSQL",
+      "Redis",
+      "Chatwoot",
+      "Easypanel",
+      "EvolutionAPI",
+      "Project Management",
+      "Scrum",
+      "CRM",
+      "API",
+      "Integration",
+      "Automation",
+      "Management",
     ]
   }, 
   {
@@ -389,8 +412,8 @@ const experiences = [
     period: "Dec 2024 - Dec 2025",
     logo: "/companies/receita-federal.png",
     description: [
-      "Provide technical support to users by diagnosing and resolving hardware and software issues, improving the performance and speed of multiple computers.",
-      "Collaborate in creating technical and analytical reports to support performance management and internal processes.",
+      "I provided technical support to users, diagnosing and resolving hardware and software problems, improving the performance and speed of various computers.",
+      "I collaborated in the creation of technical and analytical reports to support performance management and internal processes.",
       "Carry out administrative support tasks such as preparing presentations, certificates, and institutional documentation.",
     ],
     skills: ["IT Services", "Computer Maintenance", "Technical Support", "Python"],
@@ -401,9 +424,9 @@ const experiences = [
     period: "Mar 2025 - Dec 2025",
     logo: "/companies/nexti-unifap.png",
     description: [
-      "I work as a volunteer full-stack developer building the digital platform for Learn Skills, an academic publisher dedicated to disseminating knowledge.",
+      "I worked as a volunteer full-stack developer building the digital platform for Learn Skills, an academic publisher dedicated to disseminating knowledge.",
       "The project started with a Python (Flask) backend, but we migrated to PHP with Laravel, ensuring greater scalability and system maintainability.",
-      "I actively collaborate in technical decisions, discussing architecture, proposing solutions, and ensuring integration between all parts of the system.",
+      "I actively participated collaborate in technical decisions, discussing architecture, proposing solutions, and ensuring integration between all parts of the system.",
     ],
     skills: ["React", "PHP", "Laravel", "MySQL", "TailwindCSS","GitHub", "Git"],
   },
@@ -501,19 +524,19 @@ export default function About() {
       language === "pt"
         ? exp.company === "Receita Federal"
           ? [
-              "Atuo no suporte técnico aos usuários, realizando diagnóstico, resolução de problemas e otimização de desempenho em hardware e software, o que resultou na melhoria da velocidade de múltiplos computadores.",
+              "Atuei no suporte técnico aos usuários, realizando diagnóstico, resolução de problemas e otimização de desempenho em hardware e software, o que resultou na melhoria da velocidade de múltiplos computadores.",
               "Colaboro na elaboração de relatórios técnicos e analíticos para apoiar a gestão de desempenho e os processos internos.",
               "Executo atividades administrativas de apoio, como a produção de apresentações, certificados e documentação institucional.",
             ]
           : exp.company === "NExTI UniFAP"
           ? [
-              "Atuo como desenvolvedor full stack voluntário na construção da plataforma digital da Learn Skills, editora acadêmica dedicada à disseminação de conhecimento.",
+              "Atuei como desenvolvedor full stack voluntário na construção da plataforma digital da Learn Skills, editora acadêmica dedicada à disseminação de conhecimento.",
               "O projeto começou com back-end em Python (Flask), mas migramos para PHP com Laravel, garantindo maior escalabilidade e manutenção do sistema.",
               "Colaboro ativamente em decisões técnicas, discutindo arquitetura, propondo soluções e assegurando a integração entre todas as partes do sistema.",
             ]
             : exp.company === "Freelancer"
             ? [
-              "Desenvolvo sites responsivos e interfaces UI/UX focadas em usabilidade, estética e conversão.",
+              "Desenvolvi sites responsivos e interfaces UI/UX focadas em usabilidade, estética e conversão.",
               "Crio materiais digitais, além de planejar conteúdo estratégico para redes sociais.",
               "Atendo diretamente clientes, entendendo necessidades e entregando soluções digitais completas e funcionais."
               ]
