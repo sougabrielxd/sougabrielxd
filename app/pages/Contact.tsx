@@ -3,6 +3,7 @@
 import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, Linkedin, Instagram, Github, Send } from "lucide-react";
+import LattesIcon from "@/components/LattesIcon";
 import { useState } from "react";
 
 // ============================================================
@@ -22,6 +23,13 @@ const contactMethods = [
     label: "Telefone",
     value: "+55 (87) 99181-1562",
     href: "https://wa.me//5587991811562?text=Olá,%20gostaria%20de%20tirar%20algumas%20dúvidas",
+    color: "border dark:border-red-700/80 border-black",
+  },
+  {
+    icon: LattesIcon,
+    label: "Lattes",
+    value: "gabriellucasafb",
+    href: "https://lattes.cnpq.br/",
     color: "border dark:border-red-700/80 border-black",
   },
   {
@@ -107,7 +115,7 @@ export default function Contact() {
           {/* Contact Methods */}
           <section>
             <h2 className="text-2xl font-bold mb-6">
-              {language === "pt" ? "Meus Contatos" : "My Contacts"}
+              {language === "pt" ? "Minhas Rede" : "My network"}
             </h2>
 
             <div className="space-y-6">

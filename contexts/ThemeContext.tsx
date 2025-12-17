@@ -31,6 +31,8 @@ export function ThemeProvider({
   });
 
   useEffect(() => {
+    if (typeof window === "undefined" || typeof document === "undefined") return;
+    
     const root = document.documentElement;
     if (theme === "dark") {
       root.classList.add("dark");

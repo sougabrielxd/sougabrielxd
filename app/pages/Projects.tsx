@@ -213,12 +213,16 @@ export default function Projects() {
   const handleOpenProjectModal = (project: any) => {
     setSelectedProject(project);
     setCurrentImageIndex(0); // Reset image index when opening new modal
-    document.body.style.overflow = "hidden"; // Bloqueia o scroll do body
+    if (typeof document !== "undefined") {
+      document.body.style.overflow = "hidden"; // Bloqueia o scroll do body
+    }
   };
 
   const handleCloseProjectModal = () => {
     setSelectedProject(null);
-    document.body.style.overflow = "unset"; // Restaura o scroll do body
+    if (typeof document !== "undefined") {
+      document.body.style.overflow = "unset"; // Restaura o scroll do body
+    }
   };
   
   // CSS para esconder a barra de rolagem (solução cross-browser)

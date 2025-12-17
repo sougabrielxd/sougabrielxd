@@ -489,6 +489,7 @@ export default function About() {
     period:
       language === "pt"
         ? exp.period
+            .replace("Dec 2025 - Present", "Dez 2025 - Atual")
             .replace("Dec 2024 - Dec 2025", "Dez 2024 - Dez 2025")
             .replace("Mar 2025 - Dec 2025", "Mar 2025 - Dez 2025")
             .replace("Jul 2023 - Present", "Jul 2023 - Atual")

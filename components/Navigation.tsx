@@ -1,7 +1,6 @@
 "use client"
 
 import { IoMenu } from "react-icons/io5";
-import { Moon, Sun } from "lucide-react";
 import MobileMenu from "@/components/MobileMenu";
 
 interface NavigationProps {
