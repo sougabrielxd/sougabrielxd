@@ -100,6 +100,26 @@ const getTechIcon = (tech: string): ReactNode => {
 
 const projects = [
   {
+    id: "Conecc",
+    title: "Conecc",
+    description:
+      "Freelance de uma Landing Page para.",
+    fullDescription:
+      "Atuei como Desenvolvedor Front-end na criação do site institucional para o Conecc. O projeto envolveu a concepção de um design moderno e responsivo, alinhado à identidade visual do Conecc, utilizando React e TailwindCSS para garantir uma experiência de usuário fluida e acessível em diversos dispositivos. O site apresenta informações essenciais sobre os serviços oferecidos, equipe, localização e contato, facilitando o acesso dos usuários às informações do evento.",
+    tags: ["TypeScript", "Next.js", "TailwindCSS"],
+    link: "#",
+    github: "#",
+    status: "Em desenvolvimento",
+    featured: false,
+    year: 2025,
+    images: ["", ], 
+    role: "Desenvolvedor Front-end",
+    challenges: "Garantir um design moderno e responsivo alinhado à identidade visual do cartório, que é tradicional.",
+    solutions: "Utilização de uma paleta de cores sóbria e tipografia moderna, com foco em acessibilidade e performance (React + TailwindCSS).",
+    developmentProcess: "Desenvolvimento com React e TailwindCSS, gestão de projeto.",
+    results: "Protótipo de alta fidelidade aprovado e desenvolvimento em andamento. Foco em SEO local.",
+  },
+  {
     id: "cartorio-lcm",
     title: "Cartório Alto Longá",
     description:

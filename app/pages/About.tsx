@@ -355,16 +355,16 @@ const certificatesData = {
 const experiences = [
   {
     company: "Starke Vision",
-    role: "Trainee",
+    role: "AI Systems Development Intern",
     period: "Dec 2025 - Present",
     logo: "/companies/logostarke.png",
     description: [
-      "Implementação de fluxos de automação complexos via n8n, integrando CRMs e ferramentas de comunicação como Chatwoot e EvolutionAPI.",
-      "Gerenciamento de bancos de dados PostgreSQL e otimização de cache com Redis para garantir escalabilidade das aplicações.",
-      "Participação ativa em rituais Scrum, colaborando no planejamento de sprints e organização de tarefas via gestão ágil.",
-      "Implantação e gerenciamento de serviços utilizando Easypanel.",
+      "Implementation of complex automation flows via n8n, integrating CRMs and communication tools such as Chatwoot and EvolutionAPI.",
+      "Active participation in Scrum rituals, collaborating in sprint planning and task organization via agile management.",
+      "Management of PostgreSQL databases and cache optimization with Redis to ensure application scalability.",
+      "Deployment and management of services using Easypanel."
     ],
-    
+
     skills: [
       "WordPress",
       "Vue.js",
@@ -376,11 +376,7 @@ const experiences = [
       "EvolutionAPI",
       "Project Management",
       "Scrum",
-      "CRM",
-      "API",
-      "Integration",
-      "Automation",
-      "Management",
+      "LLMs",
     ]
   }, 
   {
@@ -503,8 +499,8 @@ export default function About() {
         ? "Desenvolvedor Full-Stack"
         : exp.role === "Front-End Developer and UI/UX Designer"
         ? "Desenvolvedor Front-End and UI/UX Designer"
-        : exp.role === "Trainee"
-        ? "Estagiário"
+        : exp.role === "AI Systems Development Intern"
+        ? "Estagiário de Desenvolvimento de Sistemas de IA"
         : exp.role
       : exp.role,
   
@@ -548,9 +544,10 @@ export default function About() {
             ]
             : exp.company === "StarkeVision"
             ? [
-                "",
-                "",
-                "",
+                "Implementação de fluxos de automação complexos via n8n, integrando CRMs e ferramentas de comunicação como Chatwoot e EvolutionAPI.",
+                "Participação ativa em rituais Scrum, colaborando no planejamento de sprints e organização de tarefas via gestão ágil.",
+                "Gerenciamento de bancos de dados PostgreSQL e otimização de cache com Redis para garantir escalabilidade das aplicações.",
+                "Implantação e gerenciamento de serviços utilizando Easypanel.",
               ]
           : exp.description
         : exp.description,
