@@ -62,40 +62,42 @@ const contactMethods = [
 export default function Contact() {
   const { language } = useLanguage();
 
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  });
-
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
 
-  // Corrigido: esta é a função correta usada nos inputs
-  const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
-  ) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
+    setError(false);
+    setSubmitted(false);
 
-    await new Promise((resolve) => setTimeout(resolve, 1500));
+    const form = e.currentTarget;
+    const formData = new FormData(form);
 
-    console.log("Formulário enviado:", formData);
+    try {
+      const response = await fetch("https://formspree.io/f/xzdpprjk", {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
 
-    setLoading(false);
-    setSubmitted(true);
-
-    setFormData({
-      name: "",
-      email: "",
-      message: "",
-    });
-
-    setTimeout(() => setSubmitted(false), 5000);
+      if (response.ok) {
+        setSubmitted(true);
+        form.reset();
+        setTimeout(() => setSubmitted(false), 5000);
+      } else {
+        setError(true);
+        setTimeout(() => setError(false), 5000);
+      }
+    } catch (err) {
+      setError(true);
+      setTimeout(() => setError(false), 5000);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -161,6 +163,14 @@ export default function Contact() {
               </div>
             )}
 
+            {error && (
+              <div className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800">
+                {language === "pt"
+                  ? "Erro ao enviar mensagem. Tente novamente."
+                  : "Error sending message. Please try again."}
+              </div>
+            )}
+
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label className="block text-sm font-semibold mb-1">
@@ -169,8 +179,6 @@ export default function Contact() {
                 <input
                   type="text"
                   name="name"
-                  value={formData.name}
-                  onChange={handleInputChange}
                   required
                   placeholder={language === "pt" ? "Seu nome" : "Your name"}
                   className="w-full px-3 py-2 rounded-lg border border-black/20 
@@ -185,8 +193,6 @@ export default function Contact() {
                 <input
                   type="email"
                   name="email"
-                  value={formData.email}
-                  onChange={handleInputChange}
                   required
                   placeholder="seu@email.com"
                   className="w-full px-3 py-2 rounded-lg border border-black/20 
@@ -200,8 +206,6 @@ export default function Contact() {
                 </label>
                 <textarea
                   name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
                   required
                   rows={4}
                   placeholder={
