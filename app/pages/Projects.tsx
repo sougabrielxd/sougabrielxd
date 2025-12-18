@@ -51,7 +51,32 @@ import {
 import { VscVscode } from "react-icons/vsc";
 
 // ============================================================
-// TECH ICON MAPPING 
+// TYPES & CONSTANTS
+// ============================================================
+
+interface Project {
+  id: string;
+  title: string;
+  description: string;
+  fullDescription: string;
+  tags: string[];
+  link: string;
+  github: string;
+  status: string;
+  featured: boolean;
+  year: number;
+  images?: string[];
+  role: string;
+  challenges: string;
+  solutions: string;
+  developmentProcess: string;
+  results: string;
+}
+
+const PLACEHOLDER_IMAGE = "/window.svg";
+
+// ============================================================
+// TECH ICON MAPPING
 // ============================================================
 
 const getTechIcon = (tech: string): ReactNode => {
@@ -98,12 +123,12 @@ const getTechIcon = (tech: string): ReactNode => {
 // DATA SECTIONS 
 // ============================================================
 
-const projects = [
+const projects: Project[] = [
   {
     id: "Conecc",
     title: "Conecc",
     description:
-      "Freelance de uma Landing Page para.",
+      "Em desenvolvimento",
     fullDescription:
       "Atuei como Desenvolvedor Front-end na criação do site institucional para o Conecc. O projeto envolveu a concepção de um design moderno e responsivo, alinhado à identidade visual do Conecc, utilizando React e TailwindCSS para garantir uma experiência de usuário fluida e acessível em diversos dispositivos. O site apresenta informações essenciais sobre os serviços oferecidos, equipe, localização e contato, facilitando o acesso dos usuários às informações do evento.",
     tags: ["TypeScript", "Next.js", "TailwindCSS"],
@@ -112,7 +137,7 @@ const projects = [
     status: "Em desenvolvimento",
     featured: false,
     year: 2025,
-    images: ["", ], 
+    images: [""],
     role: "Desenvolvedor Front-end",
     challenges: "Garantir um design moderno e responsivo alinhado à identidade visual do cartório, que é tradicional.",
     solutions: "Utilização de uma paleta de cores sóbria e tipografia moderna, com foco em acessibilidade e performance (React + TailwindCSS).",
@@ -132,7 +157,7 @@ const projects = [
     status: "Em desenvolvimento",
     featured: false,
     year: 2025,
-    images: ["https://ik.imagekit.io/o8urkd2xn/cartorio-lcm.png", ], //"https://ik.imagekit.io/o8urkd2xn/cartorio-lcm2.png"
+    images: ["https://ik.imagekit.io/o8urkd2xn/cartorio-lcm.png"], //"https://ik.imagekit.io/o8urkd2xn/cartorio-lcm2.png"
     role: "UI/UX Designer e Desenvolvedor Front-end",
     challenges: "Garantir um design moderno e responsivo alinhado à identidade visual do cartório, que é tradicional.",
     solutions: "Utilização de uma paleta de cores sóbria e tipografia moderna, com foco em acessibilidade e performance (React + TailwindCSS).",
@@ -227,10 +252,11 @@ const getStatusColor = (status: string) => {
 
 export default function Projects() {
   const { language } = useLanguage();
-  const [selectedProject, setSelectedProject] = useState<any>(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
 
-  const handleOpenProjectModal = (project: any) => {
+  const handleOpenProjectModal = (project: Project) => {
     setSelectedProject(project);
     setCurrentImageIndex(0); // Reset image index when opening new modal
     if (typeof document !== "undefined") {
@@ -257,7 +283,7 @@ export default function Projects() {
   `;
 
   // Localiza os dados do projeto
-  const localizedProjects = projects.map((project) => {
+  const localizedProjects: Project[] = projects.map((project) => {
     if (language === "en") {
       // Mapeamento manual de tradução para os projetos
       const enProject = { ...project };
@@ -331,7 +357,7 @@ export default function Projects() {
               <div className="flex flex-col md:flex-row gap-6">
                 <div className="md:w-1/3 flex-shrink-0">
                   <img
-                    src={featuredProject.images[0]}
+                    src={featuredProject.images?.[0] || PLACEHOLDER_IMAGE}
                     alt={featuredProject.title}
                     className="w-full h-48 object-cover rounded-lg shadow-lg"
                   />
@@ -380,7 +406,7 @@ export default function Projects() {
                 onClick={() => handleOpenProjectModal(project)}
               >
                 <img
-                  src={project.images[0]}
+                  src={project.images?.[0] || PLACEHOLDER_IMAGE}
                   alt={project.title}
                   className="w-full h-40 object-cover rounded-lg mb-4 shadow-md"
                 />
@@ -433,61 +459,81 @@ export default function Projects() {
               {/* 1. Galeria de Imagens (Hero Section) */}
               <div className="space-y-4">
                 <div className="relative h-96 rounded-xl overflow-hidden bg-black/10 dark:bg-red-500/10 shadow-xl">
-                  <img
-                    src={selectedProject.images[currentImageIndex]}
-                    alt={`${selectedProject.title} - ${currentImageIndex + 1}`}
-                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-105 cursor-pointer"
-                    onClick={() => alert("Implementar Lightbox aqui!")} // Sugestão de Lightbox
-                  />
-                  {selectedProject.images.length > 1 && (
-                    <>
-                      <button
-                        onClick={() =>
-                          setCurrentImageIndex(
-                            (prev: number) =>
-                              (prev - 1 + selectedProject.images.length) %
-                              selectedProject.images.length
-                          )
-                        }
-                        className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/50 hover:bg-black/70 text-white transition-all duration-300 transform hover:scale-110"
-                      >
-                        <ChevronLeft className="w-6 h-6" />
-                      </button>
-                      <button
-                        onClick={() =>
-                          setCurrentImageIndex(
-                            (prev: number) => (prev + 1) % selectedProject.images.length
-                          )
-                        }
-                        className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/50 hover:bg-black/70 text-white transition-all duration-300 transform hover:scale-110"
-                      >
-                        <ChevronRight className="w-6 h-6" />
-                      </button>
-                    </>
-                  )}
+                  {(() => {
+                    const images =
+                      selectedProject.images && selectedProject.images.length > 0
+                        ? selectedProject.images
+                        : [PLACEHOLDER_IMAGE];
+                    const currentImage = images[currentImageIndex] || PLACEHOLDER_IMAGE;
+
+                    return (
+                      <>
+                        <img
+                          src={currentImage}
+                          alt={`${selectedProject.title} - ${currentImageIndex + 1}`}
+                          className="w-full h-full object-cover transition-transform duration-500 hover:scale-105 cursor-pointer"
+                          onClick={() => setIsLightboxOpen(true)}
+                        />
+                        {images.length > 1 && (
+                          <>
+                            <button
+                              onClick={() =>
+                                setCurrentImageIndex(
+                                  (prev: number) =>
+                                    (prev - 1 + images.length) % images.length
+                                )
+                              }
+                              className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/50 hover:bg-black/70 text-white transition-all duration-300 transform hover:scale-110"
+                            >
+                              <ChevronLeft className="w-6 h-6" />
+                            </button>
+                            <button
+                              onClick={() =>
+                                setCurrentImageIndex(
+                                  (prev: number) => (prev + 1) % images.length
+                                )
+                              }
+                              className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/50 hover:bg-black/70 text-white transition-all duration-300 transform hover:scale-110"
+                            >
+                              <ChevronRight className="w-6 h-6" />
+                            </button>
+                          </>
+                        )}
+                      </>
+                    );
+                  })()}
                 </div>
                 {/* Thumbnails */}
-                {selectedProject.images.length > 1 && (
-                  <div className="flex gap-3 overflow-x-auto p-1">
-                    {selectedProject.images.map((img: string, idx: number) => (
-                      <button
-                        key={idx}
-                        onClick={() => setCurrentImageIndex(idx)}
-                        className={`w-24 h-16 rounded-lg overflow-hidden flex-shrink-0 border-2 transition-all ${
-                          currentImageIndex === idx
-                            ? "border-red-500 shadow-md"
-                            : "border-black/20 dark:border-red-500/20 hover:border-red-500/50"
-                        }`}
-                      >
-                        <img
-                          src={img}
-                          alt={`Thumbnail ${idx + 1}`}
-                          className="w-full h-full object-cover"
-                        />
-                      </button>
-                    ))}
-                  </div>
-                )}
+                {(() => {
+                  const images =
+                    selectedProject.images && selectedProject.images.length > 1
+                      ? selectedProject.images
+                      : [];
+
+                  return (
+                    images.length > 1 && (
+                      <div className="flex gap-3 overflow-x-auto p-1">
+                        {images.map((img: string, idx: number) => (
+                          <button
+                            key={idx}
+                            onClick={() => setCurrentImageIndex(idx)}
+                            className={`w-24 h-16 rounded-lg overflow-hidden flex-shrink-0 border-2 transition-all ${
+                              currentImageIndex === idx
+                                ? "border-red-500 shadow-md"
+                                : "border-black/20 dark:border-red-500/20 hover:border-red-500/50"
+                            }`}
+                          >
+                            <img
+                              src={img || PLACEHOLDER_IMAGE}
+                              alt={`Thumbnail ${idx + 1}`}
+                              className="w-full h-full object-cover"
+                            />
+                          </button>
+                        ))}
+                      </div>
+                    )
+                  );
+                })()}
               </div>
 
               {/* 2. Visão Geral e Links */}
@@ -632,6 +678,73 @@ export default function Projects() {
             {/* Scroll Fade-out Indicator */}
             <div className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none rounded-b-lg bg-gradient-to-t from-white dark:from-gray-900 to-transparent"></div>
           </div>
+
+          {/* Lightbox Overlay */}
+          {isLightboxOpen && (
+            <div
+              className="fixed inset-0 z-[10000] bg-black/90 flex items-center justify-center p-4"
+              onClick={() => setIsLightboxOpen(false)}
+            >
+              {(() => {
+                const images =
+                  selectedProject.images && selectedProject.images.length > 0
+                    ? selectedProject.images
+                    : [PLACEHOLDER_IMAGE];
+                const currentImage = images[currentImageIndex] || PLACEHOLDER_IMAGE;
+
+                const handlePrev = (event: React.MouseEvent) => {
+                  event.stopPropagation();
+                  setCurrentImageIndex(
+                    (prev) => (prev - 1 + images.length) % images.length
+                  );
+                };
+
+                const handleNext = (event: React.MouseEvent) => {
+                  event.stopPropagation();
+                  setCurrentImageIndex(
+                    (prev) => (prev + 1) % images.length
+                  );
+                };
+
+                const handleClose = (event: React.MouseEvent) => {
+                  event.stopPropagation();
+                  setIsLightboxOpen(false);
+                };
+
+                return (
+                  <div className="relative max-w-5xl w-full max-h-[90vh] flex items-center justify-center">
+                    <button
+                      onClick={handleClose}
+                      className="absolute top-4 right-4 p-2 rounded-full bg-black/70 hover:bg-black/90 text-white transition-colors"
+                    >
+                      <X className="w-6 h-6" />
+                    </button>
+                    {images.length > 1 && (
+                      <button
+                        onClick={handlePrev}
+                        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/70 hover:bg-black/90 text-white transition-all duration-300 transform hover:scale-110"
+                      >
+                        <ChevronLeft className="w-6 h-6" />
+                      </button>
+                    )}
+                    <img
+                      src={currentImage}
+                      alt={`${selectedProject.title} - lightbox`}
+                      className="max-h-[90vh] w-auto max-w-full object-contain rounded-lg shadow-2xl"
+                    />
+                    {images.length > 1 && (
+                      <button
+                        onClick={handleNext}
+                        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/70 hover:bg-black/90 text-white transition-all duration-300 transform hover:scale-110"
+                      >
+                        <ChevronRight className="w-6 h-6" />
+                      </button>
+                    )}
+                  </div>
+                );
+              })()}
+            </div>
+          )}
         </div>
       )}
     </section>

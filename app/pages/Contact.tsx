@@ -117,7 +117,7 @@ export default function Contact() {
           {/* Contact Methods */}
           <section>
             <h2 className="text-2xl font-bold mb-6">
-              {language === "pt" ? "Minhas Rede" : "My network"}
+              {language === "pt" ? "Minhas Redes" : "My network"}
             </h2>
 
             <div className="space-y-6">
