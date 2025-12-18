@@ -542,7 +542,7 @@ export default function About() {
               "Colaborei com designers e desenvolvedores back-end para implementar funcionalidades completas, assegurando a integração perfeita entre front-end e back-end.",
               "Participei ativamente de revisões de código e testes para garantir a qualidade do software.",
             ]
-            : exp.company === "StarkeVision"
+            : exp.company === "Starke Vision"
             ? [
                 "Implementação de fluxos de automação complexos via n8n, integrando CRMs e ferramentas de comunicação como Chatwoot e EvolutionAPI.",
                 "Participação ativa em rituais Scrum, colaborando no planejamento de sprints e organização de tarefas via gestão ágil.",
