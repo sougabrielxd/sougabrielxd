@@ -20,7 +20,7 @@ interface LoadingScreenProps {
 }
 
 export function LoadingScreen({
-  logoSrc = "./img/x-red.svg",
+  logoSrc = "/img/x-red.svg",
   loadingText = "Carregando...",
   fadeOutDuration = 600,
   autoHideDelay = 2000,
@@ -50,7 +50,7 @@ export function LoadingScreen({
   return (
     <div
       className={`
-        fixed inset-0 z-[9999] flex flex-col items-center justify-center
+        fixed inset-0 z-[10000] flex flex-col items-center justify-center
         bg-black transition-opacity
         ${isHiding ? "opacity-0" : "opacity-100"}
       `}

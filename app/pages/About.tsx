@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useLanguage } from "@/contexts/LanguageContext";
 import {
   Award,
@@ -13,118 +14,9 @@ import {
   Server,
   Wrench,
 } from "lucide-react";
-import { ReactNode } from "react";
-import { DiRedis } from "react-icons/di";
-import { AiOutlineFundProjectionScreen } from "react-icons/ai";
-import { FaVuejs } from "react-icons/fa6";
-import { GrMysql } from "react-icons/gr";
+import { getTechIcon } from "@/lib/techIcons";
 import { IoIosArrowForward } from "react-icons/io";
-import {
-  SiCss3,
-  SiDjango,
-  SiDocker,
-  SiFigma,
-  SiFlask,
-  SiGit,
-  SiGithub,
-  SiGitlab,
-  SiHtml5,
-  SiJavascript,
-  SiJira,
-  SiLaravel,
-  SiMongodb,
-  SiN8N,
-  SiNextdotjs,
-  SiNodedotjs,
-  SiNotion,
-  SiPhp,
-  SiPostgresql,
-  SiPostman,
-  SiPython,
-  SiReact,
-  SiShadcnui,
-  SiTailwindcss,
-  SiTrello,
-  SiTypescript,
-  SiVercel,
-  SiVite,
-  SiWordpress,
-  SiChatwoot,
-} from "react-icons/si";
-import { VscVscode } from "react-icons/vsc";
 import { Button } from "@/components/ui/button";
-import { MdIntegrationInstructions } from "react-icons/md";
-
-
-// ============================================================
-// TECH ICON MAPPING (Extraído de Home.tsx)
-// ============================================================
-
-const getTechIcon = (tech: string): ReactNode => {
-  const iconMap: Record<string, ReactNode> = {
-    JavaScript: <SiJavascript className="w-4 h-4 text-yellow-400" />,
-    TypeScript: <SiTypescript className="w-4 h-4 text-blue-500" />,
-    React: <SiReact className="w-4 h-4 text-sky-500" />,
-    "Next.js": <SiNextdotjs className="w-4 h-4 text-black dark:text-white" />,
-    "Vue.js": <FaVuejs className="w-4 h-4 text-green-500" />,
-    "Tailwind CSS": <SiTailwindcss className="w-4 h-4 text-sky-400" />,
-    TailwindCSS: <SiTailwindcss className="w-4 h-4 text-sky-400" />,
-    Python: <SiPython className="w-4 h-4 text-yellow-500" />,
-    "Node.js": <SiNodedotjs className="w-4 h-4 text-green-500" />,
-    Flask: <SiFlask className="w-4 h-4 text-black" />,
-    Django: <SiDjango className="w-4 h-4 text-green-700" />,
-    PHP: <SiPhp className="w-4 h-4 text-indigo-500" />,
-    Laravel: <SiLaravel className="w-4 h-4 text-red-500" />,
-    MySQL: <GrMysql className="w-4 h-4 text-blue-600" />,
-    PostgreSQL: <SiPostgresql className="w-4 h-4 text-sky-700" />,
-    MongoDB: <SiMongodb className="w-4 h-4 text-green-600" />,
-    Git: <SiGit className="w-4 h-4 text-orange-500" />,
-    GitHub: <SiGithub className="w-4 h-4 text-gray-800 dark:text-gray-200" />,
-    GitLab: <SiGitlab className="w-4 h-4 text-orange-500" />,
-    Docker: <SiDocker className="w-4 h-4 text-blue-400" />,
-    Postman: <SiPostman className="w-4 h-4 text-orange-500" />,
-    Jira: <SiJira className="w-4 h-4 text-blue-600" />,
-    Vite: <SiVite className="w-4 h-4 text-purple-500" />,
-    Vercel: <SiVercel className="w-4 h-4 text-black dark:text-white" />,
-    Figma: <SiFigma className="w-4 h-4 text-pink-500" />,
-    WordPress: <SiWordpress className="w-4 h-4 text-sky-600" />,
-    "VS Code": <VscVscode className="w-4 h-4 text-blue-500" />,
-    N8n: <SiN8N className="w-4 h-4 text-pink-400" />,
-    Redis: <DiRedis className="w-4 h-4 text-red-500" />,
-    Integration: <MdIntegrationInstructions className="w-4 h-4 text-blue-500" />,
-    Chatwoot: <SiChatwoot className="w-4 h-4 text-green-500" />,
-    Trello: <SiTrello className="w-4 h-4 text-blue-600" />,
-    Notion: <SiNotion className="w-4 h-4 text-black dark:text-white" />,
-    HTML: <SiHtml5 className="w-4 h-4 text-orange-500" />,
-    CSS: <SiCss3 className="w-4 h-4 text-blue-400" />,
-    "UI/UX": <Monitor className="w-4 h-4" />,
-    "Desenvolvimento Web": <Code className="w-4 h-4" />,
-    "Web Development": <Code className="w-4 h-4" />,
-    "Gestão de Projetos": <AiOutlineFundProjectionScreen className="w-4 h-4" />,
-    "Project Management": <AiOutlineFundProjectionScreen className="w-4 h-4" />,
-    "Serviços de TI": <Server className="w-4 h-4" />,
-    "IT Services": <Server className="w-4 h-4" />,
-    "Manutenção de computadores": <Cpu className="w-4 h-4" />,
-    "Computer Maintenance": <Cpu className="w-4 h-4" />,
-    "Suporte técnico": <Wrench className="w-4 h-4" />,
-    "Technical Support": <Wrench className="w-4 h-4" />,
-    "Engenharia de Prompt": (
-      <Code className="w-4 h-4 dark:text-purple-500 text-purple-950" />
-    ),
-    "Prompt Engineering": (
-      <Code className="w-4 h-4 dark:text-purple-500 text-purple-950" />
-    ),
-    "Automação de Processos": (
-      <Code className="w-4 h-4 dark:text-pink-400 text-black" />
-    ),
-    "Process Automation": (
-      <Code className="w-4 h-4 dark:text-pink-400 text-black" />
-    ),
-    ShadcnUI: <SiShadcnui className="w-4 h-4" />,
-  };
-
-  return iconMap[tech] || <Code className="w-4 h-4 text-gray-400" />;
-};
 
 // ============================================================
 // DATA SECTIONS (Extraído de Home.tsx)
@@ -642,10 +534,13 @@ export default function About() {
             {/* Profile Image */}
             <div className="flex flex-col items-center md:items-end animate-float">
               <div className="relative w-85 h-90 rounded-2xl overflow-hidden shadow-lg shadow-black dark:shadow-red-500/30 border border-black/40 dark:border-red-500/40 bg-gradient-to-br from-black/20 via-black/10 to-black/20 dark:from-red-500/20 dark:via-red-400/10 dark:to-red-500/20 transition-all duration-300 hover:shadow-black dark:hover:shadow-red-500 hover:scale-105 mb-4">
-                <img
-                  src="./img/photo.jpg"
+                <Image
+                  src="/img/photo.jpg"
                   alt="Foto de perfil"
-                  className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity duration-300 "
+                  width={340}
+                  height={360}
+                  className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity duration-300"
+                  priority
                 />
                 <div className="absolute inset-0 rounded-2xl ring-1 dark:ring-red-500/40 ring-black/40 blur-sm"></div>
               </div>
@@ -751,9 +646,11 @@ export default function About() {
 
           {/* Logo da empresa */}
           {exp.logo && (
-            <img
+            <Image
               src={exp.logo}
               alt={exp.company}
+              width={80}
+              height={80}
               className="w-20 h-20 rounded-md object-contain"
             />
           )}

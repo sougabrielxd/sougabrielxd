@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Mail, Phone, Linkedin, Instagram, Github, Send } from "lucide-react";
 import LattesIcon from "@/components/LattesIcon";
 import { useState } from "react";
+import { z } from "zod";
 
 // ============================================================
 // CONTACT DATA
@@ -62,18 +63,49 @@ const contactMethods = [
 export default function Contact() {
   const { language } = useLanguage();
 
+  const contactSchema = z.object({
+    name: z.string().min(2, language === "pt" ? "Nome deve ter pelo menos 2 caracteres" : "Name must be at least 2 characters"),
+    email: z.string().email(language === "pt" ? "Email inválido" : "Invalid email"),
+    message: z.string().min(10, language === "pt" ? "Mensagem deve ter pelo menos 10 caracteres" : "Message must be at least 10 characters"),
+  });
+
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
+  const [fieldErrors, setFieldErrors] = useState<Record<string, string>>({});
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setLoading(true);
     setError(false);
+    setErrorMessage("");
+    setFieldErrors({});
     setSubmitted(false);
 
     const form = e.currentTarget;
     const formData = new FormData(form);
+
+    const data = {
+      name: formData.get("name") as string,
+      email: formData.get("email") as string,
+      message: formData.get("message") as string,
+    };
+
+    // Validação com Zod
+    const validationResult = contactSchema.safeParse(data);
+    
+    if (!validationResult.success) {
+      const errors: Record<string, string> = {};
+      validationResult.error.errors.forEach((err) => {
+        if (err.path[0]) {
+          errors[err.path[0].toString()] = err.message;
+        }
+      });
+      setFieldErrors(errors);
+      setLoading(false);
+      return;
+    }
 
     try {
       const response = await fetch("https://formspree.io/f/xzdpprjk", {
@@ -84,17 +116,25 @@ export default function Contact() {
         },
       });
 
-      if (response.ok) {
-        setSubmitted(true);
-        form.reset();
-        setTimeout(() => setSubmitted(false), 5000);
-      } else {
-        setError(true);
-        setTimeout(() => setError(false), 5000);
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
       }
+
+      setSubmitted(true);
+      form.reset();
+      setTimeout(() => setSubmitted(false), 5000);
     } catch (err) {
+      console.error('Erro ao enviar formulário:', err);
       setError(true);
-      setTimeout(() => setError(false), 5000);
+      setErrorMessage(
+        language === "pt"
+          ? "Erro ao enviar mensagem. Por favor, tente novamente mais tarde."
+          : "Error sending message. Please try again later."
+      );
+      setTimeout(() => {
+        setError(false);
+        setErrorMessage("");
+      }, 5000);
     } finally {
       setLoading(false);
     }
@@ -163,11 +203,9 @@ export default function Contact() {
               </div>
             )}
 
-            {error && (
+            {error && errorMessage && (
               <div className="p-4 mb-4 text-sm text-red-700 bg-red-100 rounded-lg dark:bg-red-200 dark:text-red-800">
-                {language === "pt"
-                  ? "Erro ao enviar mensagem. Tente novamente."
-                  : "Error sending message. Please try again."}
+                {errorMessage}
               </div>
             )}
 
@@ -181,9 +219,15 @@ export default function Contact() {
                   name="name"
                   required
                   placeholder={language === "pt" ? "Seu nome" : "Your name"}
-                  className="w-full px-3 py-2 rounded-lg border border-black/20 
-                  dark:border-red-700/80 bg-background text-black dark:text-white"
+                  className={`w-full px-3 py-2 rounded-lg border bg-background text-black dark:text-white ${
+                    fieldErrors.name
+                      ? "border-red-500 dark:border-red-500"
+                      : "border-black/20 dark:border-red-700/80"
+                  }`}
                 />
+                {fieldErrors.name && (
+                  <p className="text-red-500 text-xs mt-1">{fieldErrors.name}</p>
+                )}
               </div>
 
               <div>
@@ -195,9 +239,15 @@ export default function Contact() {
                   name="email"
                   required
                   placeholder="seu@email.com"
-                  className="w-full px-3 py-2 rounded-lg border border-black/20 
-                  dark:border-red-700/80 bg-background text-black dark:text-white"
+                  className={`w-full px-3 py-2 rounded-lg border bg-background text-black dark:text-white ${
+                    fieldErrors.email
+                      ? "border-red-500 dark:border-red-500"
+                      : "border-black/20 dark:border-red-700/80"
+                  }`}
                 />
+                {fieldErrors.email && (
+                  <p className="text-red-500 text-xs mt-1">{fieldErrors.email}</p>
+                )}
               </div>
 
               <div>
@@ -211,9 +261,15 @@ export default function Contact() {
                   placeholder={
                     language === "pt" ? "Sua mensagem..." : "Your message..."
                   }
-                  className="w-full px-3 py-2 rounded-lg border border-black/20 
-                  dark:border-red-700/80 bg-background text-black dark:text-white"
+                  className={`w-full px-3 py-2 rounded-lg border bg-background text-black dark:text-white ${
+                    fieldErrors.message
+                      ? "border-red-500 dark:border-red-500"
+                      : "border-black/20 dark:border-red-700/80"
+                  }`}
                 />
+                {fieldErrors.message && (
+                  <p className="text-red-500 text-xs mt-1">{fieldErrors.message}</p>
+                )}
               </div>
 
               <Button

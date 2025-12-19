@@ -1,5 +1,6 @@
 "use client"
 
+import { useState, useEffect } from "react";
 import { IoMenu } from "react-icons/io5";
 import MobileMenu from "@/components/MobileMenu";
 
@@ -18,6 +19,46 @@ export default function Navigation({
   language,
   scrollToSection,
 }: NavigationProps) {
+  const [activeSection, setActiveSection] = useState("home");
+
+  useEffect(() => {
+    const sections = ["home", "about", "projects", "contact"];
+    
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.3, rootMargin: "-100px 0px -50% 0px" }
+    );
+
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => {
+      sections.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) observer.unobserve(el);
+      });
+    };
+  }, []);
+
+  const navItems = language === "pt" 
+    ? ["Início", "Sobre", "Projetos", "Contato"]
+    : ["Home", "About", "Projects", "Contact"];
+
+  const sections = ["home", "about", "projects", "contact"];
+
+  const handleNavClick = (section: string, idx: number) => {
+    setActiveSection(section);
+    scrollToSection(section);
+  };
+
   return (
     <nav
       className={`fixed top-6 left-6 z-[9999] flex gap-6 transition-all duration-500 ${
@@ -25,10 +66,19 @@ export default function Navigation({
       }`}
     >
       <div className="hidden md:flex gap-8">
-        <button className="text-sm hover:text-red-500 transition-colors font-semibold" onClick={() => scrollToSection("home")}>Início</button>
-        <button className="text-sm hover:text-red-500 transition-colors font-semibold" onClick={() => scrollToSection("about")}>Sobre</button>
-        <button className="text-sm hover:text-red-500 transition-colors font-semibold" onClick={() => scrollToSection("projects")}>Projetos</button>
-        <button className="text-sm hover:text-red-500 transition-colors font-semibold" onClick={() => scrollToSection("contact")}>Contato</button>
+        {navItems.map((item, idx) => (
+          <button
+            key={idx}
+            onClick={() => handleNavClick(sections[idx], idx)}
+            className={`text-sm transition-colors font-semibold ${
+              activeSection === sections[idx]
+                ? "text-red-500 dark:text-red-500"
+                : "text-black dark:text-white hover:text-red-500 dark:hover:text-red-500"
+            }`}
+          >
+            {item}
+          </button>
+        ))}
       </div>
 
       {/* Menu mobile */}

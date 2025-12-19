@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import Image from "next/image";
 
 // Components
 import MobileMenu from "@/components/MobileMenu";
@@ -85,47 +86,50 @@ export default function Home() {
         {/* Hero Section */}
         <section
           id="home"
-          className="min-h-[calc(100vh-6rem)] flex items-center justify-center relative mb-20"
+          className="min-h-[85vh] md:min-h-[85vh] flex items-center justify-center relative mb-12 md:mb-20 px-4"
         >
-          <div className="text-center">
-            <div className="mb-6 animate-float relative flex justify-center">
-              <img
-                src={theme === "dark" ? "./img/x-red.svg" : "./img/x-dark.svg"}
+          <div className="text-center w-full max-w-4xl">
+            <div className="mb-4 md:mb-6 animate-float relative flex justify-center">
+              <Image
+                src={theme === "dark" ? "/img/x-red.svg" : "/img/x-dark.svg"}
                 alt="Logo"
-                className="transition-all duration-300 h-30"
+                width={120}
+                height={120}
+                className="transition-all duration-300 w-20 h-20 md:w-28 md:h-28"
+                priority
               />
             </div>
 
-            <h1 className="text-5xl md:text-7xl font-extrabold mb-4 leading-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold mb-3 md:mb-4 leading-tight px-2">
               {language === "pt" ? "Olá, sou" : "Hello, I'm"}
               <span className="block text-red-500">Gabriel Lucas</span>
             </h1>
 
-            <p className="text-xl md:text-2xl text-muted-foreground mb-8">
+            <p className="text-sm sm:text-base md:text-xl lg:text-2xl text-muted-foreground mb-6 md:mb-8 px-2 leading-relaxed">
               {language === "pt"
-                ? "Desenvolvedor Front-End"
-                : "Front-End Developer"}
+                ? "Desenvolvedor Full-Stack especializado em automação e IA | Transformo ideias em soluções escaláveis"
+                : "Full-Stack Developer specialized in automation and AI | I transform ideas into scalable solutions"}
             </p>
 
-            <div className="flex justify-center gap-4">
-              <a href="#contact">
-                <Button className="bg-red-500 hover:bg-red-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300 transform hover:scale-105 shadow-lg shadow-red-500/30">
-                  {language === "pt" ? "Entre em Contato" : "Get in Touch"}
+            <div className="flex flex-col sm:flex-row justify-center items-center gap-3 md:gap-4 px-4">
+              <a href="#contact" className="w-full sm:w-auto">
+                <Button className="w-full sm:w-auto bg-red-500 hover:bg-red-600 text-white font-semibold py-2.5 md:py-3 px-4 md:px-6 text-sm md:text-base rounded-lg transition-colors duration-300 transform hover:scale-105 shadow-lg shadow-red-500/30">
+                  {language === "pt" ? "Vamos automatizar seu processo?" : "Let's automate your process?"}
                 </Button>
               </a>
 
-              <a href="/Curriculo.pdf" download>
+              <a href="/Curriculo.pdf" download className="w-full sm:w-auto">
                 <Button
                   variant="outline"
-                  className="bg-transparent border-black/50 dark:border-red-500/50 hover:bg-black/10 dark:hover:bg-red-500/10 text-black dark:text-white font-semibold py-3 px-6 rounded-lg transition-colors duration-300 transform hover:scale-105"
+                  className="w-full sm:w-auto bg-transparent border-black/50 dark:border-red-500/50 hover:bg-black/10 dark:hover:bg-red-500/10 text-black dark:text-white font-semibold py-2.5 md:py-3 px-4 md:px-6 text-sm md:text-base rounded-lg transition-colors duration-300 transform hover:scale-105"
                 >
-                  <FileText className="w-5 h-5 mr-2" />
+                  <FileText className="w-4 h-4 md:w-5 md:h-5 mr-2" />
                   {language === "pt" ? "Baixar CV" : "Download CV"}
                 </Button>
               </a>
             </div>
 
-            <div className="mt-8 flex justify-center gap-6">
+            <div className="mt-6 md:mt-8 flex justify-center gap-4 md:gap-6">
               <a
                 href="https://www.linkedin.com/in/gabriellucasafb/"
                 target="_blank"

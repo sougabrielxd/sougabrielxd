@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useLanguage } from "@/contexts/LanguageContext";
 import {
   ChevronLeft,
@@ -14,41 +15,7 @@ import {
   AlertTriangle,
   Workflow,
 } from "lucide-react";
-import { ReactNode, useState } from "react";
-import { FaVuejs } from "react-icons/fa6";
-import { GrMysql } from "react-icons/gr";
-import {
-  SiCss3,
-  SiDjango,
-  SiDocker,
-  SiFigma,
-  SiFlask,
-  SiGit,
-  SiGithub,
-  SiGitlab,
-  SiHtml5,
-  SiJavascript,
-  SiJira,
-  SiLaravel,
-  SiMongodb,
-  SiN8N,
-  SiNextdotjs,
-  SiNodedotjs,
-  SiNotion,
-  SiPhp,
-  SiPostgresql,
-  SiPostman,
-  SiPython,
-  SiReact,
-  SiShadcnui,
-  SiTailwindcss,
-  SiTrello,
-  SiTypescript,
-  SiVercel,
-  SiVite,
-  SiWordpress,
-} from "react-icons/si";
-import { VscVscode } from "react-icons/vsc";
+import { useState } from "react";
 
 // ============================================================
 // TYPES & CONSTANTS
@@ -71,53 +38,18 @@ interface Project {
   solutions: string;
   developmentProcess: string;
   results: string;
+  metrics?: {
+    users?: string;
+    performance?: string;
+    materials?: string;
+    conversion?: string;
+    [key: string]: string | undefined;
+  };
 }
 
 const PLACEHOLDER_IMAGE = "/window.svg";
 
-// ============================================================
-// TECH ICON MAPPING
-// ============================================================
-
-const getTechIcon = (tech: string): ReactNode => {
-  const iconMap: Record<string, ReactNode> = {
-    JavaScript: <SiJavascript className="w-4 h-4 text-yellow-400" />,
-    TypeScript: <SiTypescript className="w-4 h-4 text-blue-500" />,
-    React: <SiReact className="w-4 h-4 text-sky-500" />,
-    "Next.js": <SiNextdotjs className="w-4 h-4 text-black dark:text-white" />,
-    "Vue.js": <FaVuejs className="w-4 h-4 text-green-500" />,
-    "Tailwind CSS": <SiTailwindcss className="w-4 h-4 text-sky-400" />,
-    TailwindCSS: <SiTailwindcss className="w-4 h-4 text-sky-400" />,
-    Python: <SiPython className="w-4 h-4 text-yellow-500" />,
-    "Node.js": <SiNodedotjs className="w-4 h-4 text-green-500" />,
-    Flask: <SiFlask className="w-4 h-4 text-black" />,
-    Django: <SiDjango className="w-4 h-4 text-green-700" />,
-    PHP: <SiPhp className="w-4 h-4 text-indigo-500" />,
-    Laravel: <SiLaravel className="w-4 h-4 text-red-500" />,
-    MySQL: <GrMysql className="w-4 h-4 text-blue-600" />,
-    PostgreSQL: <SiPostgresql className="w-4 h-4 text-sky-700" />,
-    MongoDB: <SiMongodb className="w-4 h-4 text-green-600" />,
-    Git: <SiGit className="w-4 h-4 text-orange-500" />,
-    GitHub: <SiGithub className="w-4 h-4 text-gray-800 dark:text-gray-200" />,
-    GitLab: <SiGitlab className="w-4 h-4 text-orange-500" />,
-    Docker: <SiDocker className="w-4 h-4 text-blue-400" />,
-    Postman: <SiPostman className="w-4 h-4 text-orange-500" />,
-    Jira: <SiJira className="w-4 h-4 text-blue-600" />,
-    Vite: <SiVite className="w-4 h-4 text-purple-500" />,
-    Vercel: <SiVercel className="w-4 h-4 text-black dark:text-white" />,
-    Figma: <SiFigma className="w-4 h-4 text-pink-500" />,
-    WordPress: <SiWordpress className="w-4 h-4 text-sky-600" />,
-    "VS Code": <VscVscode className="w-4 h-4 text-blue-500" />,
-    N8n: <SiN8N className="w-4 h-4 text-pink-400" />,
-    Trello: <SiTrello className="w-4 h-4 text-blue-600" />,
-    Notion: <SiNotion className="w-4 h-4 text-black dark:text-white" />,
-    HTML: <SiHtml5 className="w-4 h-4 text-orange-500" />,
-    CSS: <SiCss3 className="w-4 h-4 text-blue-400" />,
-    ShadcnUI: <SiShadcnui className="w-4 h-4" />,
-  };
-
-  return iconMap[tech] || <Code className="w-4 h-4 text-gray-400" />;
-};
+import { getTechIcon } from "@/lib/techIcons";
 
 // ============================================================
 // DATA SECTIONS 
@@ -405,10 +337,13 @@ export default function Projects() {
                 className="p-6 rounded-lg border border-black/30 dark:border-red-500/30 bg-gradient-to-br from-black/5 to-black/10 dark:from-red-500/10 dark:to-red-500/10 hover:border-black/60 dark:hover:border-red-500/60 transition-all duration-300 hover:shadow-lg hover:shadow-black/10 dark:hover:shadow-red-500/10 cursor-pointer"
                 onClick={() => handleOpenProjectModal(project)}
               >
-                <img
+                <Image
                   src={project.images?.[0] || PLACEHOLDER_IMAGE}
                   alt={project.title}
+                  width={400}
+                  height={160}
                   className="w-full h-40 object-cover rounded-lg mb-4 shadow-md"
+                  loading="lazy"
                 />
                 <h3 className="text-xl font-bold mb-2">{project.title}</h3>
                 <p className="text-sm text-muted-foreground mb-4 line-clamp-3">
@@ -468,11 +403,14 @@ export default function Projects() {
 
                     return (
                       <>
-                        <img
+                        <Image
                           src={currentImage}
                           alt={`${selectedProject.title} - ${currentImageIndex + 1}`}
+                          width={1200}
+                          height={384}
                           className="w-full h-full object-cover transition-transform duration-500 hover:scale-105 cursor-pointer"
                           onClick={() => setIsLightboxOpen(true)}
+                          priority
                         />
                         {images.length > 1 && (
                           <>
@@ -523,10 +461,13 @@ export default function Projects() {
                                 : "border-black/20 dark:border-red-500/20 hover:border-red-500/50"
                             }`}
                           >
-                            <img
+                            <Image
                               src={img || PLACEHOLDER_IMAGE}
                               alt={`Thumbnail ${idx + 1}`}
+                              width={96}
+                              height={64}
                               className="w-full h-full object-cover"
+                              loading="lazy"
                             />
                           </button>
                         ))}
@@ -663,7 +604,36 @@ export default function Projects() {
                 </p>
               </section>
 
-              {/* 6. Resultados */}
+              {/* 6. Métricas (se disponível) */}
+              {selectedProject.metrics && Object.keys(selectedProject.metrics).length > 0 && (
+                <section className="space-y-4">
+                  <h2 className="text-2xl font-bold flex items-center gap-2">
+                    <Trophy className="w-6 h-6 text-red-500" />
+                    {language === "pt" ? "Métricas de Impacto" : "Impact Metrics"}
+                  </h2>
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    {Object.entries(selectedProject.metrics).map(([key, value]) => (
+                      value && (
+                        <div
+                          key={key}
+                          className="p-4 rounded-lg bg-gradient-to-br from-red-500/10 to-red-400/10 border border-red-500/20"
+                        >
+                          <p className="text-2xl font-bold text-red-500">{value}</p>
+                          <p className="text-sm text-muted-foreground capitalize">
+                            {key === "users" && (language === "pt" ? "Usuários" : "Users")}
+                            {key === "performance" && (language === "pt" ? "Performance" : "Performance")}
+                            {key === "materials" && (language === "pt" ? "Materiais" : "Materials")}
+                            {key === "conversion" && (language === "pt" ? "Conversão" : "Conversion")}
+                            {!["users", "performance", "materials", "conversion"].includes(key) && key}
+                          </p>
+                        </div>
+                      )
+                    ))}
+                  </div>
+                </section>
+              )}
+
+              {/* 7. Resultados */}
               <section className="space-y-4">
                 <h2 className="text-2xl font-bold flex items-center gap-2">
                   <Trophy className="w-6 h-6 text-red-500" />
@@ -727,10 +697,13 @@ export default function Projects() {
                         <ChevronLeft className="w-6 h-6" />
                       </button>
                     )}
-                    <img
+                    <Image
                       src={currentImage}
                       alt={`${selectedProject.title} - lightbox`}
+                      width={1920}
+                      height={1080}
                       className="max-h-[90vh] w-auto max-w-full object-contain rounded-lg shadow-2xl"
+                      priority
                     />
                     {images.length > 1 && (
                       <button

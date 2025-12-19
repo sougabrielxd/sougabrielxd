@@ -4,17 +4,21 @@ import { useTheme } from "@/contexts/ThemeContext";
 const ParticlesComponent: React.FC = () => {
   const { theme } = useTheme();
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const animationFrameRef = useRef<number | null>(null);
 
   useEffect(() => {
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContext("2d", { alpha: true });
     if (!ctx) return;
 
     // Set canvas size
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
+    const setCanvasSize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+    setCanvasSize();
 
     // Particle array
     const particles: Particle[] = [];
@@ -88,29 +92,43 @@ const ParticlesComponent: React.FC = () => {
       }
     };
 
-    // Animation loop
+    // Animation loop - sempre continua mesmo durante scroll
     const animate = () => {
-      ctx!.clearRect(0, 0, canvas!.width, canvas!.height);
+      if (!canvas || !ctx) return;
+      
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       particles.forEach((particle) => {
-        particle.update(canvas!.width, canvas!.height);
-        particle.draw(ctx!);
+        particle.update(canvas.width, canvas.height);
+        particle.draw(ctx);
       });
 
-      drawLines(ctx!);
-      requestAnimationFrame(animate);
+      drawLines(ctx);
+      animationFrameRef.current = requestAnimationFrame(animate);
     };
 
+    // Iniciar animação
     animate();
 
     // Handle window resize
     const handleResize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      setCanvasSize();
+      // Reposicionar partículas se necessário
+      particles.forEach((particle) => {
+        if (particle.x > canvas.width) particle.x = canvas.width - particle.radius;
+        if (particle.y > canvas.height) particle.y = canvas.height - particle.radius;
+      });
     };
 
     window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    
+    // Cleanup
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      if (animationFrameRef.current !== null) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+    };
   }, [theme]);
 
   return (
