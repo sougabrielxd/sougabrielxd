@@ -60,41 +60,51 @@ export default function Navigation({
   };
 
   return (
-    <nav
-      className={`fixed top-6 left-6 z-[9999] flex gap-6 transition-all duration-500 ${
-        isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
-      }`}
-    >
-      <div className="hidden md:flex gap-8">
-        {navItems.map((item, idx) => (
-          <button
-            key={idx}
-            onClick={() => handleNavClick(sections[idx], idx)}
-            className={`text-sm transition-colors font-semibold ${
-              activeSection === sections[idx]
-                ? "text-red-500 dark:text-red-500"
-                : "text-black dark:text-white hover:text-red-500 dark:hover:text-red-500"
-            }`}
-          >
-            {item}
-          </button>
-        ))}
-      </div>
-
-      {/* Menu mobile */}
-      <button
-        className="md:hidden p-2"
-        onClick={() => setIsOpen(!isOpen)}
+    <>
+      <nav
+        className={`fixed top-6 left-6 z-[9999] flex gap-6 transition-all duration-300 ease-in-out ${
+          isVisible 
+            ? "opacity-100 translate-y-0" 
+            : "opacity-0 -translate-y-2 pointer-events-none"
+        }`}
       >
-        <IoMenu size={26} className="dark:text-red-500 text-black"  />
-      </button>
+        <div className="hidden md:flex gap-8">
+          {navItems.map((item, idx) => (
+            <button
+              key={idx}
+              onClick={() => handleNavClick(sections[idx], idx)}
+              className={`text-sm transition-colors font-semibold ${
+                activeSection === sections[idx]
+                  ? "text-red-500"
+                  : "text-black dark:text-white hover:text-red-500 dark:hover:text-red-500"
+              }`}
+            >
+              {item}
+            </button>
+          ))}
+        </div>
+      </nav>
 
+      {/* Menu mobile button - sempre visível, independente do isVisible */}
+      <button
+        className={`md:hidden fixed top-6 left-6 z-[10001] p-2 transition-all duration-300 ease-in-out ${
+          isVisible 
+            ? "opacity-100 translate-y-0" 
+            : "opacity-100 translate-y-0"
+        }`}
+        onClick={() => setIsOpen(!isOpen)}
+        aria-label={language === "pt" ? "Abrir menu" : "Open menu"}
+      >
+        <IoMenu size={26} className="dark:text-red-500 text-red-500"  />
+      </button>
+    
+      {/* MobileMenu renderizado fora do nav para garantir z-index correto */}
       <MobileMenu
         isOpen={isOpen}
         onClose={() => setIsOpen(false)}
         language={language}
         onNavigate={scrollToSection}
       />
-    </nav>
+    </>
   );
 }

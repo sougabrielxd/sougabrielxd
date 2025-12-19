@@ -35,18 +35,31 @@ export default function Home() {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.innerWidth <= 768) {
-        if (window.scrollY > lastScrollY) {
-          setIsVisible(false);
-          setIsOpen(false);
-        } else {
-          setIsVisible(true);
-        }
-        setLastScrollY(window.scrollY);
+      const currentScrollY = window.scrollY;
+      const scrollThreshold = 100; // Só começa a esconder após 100px de scroll
+      
+      // Se estiver no topo, sempre mostrar
+      if (currentScrollY < scrollThreshold) {
+        setIsVisible(true);
+        setLastScrollY(currentScrollY);
+        return;
       }
+
+      // Esconder quando desce, mostrar quando sobe
+      if (currentScrollY > lastScrollY && currentScrollY > scrollThreshold) {
+        setIsVisible(false);
+        // Só fecha o menu mobile ao rolar para baixo (comportamento padrão)
+        if (window.innerWidth <= 768) {
+          setIsOpen(false);
+        }
+      } else if (currentScrollY < lastScrollY) {
+        setIsVisible(true);
+      }
+      
+      setLastScrollY(currentScrollY);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, [lastScrollY]);
 
@@ -66,8 +79,10 @@ export default function Home() {
 
       {/* Theme & Language Buttons */}
       <div
-        className={`fixed top-6 right-6 z-50 flex gap-3 transition-all duration-500 ${
-          isVisible ? "opacity-100" : "opacity-0 pointer-events-none"
+        className={`fixed top-6 right-6 z-50 flex gap-3 transition-all duration-300 ease-in-out ${
+          isVisible 
+            ? "opacity-100 translate-y-0" 
+            : "opacity-0 translate-y-2 pointer-events-none"
         }`}
       >
         <LanguageButton />
@@ -100,7 +115,7 @@ export default function Home() {
               />
             </div>
 
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold mb-3 md:mb-4 leading-tight px-2">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-7xl font-extrabold mb-3 md:mb-4 leading-tight px-2 text-black dark:text-white">
               {language === "pt" ? "Olá, sou" : "Hello, I'm"}
               <span className="block text-red-500">Gabriel Lucas</span>
             </h1>
@@ -121,7 +136,7 @@ export default function Home() {
               <a href="/Curriculo.pdf" download className="w-full sm:w-auto">
                 <Button
                   variant="outline"
-                  className="w-full sm:w-auto bg-transparent border-black/50 dark:border-red-500/50 hover:bg-black/10 dark:hover:bg-red-500/10 text-black dark:text-white font-semibold py-2.5 md:py-3 px-4 md:px-6 text-sm md:text-base rounded-lg transition-colors duration-300 transform hover:scale-105"
+                  className="w-full sm:w-auto bg-transparent border-red-500/50 dark:border-red-500/50 hover:bg-red-500/10 dark:hover:bg-red-500/10 text-red-600 dark:text-white font-semibold py-2.5 md:py-3 px-4 md:px-6 text-sm md:text-base rounded-lg transition-colors duration-300 transform hover:scale-105"
                 >
                   <FileText className="w-4 h-4 md:w-5 md:h-5 mr-2" />
                   {language === "pt" ? "Baixar CV" : "Download CV"}
@@ -166,8 +181,8 @@ export default function Home() {
         <Contact />
       </main>
 
-      <footer className="py-8 px-4 border-t border-black/10 dark:border-red-500/20 text-center text-muted-foreground">
-        <p>
+      <footer className="py-8 px-4 border-t border-red-500/20 dark:border-red-500/20 text-center">
+        <p className="text-gray-700 dark:text-muted-foreground">
           {language === "pt"
             ? "© 2025 Gabriel Lucas. Todos os direitos reservados."
             : "© 2025 Gabriel Lucas. All rights reserved."}

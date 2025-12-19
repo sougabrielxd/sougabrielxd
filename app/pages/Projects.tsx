@@ -14,8 +14,9 @@ import {
   Trophy,
   AlertTriangle,
   Workflow,
+  Clock,
 } from "lucide-react";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 
 // ============================================================
 // TYPES & CONSTANTS
@@ -38,6 +39,7 @@ interface Project {
   solutions: string;
   developmentProcess: string;
   results: string;
+  noLongerInvolved?: boolean; // Indica se não participa mais do projeto
   metrics?: {
     users?: string;
     performance?: string;
@@ -62,14 +64,14 @@ const projects: Project[] = [
     description:
       "Em desenvolvimento",
     fullDescription:
-      "Atuei como Desenvolvedor Front-end na criação do site institucional para o Conecc. O projeto envolveu a concepção de um design moderno e responsivo, alinhado à identidade visual do Conecc, utilizando React e TailwindCSS para garantir uma experiência de usuário fluida e acessível em diversos dispositivos. O site apresenta informações essenciais sobre os serviços oferecidos, equipe, localização e contato, facilitando o acesso dos usuários às informações do evento.",
-    tags: ["TypeScript", "Next.js", "TailwindCSS"],
+      "Atuei como Desenvolvedor Front-end na criação do site institucional para o Conecc. O projeto envolveu a concepção de um design moderno e responsivo, alinhado à identidade visual do Conecc, utilizando React e TailwindCSS para garantir uma experiência de usuário fluida e acessível em diversos dispositivos. O site apresenta informações essenciais sobre os serviços oferecidos, equipe, localização e contato, facilitando o acesso dos usuários às informações do evento. O CONECC é um evento médico que reúne profissionais e estudantes da área da saúde para atualização científica, troca de experiências e networking. Esta landing page apresenta todas as informações do evento de forma clara, acessível e otimizada para conversão.",
+    tags: ["React", "TypeScript", "Vite", "TailwindCSS"],
     link: "#",
     github: "#",
     status: "Em desenvolvimento",
     featured: false,
     year: 2025,
-    images: [""],
+    images: [],
     role: "Desenvolvedor Front-end",
     challenges: "Garantir um design moderno e responsivo alinhado à identidade visual do cartório, que é tradicional.",
     solutions: "Utilização de uma paleta de cores sóbria e tipografia moderna, com foco em acessibilidade e performance (React + TailwindCSS).",
@@ -106,7 +108,7 @@ const projects: Project[] = [
     tags: ["React", "PHP", "Laravel", "MySQL", "TailwindCSS"],
     link: "https://learnskills.com.br",
     github: "#",
-    status: "Em desenvolvimento",
+    status: "Não participo mais",
     featured: false,
     year: 2025,
     images: ["https://ik.imagekit.io/o8urkd2xn/learnskills3.jpg", "https://ik.imagekit.io/o8urkd2xn/learnskills2.jpg"],
@@ -172,10 +174,17 @@ const getStatusColor = (status: string) => {
       return "border-green-500 text-green-500 bg-green-500/10";
     case "Em desenvolvimento":
     case "In development":
-      return "border-yellow-500 text-yellow-500 bg-yellow-500/10";
+      return "border-purple-500 text-purple-600 dark:text-purple-400 bg-purple-500/10 dark:bg-purple-500/10";
+    case "Não participo mais":
+    case "No longer involved":
+      return "border-orange-500 text-orange-600 dark:text-orange-400 bg-orange-500/10 dark:bg-orange-500/10";
     default:
       return "border-gray-500 text-gray-500 bg-gray-500/10";
   }
+};
+
+const getInvolvementTagColor = () => {
+  return "border-orange-500 text-orange-600 dark:text-orange-400 bg-orange-500/10 dark:bg-orange-500/10";
 };
 
 // ============================================================
@@ -214,8 +223,9 @@ export default function Projects() {
     }
   `;
 
-  // Localiza os dados do projeto
-  const localizedProjects: Project[] = projects.map((project) => {
+  // Localiza os dados do projeto (otimizado com useMemo)
+  const localizedProjects: Project[] = useMemo(() => {
+    return projects.map((project) => {
     if (language === "en") {
       // Mapeamento manual de tradução para os projetos
       const enProject = { ...project };
@@ -225,7 +235,7 @@ export default function Projects() {
             "Learn Skills is a digital publishing platform offering a virtual bookshelf with free educational materials focused on technology, programming, and health.";
           enProject.fullDescription =
             "Learn Skills is a digital online publishing platform that provides a virtual bookshelf of free educational materials and books, focused on technology, programming, and health. It allows users to explore, read online, and submit their own materials for publication.The project was built using React 18, Tailwind CSS, and Vite on the front end to ensure high performance, responsiveness, and a modern user interface. he back end was developed with Laravel (PHP) for content management, authentication, and material submissions. key features include: Virtual Bookshelf: digital catalog with books and educational materials; Online Reading: integrated PDF viewer; Material Submission: system for authors to submit their works; Editorial Board & FAQ: team information and user support; Responsive Design: adaptable layout across devices. I worked as a full-stack developer, contributing to both the front-end (components, layout, and UX improvements) and the back-end, including route handling, database integration, and submission validation.";
-          enProject.status = "In production";
+          enProject.status = "No longer involved";
           break;
         case "cowatch":
           enProject.description =
@@ -245,7 +255,8 @@ export default function Projects() {
       return enProject;
     }
     return project;
-  });
+    });
+  }, [language]);
 
   const featuredProject = localizedProjects.find((p) => p.featured);
   const otherProjects = localizedProjects.filter((p) => !p.featured);
@@ -253,12 +264,12 @@ export default function Projects() {
   return (
     <section id="projects" className="py-20 px-4 relative">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-red-500 dark:text-white">
           {language === "pt" ? "Projetos" : "Projects"}
         </h1>
         <p className="text-lg text-muted-foreground mb-8">
           {language === "pt"
-            ? "Confira alguns dos projeto em que "
+            ? "Confira alguns dos projetos em que "
             : "Check out some of the projects I've "}
           <span className="text-black dark:text-red-500 font-semibold">
             {language === "pt"
@@ -273,14 +284,14 @@ export default function Projects() {
         {/* Featured Project */}
         {featuredProject && (
           <section className="mb-20">
-            <h2 className="text-2xl font-bold mb-6">
+            <h2 className="text-2xl font-bold mb-6 text-red-500 dark:text-white">
               {language === "pt" ? "Projeto Destaque" : "Featured Project"}
             </h2>
             <div
-              className="border border-black dark:border-red-500/50 rounded-lg p-8 
+              className="border border-red-500/50 dark:border-red-500/50 rounded-lg p-8 
               bg-gradient-to-br dark:from-red-500/10 dark:to-red-400/10 
               dark:hover:border-red-500 dark:hover:from-red-500/20 dark:hover:to-red-400/20
-              from-black/5
+              from-red-500/10 to-red-400/10 hover:border-red-500 hover:from-red-500/20 hover:to-red-400/20
               transition-all duration-300 
               hover:shadow-lg dark:hover:shadow-red-500/20 hover:shadow-black/20
               cursor-pointer"
@@ -305,20 +316,30 @@ export default function Projects() {
                     {featuredProject.tags.map((tag, tagIdx) => (
                       <span
                         key={tagIdx}
-                        className="px-3 py-1 rounded-full text-xs flex items-center gap-2 bg-gradient-to-r dark:from-red-500/20 dark:to-red-400/20 border dark:border-red-500/50 dark:hover:border-red-500 text-black dark:text-white from-gray-700/20 to-black/20 border-black/50 hover:border-black transition-all duration-300"
+                        className="px-3 py-1 rounded-full text-xs flex items-center gap-2 bg-gradient-to-r dark:from-red-500/20 dark:to-red-400/20 border dark:border-red-500/50 dark:hover:border-red-500 text-gray-800 dark:text-white from-red-500/20 to-red-400/20 border-red-500/50 hover:border-red-500 transition-all duration-300"
                       >
                         {getTechIcon(tag)}
                         {tag}
                       </span>
                     ))}
                   </div>
-                  <span
-                    className={`px-3 py-1 rounded-full text-sm font-semibold border ${getStatusColor(
-                      featuredProject.status
-                    )}`}
-                  >
-                    {featuredProject.status}
-                  </span>
+                  <div className="flex flex-wrap gap-2 items-center">
+                    <span
+                      className={`px-3 py-1 rounded-full text-sm font-semibold border ${getStatusColor(
+                        featuredProject.status
+                      )}`}
+                    >
+                      {featuredProject.status}
+                    </span>
+                    {featuredProject.noLongerInvolved && (
+                      <span
+                        className={`px-3 py-1 rounded-full text-xs font-semibold border flex items-center gap-1.5 ${getInvolvementTagColor()}`}
+                      >
+                        <Clock className="w-3 h-3" />
+                        {language === "pt" ? "Não participo mais" : "No longer involved"}
+                      </span>
+                    )}
+                  </div>
                 </div>
               </div>
             </div>
@@ -327,14 +348,14 @@ export default function Projects() {
 
         {/* Other Projects */}
         <section>
-          <h2 className="text-2xl font-bold mb-6">
+          <h2 className="text-2xl font-bold mb-6 text-red-500 dark:text-white">
             {language === "pt" ? "Outros Projetos" : "Other Projects"}
           </h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {otherProjects.map((project, idx) => (
               <div
                 key={idx}
-                className="p-6 rounded-lg border border-black/30 dark:border-red-500/30 bg-gradient-to-br from-black/5 to-black/10 dark:from-red-500/10 dark:to-red-500/10 hover:border-black/60 dark:hover:border-red-500/60 transition-all duration-300 hover:shadow-lg hover:shadow-black/10 dark:hover:shadow-red-500/10 cursor-pointer"
+                className="p-6 rounded-lg border border-red-500/30 dark:border-red-500/30 bg-gradient-to-br from-red-500/10 to-red-400/10 dark:from-red-500/10 dark:to-red-500/10 hover:border-red-500/60 dark:hover:border-red-500/60 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/20 dark:hover:shadow-red-500/10 cursor-pointer"
                 onClick={() => handleOpenProjectModal(project)}
               >
                 <Image
@@ -353,20 +374,30 @@ export default function Projects() {
                   {project.tags.map((tag, tagIdx) => (
                     <span
                       key={tagIdx}
-                      className="px-3 py-1 rounded-full text-xs flex items-center gap-2 bg-gradient-to-r dark:from-red-500/20 dark:to-red-400/20 border dark:border-red-500/50 dark:hover:border-red-500 text-black dark:text-white from-gray-700/20 to-black/20 border-black/50 hover:border-black transition-all duration-300"
+                      className="px-3 py-1 rounded-full text-xs flex items-center gap-2 bg-gradient-to-r dark:from-red-500/20 dark:to-red-400/20 border dark:border-red-500/50 dark:hover:border-red-500 text-gray-800 dark:text-white from-red-500/20 to-red-400/20 border-red-500/50 hover:border-red-500 transition-all duration-300"
                     >
                       {getTechIcon(tag)}
                       {tag}
                     </span>
                   ))}
                 </div>
-                <span
-                  className={`px-3 py-1 rounded-full text-xs font-semibold border ${getStatusColor(
-                    project.status
-                  )}`}
-                >
-                  {project.status}
-                </span>
+                <div className="flex flex-wrap gap-2 items-center">
+                  <span
+                    className={`px-3 py-1 rounded-full text-xs font-semibold border ${getStatusColor(
+                      project.status
+                    )}`}
+                  >
+                    {project.status}
+                  </span>
+                  {project.noLongerInvolved && (
+                    <span
+                      className={`px-3 py-1 rounded-full text-xs font-semibold border flex items-center gap-1.5 ${getInvolvementTagColor()}`}
+                    >
+                      <Clock className="w-3 h-3" />
+                      {language === "pt" ? "Não participo mais" : "No longer involved"}
+                    </span>
+                  )}
+                </div>
               </div>
             ))}
           </div>
@@ -377,13 +408,14 @@ export default function Projects() {
       {selectedProject !== null && (
         <div className="fixed inset-0 bg-black/80 z-[9999] flex items-center justify-center p-4 transition-opacity duration-300" style={{ opacity: selectedProject ? 1 : 0 }}>
           <style>{scrollbarHideStyle}</style>
-          <div className="bg-background border border-black/30 dark:border-red-500/30 rounded-lg max-w-6xl w-full max-h-[95vh] transition-transform duration-300 ease-out relative" style={{ transform: selectedProject ? 'scale(1)' : 'scale(0.95)' }}>
+          <div className="bg-background border border-red-500/30 dark:border-red-500/30 rounded-lg max-w-6xl w-full max-h-[95vh] transition-transform duration-300 ease-out relative" style={{ transform: selectedProject ? 'scale(1)' : 'scale(0.95)' }}>
             {/* Modal Header */}
-            <div className="sticky top-0 flex items-center justify-between p-6 border-b border-black/10 dark:border-red-500/10 bg-background z-10">
-              <h2 className="text-2xl font-bold">{selectedProject.title}</h2>
+            <div className="sticky top-0 flex items-center justify-between p-6 border-b border-red-500/10 dark:border-red-500/10 bg-background z-10">
+              <h2 className="text-2xl font-bold text-red-500 dark:text-white">{selectedProject.title}</h2>
               <button
                 onClick={handleCloseProjectModal}
                 className="p-2 hover:bg-black/10 dark:hover:bg-red-500/10 cursor-pointer rounded-lg transition-colors"
+                aria-label={language === "pt" ? "Fechar modal" : "Close modal"}
               >
                 <X className="w-6 h-6" />
               </button>
@@ -422,6 +454,7 @@ export default function Projects() {
                                 )
                               }
                               className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/50 hover:bg-black/70 text-white transition-all duration-300 transform hover:scale-110"
+                              aria-label={language === "pt" ? "Imagem anterior" : "Previous image"}
                             >
                               <ChevronLeft className="w-6 h-6" />
                             </button>
@@ -432,6 +465,7 @@ export default function Projects() {
                                 )
                               }
                               className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/50 hover:bg-black/70 text-white transition-all duration-300 transform hover:scale-110"
+                              aria-label={language === "pt" ? "Próxima imagem" : "Next image"}
                             >
                               <ChevronRight className="w-6 h-6" />
                             </button>
@@ -458,7 +492,7 @@ export default function Projects() {
                             className={`w-24 h-16 rounded-lg overflow-hidden flex-shrink-0 border-2 transition-all ${
                               currentImageIndex === idx
                                 ? "border-red-500 shadow-md"
-                                : "border-black/20 dark:border-red-500/20 hover:border-red-500/50"
+                                : "border-red-500/20 dark:border-red-500/20 hover:border-red-500/50"
                             }`}
                           >
                             <Image
@@ -478,11 +512,11 @@ export default function Projects() {
               </div>
 
               {/* 2. Visão Geral e Links */}
-              <div className="grid md:grid-cols-3 gap-6 border-b pb-6 border-black/10 dark:border-red-500/10">
+              <div className="grid md:grid-cols-3 gap-6 border-b pb-6 border-red-500/10 dark:border-red-500/10">
                 {/* Coluna 1: Papel e Status */}
                 <div className="space-y-4">
                   {/* Papel */}
-                  <div className="flex items-center gap-3 p-3 rounded-lg bg-gray-100/50 dark:bg-gray-800/50 border border-black/10 dark:border-red-500/10">
+                  <div className="flex items-center gap-3 p-3 rounded-lg bg-gray-100/50 dark:bg-gray-800/50 border border-red-500/10 dark:border-red-500/10">
                     <User className="w-5 h-5 text-red-500" />
                     <div>
                       <p className="text-xs font-medium text-muted-foreground">
@@ -492,17 +526,27 @@ export default function Projects() {
                     </div>
                   </div>
                   {/* Status */}
-                  <div className="flex items-center gap-3 p-3 rounded-lg bg-gray-100/50 dark:bg-gray-800/50 border border-black/10 dark:border-red-500/10">
-                    <span
-                      className={`px-3 py-1 rounded-full text-sm font-semibold border ${getStatusColor(
-                        selectedProject.status
-                      )}`}
-                    >
-                      {selectedProject.status}
-                    </span>
-                    <span className="text-sm text-muted-foreground">
-                      {selectedProject.year}
-                    </span>
+                  <div className="flex flex-col gap-2 p-3 rounded-lg bg-gray-100/50 dark:bg-gray-800/50 border border-red-500/10 dark:border-red-500/10">
+                    <div className="flex items-center gap-3">
+                      <span
+                        className={`px-3 py-1 rounded-full text-sm font-semibold border ${getStatusColor(
+                          selectedProject.status
+                        )}`}
+                      >
+                        {selectedProject.status}
+                      </span>
+                      <span className="text-sm text-muted-foreground">
+                        {selectedProject.year}
+                      </span>
+                    </div>
+                    {selectedProject.noLongerInvolved && (
+                      <span
+                        className={`px-3 py-1 rounded-full text-xs font-semibold border flex items-center gap-1.5 w-fit ${getInvolvementTagColor()}`}
+                      >
+                        <Clock className="w-3 h-3" />
+                        {language === "pt" ? "Não participo mais" : "No longer involved"}
+                      </span>
+                    )}
                   </div>
                 </div>
 
@@ -520,7 +564,7 @@ export default function Projects() {
                       {selectedProject.tags.map((tag: string, idx: number) => (
                         <span
                           key={idx}
-                          className="px-3 py-1 rounded-full text-xs flex items-center gap-2 bg-gradient-to-r dark:from-red-500/20 dark:to-red-400/20 border dark:border-red-500/50 dark:hover:border-red-500 text-black dark:text-white from-gray-700/20 to-black/20 border-black/50 hover:border-black transition-all duration-300"
+                          className="px-3 py-1 rounded-full text-xs flex items-center gap-2 bg-gradient-to-r dark:from-red-500/20 dark:to-red-400/20 border dark:border-red-500/50 dark:hover:border-red-500 text-gray-800 dark:text-white from-red-500/20 to-red-400/20 border-red-500/50 hover:border-red-500 transition-all duration-300"
                         >
                           {getTechIcon(tag)}
                           {tag}
@@ -531,25 +575,30 @@ export default function Projects() {
 
                   {/* Links */}
                   <div className="flex gap-3 pt-2">
-                    <a
-                      href={selectedProject.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex-1"
-                    >
-                      <button className="w-full px-4 py-2 rounded-lg bg-red-500 hover:bg-red-600 text-white font-semibold transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center gap-2 shadow-md">
-                        <ExternalLink className="w-4 h-4" />
-                        {language === "pt" ? "Ver Projeto" : "View Project"}
-                      </button>
-                    </a>
-                    {selectedProject.github !== "#" && (
+                    {selectedProject.link && selectedProject.link !== "#" && (
+                      <a
+                        href={selectedProject.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex-1"
+                      >
+                        <button className="w-full px-4 py-2 rounded-lg bg-red-500 hover:bg-red-600 text-white font-semibold transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center gap-2 shadow-md">
+                          <ExternalLink className="w-4 h-4" />
+                          {language === "pt" ? "Ver Projeto" : "View Project"}
+                        </button>
+                      </a>
+                    )}
+                    {selectedProject.github && selectedProject.github !== "#" && (
                       <a
                         href={selectedProject.github}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <button className="px-4 py-2 rounded-lg border border-black/20 cursor-pointer dark:border-red-500/30 hover:bg-black/5 dark:hover:bg-red-500/10 transition-colors shadow-md">
-                          <Github className="w-4 h-4" />
+                        <button 
+                          className="px-4 py-2 rounded-lg border border-red-500/30 cursor-pointer dark:border-red-500/30 hover:bg-red-500/10 dark:hover:bg-red-500/10 transition-colors shadow-md"
+                          aria-label={language === "pt" ? "Ver código no GitHub" : "View code on GitHub"}
+                        >
+                          <Github className="w-4 h-4 text-gray-800 dark:text-white" />
                         </button>
                       </a>
                     )}
@@ -686,6 +735,7 @@ export default function Projects() {
                     <button
                       onClick={handleClose}
                       className="absolute top-4 right-4 p-2 rounded-full bg-black/70 hover:bg-black/90 text-white transition-colors"
+                      aria-label={language === "pt" ? "Fechar lightbox" : "Close lightbox"}
                     >
                       <X className="w-6 h-6" />
                     </button>
@@ -693,6 +743,7 @@ export default function Projects() {
                       <button
                         onClick={handlePrev}
                         className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/70 hover:bg-black/90 text-white transition-all duration-300 transform hover:scale-110"
+                        aria-label={language === "pt" ? "Imagem anterior" : "Previous image"}
                       >
                         <ChevronLeft className="w-6 h-6" />
                       </button>
@@ -709,6 +760,7 @@ export default function Projects() {
                       <button
                         onClick={handleNext}
                         className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/70 hover:bg-black/90 text-white transition-all duration-300 transform hover:scale-110"
+                        aria-label={language === "pt" ? "Próxima imagem" : "Next image"}
                       >
                         <ChevronRight className="w-6 h-6" />
                       </button>

@@ -17,42 +17,42 @@ const contactMethods = [
     label: "Email",
     value: "gabriellucasafb@gmail.com",
     href: "https://mail.google.com/mail/u/0/?fs=1&to=gabriellucasafb@gmail.com&su=Contato+do+Portf%C3%B3lio&body=Ol%C3%A1,+vim+pelo+seu+Portf%C3%B3lio+e+gostaria+de+falar+sobre...&tf=cm",
-    color: "border dark:border-red-700/80 border-black",
+    color: "border dark:border-red-700/80 border-red-500",
   },
   {
     icon: Phone,
     label: "Telefone",
     value: "+55 (87) 99181-1562",
     href: "https://wa.me//5587991811562?text=Olá,%20gostaria%20de%20tirar%20algumas%20dúvidas",
-    color: "border dark:border-red-700/80 border-black",
+    color: "border dark:border-red-700/80 border-red-500",
   },
   {
     icon: LattesIcon,
     label: "Lattes",
     value: "gabriellucasafb",
     href: "https://lattes.cnpq.br/",
-    color: "border dark:border-red-700/80 border-black",
+    color: "border dark:border-red-700/80 border-red-500",
   },
   {
     icon: Linkedin,
     label: "LinkedIn",
     value: "Gabriel Lucas",
     href: "https://www.linkedin.com/in/gabriellucasafb/",
-    color: "border dark:border-red-700/80 border-black",
+    color: "border dark:border-red-700/80 border-red-500",
   },
   {
     icon: Instagram,
     label: "Instagram",
     value: "@gabriellucasafb",
     href: "https://www.instagram.com/gabriellucasafb/",
-    color: "border dark:border-red-700/80 border-black",
+    color: "border dark:border-red-700/80 border-red-500",
   },
   {
     icon: Github,
     label: "GitHub",
     value: "sougabrielxd",
     href: "https://github.com/sougabrielxd",
-    color: "border dark:border-red-700/80 border-black",
+    color: "border dark:border-red-700/80 border-red-500",
   },
 ];
 
@@ -143,7 +143,7 @@ export default function Contact() {
   return (
     <section id="contact" className="py-20 px-4 relative">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-red-500 dark:text-white">
           {language === "pt" ? "Contato" : "Contact"}
         </h1>
 
@@ -156,7 +156,7 @@ export default function Contact() {
         <div className="grid md:grid-cols-2 gap-12">
           {/* Contact Methods */}
           <section>
-            <h2 className="text-2xl font-bold mb-6">
+            <h2 className="text-2xl font-bold mb-6 text-red-500 dark:text-white">
               {language === "pt" ? "Minhas Redes" : "My network"}
             </h2>
 
@@ -170,18 +170,18 @@ export default function Contact() {
                     target="_blank"
                     rel="noopener noreferrer"
                     className={`flex items-center p-4 rounded-lg border-2 ${method.color}
-                    bg-gradient-to-r from-black/5 to-transparent dark:from-red-500/5 
-                    hover:from-black/10 hover:to-black/5 dark:hover:from-red-500/10 
+                    bg-gradient-to-r from-red-500/5 to-transparent dark:from-red-500/5 
+                    hover:from-red-500/10 hover:to-red-500/5 dark:hover:from-red-500/10 
                     transition-all duration-300`}
                   >
-                    <Icon className="w-6 h-6 mr-4 dark:text-red-500 text-black" />
+                    <Icon className="w-6 h-6 mr-4 dark:text-red-500 text-red-500" />
                     <div>
-                      <p className="text-sm text-muted-foreground">
+                      <p className="text-sm text-gray-600 dark:text-muted-foreground">
                         {language === "en" && method.label === "Telefone"
                           ? "Phone"
                           : method.label}
                       </p>
-                      <p className="text-lg font-bold">{method.value}</p>
+                      <p className="text-lg font-bold text-gray-900 dark:text-white">{method.value}</p>
                     </div>
                   </a>
                 );
@@ -191,7 +191,7 @@ export default function Contact() {
 
           {/* Contact Form */}
           <section>
-            <h2 className="text-2xl font-bold mb-6">
+            <h2 className="text-2xl font-bold mb-6 text-red-500 dark:text-white">
               {language === "pt" ? "Envie uma Mensagem" : "Send a Message"}
             </h2>
 
@@ -211,7 +211,7 @@ export default function Contact() {
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
-                <label className="block text-sm font-semibold mb-1">
+                <label className="block text-sm font-semibold mb-1 text-gray-800 dark:text-white">
                   {language === "pt" ? "Nome" : "Name"}
                 </label>
                 <input
@@ -219,19 +219,19 @@ export default function Contact() {
                   name="name"
                   required
                   placeholder={language === "pt" ? "Seu nome" : "Your name"}
-                  className={`w-full px-3 py-2 rounded-lg border bg-background text-black dark:text-white ${
+                  className={`w-full px-3 py-2 rounded-lg border bg-white dark:bg-background text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-400 ${
                     fieldErrors.name
                       ? "border-red-500 dark:border-red-500"
-                      : "border-black/20 dark:border-red-700/80"
+                      : "border-red-500/30 dark:border-red-700/80"
                   }`}
                 />
                 {fieldErrors.name && (
-                  <p className="text-red-500 text-xs mt-1">{fieldErrors.name}</p>
+                  <p className="text-red-600 dark:text-red-400 text-xs mt-1 font-medium">{fieldErrors.name}</p>
                 )}
               </div>
 
               <div>
-                <label className="block text-sm font-semibold mb-1">
+                <label className="block text-sm font-semibold mb-1 text-gray-800 dark:text-white">
                   Email
                 </label>
                 <input
@@ -239,19 +239,19 @@ export default function Contact() {
                   name="email"
                   required
                   placeholder="seu@email.com"
-                  className={`w-full px-3 py-2 rounded-lg border bg-background text-black dark:text-white ${
+                  className={`w-full px-3 py-2 rounded-lg border bg-white dark:bg-background text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-400 ${
                     fieldErrors.email
                       ? "border-red-500 dark:border-red-500"
-                      : "border-black/20 dark:border-red-700/80"
+                      : "border-red-500/30 dark:border-red-700/80"
                   }`}
                 />
                 {fieldErrors.email && (
-                  <p className="text-red-500 text-xs mt-1">{fieldErrors.email}</p>
+                  <p className="text-red-600 dark:text-red-400 text-xs mt-1 font-medium">{fieldErrors.email}</p>
                 )}
               </div>
 
               <div>
-                <label className="block text-sm font-semibold mb-1">
+                <label className="block text-sm font-semibold mb-1 text-gray-800 dark:text-white">
                   {language === "pt" ? "Mensagem" : "Message"}
                 </label>
                 <textarea
@@ -261,21 +261,21 @@ export default function Contact() {
                   placeholder={
                     language === "pt" ? "Sua mensagem..." : "Your message..."
                   }
-                  className={`w-full px-3 py-2 rounded-lg border bg-background text-black dark:text-white ${
+                  className={`w-full px-3 py-2 rounded-lg border bg-white dark:bg-background text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-400 ${
                     fieldErrors.message
                       ? "border-red-500 dark:border-red-500"
-                      : "border-black/20 dark:border-red-700/80"
+                      : "border-red-500/30 dark:border-red-700/80"
                   }`}
                 />
                 {fieldErrors.message && (
-                  <p className="text-red-500 text-xs mt-1">{fieldErrors.message}</p>
+                  <p className="text-red-600 dark:text-red-400 text-xs mt-1 font-medium">{fieldErrors.message}</p>
                 )}
               </div>
 
               <Button
                 type="submit"
                 disabled={loading}
-                className="w-full rounded-lg px-4 py-2 bg-gradient-to-r from-black to-gray-800 dark:from-red-500 dark:to-red-700 hover:to-gray-900 dark:hover:to-red-800 text-white border-0 shadow-sm hover:shadow-xl hover:shadow-black/20 dark:hover:shadow-red-500/20 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed text-sm flex items-center justify-center gap-2"
+                className="w-full rounded-lg px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 dark:from-red-500 dark:to-red-700 hover:from-red-600 hover:to-red-700 dark:hover:to-red-800 text-white border-0 shadow-sm hover:shadow-xl hover:shadow-red-500/20 dark:hover:shadow-red-500/20 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed text-sm flex items-center justify-center gap-2"
               >
                 {loading ? (
                   language === "pt" ? "Enviando..." : "Sending..."

@@ -37,7 +37,7 @@ import {
 import { VscVscode } from "react-icons/vsc";
 import { DiRedis } from "react-icons/di";
 import { AiOutlineFundProjectionScreen } from "react-icons/ai";
-import { MdIntegrationInstructions } from "react-icons/md";
+import { MdIntegrationInstructions, MdApi } from "react-icons/md";
 import { Monitor, Server, Wrench, Cpu } from "lucide-react";
 
 export const getTechIcon = (tech: string): ReactNode => {
@@ -69,12 +69,15 @@ export const getTechIcon = (tech: string): ReactNode => {
     Figma: <SiFigma className="w-4 h-4 text-pink-500" />,
     WordPress: <SiWordpress className="w-4 h-4 text-sky-600" />,
     "VS Code": <VscVscode className="w-4 h-4 text-blue-500" />,
-    N8n: <SiN8N className="w-4 h-4 text-pink-400" />,
-    Redis: <DiRedis className="w-4 h-4 text-red-500" />,
+    N8n: <SiN8N className="w-4 h-4 text-pink-500 dark:text-pink-400" />,
+    n8n: <SiN8N className="w-4 h-4 text-pink-500 dark:text-pink-400" />,
+    Redis: <DiRedis className="w-4 h-4 text-red-600 dark:text-red-500" />,
     Integration: <MdIntegrationInstructions className="w-4 h-4 text-blue-500" />,
-    Chatwoot: <SiChatwoot className="w-4 h-4 text-green-500" />,
-    Trello: <SiTrello className="w-4 h-4 text-blue-600" />,
+    Chatwoot: <SiChatwoot className="w-4 h-4 text-green-600 dark:text-green-500" />,
+    EvolutionAPI: <MdApi className="w-4 h-4 text-blue-600 dark:text-blue-500" />,
+    Trello: <SiTrello className="w-4 h-4 text-blue-600 dark:text-blue-500" />,
     Notion: <SiNotion className="w-4 h-4 text-black dark:text-white" />,
+    Easypanel: <Server className="w-4 h-4 text-purple-600 dark:text-purple-500" />,
     HTML: <SiHtml5 className="w-4 h-4 text-orange-500" />,
     CSS: <SiCss3 className="w-4 h-4 text-blue-400" />,
     "UI/UX": <Monitor className="w-4 h-4" />,

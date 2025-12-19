@@ -55,8 +55,8 @@ const ScrollToTop: React.FC = () => {
             animate-in fade-in slide-in-from-bottom-4
             ${
               theme === "dark"
-                ? "bg-red-800/80 text-black shadow-lg shadow-red-500/10 hover:bg-red-700 hover:shadow-red-500/40 focus-visible:outline-black"
-                : "bg-black/80 text-white shadow-lg shadow-black/10 hover:bg-gray-900 hover:shadow-black/30 focus-visible:outline-white"
+                ? "bg-red-500/90 text-white shadow-lg shadow-red-500/30 hover:bg-red-600 hover:shadow-red-500/50 focus-visible:outline-red-400"
+                : "bg-red-500/90 text-white shadow-lg shadow-red-500/30 hover:bg-red-600 hover:shadow-red-500/50 focus-visible:outline-red-400"
             }
             sm:bottom-6 sm:right-6
             max-sm:bottom-4 max-sm:right-4

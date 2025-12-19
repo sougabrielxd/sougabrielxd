@@ -35,17 +35,17 @@ const skillsData = {
       {
         name: "Front-end",
         icon: Monitor,
-        skills: ["React", "Vue.js", "Next.js", "Tailwind CSS", "ShadcnUI"],
+        skills: ["React", "Vue.js", "Next.js", "Tailwind CSS", "ShadcnUI", "HTML", "CSS"],
       },
       {
         name: "Back-end",
         icon: Server,
-        skills: ["Node.js", "Flask", "Django", "Laravel"],
+        skills: ["Node.js", "Laravel", "PHP", "Python"],
       },
       {
         name: "Banco de dados",
         icon: Database,
-        skills: ["MySQL", "PostgreSQL"],
+        skills: ["MySQL", "PostgreSQL", "Redis"],
       },
       {
         name: "Ferramentas",
@@ -59,6 +59,8 @@ const skillsData = {
           "Docker",
           "Jira",
           "Trello",
+          "n8n",
+          "WordPress",
         ],
       },
     ],
@@ -67,10 +69,12 @@ const skillsData = {
       description:
         "A tecnologia não para, e eu também não! Atualmente, estou aprofundando meus conhecimentos em:",
       stacks: [
-        "N8n",
         "Engenharia de Prompt",
         "Automação de Processos",
-        "Notion",
+        "Chatwoot",
+        "EvolutionAPI",
+        "Redis",
+        "Easypanel",
       ],
     },
   },
@@ -86,7 +90,7 @@ const skillsData = {
       {
         name: "Front-end",
         icon: Monitor,
-        skills: ["React", "Vue.js", "Next.js", "Tailwind CSS"],
+        skills: ["React", "Vue.js", "Next.js", "Tailwind CSS", "HTML", "CSS"],
       },
       {
         name: "Back-end",
@@ -96,7 +100,7 @@ const skillsData = {
       {
         name: "Databases",
         icon: Database,
-        skills: ["MySQL", "PostgreSQL"],
+        skills: ["MySQL", "PostgreSQL", "Redis"],
       },
       {
         name: "Tools",
@@ -110,6 +114,8 @@ const skillsData = {
           "Docker",
           "Jira",
           "Trello",
+          "n8n",
+          "WordPress",
         ],
       },
     ],
@@ -117,7 +123,7 @@ const skillsData = {
       title: "Stacks I'm Studying",
       description:
         "Technology never stops, and neither do I! I am currently deepening my knowledge in:",
-      stacks: ["N8n", "Prompt Engineering", "Process Automation", "Notion"],
+      stacks: ["Prompt Engineering", "Process Automation", "Chatwoot", "EvolutionAPI", "Redis", "Easypanel"],
     },
   },
 };
@@ -197,7 +203,7 @@ const certificatesData = {
         institution: "SmallTalk",
         year: 2024,
         file: "English_Certificate_B1.pdf",
-        category: "Langueges",
+        category: "Languages",
       },
     ],
   },
@@ -235,10 +241,10 @@ const certificatesData = {
       },
       {
         name: "English Certificate B1",
-        institution: "Fundação Bradesco",
+        institution: "SmallTalk",
         year: 2024,
         file: "English_Certificate_B1.pdf",
-        category: "Langueges",
+        category: "Languages",
       },
     ],
   }
@@ -261,7 +267,7 @@ const experiences = [
     skills: [
       "WordPress",
       "Vue.js",
-      "N8n",
+      "n8n",
       "PostgreSQL",
       "Redis",
       "Chatwoot",
@@ -368,7 +374,7 @@ export default function About() {
       {skills.map((skill, idx) => (
         <span
           key={idx}
-          className="px-3 py-1 rounded-full text-xs flex items-center gap-2 bg-gradient-to-r dark:from-red-500/20 dark:to-red-400/20 border dark:border-red-500/50 dark:hover:border-red-500 text-black dark:text-white from-gray-700/20 to-black/20 border-black/50 hover:border-black transition-all duration-300"
+                      className="px-3 py-1 rounded-full text-xs flex items-center gap-2 bg-gradient-to-r dark:from-red-500/20 dark:to-red-400/20 border dark:border-red-500/50 dark:hover:border-red-500 text-gray-800 dark:text-white from-red-500/20 to-red-400/20 border-red-500/50 hover:border-red-500 transition-all duration-300"
         >
           {getTechIcon(skill)}
           {skill}
@@ -474,7 +480,7 @@ export default function About() {
   return (
     <section id="about" className="py-20 px-4 relative">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">
+        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-red-500 dark:text-white">
           {language === "pt" ? "Sobre Mim" : "About Me"}
         </h1>
         <p className="text-lg text-muted-foreground mb-12">
@@ -485,14 +491,14 @@ export default function About() {
         <div className="grid md:grid-cols-2 gap-12 items-start mb-20">
             {/* Text Content */}
             <div className="space-y-6 text-lg text-muted-foreground leading-relaxed animate-slide-up">
-              <div className="p-6 rounded-lg border border-black/30 dark:border-red-500/30 bg-gradient-to-br from-black/5 to-black/10 dark:from-red-500/10 dark:to-red-500/10 hover:border-black/60 dark:hover:border-red-500/60 transition-all duration-300 hover:shadow-lg hover:shadow-black dark:hover:shadow-red-500">
+              <div className="p-6 rounded-lg border border-red-500/30 dark:border-red-500/30 bg-gradient-to-br from-red-500/10 to-red-400/10 dark:from-red-500/10 dark:to-red-500/10 hover:border-red-500/60 dark:hover:border-red-500/60 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/20 dark:hover:shadow-red-500">
                 <p className="flex items-start gap-3">
-                  <IoIosArrowForward className="w-5 h-5 dark:text-red-500 text-black flex-shrink-0 mt-1" />
+                  <IoIosArrowForward className="w-5 h-5 dark:text-red-500 text-red-500 flex-shrink-0 mt-1" />
                   <span>
                     {language === "pt"
                       ? "Tenho 2 anos de experiência como "
                       : "I have 2 years of experience as "}
-                    <span className="dark:text-red-500 text-black font-semibold">
+                    <span className="dark:text-red-500 text-red-500 font-semibold">
                       {language === "pt"
                         ? "Desenvolvedor Full-Stack"
                         : "Developer Full-Stack"}
@@ -504,12 +510,12 @@ export default function About() {
                 </p>
               </div>
 
-              <div className="p-6 rounded-lg border border-black/30 dark:border-red-500/30 bg-gradient-to-br from-black/5 to-black/10 dark:from-red-500/10 dark:to-red-500/10 hover:border-black/60 dark:hover:border-red-500/60 transition-all duration-300 hover:shadow-lg hover:shadow-black dark:hover:shadow-red-400">
+              <div className="p-6 rounded-lg border border-red-500/30 dark:border-red-500/30 bg-gradient-to-br from-red-500/5 to-red-500/10 dark:from-red-500/10 dark:to-red-500/10 hover:border-red-500/60 dark:hover:border-red-500/60 transition-all duration-300 hover:shadow-lg hover:shadow-red-500 dark:hover:shadow-red-400">
                 <p className="flex items-start gap-3">
-                  <IoIosArrowForward className="w-5 h-5 dark:text-red-500 text-black flex-shrink-0 mt-1" />
+                  <IoIosArrowForward className="w-5 h-5 dark:text-red-500 text-red-500 flex-shrink-0 mt-1" />
                   <span>
                     {language === "pt" ? "Sou uma pessoa " : "I am a person "}
-                    <span className="dark:text-red-400 text-gray-700 font-semibold">
+                    <span className="dark:text-red-400 text-red-500 font-semibold">
                       {language === "pt"
                         ? "dedicada e comprometida"
                         : "dedicated and committed"}
@@ -521,9 +527,9 @@ export default function About() {
                 </p>
               </div>
 
-              <div className="p-6 rounded-lg border border-black/30 dark:border-red-500/30 bg-gradient-to-br from-black/5 to-black/10 dark:from-red-500/10 dark:to-red-500/10 hover:border-black/60 dark:hover:border-red-500/60 transition-all duration-300 hover:shadow-lg hover:shadow-black dark:hover:shadow-red-500">
+              <div className="p-6 rounded-lg border border-red-500/30 dark:border-red-500/30 bg-gradient-to-br from-red-500/5 to-red-500/10 dark:from-red-500/10 dark:to-red-500/10 hover:border-red-500/60 dark:hover:border-red-500/60 transition-all duration-300 hover:shadow-lg hover:shadow-red-500 dark:hover:shadow-red-500">
                 <p className="flex items-start gap-3">
-                  <IoIosArrowForward className="w-5 h-5 dark:text-red-500 text-black flex-shrink-0 mt-1" />
+                  <IoIosArrowForward className="w-5 h-5 dark:text-red-500 text-red-500 flex-shrink-0 mt-1" />
                   <span>
                     {language === "pt"
                       ? "Nascido e crescido em Pernambuco, agora se aventurando no Ceará."
@@ -535,7 +541,7 @@ export default function About() {
 
             {/* Profile Image */}
             <div className="flex flex-col items-center md:items-end animate-float">
-              <div className="relative w-85 h-90 rounded-2xl overflow-hidden shadow-lg shadow-black dark:shadow-red-500/30 border border-black/40 dark:border-red-500/40 bg-gradient-to-br from-black/20 via-black/10 to-black/20 dark:from-red-500/20 dark:via-red-400/10 dark:to-red-500/20 transition-all duration-300 hover:shadow-black dark:hover:shadow-red-500 hover:scale-105 mb-4">
+              <div className="relative w-85 h-90 rounded-2xl overflow-hidden shadow-lg shadow-red-500/30 dark:shadow-red-500/30 border border-red-500/40 dark:border-red-500/40 bg-gradient-to-br from-red-500/20 via-red-500/10 to-red-500/20 dark:from-red-500/20 dark:via-red-400/10 dark:to-red-500/20 transition-all duration-300 hover:shadow-red-500 dark:hover:shadow-red-500 hover:scale-105 mb-4">
                 <Image
                   src="/img/photo.jpg"
                   alt="Foto de perfil"
@@ -544,7 +550,7 @@ export default function About() {
                   className="w-full h-full object-cover opacity-90 hover:opacity-100 transition-opacity duration-300"
                   priority
                 />
-                <div className="absolute inset-0 rounded-2xl ring-1 dark:ring-red-500/40 ring-black/40 blur-sm"></div>
+                <div className="absolute inset-0 rounded-2xl ring-1 dark:ring-red-500/40 ring-red-500/40 blur-sm"></div>
               </div>
             </div>
           </div>
@@ -554,7 +560,7 @@ export default function About() {
 
         {/* Skills Section */}
         <section className="mb-20">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12">
+          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-red-500 dark:text-white">
             {skillsData[language].title}
           </h2>
           <p className="text-xl text-muted-foreground mb-10">
@@ -569,17 +575,17 @@ export default function About() {
                   return (
                     <div
                       key={categoryIdx}
-                      className="p-6 rounded-lg border border-black/30 dark:border-red-500/30 bg-gradient-to-br from-black/5 to-black/10 dark:from-red-500/10 dark:to-red-500/10 hover:border-black/60 dark:hover:border-red-500/60 transition-all duration-300 hover:shadow-lg hover:shadow-black dark:hover:shadow-red-500/40"
+                      className="p-6 rounded-lg border border-red-500/30 dark:border-red-500/30 bg-gradient-to-br from-red-500/5 to-red-500/10 dark:from-red-500/10 dark:to-red-500/10 hover:border-red-500/60 dark:hover:border-red-500/60 transition-all duration-300 hover:shadow-lg hover:shadow-red-500 dark:hover:shadow-red-500/40"
                     >
                       <h3 className="text-xl font-semibold mb-4 flex items-center gap-3">
-                        <IconComponent className="w-6 h-6 dark:text-red-500 text-black" />
+                        <IconComponent className="w-6 h-6 dark:text-red-500 text-red-500" />
                         {category.name}
                       </h3>
                       <div className="flex flex-wrap gap-3">
                         {category.skills.map((skill, skillIdx) => (
                           <span
                             key={skillIdx}
-                            className="text-sm px-3 py-1 rounded-full flex items-center gap-2 bg-gradient-to-r from-black/10 to-black/10 dark:from-red-500/20 dark:to-red-400/20 text-black dark:text-accent-foreground border border-black/40 dark:border-red-500/50 hover:border-black hover:from-black/20 hover:to-black/20 dark:hover:border-red-500 dark:hover:from-red-500/30 dark:hover:to-red-400/30 transition-all duration-300 transform hover:scale-105"
+                            className="text-sm px-3 py-1 rounded-full flex items-center gap-2 bg-gradient-to-r from-red-500/10 to-red-500/10 dark:from-red-500/20 dark:to-red-400/20 text-gray-800 dark:text-accent-foreground border border-red-500/40 dark:border-red-500/50 hover:border-red-500 hover:from-red-500/20 hover:to-red-500/20 dark:hover:border-red-500 dark:hover:from-red-500/30 dark:hover:to-red-400/30 transition-all duration-300 transform hover:scale-105"
                           >
                             {getTechIcon(skill)}
                             {skill}
@@ -594,8 +600,8 @@ export default function About() {
 
             {/* Studying Stacks Container */}
             <div className="md:col-span-1">
-              <div className="sticky top-24 p-6 rounded-lg border border-black/40 dark:border-red-500/40 bg-gradient-to-br from-black/10 to-black/20 dark:from-red-500/20 dark:to-red-500/30 shadow-xl shadow-black/20 dark:shadow-red-500/20 transition-all duration-300">
-                <h3 className="text-2xl font-bold mb-4 flex items-center gap-3 dark:text-white text-black">
+              <div className="sticky top-24 p-6 rounded-lg border border-red-500/40 dark:border-red-500/40 bg-gradient-to-br from-red-500/10 to-red-500/20 dark:from-red-500/20 dark:to-red-500/30 shadow-xl shadow-red-500/20 dark:shadow-red-500/20 transition-all duration-300">
+                <h3 className="text-2xl font-bold mb-4 flex items-center gap-3 dark:text-white text-red-500">
                   <BookOpen className="w-7 h-7" />
                   {skillsData[language].studying.title}
                 </h3>
@@ -607,7 +613,7 @@ export default function About() {
                     (stack, stackIdx) => (
                       <span
                         key={stackIdx}
-                        className="text-base px-4 py-2 rounded-full flex items-center gap-2 bg-gradient-to-r border border-black/50 dark:border-red-500/50 hover:border-black dark:hover:border-red-500 from-black/10 to-gray-700/10 dark:from-red-500/10 dark:to-red-400/10 hover:from-black/20 hover:to-gray-800/20 dark:hover:from-red-400/20 dark:hover:to-red-400/20 text-black dark:text-white transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-black/40 dark:hover:shadow-red-500/20 group font-semibold shadow-md"
+                        className="text-base px-4 py-2 rounded-full flex items-center gap-2 bg-gradient-to-r border border-red-500/50 dark:border-red-500/50 hover:border-red-500 dark:hover:border-red-500 from-red-500/10 to-red-500/10 dark:from-red-500/10 dark:to-red-400/10 hover:from-red-500/20 hover:to-red-500/20 dark:hover:from-red-400/20 dark:hover:to-red-400/20 text-red-500 dark:text-white transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-red-500/40 dark:hover:shadow-red-500/20 group font-semibold shadow-md"
                       >
                         {getTechIcon(stack)}
                         {stack}
@@ -622,7 +628,7 @@ export default function About() {
 
 {/* Experience Section */}
 <section className="mb-20">
-  <h2 className="text-3xl md:text-4xl font-bold mb-12">
+  <h2 className="text-3xl md:text-4xl font-bold mb-12 text-red-500 dark:text-white">
     {language === "pt" ? "Experiência Profissional" : "Professional Experience"}
   </h2>
 
@@ -636,9 +642,9 @@ export default function About() {
     {localizedExperiences.map((exp, expIdx) => (
       <div
         key={expIdx}
-        className="group border-l-4 border-black dark:border-red-500 pl-6 py-4 p-6 -ml-6 rounded-r-lg
-          bg-gradient-to-r from-black/5 to-transparent dark:from-red-500/5 dark:to-transparent
-          hover:from-black/10 hover:to-black/5 dark:hover:from-red-500/10 dark:hover:to-red-400/5
+        className="group border-l-4 border-red-500 dark:border-red-500 pl-6 py-4 p-6 -ml-6 rounded-r-lg
+          bg-gradient-to-r from-red-500/5 to-transparent dark:from-red-500/5 dark:to-transparent
+          hover:from-red-500/10 hover:to-red-500/5 dark:hover:from-red-500/10 dark:hover:to-red-400/5
           transition-all duration-300 card-hover
           transform will-change-transform hover:-translate-y-1"
       >
@@ -659,7 +665,7 @@ export default function About() {
 
           {/* Cargo / Empresa / Período */}
           <div>
-            <h3 className="text-xl font-bold dark:text-red-500 text-black">
+            <h3 className="text-xl font-bold dark:text-red-500 text-red-500">
               {exp.role}
             </h3>
 
@@ -681,7 +687,7 @@ export default function About() {
               className="text-muted-foreground/95 flex gap-3 group/item hover:text-foreground
                 transition-colors duration-300 group-hover:-translate-y-1"
             >
-              <span className="dark:text-red-500 text-black mt-1">•</span>
+              <span className="dark:text-red-500 text-red-500 mt-1">•</span>
               <span>{desc}</span>
             </li>
           ))}
@@ -693,9 +699,9 @@ export default function About() {
             <span
               key={idx}
               className="px-3 py-1 rounded-full text-xs flex items-center gap-2
-                bg-gradient-to-r from-black/10 to-black/10 dark:from-red-500/20 dark:to-red-400/20
-                border border-black/40 dark:border-red-500/50
-                text-black dark:text-white
+                bg-gradient-to-r from-red-500/10 to-red-500/10 dark:from-red-500/20 dark:to-red-400/20
+                border border-red-500/40 dark:border-red-500/50
+                text-gray-800 dark:text-white
                 transition-all duration-300 transform hover:scale-105 group-hover:-translate-y-0.5"
             >
               {getTechIcon(skill)}
@@ -712,7 +718,7 @@ export default function About() {
 
 {/* Education Section */}
 <section className="mb-20">
-  <h2 className="text-3xl md:text-4xl font-bold mb-12">
+  <h2 className="text-3xl md:text-4xl font-bold mb-12 text-red-500 dark:text-white">
     {educationData[language].title}
   </h2>
 
@@ -724,14 +730,14 @@ export default function About() {
     {educationData[language].items.map((item, itemIdx) => (
       <div
         key={itemIdx}
-        className="group border-l-4 border-black dark:border-red-500 pl-6 py-4 p-6 -ml-6 rounded-r-lg
-          bg-gradient-to-r from-black/5 to-transparent dark:from-red-500/5 dark:to-transparent
-          hover:from-black/10 hover:to-black/5 dark:hover:from-red-500/10 dark:hover:to-red-400/5
+        className="group border-l-4 border-red-500 dark:border-red-500 pl-6 py-4 p-6 -ml-6 rounded-r-lg
+          bg-gradient-to-r from-red-500/5 to-transparent dark:from-red-500/5 dark:to-transparent
+          hover:from-red-500/10 hover:to-red-500/5 dark:hover:from-red-500/10 dark:hover:to-red-400/5
           transition-all duration-300 card-hover
           transform will-change-transform hover:-translate-y-1"
       >
         <div className="mb-4 transition-transform duration-300 group-hover:-translate-y-1">
-          <h3 className="text-xl font-bold dark:text-red-500 text-black">
+          <h3 className="text-xl font-bold dark:text-red-500 text-red-500">
             {item.course}
           </h3>
 
@@ -751,12 +757,26 @@ export default function About() {
 
         {/* Certificates Section */}
         <section className="mb-20">
-          <h2 className="text-2xl md:text-4xl font-bold flex items-center justify-between mb-12">
-            {certificatesData[language].title}
-            <a href="/docs/Certificado.rar" download>
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-2xl md:text-4xl font-bold text-red-500 dark:text-white">
+              {certificatesData[language].title}
+            </h2>
+            <span className="text-sm md:text-base text-muted-foreground">
+              {language === "pt" 
+                ? `${certificatesData[language].items.length} certificado${certificatesData[language].items.length !== 1 ? 's' : ''}`
+                : `${certificatesData[language].items.length} certificate${certificatesData[language].items.length !== 1 ? 's' : ''}`
+              }
+            </span>
+          </div>
+          <div className="flex items-center justify-between mb-10">
+            <p className="text-xl text-muted-foreground">
+              {certificatesData[language].subtitle}
+            </p>
+            <a href="/docs/Certificado.rar" download className="cursor-pointer">
               <Button
                 variant="outline"
-                className="bg-transparent border-black/30 dark:border-red-500/30 hover:bg-black/10 dark:hover:bg-red-500/10 transition-colors duration-300"
+                className="bg-transparent border-red-500/30 dark:border-red-500/30 hover:bg-red-500/10 dark:hover:bg-red-500/10 transition-colors duration-300 cursor-pointer"
+                aria-label={language === "pt" ? "Baixar todos os certificados" : "Download all certificates"}
               >
                 <Award className="w-5 h-5 mr-2" />
                 {language === "pt"
@@ -764,25 +784,20 @@ export default function About() {
                   : "Download Certificates"}
               </Button>
             </a>
-          </h2>
-          <p className="text-xl text-muted-foreground mb-10">
-            {certificatesData[language].subtitle}
-          </p>
+          </div>
 
 	          <div className="grid gap-6" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))' }}>
             {certificatesData[language].items.map((cert, certIdx) => (
 	              <div
 	                key={certIdx}
 	                // Card Design: Compacto, Elegante e com Hover Effect
-	                className="relative p-6 rounded-xl border border-black/30 dark:border-red-500/30 bg-gradient-to-br from-black/5 to-black/10 dark:from-red-500/10 dark:to-red-500/10 
-	                transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl hover:shadow-black/20 dark:hover:shadow-red-500/30 cursor-pointer flex flex-col justify-between h-full"
-	                // Ação: Fazer o card inteiro ser clicável para o modal de preview (futura implementação)
-	                onClick={() => alert(`Preview do certificado: ${cert.name} (Funcionalidade de Modal a ser implementada)`)}
+	                className="relative p-6 rounded-xl border border-red-500/30 dark:border-red-500/30 bg-gradient-to-br from-red-500/5 to-red-500/10 dark:from-red-500/10 dark:to-red-500/10 
+	                transition-all duration-300 transform hover:scale-[1.02] hover:shadow-xl hover:shadow-red-500/20 dark:hover:shadow-red-500/30 flex flex-col justify-between h-full"
 	              >
 	                {/* Conteúdo Principal do Card */}
 	                <div>
 	                  {/* Badge de Categoria (Micro-informação) */}
-	                  <span className="text-xs font-medium px-3 py-1 rounded-full mb-3 inline-flex items-center gap-2 bg-black/10 dark:bg-red-500/20 text-black dark:text-red-400 border border-black/20 dark:border-red-500/30">
+	                  <span className="text-xs font-medium px-3 py-1 rounded-full mb-3 inline-flex items-center gap-2 bg-red-500/20 dark:bg-red-500/20 text-gray-800 dark:text-red-400 border border-red-500/30 dark:border-red-500/30">
 	                    {getTechIcon(cert.category)}
 	                    {cert.category}
 	                  </span>
@@ -800,24 +815,32 @@ export default function About() {
 	                </div>
 	
 	                {/* Rodapé do Card (Ano e Botão de Ação) */}
-	                <div className="mt-4 flex justify-between items-center pt-3 border-t border-black/10 dark:border-red-500/10">
+	                <div className="mt-4 flex justify-between items-center pt-3 border-t border-red-500/10 dark:border-red-500/10">
 	                  {/* Ano (Hierarquia Visual 3) */}
 	                  <p className="text-xs font-semibold text-muted-foreground/80">
 	                    {cert.year}
 	                  </p>
 	
 	                  {/* Botão de Preview/Download (Ação Primária) */}
-	                  <a
-	                    href={`/certificates/${cert.file}`}
-	                    // Download removido para forçar o modal de preview (melhor UX)
-	                    // download
-	                    target="_blank"
-	                    rel="noopener noreferrer"
-	                    className="text-sm font-medium flex items-center gap-1 dark:text-red-500 text-black hover:underline"
-	                    onClick={(e) => e.stopPropagation()} // Evita o clique duplo do card
-	                  >
-	                    Ver Certificado
-	                  </a>
+	                  <div className="flex items-center gap-2">
+	                    <a
+	                      href={`/certificates/${cert.file}`}
+	                      target="_blank"
+	                      rel="noopener noreferrer"
+	                      className="text-sm font-medium flex items-center gap-1 dark:text-red-500 text-gray-800 hover:text-red-600 dark:hover:text-red-400 hover:underline cursor-pointer transition-colors"
+	                      aria-label={language === "pt" ? `Ver certificado ${cert.name}` : `View certificate ${cert.name}`}
+	                    >
+	                      {language === "pt" ? "Ver Certificado" : "View Certificate"}
+	                    </a>
+	                    <a
+	                      href={`/certificates/${cert.file}`}
+	                      download
+	                      className="text-sm font-medium flex items-center gap-1 dark:text-red-500 text-gray-800 hover:text-red-600 dark:hover:text-red-400 hover:underline cursor-pointer transition-colors"
+	                      aria-label={language === "pt" ? `Baixar certificado ${cert.name}` : `Download certificate ${cert.name}`}
+	                    >
+	                      <Download className="w-4 h-4" />
+	                    </a>
+	                  </div>
 	                </div>
 	              </div>
             ))}

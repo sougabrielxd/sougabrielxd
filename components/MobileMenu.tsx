@@ -27,7 +27,7 @@ export default function MobileMenu({
   },
 }: MobileMenuProps) {
   const menuItems = [
-    { id: "hero", label: language === "pt" ? "Início" : "Home" },
+    { id: "home", label: language === "pt" ? "Início" : "Home" },
     { id: "about", label: language === "pt" ? "Sobre" : "About" },
     { id: "projects", label: language === "pt" ? "Projetos" : "Projects" },
     { id: "contact", label: language === "pt" ? "Contato" : "Contact" },
@@ -78,7 +78,7 @@ export default function MobileMenu({
       {/* Fullscreen Overlay Background - Clicável para fechar */}
       {isOpen && (
         <div
-          className="fixed inset-0 z-40 bg-black/40 dark:bg-black/60 backdrop-blur-sm transition-opacity duration-300 ease-out md:hidden"
+          className="fixed inset-0 z-[9999] bg-black/40 dark:bg-black/60 backdrop-blur-sm transition-opacity duration-300 ease-out md:hidden"
           onClick={onClose}
           aria-hidden="true"
         />
@@ -86,7 +86,7 @@ export default function MobileMenu({
 
       {/* Mobile Menu Container */}
       <div
-        className={`fixed inset-0 z-50 md:hidden transition-all duration-300 ease-out ${
+        className={`fixed inset-0 z-[10000] md:hidden transition-all duration-300 ease-out ${
           isOpen ? "pointer-events-auto" : "pointer-events-none"
         }`}
       >
@@ -94,14 +94,14 @@ export default function MobileMenu({
         <div
           className={`fixed inset-0 flex flex-col items-center justify-center bg-white dark:bg-black transition-all duration-300 ease-out transform ${
             isOpen
-              ? "opacity-100 scale-100"
+              ? "opacity-100 scale-100 pointer-events-auto"
               : "opacity-0 scale-95 pointer-events-none"
           }`}
         >
           {/* Close Button - Sempre acessível */}
           <button
             onClick={onClose}
-            className="absolute top-6 right-6 z-50 p-2 rounded-full hover:bg-black/10 dark:hover:bg-red-500/10 transition-colors duration-200 group cursor-pointer"
+            className="absolute top-6 right-6 z-[10001] p-2 rounded-full hover:bg-black/10 dark:hover:bg-red-500/10 transition-colors duration-200 group cursor-pointer"
             aria-label="Fechar menu"
             type="button"
           >

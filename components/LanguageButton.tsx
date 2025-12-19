@@ -21,16 +21,16 @@ export function LanguageButton() {
       <button
         onClick={() => setOpen(!open)}
         className="
-          p-3 rounded-full border border-black/50 dark:border-red-500/50
-          hover:border-black dark:hover:border-red-500
-          bg-gradient-to-br from-black/10 to-gray-700/10
+          p-3 rounded-full border border-red-500/50 dark:border-red-500/50
+          hover:border-red-500 dark:hover:border-red-500
+          bg-gradient-to-br from-red-500/10 to-red-400/10
           dark:from-red-500/10 dark:to-red-400/10
-          hover:from-black/20 hover:to-gray-800/20
+          hover:from-red-500/20 hover:to-red-400/20
           dark:hover:from-red-400/20 dark:hover:to-red-400/20
-          text-black dark:text-white
-          hover:text-black dark:hover:text-red-500
+          text-red-500 dark:text-white
+          hover:text-red-600 dark:hover:text-red-500
           transition-all duration-300 transform hover:scale-110
-          hover:shadow-lg hover:shadow-black/40 dark:hover:shadow-red-500/40
+          hover:shadow-lg hover:shadow-red-500/40 dark:hover:shadow-red-500/40
           group
         "
         aria-label="Select language"
@@ -43,8 +43,8 @@ export function LanguageButton() {
         <div
           className="
             absolute right-0 mt-2 w-32 rounded-lg border 
-            border-black/60 dark:border-red-500/50 
-            bg-background shadow-lg shadow-black/40 
+            border-red-500/50 dark:border-red-500/50 
+            bg-background shadow-lg shadow-red-500/40 
             dark:shadow-red-500/20 z-50 overflow-hidden
             transition-all duration-300
           "
@@ -54,14 +54,14 @@ export function LanguageButton() {
             onClick={() => handleSelect("pt")}
             className="
               w-full px-4 py-2 text-left 
-              border-t border-black/20 dark:border-red-500/20
-              hover:bg-black/10 dark:hover:bg-red-500/10
+              border-t border-red-500/20 dark:border-red-500/20
+              hover:bg-red-500/10 dark:hover:bg-red-500/10
               transition-colors flex items-center gap-2
             "
           >
-            <span className="text-sm font-semibold">Português</span>
+            <span className="text-sm font-semibold text-gray-800 dark:text-white">Português</span>
             {language === "pt" && (
-              <span className="ml-auto text-black dark:text-red-500">✓</span>
+              <span className="ml-auto text-red-500 dark:text-red-500">✓</span>
             )}
           </button>
 
@@ -70,14 +70,14 @@ export function LanguageButton() {
             onClick={() => handleSelect("en")}
             className="
               w-full px-4 py-2 text-left 
-              border-t border-black/20 dark:border-red-500/20
-              hover:bg-black/10 dark:hover:bg-red-500/10
+              border-t border-red-500/20 dark:border-red-500/20
+              hover:bg-red-500/10 dark:hover:bg-red-500/10
               transition-colors flex items-center gap-2
             "
           >
-            <span className="text-sm font-semibold">English</span>
+            <span className="text-sm font-semibold text-gray-800 dark:text-white">English</span>
             {language === "en" && (
-              <span className="ml-auto text-black dark:text-red-500">✓</span>
+              <span className="ml-auto text-red-500 dark:text-red-500">✓</span>
             )}
           </button>
         </div>
