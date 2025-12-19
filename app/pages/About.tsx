@@ -254,7 +254,8 @@ const experiences = [
       "Implementation of complex automation flows via n8n, integrating CRMs and communication tools such as Chatwoot and EvolutionAPI.",
       "Active participation in Scrum rituals, collaborating in sprint planning and task organization via agile management.",
       "Management of PostgreSQL databases and cache optimization with Redis to ensure application scalability.",
-      "Deployment and management of services using Easypanel."
+      "Deployment and management of services using Easypanel.",
+      "Development of institutional websites with WordPress for clients, ensuring satisfaction and delivery of complete and functional digital solutions.",
     ],
 
     skills: [
@@ -413,18 +414,18 @@ export default function About() {
         ? exp.company === "Receita Federal"
           ? [
               "Atuei no suporte técnico aos usuários, realizando diagnóstico, resolução de problemas e otimização de desempenho em hardware e software, o que resultou na melhoria da velocidade de múltiplos computadores.",
-              "Colaboro na elaboração de relatórios técnicos e analíticos para apoiar a gestão de desempenho e os processos internos.",
-              "Executo atividades administrativas de apoio, como a produção de apresentações, certificados e documentação institucional.",
+              "Colaborei na elaboração de relatórios técnicos e analíticos para apoiar a gestão de desempenho e os processos internos.",
+              "Executei atividades administrativas de apoio, como a produção de apresentações, certificados e documentação institucional.",
             ]
           : exp.company === "NExTI UniFAP"
           ? [
               "Atuei como desenvolvedor full stack voluntário na construção da plataforma digital da Learn Skills, editora acadêmica dedicada à disseminação de conhecimento.",
               "O projeto começou com back-end em Python (Flask), mas migramos para PHP com Laravel, garantindo maior escalabilidade e manutenção do sistema.",
-              "Colaboro ativamente em decisões técnicas, discutindo arquitetura, propondo soluções e assegurando a integração entre todas as partes do sistema.",
+              "Colaborei ativamente em decisões técnicas, discutindo arquitetura, propondo soluções e assegurando a integração entre todas as partes do sistema.",
             ]
             : exp.company === "Freelancer"
             ? [
-              "Desenvolvi sites responsivos e interfaces UI/UX focadas em usabilidade, estética e conversão.",
+              "Desenvolvo sites responsivos e interfaces UI/UX focadas em usabilidade, estética e conversão.",
               "Crio materiais digitais, além de planejar conteúdo estratégico para redes sociais.",
               "Atendo diretamente clientes, entendendo necessidades e entregando soluções digitais completas e funcionais."
               ]
@@ -440,6 +441,7 @@ export default function About() {
                 "Participação ativa em rituais Scrum, colaborando no planejamento de sprints e organização de tarefas via gestão ágil.",
                 "Gerenciamento de bancos de dados PostgreSQL e otimização de cache com Redis para garantir escalabilidade das aplicações.",
                 "Implantação e gerenciamento de serviços utilizando Easypanel.",
+                "Desenvolvimento de sites institucionais com WordPress para clientes, garantindo a satisfação e a entrega de soluções digitais completas e funcionais.",
               ]
           : exp.description
         : exp.description,
