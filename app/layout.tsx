@@ -22,6 +22,17 @@ export const metadata: Metadata = {
   keywords: ["desenvolvedor full-stack", "react developer", "next.js", "python", "automação", "IA", "front-end", "back-end", "gabriel lucas"],
   authors: [{ name: "Gabriel Lucas" }],
   creator: "Gabriel Lucas",
+  icons: {
+    icon: [
+      { url: "/img/x-16x16.png", sizes: "16x16", type: "image/png" },
+      { url: "/img/x-32x32.png", sizes: "32x32", type: "image/png" },
+      { url: "/img/x-48x48.png", sizes: "48x48", type: "image/png" },
+      { url: "/img/x-red-180x180.png", sizes: "180x180", type: "image/png" },
+    ],
+    apple: [
+      { url: "/img/x-red-180x180.png", sizes: "180x180", type: "image/png" },
+    ],
+  },
   openGraph: {
     type: "website",
     locale: "pt_BR",
@@ -31,7 +42,7 @@ export const metadata: Metadata = {
     siteName: "Gabriel Lucas Portfolio",
     images: [
       {
-        url: "https://gabriellucas.com.br/og-image.png",
+        url: "https://gabriellucas.com.br/img/og-image.png",
         width: 1200,
         height: 630,
         alt: "Gabriel Lucas - Desenvolvedor Full-Stack",
@@ -42,7 +53,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Gabriel Lucas | Desenvolvedor Full-Stack",
     description: "Desenvolvedor Full-Stack especializado em React, Next.js e automação",
-    images: ["https://gabriellucas.com.br/og-image.png"],
+    images: ["https://gabriellucas.com.br/img/og-image.png"],
     creator: "@gabriellucasafb",
   },
   robots: {
