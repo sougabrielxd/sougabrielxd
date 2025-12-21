@@ -169,19 +169,20 @@ export default function Contact() {
                     href={method.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`flex items-center p-4 rounded-lg border-2 ${method.color}
+                    className={`group flex items-center p-4 rounded-lg border-2 ${method.color}
                     bg-gradient-to-r from-red-500/5 to-transparent dark:from-red-500/5 
                     hover:from-red-500/10 hover:to-red-500/5 dark:hover:from-red-500/10 
-                    transition-all duration-300`}
+                    transition-all duration-300 transform hover:scale-105 hover:-translate-y-1
+                    hover:shadow-lg hover:shadow-red-500/20 dark:hover:shadow-red-500/20`}
                   >
-                    <Icon className="w-6 h-6 mr-4 dark:text-red-500 text-red-500" />
-                    <div>
-                      <p className="text-sm text-gray-600 dark:text-muted-foreground">
+                    <Icon className="w-6 h-6 mr-4 dark:text-red-500 text-red-500 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3" />
+                    <div className="flex-1">
+                      <p className="text-sm text-gray-600 dark:text-muted-foreground transition-colors duration-300 group-hover:text-gray-800 dark:group-hover:text-gray-200">
                         {language === "en" && method.label === "Telefone"
                           ? "Phone"
                           : method.label}
                       </p>
-                      <p className="text-lg font-bold text-gray-900 dark:text-white">{method.value}</p>
+                      <p className="text-lg font-bold text-gray-900 dark:text-white transition-colors duration-300 group-hover:text-red-500 dark:group-hover:text-red-400">{method.value}</p>
                     </div>
                   </a>
                 );
