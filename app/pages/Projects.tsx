@@ -64,7 +64,7 @@ const projects: Project[] = [
     description:
       "Em desenvolvimento",
     fullDescription:
-      "Atuei como Desenvolvedor Front-end na criação do site institucional para o Conecc. O projeto envolveu a concepção de um design moderno e responsivo, alinhado à identidade visual do Conecc, utilizando React e TailwindCSS para garantir uma experiência de usuário fluida e acessível em diversos dispositivos. O site apresenta informações essenciais sobre os serviços oferecidos, equipe, localização e contato, facilitando o acesso dos usuários às informações do evento. O CONECC é um evento médico que reúne profissionais e estudantes da área da saúde para atualização científica, troca de experiências e networking. Esta landing page apresenta todas as informações do evento de forma clara, acessível e otimizada para conversão.",
+      "",
     tags: ["WordPress"],
     link: "https://starkevision.com.br/",
     github: "#",
@@ -84,7 +84,7 @@ const projects: Project[] = [
     description:
       "Em desenvolvimento",
     fullDescription:
-      "Atuei como Desenvolvedor Front-end na criação do site institucional para o Conecc. O projeto envolveu a concepção de um design moderno e responsivo, alinhado à identidade visual do Conecc, utilizando React e TailwindCSS para garantir uma experiência de usuário fluida e acessível em diversos dispositivos. O site apresenta informações essenciais sobre os serviços oferecidos, equipe, localização e contato, facilitando o acesso dos usuários às informações do evento. O CONECC é um evento médico que reúne profissionais e estudantes da área da saúde para atualização científica, troca de experiências e networking. Esta landing page apresenta todas as informações do evento de forma clara, acessível e otimizada para conversão.",
+      "",
     tags: ["WordPress"],
     link: "https://svnexus.com.br/",
     github: "#",
