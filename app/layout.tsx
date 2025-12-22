@@ -6,6 +6,7 @@ import "./globals.css";
 // URL base do site - ajuste conforme seu domínio
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://gabriellucas.com.br";
 const ogImageUrl = `${baseUrl}/img/og-image.png`;
+const fbAppId = process.env.NEXT_PUBLIC_FB_APP_ID || "";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -46,7 +47,7 @@ export const metadata: Metadata = {
     siteName: "Gabriel Lucas Portfolio",
     images: [
       {
-        url: `${baseUrl}/api/og-image`,
+        url: ogImageUrl,
         width: 1200,
         height: 630,
         alt: "Gabriel Lucas - Desenvolvedor Full-Stack",
@@ -58,7 +59,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Gabriel Lucas | Desenvolvedor Full-Stack",
     description: "Desenvolvedor Full-Stack especializado em React, Next.js e automação",
-    images: [`${baseUrl}/api/og-image`],
+    images: [ogImageUrl],
     creator: "@gabriellucasafb",
   },
   robots: {
@@ -94,15 +95,17 @@ export default function RootLayout({
         <meta property="og:image:height" content="630" />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:alt" content="Gabriel Lucas - Desenvolvedor Full-Stack" />
-        <meta property="og:image" content={`${baseUrl}/api/og-image`} />
-        <meta property="og:image:secure_url" content={`${baseUrl}/api/og-image`} />
+        <meta property="og:image" content={ogImageUrl} />
+        <meta property="og:image:secure_url" content={ogImageUrl} />
+        {/* Facebook App ID */}
+        {fbAppId && <meta property="fb:app_id" content={fbAppId} />}
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content="https://gabriellucas.com.br" />
         <meta name="twitter:title" content="Gabriel Lucas | Desenvolvedor Full-Stack" />
         <meta name="twitter:description" content="Desenvolvedor Full-Stack especializado em React, Next.js e automação" />
-        <meta name="twitter:image" content={`${baseUrl}/api/og-image`} />
+        <meta name="twitter:image" content={ogImageUrl} />
         <meta name="twitter:creator" content="@gabriellucasafb" />
         
         <script

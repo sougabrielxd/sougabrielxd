@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from 'next/server';
 import { readFile } from 'fs/promises';
 import { join } from 'path';
 
+export const dynamic = 'force-static';
+export const runtime = 'nodejs';
+
 export async function GET(request: NextRequest) {
   try {
     const imagePath = join(process.cwd(), 'public', 'img', 'og-image.png');
@@ -14,6 +17,7 @@ export async function GET(request: NextRequest) {
         'Content-Length': imageBuffer.length.toString(),
         'Cache-Control': 'public, max-age=31536000, immutable',
         'Accept-Ranges': 'bytes',
+        'X-Content-Type-Options': 'nosniff',
       },
     });
   } catch (error) {
