@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     siteName: "Gabriel Lucas Portfolio",
     images: [
       {
-        url: `${baseUrl}/og-image`,
+        url: `${baseUrl}/og-image.png`,
         width: 1200,
         height: 630,
         alt: "Gabriel Lucas - Desenvolvedor Full-Stack",
@@ -58,7 +58,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Gabriel Lucas | Desenvolvedor Full-Stack",
     description: "Desenvolvedor Full-Stack especializado em React, Next.js e automação",
-    images: [`${baseUrl}/og-image`],
+    images: [`${baseUrl}/og-image.png`],
     creator: "@gabriellucasafb",
   },
   robots: {
@@ -94,15 +94,15 @@ export default function RootLayout({
         <meta property="og:image:height" content="630" />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:alt" content="Gabriel Lucas - Desenvolvedor Full-Stack" />
-        <meta property="og:image" content={`${baseUrl}/og-image`} />
-        <meta property="og:image:secure_url" content={`${baseUrl}/og-image`} />
+        <meta property="og:image" content={`${baseUrl}/og-image.png`} />
+        <meta property="og:image:secure_url" content={`${baseUrl}/og-image.png`} />
         
         {/* Twitter */}
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:url" content="https://gabriellucas.com.br" />
         <meta name="twitter:title" content="Gabriel Lucas | Desenvolvedor Full-Stack" />
         <meta name="twitter:description" content="Desenvolvedor Full-Stack especializado em React, Next.js e automação" />
-        <meta name="twitter:image" content={`${baseUrl}/og-image`} />
+        <meta name="twitter:image" content={`${baseUrl}/og-image.png`} />
         <meta name="twitter:creator" content="@gabriellucasafb" />
         
         <script

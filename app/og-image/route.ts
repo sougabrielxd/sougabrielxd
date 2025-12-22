@@ -11,6 +11,7 @@ export async function GET(request: NextRequest) {
       status: 200,
       headers: {
         'Content-Type': 'image/png',
+        'Content-Length': imageBuffer.length.toString(),
         'Cache-Control': 'public, max-age=31536000, immutable',
       },
     });
