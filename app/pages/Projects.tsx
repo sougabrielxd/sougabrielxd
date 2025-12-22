@@ -190,7 +190,7 @@ const projects: Project[] = [
     tags: ["HTML", "CSS", "JavaScript"],
     link: "https://www.cowatch.com.br/",
     github: "#",
-    status: "Em produção",
+    status: "Não participo mais",
     featured: false,
     year: 2024,
     images: ["https://ik.imagekit.io/o8urkd2xn/Cowatch.png", "https://ik.imagekit.io/o8urkd2xn/Cowatch2.png", "https://ik.imagekit.io/o8urkd2xn/Cowatch3.png"],
