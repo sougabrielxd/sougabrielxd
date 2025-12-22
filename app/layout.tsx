@@ -91,7 +91,7 @@ export default function RootLayout({
         <meta property="og:locale" content="pt_BR" />
         <meta property="og:site_name" content="Gabriel Lucas Portfolio" />
         {/* OG Image - Dimensões antes da URL para garantir processamento correto */}
-        <meta property="og:image" content="https://gabriellucas.com.br/api/og-image" />
+        <meta property="og:image" content="public/og-image.png" />
         <meta property="og:image:secure_url" content="https://gabriellucas.com.br/api/og-image" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
