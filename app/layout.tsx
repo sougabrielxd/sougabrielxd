@@ -7,7 +7,8 @@ const baseUrl =
   process.env.NEXT_PUBLIC_SITE_URL || "https://gabriellucas.com.br";
 
 // OG Image (URL ABSOLUTA)
-const ogImageUrl = `${baseUrl}/og-image.png`;
+const ogImageUrl = `${baseUrl}/img/og-image.png`;
+const fbAppId = process.env.NEXT_PUBLIC_FB_APP_ID || "";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -64,7 +65,7 @@ export const metadata: Metadata = {
       "Desenvolvedor Full-Stack especializado em React, Next.js e automação",
     images: [
       {
-        url: ogImageUrl,
+        url: "/img/og-image.png",
         width: 1200,
         height: 630,
         alt: "Gabriel Lucas - Desenvolvedor Full-Stack",
@@ -78,7 +79,7 @@ export const metadata: Metadata = {
     title: "Gabriel Lucas | Desenvolvedor Full-Stack",
     description:
       "Desenvolvedor Full-Stack especializado em React, Next.js e automação",
-    images: [ogImageUrl],
+    images: ["/img/og-image.png"],
     creator: "@gabriellucasafb",
   },
 
@@ -103,6 +104,29 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <head>
+        {/* Open Graph / Facebook Meta Tags - Todas explícitas */}
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://gabriellucas.com.br" />
+        <meta property="og:title" content="Gabriel Lucas | Desenvolvedor Full-Stack & Especialista em IA" />
+        <meta property="og:description" content="Desenvolvedor Full-Stack com 2+ anos de experiência em React, Next.js, Python e automação. Especializado em criar soluções escaláveis e interfaces modernas." />
+        <meta property="og:locale" content="pt_BR" />
+        <meta property="og:site_name" content="Gabriel Lucas Portfolio" />
+        <meta property="og:image" content="https://gabriellucas.com.br/img/og-image.png" />
+        <meta property="og:image:secure_url" content="https://gabriellucas.com.br/img/og-image.png" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:image:alt" content="Gabriel Lucas - Desenvolvedor Full-Stack" />
+        {fbAppId && <meta property="fb:app_id" content={fbAppId} />}
+        
+        {/* Twitter Card Meta Tags */}
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:url" content="https://gabriellucas.com.br" />
+        <meta name="twitter:title" content="Gabriel Lucas | Desenvolvedor Full-Stack" />
+        <meta name="twitter:description" content="Desenvolvedor Full-Stack especializado em React, Next.js e automação" />
+        <meta name="twitter:image" content="https://gabriellucas.com.br/img/og-image.png" />
+        <meta name="twitter:creator" content="@gabriellucasafb" />
+        
         {/* JSON-LD */}
         <script
           type="application/ld+json"
