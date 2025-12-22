@@ -91,12 +91,12 @@ export default function RootLayout({
         <meta property="og:locale" content="pt_BR" />
         <meta property="og:site_name" content="Gabriel Lucas Portfolio" />
         {/* OG Image - Dimensões antes da URL para garantir processamento correto */}
+        <meta property="og:image" content="https://gabriellucas.com.br/api/og-image" />
+        <meta property="og:image:secure_url" content="https://gabriellucas.com.br/api/og-image" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:alt" content="Gabriel Lucas - Desenvolvedor Full-Stack" />
-        <meta property="og:image" content={ogImageUrl} />
-        <meta property="og:image:secure_url" content={ogImageUrl} />
         {/* Facebook App ID */}
         {fbAppId && <meta property="fb:app_id" content={fbAppId} />}
         
@@ -105,7 +105,7 @@ export default function RootLayout({
         <meta name="twitter:url" content="https://gabriellucas.com.br" />
         <meta name="twitter:title" content="Gabriel Lucas | Desenvolvedor Full-Stack" />
         <meta name="twitter:description" content="Desenvolvedor Full-Stack especializado em React, Next.js e automação" />
-        <meta name="twitter:image" content={ogImageUrl} />
+        <meta name="twitter:image" content="https://gabriellucas.com.br/api/og-image" />
         <meta name="twitter:creator" content="@gabriellucasafb" />
         
         <script
