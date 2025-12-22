@@ -104,7 +104,7 @@ const projects: Project[] = [
     description:
       "Site da ArcanIA, uma academia focada em IA aplicada e automação inteligente.",
     fullDescription:
-      "Atuei como Desenvolvedor Front-end na concepção e desenvolvimento do site institucional e landing page da ArcanIA, uma formação voltada à aplicação prática de inteligência artificial e automação. O projeto envolveu a definição da arquitetura de informação, estruturação da landing page orientada à conversão e desenvolvimento de uma interface moderna, clara e responsiva em WordPress. O site apresenta de forma objetiva a proposta da formação, metodologia, módulos, benefícios, planos e conteúdos educacionais, priorizando clareza, performance, acessibilidade e SEO.",
+      "Atuei como Desenvolvedor WordPress na concepção e desenvolvimento do site institucional e landing page da ArcanIA, uma formação voltada à aplicação prática de inteligência artificial e automação. O projeto envolveu a definição da arquitetura de informação, estruturação da landing page orientada à conversão e desenvolvimento de uma interface moderna, clara e responsiva em WordPress. O site apresenta de forma objetiva a proposta da formação, metodologia, módulos, benefícios, planos e conteúdos educacionais, priorizando clareza, performance, acessibilidade e SEO.",
     tags: ["WordPress"],
     link: "https://arcania.academy/",
     github: "#",

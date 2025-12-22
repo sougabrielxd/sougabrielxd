@@ -5,7 +5,7 @@ import "./globals.css";
 
 // URL base do site - ajuste conforme seu domínio
 const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://gabriellucas.com.br";
-const ogImageUrl = `${baseUrl}/img/og-image.png`;
+const ogImageUrl = `${baseUrl}/api/og-image`;
 const fbAppId = process.env.NEXT_PUBLIC_FB_APP_ID || "";
 
 const geistSans = Geist({
