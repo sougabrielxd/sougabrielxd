@@ -75,24 +75,24 @@ export default function MobileMenu({
 
   return (
     <>
-      {/* Fullscreen Overlay Background - Clicável para fechar */}
-      {isOpen && (
-        <div
-          className="fixed inset-0 z-[9999] bg-black/40 dark:bg-black/60 backdrop-blur-sm transition-opacity duration-300 ease-out md:hidden"
-          onClick={onClose}
-          aria-hidden="true"
-        />
-      )}
-
       {/* Mobile Menu Container */}
       <div
         className={`fixed inset-0 z-[10000] md:hidden transition-all duration-300 ease-out ${
           isOpen ? "pointer-events-auto" : "pointer-events-none"
         }`}
       >
+        {/* Overlay Background - Clicável para fechar */}
+        {isOpen && (
+          <div
+            className="fixed inset-0 bg-black/10 dark:bg-black/20 backdrop-blur-sm transition-opacity duration-300 ease-out"
+            onClick={onClose}
+            aria-hidden="true"
+          />
+        )}
+
         {/* Menu Content */}
         <div
-          className={`fixed inset-0 flex flex-col items-center justify-center bg-white dark:bg-black transition-all duration-300 ease-out transform ${
+          className={`fixed inset-0 flex flex-col items-center justify-center bg-white/70 dark:bg-black/60 backdrop-blur-lg transition-all duration-300 ease-out transform ${
             isOpen
               ? "opacity-100 scale-100 pointer-events-auto"
               : "opacity-0 scale-95 pointer-events-none"
