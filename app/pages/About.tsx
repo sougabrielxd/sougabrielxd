@@ -684,20 +684,20 @@ export default function About() {
   
 
   return (
-    <section id="about" className="py-20 px-4 relative">
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-red-500 dark:text-white">
+    <section id="about" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 relative overflow-x-hidden">
+      <div className="max-w-7xl mx-auto w-full">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-red-500 dark:text-white">
           {language === "pt" ? "Sobre Mim" : "About Me"}
         </h1>
-        <p className="text-lg text-muted-foreground mb-12">
+        <p className="text-base sm:text-lg text-muted-foreground mb-8 sm:mb-10 md:mb-12">
           {language === "pt"
             ? "Um pouco sobre minha jornada, habilidades e formação."
             : "A little about my journey, skills, and background."}
         </p>
-        <div className="grid md:grid-cols-2 gap-12 items-start mb-20">
+        <div className="grid md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-start mb-12 sm:mb-16 md:mb-20">
             {/* Text Content */}
-            <div className="space-y-6 text-lg text-muted-foreground leading-relaxed animate-slide-up">
-              <div className="p-6 rounded-lg border border-red-500/30 dark:border-red-500/30 bg-gradient-to-br from-red-500/10 to-red-400/10 dark:from-red-500/10 dark:to-red-500/10 hover:border-red-500/60 dark:hover:border-red-500/60 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/20 dark:hover:shadow-red-500">
+            <div className="space-y-4 sm:space-y-6 text-base sm:text-lg text-muted-foreground leading-relaxed animate-slide-up">
+              <div className="p-4 sm:p-6 rounded-lg border border-red-500/30 dark:border-red-500/30 bg-gradient-to-br from-red-500/10 to-red-400/10 dark:from-red-500/10 dark:to-red-500/10 hover:border-red-500/60 dark:hover:border-red-500/60 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/20 dark:hover:shadow-red-500">
                 <p className="flex items-start gap-3">
                   <IoIosArrowForward className="w-5 h-5 dark:text-red-500 text-red-500 flex-shrink-0 mt-1" />
                   <span>
@@ -716,9 +716,9 @@ export default function About() {
                 </p>
               </div>
 
-              <div className="p-6 rounded-lg border border-red-500/30 dark:border-red-500/30 bg-gradient-to-br from-red-500/5 to-red-500/10 dark:from-red-500/10 dark:to-red-500/10 hover:border-red-500/60 dark:hover:border-red-500/60 transition-all duration-300 hover:shadow-lg hover:shadow-red-500 dark:hover:shadow-red-400">
-                <p className="flex items-start gap-3">
-                  <IoIosArrowForward className="w-5 h-5 dark:text-red-500 text-red-500 flex-shrink-0 mt-1" />
+              <div className="p-4 sm:p-6 rounded-lg border border-red-500/30 dark:border-red-500/30 bg-gradient-to-br from-red-500/5 to-red-500/10 dark:from-red-500/10 dark:to-red-500/10 hover:border-red-500/60 dark:hover:border-red-500/60 transition-all duration-300 hover:shadow-lg hover:shadow-red-500 dark:hover:shadow-red-400">
+                <p className="flex items-start gap-2 sm:gap-3">
+                  <IoIosArrowForward className="w-4 h-4 sm:w-5 sm:h-5 dark:text-red-500 text-red-500 flex-shrink-0 mt-1" />
                   <span>
                     {language === "pt" ? "Sou uma pessoa " : "I am a person "}
                     <span className="dark:text-red-400 text-red-500 font-semibold">
@@ -733,9 +733,9 @@ export default function About() {
                 </p>
               </div>
 
-              <div className="p-6 rounded-lg border border-red-500/30 dark:border-red-500/30 bg-gradient-to-br from-red-500/5 to-red-500/10 dark:from-red-500/10 dark:to-red-500/10 hover:border-red-500/60 dark:hover:border-red-500/60 transition-all duration-300 hover:shadow-lg hover:shadow-red-500 dark:hover:shadow-red-500">
-                <p className="flex items-start gap-3">
-                  <IoIosArrowForward className="w-5 h-5 dark:text-red-500 text-red-500 flex-shrink-0 mt-1" />
+              <div className="p-4 sm:p-6 rounded-lg border border-red-500/30 dark:border-red-500/30 bg-gradient-to-br from-red-500/5 to-red-500/10 dark:from-red-500/10 dark:to-red-500/10 hover:border-red-500/60 dark:hover:border-red-500/60 transition-all duration-300 hover:shadow-lg hover:shadow-red-500 dark:hover:shadow-red-500">
+                <p className="flex items-start gap-2 sm:gap-3">
+                  <IoIosArrowForward className="w-4 h-4 sm:w-5 sm:h-5 dark:text-red-500 text-red-500 flex-shrink-0 mt-1" />
                   <span>
                     {language === "pt"
                       ? "Nascido e crescido em Pernambuco, de volta às origens após uma temporada no Ceará."
@@ -746,8 +746,8 @@ export default function About() {
             </div>
 
             {/* Profile Image */}
-            <div className="flex flex-col items-center md:items-end animate-float">
-              <div className="relative w-85 h-90 rounded-2xl overflow-hidden shadow-lg shadow-red-500/30 dark:shadow-red-500/30 border border-red-500/40 dark:border-red-500/40 bg-gradient-to-br from-red-500/20 via-red-500/10 to-red-500/20 dark:from-red-500/20 dark:via-red-400/10 dark:to-red-500/20 transition-all duration-300 hover:shadow-red-500 dark:hover:shadow-red-500 hover:scale-105 mb-4">
+            <div className="flex flex-col items-center md:items-end animate-float w-full max-w-sm md:max-w-none">
+              <div className="relative w-full max-w-[280px] sm:max-w-[320px] md:w-[340px] aspect-[340/360] rounded-2xl overflow-hidden shadow-lg shadow-red-500/30 dark:shadow-red-500/30 border border-red-500/40 dark:border-red-500/40 bg-gradient-to-br from-red-500/20 via-red-500/10 to-red-500/20 dark:from-red-500/20 dark:via-red-400/10 dark:to-red-500/20 transition-all duration-300 hover:shadow-red-500 dark:hover:shadow-red-500 hover:scale-105 mb-4">
                 <Image
                   src="/img/photo.jpg"
                   alt="Foto de perfil"
@@ -765,16 +765,16 @@ export default function About() {
 
 
         {/* Skills Section */}
-        <section className="mb-20">
-          <h2 className="text-3xl md:text-4xl font-bold mb-12 text-red-500 dark:text-white">
+        <section className="mb-12 sm:mb-16 md:mb-20">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 md:mb-12 text-red-500 dark:text-white">
             {skillsData[language].title}
           </h2>
-          <p className="text-xl text-muted-foreground mb-10">
+          <p className="text-lg sm:text-xl text-muted-foreground mb-6 sm:mb-8 md:mb-10">
             {skillsData[language].subtitle}
           </p>
 
-          <div className="grid md:grid-cols-3 gap-8">
-            <div className="md:col-span-2 grid sm:grid-cols-2 gap-6">
+          <div className="grid md:grid-cols-3 gap-6 sm:gap-8">
+            <div className="md:col-span-2 grid sm:grid-cols-2 gap-4 sm:gap-6">
               {skillsData[language].categories.map(
                 (category, categoryIdx) => {
                   const IconComponent = category.icon;
@@ -782,18 +782,18 @@ export default function About() {
                   return (
                     <div
                       key={categoryIdx}
-                      className="group p-6 rounded-lg border border-red-500/30 dark:border-red-500/30 bg-gradient-to-br from-red-500/5 to-red-500/10 dark:from-red-500/10 dark:to-red-500/10 hover:border-red-500/60 dark:hover:border-red-500/60 transition-all duration-300 hover:shadow-lg hover:shadow-red-500 dark:hover:shadow-red-500/40 hover:-translate-y-1"
+                      className="group p-4 sm:p-6 rounded-lg border border-red-500/30 dark:border-red-500/30 bg-gradient-to-br from-red-500/5 to-red-500/10 dark:from-red-500/10 dark:to-red-500/10 hover:border-red-500/60 dark:hover:border-red-500/60 transition-all duration-300 hover:shadow-lg hover:shadow-red-500 dark:hover:shadow-red-500/40 hover:-translate-y-1"
                     >
-                      <div className="flex items-center justify-between mb-4">
-                        <h3 className="text-xl font-semibold flex items-center gap-3 group-hover:text-red-500 dark:group-hover:text-red-400 transition-colors">
-                          <IconComponent className="w-6 h-6 dark:text-red-500 text-red-500 group-hover:scale-110 transition-transform duration-300" />
+                      <div className="flex items-center justify-between mb-3 sm:mb-4">
+                        <h3 className="text-lg sm:text-xl font-semibold flex items-center gap-2 sm:gap-3 group-hover:text-red-500 dark:group-hover:text-red-400 transition-colors">
+                          <IconComponent className="w-5 h-5 sm:w-6 sm:h-6 dark:text-red-500 text-red-500 group-hover:scale-110 transition-transform duration-300" />
                           {category.name}
                         </h3>
-                        <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-red-500/20 dark:bg-red-500/30 text-red-600 dark:text-red-400 border border-red-500/40 dark:border-red-500/50">
+                        <span className="px-2 sm:px-2.5 py-1 rounded-full text-xs font-bold bg-red-500/20 dark:bg-red-500/30 text-red-600 dark:text-red-400 border border-red-500/40 dark:border-red-500/50">
                           {skillCount}
                         </span>
                       </div>
-                      <div className="flex flex-wrap gap-3">
+                      <div className="flex flex-wrap gap-2 sm:gap-3">
                         {category.skills.map((skill, skillIdx) => (
                           <span
                             key={skillIdx}
@@ -817,20 +817,20 @@ export default function About() {
 
             {/* Studying Stacks Container */}
             <div className="md:col-span-1">
-              <div className="sticky top-24 p-6 rounded-lg border border-red-500/40 dark:border-red-500/40 bg-gradient-to-br from-red-500/10 to-red-500/20 dark:from-red-500/20 dark:to-red-500/30 shadow-xl shadow-red-500/20 dark:shadow-red-500/20 transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/30 dark:hover:shadow-red-500/30">
-                <div className="flex items-center justify-between mb-4">
-                  <h3 className="text-2xl font-bold flex items-center gap-3 dark:text-white text-red-500">
-                    <BookOpen className="w-7 h-7 animate-pulse" />
+              <div className="sticky top-24 p-4 sm:p-6 rounded-lg border border-red-500/40 dark:border-red-500/40 bg-gradient-to-br from-red-500/10 to-red-500/20 dark:from-red-500/20 dark:to-red-500/30 shadow-xl shadow-red-500/20 dark:shadow-red-500/20 transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/30 dark:hover:shadow-red-500/30">
+                <div className="flex items-center justify-between mb-3 sm:mb-4">
+                  <h3 className="text-xl sm:text-2xl font-bold flex items-center gap-2 sm:gap-3 dark:text-white text-red-500">
+                    <BookOpen className="w-5 h-5 sm:w-7 sm:h-7 animate-pulse" />
                     {skillsData[language].studying.title}
                   </h3>
-                  <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-red-500/30 dark:bg-red-500/40 text-red-600 dark:text-red-400 border border-red-500/50 dark:border-red-500/60 animate-pulse">
+                  <span className="px-2 sm:px-2.5 py-1 rounded-full text-xs font-bold bg-red-500/30 dark:bg-red-500/40 text-red-600 dark:text-red-400 border border-red-500/50 dark:border-red-500/60 animate-pulse">
                     {skillsData[language].studying.stacks.length}
                   </span>
                 </div>
-                <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
+                <p className="text-muted-foreground mb-3 sm:mb-4 text-xs sm:text-sm leading-relaxed">
                   {skillsData[language].studying.description}
                 </p>
-                <div className="flex flex-wrap gap-3">
+                <div className="flex flex-wrap gap-2 sm:gap-3">
                   {skillsData[language].studying.stacks.map(
                     (stack, stackIdx) => (
                       <span
@@ -854,22 +854,22 @@ export default function About() {
         </section>
 
 {/* Experience Section */}
-<section className="mb-20">
-  <h2 className="text-3xl md:text-4xl font-bold mb-12 text-red-500 dark:text-white">
+<section className="mb-12 sm:mb-16 md:mb-20">
+  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 md:mb-12 text-red-500 dark:text-white">
     {language === "pt" ? "Experiência Profissional" : "Professional Experience"}
   </h2>
 
-  <p className="text-xl text-muted-foreground mb-10">
+  <p className="text-lg sm:text-xl text-muted-foreground mb-6 sm:mb-8 md:mb-10">
     {language === "pt"
       ? "Minha trajetória no mundo da tecnologia."
       : "My journey in the world of technology."}
   </p>
 
-  <div className="space-y-10">
+  <div className="space-y-6 sm:space-y-8 md:space-y-10">
     {localizedExperiences.map((exp, expIdx) => (
       <div
         key={expIdx}
-        className="group border-l-4 border-red-500 dark:border-red-500 pl-6 py-4 p-6 -ml-6 rounded-r-lg
+        className="group border-l-4 border-red-500 dark:border-red-500 pl-4 sm:pl-6 py-3 sm:py-4 p-4 sm:p-6 -ml-4 sm:-ml-6 rounded-r-lg
           bg-gradient-to-r from-red-500/5 to-transparent dark:from-red-500/5 dark:to-transparent
           hover:from-red-500/10 hover:to-red-500/5 dark:hover:from-red-500/10 dark:hover:to-red-400/5
           transition-all duration-300 card-hover
@@ -877,7 +877,7 @@ export default function About() {
       >
 
         {/* LOGO + TEXTO LADO A LADO */}
-        <div className="flex items-center gap-6 mb-4 transition-transform duration-300 group-hover:-translate-y-1">
+        <div className="flex items-center gap-3 sm:gap-6 mb-3 sm:mb-4 transition-transform duration-300 group-hover:-translate-y-1">
 
           {/* Logo da empresa */}
           {exp.logo && (
@@ -891,10 +891,10 @@ export default function About() {
           )}
 
           {/* Cargo / Empresa / Período */}
-          <div className="flex-1">
-            <div className="flex items-start justify-between gap-3 mb-2">
-              <div className="flex-1">
-                <h3 className="text-xl font-bold dark:text-red-500 text-red-500">
+          <div className="flex-1 min-w-0">
+            <div className="flex items-start justify-between gap-2 sm:gap-3 mb-2 flex-wrap md:flex-nowrap">
+              <div className="flex-1 min-w-0">
+                <h3 className="text-lg sm:text-xl font-bold dark:text-red-500 text-red-500 break-words">
                   {exp.role}
                 </h3>
 
@@ -903,30 +903,32 @@ export default function About() {
                     href={exp.website}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-lg font-semibold hover:text-red-500 dark:hover:text-red-400 transition-colors flex items-center gap-2 group/link"
+                    className="text-base sm:text-lg font-semibold hover:text-red-500 dark:hover:text-red-400 transition-colors flex items-center gap-2 group/link break-words"
                   >
-                    {exp.company}
-                    <ExternalLink className="w-4 h-4 opacity-0 group-hover/link:opacity-100 transition-opacity" />
+                    <span className="break-words">{exp.company}</span>
+                    <ExternalLink className="w-3 h-3 sm:w-4 sm:h-4 opacity-0 group-hover/link:opacity-100 transition-opacity flex-shrink-0" />
                   </a>
                 ) : (
-                  <p className="text-lg font-semibold">
+                  <p className="text-base sm:text-lg font-semibold break-words">
                     {exp.company}
                   </p>
                 )}
               </div>
 
-              {/* Badge de Status */}
-              {isActive(exp.period) ? (
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold border bg-green-500/10 dark:bg-green-500/20 text-green-700 dark:text-green-400 border-green-500/30 dark:border-green-500/40 shrink-0">
-                  <CheckCircle2 className="w-3 h-3" />
-                  {language === "pt" ? "Em andamento" : "In Progress"}
-                </span>
-              ) : (
-                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold border bg-gray-500/10 dark:bg-gray-500/20 text-gray-700 dark:text-gray-400 border-gray-500/30 dark:border-gray-500/40 shrink-0">
-                  <CheckCircle2 className="w-3 h-3" />
-                  {language === "pt" ? "Concluído" : "Completed"}
-                </span>
-              )}
+              {/* Badge de Status - Desktop: ao lado, Mobile: abaixo */}
+              <div className="w-full md:w-auto md:shrink-0 order-3 md:order-2">
+                {isActive(exp.period) ? (
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold border bg-green-500/10 dark:bg-green-500/20 text-green-700 dark:text-green-400 border-green-500/30 dark:border-green-500/40">
+                    <CheckCircle2 className="w-3 h-3" />
+                    {language === "pt" ? "Em andamento" : "In Progress"}
+                  </span>
+                ) : (
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold border bg-gray-500/10 dark:bg-gray-500/20 text-gray-700 dark:text-gray-400 border-gray-500/30 dark:border-gray-500/40">
+                    <CheckCircle2 className="w-3 h-3" />
+                    {language === "pt" ? "Concluído" : "Completed"}
+                  </span>
+                )}
+              </div>
             </div>
 
             <div className="space-y-2 mt-2">

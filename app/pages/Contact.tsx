@@ -211,26 +211,26 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="py-20 px-4 relative">
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-red-500 dark:text-white">
+    <section id="contact" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 relative overflow-x-hidden">
+      <div className="max-w-7xl mx-auto w-full">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-red-500 dark:text-white">
           {language === "pt" ? "Contato" : "Contact"}
         </h1>
 
-        <p className="text-lg text-muted-foreground mb-12">
+        <p className="text-base sm:text-lg text-muted-foreground mb-8 sm:mb-10 md:mb-12">
           {language === "pt"
             ? "Vamos construir algo incrível juntos! Entre em contato."
             : "Let's build something amazing together! Get in touch."}
         </p>
 
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid md:grid-cols-2 gap-8 sm:gap-10 md:gap-12">
           {/* Contact Methods */}
           <section>
-            <h2 className="text-2xl font-bold mb-6 text-red-500 dark:text-white">
+            <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-red-500 dark:text-white">
               {language === "pt" ? "Minhas Redes" : "My network"}
             </h2>
 
-            <div className="space-y-6">
+            <div className="space-y-4 sm:space-y-6">
               {contactMethods.map((method, idx) => {
                 const Icon = method.icon;
                 return (
@@ -239,20 +239,20 @@ export default function Contact() {
                     href={method.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={`group flex items-center p-4 rounded-lg border-2 ${method.color}
+                    className={`group flex items-center p-3 sm:p-4 rounded-lg border-2 ${method.color}
                     bg-gradient-to-r from-red-500/5 to-transparent dark:from-red-500/5 
                     hover:from-red-500/10 hover:to-red-500/5 dark:hover:from-red-500/10 
                     transition-all duration-300 transform hover:scale-105 hover:-translate-y-1
                     hover:shadow-lg hover:shadow-red-500/20 dark:hover:shadow-red-500/20`}
                   >
-                    <Icon className="w-6 h-6 mr-4 dark:text-red-500 text-red-500 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3" />
-                    <div className="flex-1">
-                      <p className="text-sm text-gray-600 dark:text-muted-foreground transition-colors duration-300 group-hover:text-gray-800 dark:group-hover:text-gray-200">
+                    <Icon className="w-5 h-5 sm:w-6 sm:h-6 mr-3 sm:mr-4 dark:text-red-500 text-red-500 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 flex-shrink-0" />
+                    <div className="flex-1 min-w-0">
+                      <p className="text-xs sm:text-sm text-gray-600 dark:text-muted-foreground transition-colors duration-300 group-hover:text-gray-800 dark:group-hover:text-gray-200">
                         {language === "en" && method.label === "Telefone"
                           ? "Phone"
                           : method.label}
                       </p>
-                      <p className="text-lg font-bold text-gray-900 dark:text-white transition-colors duration-300 group-hover:text-red-500 dark:group-hover:text-red-400">{method.value}</p>
+                      <p className="text-sm sm:text-base md:text-lg font-bold text-gray-900 dark:text-white transition-colors duration-300 group-hover:text-red-500 dark:group-hover:text-red-400 truncate">{method.value}</p>
                     </div>
                   </a>
                 );
@@ -262,13 +262,13 @@ export default function Contact() {
 
           {/* Contact Form */}
           <section>
-            <h2 className="text-2xl font-bold mb-6 text-red-500 dark:text-white">
+            <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-red-500 dark:text-white">
               {language === "pt" ? "Envie uma Mensagem" : "Send a Message"}
             </h2>
 
             {submitted && (
-              <div className="p-4 mb-4 text-sm text-green-700 bg-green-100 dark:bg-green-900/30 border border-green-500/30 dark:border-green-500/50 rounded-lg flex items-center gap-2 animate-in fade-in slide-in-from-top-2 duration-300">
-                <CheckCircle2 className="w-5 h-5 shrink-0" />
+              <div className="p-3 sm:p-4 mb-3 sm:mb-4 text-xs sm:text-sm text-green-700 bg-green-100 dark:bg-green-900/30 border border-green-500/30 dark:border-green-500/50 rounded-lg flex items-center gap-2 animate-in fade-in slide-in-from-top-2 duration-300">
+                <CheckCircle2 className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
                 <span>
                   {language === "pt"
                     ? "Mensagem enviada com sucesso!"
@@ -278,15 +278,15 @@ export default function Contact() {
             )}
 
             {error && errorMessage && (
-              <div className="p-4 mb-4 text-sm text-red-700 bg-red-100 dark:bg-red-900/30 border border-red-500/30 dark:border-red-500/50 rounded-lg flex items-center gap-2 animate-in fade-in slide-in-from-top-2 duration-300">
-                <AlertCircle className="w-5 h-5 shrink-0" />
+              <div className="p-3 sm:p-4 mb-3 sm:mb-4 text-xs sm:text-sm text-red-700 bg-red-100 dark:bg-red-900/30 border border-red-500/30 dark:border-red-500/50 rounded-lg flex items-center gap-2 animate-in fade-in slide-in-from-top-2 duration-300">
+                <AlertCircle className="w-4 h-4 sm:w-5 sm:h-5 shrink-0" />
                 <span>{errorMessage}</span>
               </div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-3 sm:space-y-4">
               <div>
-                <label className="block text-sm font-semibold mb-1 text-gray-800 dark:text-white">
+                <label className="block text-xs sm:text-sm font-semibold mb-1 text-gray-800 dark:text-white">
                   {language === "pt" ? "Nome" : "Name"}
                 </label>
                 <input
@@ -297,7 +297,7 @@ export default function Contact() {
                   onBlur={handleBlur}
                   required
                   placeholder={language === "pt" ? "Seu nome" : "Your name"}
-                  className={`w-full px-3 py-2 rounded-lg border bg-white dark:bg-background text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-red-500/50 dark:focus:ring-red-500/50 ${
+                  className={`w-full px-3 py-2 text-sm sm:text-base rounded-lg border bg-white dark:bg-background text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-red-500/50 dark:focus:ring-red-500/50 ${
                     fieldErrors.name
                       ? "border-red-500 dark:border-red-500 focus:border-red-500"
                       : touched.name && !fieldErrors.name
@@ -320,7 +320,7 @@ export default function Contact() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold mb-1 text-gray-800 dark:text-white">
+                <label className="block text-xs sm:text-sm font-semibold mb-1 text-gray-800 dark:text-white">
                   Email
                 </label>
                 <input
@@ -331,7 +331,7 @@ export default function Contact() {
                   onBlur={handleBlur}
                   required
                   placeholder="seu@email.com"
-                  className={`w-full px-3 py-2 rounded-lg border bg-white dark:bg-background text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-red-500/50 dark:focus:ring-red-500/50 ${
+                  className={`w-full px-3 py-2 text-sm sm:text-base rounded-lg border bg-white dark:bg-background text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-red-500/50 dark:focus:ring-red-500/50 ${
                     fieldErrors.email
                       ? "border-red-500 dark:border-red-500 focus:border-red-500"
                       : touched.email && !fieldErrors.email
@@ -355,7 +355,7 @@ export default function Contact() {
 
               <div>
                 <div className="flex items-center justify-between mb-1">
-                  <label className="block text-sm font-semibold text-gray-800 dark:text-white">
+                  <label className="block text-xs sm:text-sm font-semibold text-gray-800 dark:text-white">
                     {language === "pt" ? "Mensagem" : "Message"}
                   </label>
                   <span className={`text-xs font-medium ${
@@ -379,7 +379,7 @@ export default function Contact() {
                   placeholder={
                     language === "pt" ? "Sua mensagem..." : "Your message..."
                   }
-                  className={`w-full px-3 py-2 rounded-lg border bg-white dark:bg-background text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-red-500/50 dark:focus:ring-red-500/50 resize-none ${
+                  className={`w-full px-3 py-2 text-sm sm:text-base rounded-lg border bg-white dark:bg-background text-gray-900 dark:text-white placeholder:text-gray-400 dark:placeholder:text-gray-400 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-red-500/50 dark:focus:ring-red-500/50 resize-none ${
                     fieldErrors.message
                       ? "border-red-500 dark:border-red-500 focus:border-red-500"
                       : touched.message && !fieldErrors.message
@@ -404,16 +404,16 @@ export default function Contact() {
               <Button
                 type="submit"
                 disabled={loading || Object.values(fieldErrors).some(error => error && error.length > 0)}
-                className="w-full rounded-lg px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 dark:from-red-500 dark:to-red-700 hover:from-red-600 hover:to-red-700 dark:hover:to-red-800 text-white border-0 shadow-sm hover:shadow-xl hover:shadow-red-500/20 dark:hover:shadow-red-500/20 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none text-sm flex items-center justify-center gap-2"
+                className="w-full rounded-lg px-4 py-2.5 sm:py-2 bg-gradient-to-r from-red-500 to-red-600 dark:from-red-500 dark:to-red-700 hover:from-red-600 hover:to-red-700 dark:hover:to-red-800 text-white border-0 shadow-sm hover:shadow-xl hover:shadow-red-500/20 dark:hover:shadow-red-500/20 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none text-sm sm:text-base flex items-center justify-center gap-2"
               >
                 {loading ? (
                   <>
-                    <Loader2 className="w-4 h-4 animate-spin" />
+                    <Loader2 className="w-4 h-4 sm:w-5 sm:h-5 animate-spin" />
                     {language === "pt" ? "Enviando..." : "Sending..."}
                   </>
                 ) : (
                   <>
-                    <Send className="w-4 h-4" />
+                    <Send className="w-4 h-4 sm:w-5 sm:h-5" />
                     {language === "pt"
                       ? "Enviar Mensagem"
                       : "Send Message"}

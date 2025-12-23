@@ -403,12 +403,12 @@ export default function Projects() {
   const otherProjects = localizedProjects.filter((p) => !p.featured);
 
   return (
-    <section id="projects" className="py-20 px-4 relative">
-      <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-red-500 dark:text-white">
+    <section id="projects" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 relative overflow-x-hidden">
+      <div className="max-w-7xl mx-auto w-full">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-red-500 dark:text-white">
           {language === "pt" ? "Projetos" : "Projects"}
         </h1>
-        <p className="text-lg text-muted-foreground mb-8">
+        <p className="text-base sm:text-lg text-muted-foreground mb-6 sm:mb-8">
           {language === "pt"
             ? "Confira alguns dos projetos em que "
             : "Check out some of the projects I've "}
@@ -424,12 +424,12 @@ export default function Projects() {
 
         {/* Featured Project */}
         {featuredProject && (
-          <section className="mb-20">
-            <h2 className="text-2xl font-bold mb-6 text-red-500 dark:text-white">
+          <section className="mb-12 sm:mb-16 md:mb-20">
+            <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-red-500 dark:text-white">
               {language === "pt" ? "Projeto Destaque" : "Featured Project"}
             </h2>
             <div
-              className="border border-red-500/50 dark:border-red-500/50 rounded-lg p-8 
+              className="border border-red-500/50 dark:border-red-500/50 rounded-lg p-4 sm:p-6 md:p-8 
               bg-gradient-to-br dark:from-red-500/10 dark:to-red-400/10 
               dark:hover:border-red-500 dark:hover:from-red-500/20 dark:hover:to-red-400/20
               from-red-500/10 to-red-400/10 hover:border-red-500 hover:from-red-500/20 hover:to-red-400/20
@@ -438,22 +438,22 @@ export default function Projects() {
               cursor-pointer"
               onClick={() => handleOpenProjectModal(featuredProject)}
             >
-              <div className="flex flex-col md:flex-row gap-6">
+              <div className="flex flex-col md:flex-row gap-4 sm:gap-6">
                 <div className="md:w-1/3 flex-shrink-0">
                   <img
                     src={featuredProject.images?.[0] || PLACEHOLDER_IMAGE}
                     alt={featuredProject.title}
-                    className="w-full h-48 object-cover rounded-lg shadow-lg"
+                    className="w-full h-40 sm:h-48 object-cover rounded-lg shadow-lg"
                   />
                 </div>
                 <div className="md:w-2/3">
-                  <h3 className="text-3xl font-bold mb-2">
+                  <h3 className="text-2xl sm:text-3xl font-bold mb-2">
                     {featuredProject.title}
                   </h3>
-                  <p className="text-muted-foreground mb-4">
+                  <p className="text-sm sm:text-base text-muted-foreground mb-3 sm:mb-4">
                     {featuredProject.description}
                   </p>
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="flex flex-wrap gap-2 mb-3 sm:mb-4">
                     {featuredProject.tags.map((tag, tagIdx) => (
                       <span
                         key={tagIdx}
@@ -489,14 +489,14 @@ export default function Projects() {
 
         {/* Other Projects */}
         <section>
-          <h2 className="text-2xl font-bold mb-6 text-red-500 dark:text-white">
+          <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-red-500 dark:text-white">
             {language === "pt" ? "Outros Projetos" : "Other Projects"}
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
             {otherProjects.map((project, idx) => (
               <div
                 key={idx}
-                className="p-6 rounded-lg border border-red-500/30 dark:border-red-500/30 bg-gradient-to-br from-red-500/10 to-red-400/10 dark:from-red-500/10 dark:to-red-500/10 hover:border-red-500/60 dark:hover:border-red-500/60 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/20 dark:hover:shadow-red-500/10 cursor-pointer"
+                className="p-4 sm:p-6 rounded-lg border border-red-500/30 dark:border-red-500/30 bg-gradient-to-br from-red-500/10 to-red-400/10 dark:from-red-500/10 dark:to-red-500/10 hover:border-red-500/60 dark:hover:border-red-500/60 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/20 dark:hover:shadow-red-500/10 cursor-pointer"
                 onClick={() => handleOpenProjectModal(project)}
               >
                 <Image
@@ -504,14 +504,14 @@ export default function Projects() {
                   alt={project.title}
                   width={400}
                   height={160}
-                  className="w-full h-40 object-cover rounded-lg mb-4 shadow-md"
+                  className="w-full h-32 sm:h-40 object-cover rounded-lg mb-3 sm:mb-4 shadow-md"
                   loading="lazy"
                 />
-                <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                <p className="text-sm text-muted-foreground mb-4 line-clamp-3">
+                <h3 className="text-lg sm:text-xl font-bold mb-2">{project.title}</h3>
+                <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4 line-clamp-3">
                   {project.description}
                 </p>
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="flex flex-wrap gap-2 mb-3 sm:mb-4">
                   {project.tags.map((tag, tagIdx) => (
                     <span
                       key={tagIdx}

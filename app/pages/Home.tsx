@@ -97,7 +97,7 @@ export default function Home() {
         scrollToSection={scrollToSection}
       />
 
-      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20">
+      <main className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 pb-20 overflow-x-hidden">
         {/* Hero Section */}
         <section
           id="home"
