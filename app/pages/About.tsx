@@ -50,12 +50,17 @@ const skillsData = {
       {
         name: "Back-end",
         icon: Server,
-        skills: ["Node.js", "Laravel", "PHP", "Python"],
+        skills: ["Node.js", "Laravel", "Flask"],
       },
       {
         name: "Banco de dados",
         icon: Database,
         skills: ["MySQL", "PostgreSQL", "Redis"],
+      },
+      {
+        name: "IA e Automação",
+        icon: Cpu,
+        skills: ["n8n", "Chatwoot", "EvolutionAPI", "Easypanel", "LLMs"],
       },
       {
         name: "Ferramentas",
@@ -69,7 +74,6 @@ const skillsData = {
           "Docker",
           "Jira",
           "Trello",
-          "n8n",
           "WordPress",
         ],
       },
@@ -100,17 +104,22 @@ const skillsData = {
       {
         name: "Front-end",
         icon: Monitor,
-        skills: ["React", "Vue.js", "Next.js", "Tailwind CSS", "HTML", "CSS"],
+        skills: ["React", "Vue.js", "Next.js", "Tailwind CSS", "ShadcnUI", "HTML", "CSS"],
       },
       {
         name: "Back-end",
         icon: Server,
-        skills: ["Node.js", "Flask", "Django", "Laravel"],
+        skills: ["Node.js", "Laravel", "Flask"],
       },
       {
         name: "Databases",
         icon: Database,
         skills: ["MySQL", "PostgreSQL", "Redis"],
+      },
+      {
+        name: "AI & Automation",
+        icon: Cpu,
+        skills: ["n8n", "Chatwoot", "EvolutionAPI", "Easypanel", "LLMs"],
       },
       {
         name: "Tools",
@@ -124,7 +133,6 @@ const skillsData = {
           "Docker",
           "Jira",
           "Trello",
-          "n8n",
           "WordPress",
         ],
       },
@@ -772,22 +780,33 @@ export default function About() {
               {skillsData[language].categories.map(
                 (category, categoryIdx) => {
                   const IconComponent = category.icon;
+                  const skillCount = category.skills.length;
                   return (
                     <div
                       key={categoryIdx}
-                      className="p-6 rounded-lg border border-red-500/30 dark:border-red-500/30 bg-gradient-to-br from-red-500/5 to-red-500/10 dark:from-red-500/10 dark:to-red-500/10 hover:border-red-500/60 dark:hover:border-red-500/60 transition-all duration-300 hover:shadow-lg hover:shadow-red-500 dark:hover:shadow-red-500/40"
+                      className="group p-6 rounded-lg border border-red-500/30 dark:border-red-500/30 bg-gradient-to-br from-red-500/5 to-red-500/10 dark:from-red-500/10 dark:to-red-500/10 hover:border-red-500/60 dark:hover:border-red-500/60 transition-all duration-300 hover:shadow-lg hover:shadow-red-500 dark:hover:shadow-red-500/40 hover:-translate-y-1"
                     >
-                      <h3 className="text-xl font-semibold mb-4 flex items-center gap-3">
-                        <IconComponent className="w-6 h-6 dark:text-red-500 text-red-500" />
-                        {category.name}
-                      </h3>
+                      <div className="flex items-center justify-between mb-4">
+                        <h3 className="text-xl font-semibold flex items-center gap-3 group-hover:text-red-500 dark:group-hover:text-red-400 transition-colors">
+                          <IconComponent className="w-6 h-6 dark:text-red-500 text-red-500 group-hover:scale-110 transition-transform duration-300" />
+                          {category.name}
+                        </h3>
+                        <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-red-500/20 dark:bg-red-500/30 text-red-600 dark:text-red-400 border border-red-500/40 dark:border-red-500/50">
+                          {skillCount}
+                        </span>
+                      </div>
                       <div className="flex flex-wrap gap-3">
                         {category.skills.map((skill, skillIdx) => (
                           <span
                             key={skillIdx}
-                            className="text-sm px-3 py-1 rounded-full flex items-center gap-2 bg-gradient-to-r from-red-500/10 to-red-500/10 dark:from-red-500/20 dark:to-red-400/20 text-gray-800 dark:text-accent-foreground border border-red-500/40 dark:border-red-500/50 hover:border-red-500 hover:from-red-500/20 hover:to-red-500/20 dark:hover:border-red-500 dark:hover:from-red-500/30 dark:hover:to-red-400/30 transition-all duration-300 transform hover:scale-105"
+                            className="text-sm px-3 py-1.5 rounded-full flex items-center gap-2 bg-gradient-to-r from-red-500/10 to-red-500/10 dark:from-red-500/20 dark:to-red-400/20 text-gray-800 dark:text-accent-foreground border border-red-500/40 dark:border-red-500/50 hover:border-red-500 hover:from-red-500/20 hover:to-red-500/20 dark:hover:border-red-500 dark:hover:from-red-500/30 dark:hover:to-red-400/30 transition-all duration-300 transform hover:scale-110 hover:shadow-md hover:shadow-red-500/30 dark:hover:shadow-red-500/20 cursor-default group/skill"
+                            style={{
+                              animationDelay: `${skillIdx * 50}ms`,
+                            }}
                           >
-                            {getTechIcon(skill)}
+                            <span className="group-hover/skill:scale-125 transition-transform duration-300">
+                              {getTechIcon(skill)}
+                            </span>
                             {skill}
                           </span>
                         ))}
@@ -800,12 +819,17 @@ export default function About() {
 
             {/* Studying Stacks Container */}
             <div className="md:col-span-1">
-              <div className="sticky top-24 p-6 rounded-lg border border-red-500/40 dark:border-red-500/40 bg-gradient-to-br from-red-500/10 to-red-500/20 dark:from-red-500/20 dark:to-red-500/30 shadow-xl shadow-red-500/20 dark:shadow-red-500/20 transition-all duration-300">
-                <h3 className="text-2xl font-bold mb-4 flex items-center gap-3 dark:text-white text-red-500">
-                  <BookOpen className="w-7 h-7" />
-                  {skillsData[language].studying.title}
-                </h3>
-                <p className="text-muted-foreground mb-4">
+              <div className="sticky top-24 p-6 rounded-lg border border-red-500/40 dark:border-red-500/40 bg-gradient-to-br from-red-500/10 to-red-500/20 dark:from-red-500/20 dark:to-red-500/30 shadow-xl shadow-red-500/20 dark:shadow-red-500/20 transition-all duration-300 hover:shadow-2xl hover:shadow-red-500/30 dark:hover:shadow-red-500/30">
+                <div className="flex items-center justify-between mb-4">
+                  <h3 className="text-2xl font-bold flex items-center gap-3 dark:text-white text-red-500">
+                    <BookOpen className="w-7 h-7 animate-pulse" />
+                    {skillsData[language].studying.title}
+                  </h3>
+                  <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-red-500/30 dark:bg-red-500/40 text-red-600 dark:text-red-400 border border-red-500/50 dark:border-red-500/60 animate-pulse">
+                    {skillsData[language].studying.stacks.length}
+                  </span>
+                </div>
+                <p className="text-muted-foreground mb-4 text-sm leading-relaxed">
                   {skillsData[language].studying.description}
                 </p>
                 <div className="flex flex-wrap gap-3">
@@ -813,9 +837,14 @@ export default function About() {
                     (stack, stackIdx) => (
                       <span
                         key={stackIdx}
-                        className="text-base px-4 py-2 rounded-full flex items-center gap-2 bg-gradient-to-r border border-red-500/50 dark:border-red-500/50 hover:border-red-500 dark:hover:border-red-500 from-red-500/10 to-red-500/10 dark:from-red-500/10 dark:to-red-400/10 hover:from-red-500/20 hover:to-red-500/20 dark:hover:from-red-400/20 dark:hover:to-red-400/20 text-red-500 dark:text-white transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-red-500/40 dark:hover:shadow-red-500/20 group font-semibold shadow-md"
+                        className="text-base px-4 py-2 rounded-full flex items-center gap-2 bg-gradient-to-r border border-red-500/50 dark:border-red-500/50 hover:border-red-500 dark:hover:border-red-500 from-red-500/10 to-red-500/10 dark:from-red-500/10 dark:to-red-400/10 hover:from-red-500/20 hover:to-red-500/20 dark:hover:from-red-400/20 dark:hover:to-red-400/20 text-red-500 dark:text-white transition-all duration-300 transform hover:scale-110 hover:shadow-lg hover:shadow-red-500/40 dark:hover:shadow-red-500/20 group/study font-semibold shadow-md hover:-translate-y-0.5"
+                        style={{
+                          animationDelay: `${stackIdx * 100}ms`,
+                        }}
                       >
-                        {getTechIcon(stack)}
+                        <span className="group-hover/study:rotate-12 transition-transform duration-300">
+                          {getTechIcon(stack)}
+                        </span>
                         {stack}
                       </span>
                     )
