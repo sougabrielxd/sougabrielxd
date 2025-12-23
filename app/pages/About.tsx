@@ -19,6 +19,9 @@ import {
   MapPin,
   Laptop,
   School,
+  Building2,
+  Home,
+  ExternalLink,
 } from "lucide-react";
 import { getTechIcon } from "@/lib/techIcons";
 import { IoIosArrowForward } from "react-icons/io";
@@ -276,6 +279,9 @@ const experiences = [
     company: "Starke Vision",
     role: "AI Systems Development Intern",
     period: "Dec 2025 - Present",
+    modality: "Presencial",
+    location: "Araripina - PE",
+    website: "https://starkevision.com.br/",
     logo: "/companies/logostarke.png",
     description: [
       "Implementation of complex automation flows via n8n, integrating CRMs and communication tools such as Chatwoot and EvolutionAPI.",
@@ -303,11 +309,14 @@ const experiences = [
     company: "Freelancer",
     role: "Front-End Developer and UI/UX Designer",
     period: "Jul 2023 - Present",
+    modality: "Remoto",
+    location: null,
+    website: "https://gabriellucasafb.com.br/",
     logo: "/companies/x-red.svg",
     description: [
-      "Developed responsive websites and UI/UX interfaces focused on usability, aesthetics, and conversion.",
-      "Created visual identities and digital materials, while planning strategic content for social media.",
-      "Worked directly with clients to understand needs and deliver complete, functional digital solutions.",
+      "I develop responsive websites and UI/UX interfaces focused on usability, aesthetics, and conversion.",
+      "I create visual identities and digital materials, while planning strategic content for social media.",
+      "I work directly with clients to understand needs and deliver complete, functional digital solutions.",
     ],
     
     skills: [
@@ -326,6 +335,9 @@ const experiences = [
     company: "Receita Federal",
     role: "IT Intern",
     period: "Dec 2024 - Dec 2025",
+    modality: "Presencial",
+    location: "Juazeiro do Norte - CE",
+    website: null,
     logo: "/companies/receita-federal.png",
     description: [
       "I provided technical support to users, diagnosing and resolving hardware and software problems, improving the performance and speed of various computers.",
@@ -338,6 +350,9 @@ const experiences = [
     company: "NExTI UniFAP",
     role: "Full-Stack Developer",
     period: "Mar 2025 - Dec 2025",
+    modality: "Híbrido",
+    location: "Juazeiro do Norte - CE",
+    website: "https://nexti.fapce.edu.br/",
     logo: "/companies/nexti-unifap.png",
     description: [
       "I worked as a volunteer full-stack developer building the digital platform for Learn Skills, an academic publisher dedicated to disseminating knowledge.",
@@ -351,6 +366,9 @@ const experiences = [
     company: "Carboon Cycle",
     role: "Full-Stack Developer",
     period: "Mar 2025 - Out 2025",
+    modality: "Remoto",
+    location: "Corumbá - MS",
+    website: "https://carbon.app.br/",
     logo: "/companies/Carboon-Cycle.svg",
     description: [
       "Developed responsive and interactive user interfaces for web applications using React and TailwindCSS.",
@@ -420,8 +438,121 @@ export default function About() {
     </div>
   );
 
-  // Ajusta o objeto experiences para usar a linguagem correta
-  const localizedExperiences = experiences.map((exp) => ({
+  // Função para calcular duração do período
+  const calculateDuration = (period: string, language: "pt" | "en"): string => {
+    const isPresent = period.includes("Present") || period.includes("Atual");
+    const months = [
+      "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+      "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+    ];
+    const monthsPT = [
+      "Jan", "Fev", "Mar", "Abr", "Mai", "Jun",
+      "Jul", "Ago", "Set", "Out", "Nov", "Dez"
+    ];
+
+    try {
+      let startDate: Date;
+      let endDate: Date = new Date();
+
+      // Parse do período
+      if (period.includes(" - ")) {
+        const [startStr, endStr] = period.split(" - ");
+        
+        // Parse da data de início
+        const startParts = startStr.trim().split(" ");
+        const startMonthStr = startParts[0];
+        const startMonth = language === "pt" 
+          ? monthsPT.indexOf(startMonthStr)
+          : months.indexOf(startMonthStr);
+        
+        if (startMonth === -1) return "";
+        
+        const startYear = parseInt(startParts[1]);
+        startDate = new Date(startYear, startMonth, 1);
+
+        // Parse da data de fim
+        if (!isPresent) {
+          const endParts = endStr.trim().split(" ");
+          const endMonthStr = endParts[0];
+          const endMonth = language === "pt"
+            ? monthsPT.indexOf(endMonthStr)
+            : months.indexOf(endMonthStr);
+          
+          if (endMonth === -1) return "";
+          
+          const endYear = parseInt(endParts[1]);
+          endDate = new Date(endYear, endMonth + 1, 0);
+        }
+      } else {
+        return "";
+      }
+
+      // Calcular diferença em meses
+      const years = endDate.getFullYear() - startDate.getFullYear();
+      const monthsDiff = endDate.getMonth() - startDate.getMonth();
+      const daysDiff = endDate.getDate() - startDate.getDate();
+      
+      let totalMonths = years * 12 + monthsDiff;
+      if (daysDiff >= 0) totalMonths += 1;
+
+      if (totalMonths < 1) return "";
+      
+      const yearsCalc = Math.floor(totalMonths / 12);
+      const monthsCalc = totalMonths % 12;
+
+      if (language === "pt") {
+        if (yearsCalc > 0 && monthsCalc > 0) {
+          return `${yearsCalc} ${yearsCalc === 1 ? "ano" : "anos"} e ${monthsCalc} ${monthsCalc === 1 ? "mês" : "meses"}`;
+        } else if (yearsCalc > 0) {
+          return `${yearsCalc} ${yearsCalc === 1 ? "ano" : "anos"}`;
+        } else {
+          return `${monthsCalc} ${monthsCalc === 1 ? "mês" : "meses"}`;
+        }
+      } else {
+        if (yearsCalc > 0 && monthsCalc > 0) {
+          return `${yearsCalc} ${yearsCalc === 1 ? "year" : "years"} and ${monthsCalc} ${monthsCalc === 1 ? "month" : "months"}`;
+        } else if (yearsCalc > 0) {
+          return `${yearsCalc} ${yearsCalc === 1 ? "year" : "years"}`;
+        } else {
+          return `${monthsCalc} ${monthsCalc === 1 ? "month" : "months"}`;
+        }
+      }
+    } catch (error) {
+      return "";
+    }
+  };
+
+  // Função para verificar se a experiência está ativa
+  const isActive = (period: string): boolean => {
+    return period.includes("Present") || period.includes("Atual");
+  };
+
+  // Função para ordenar experiências (ativas primeiro, depois por data)
+  const sortExperiences = (exps: typeof experiences) => {
+    return [...exps].sort((a, b) => {
+      const aActive = isActive(a.period);
+      const bActive = isActive(b.period);
+      
+      // Ativas primeiro
+      if (aActive && !bActive) return -1;
+      if (!aActive && bActive) return 1;
+      
+      // Depois ordenar por data (mais recente primeiro)
+      const getDate = (period: string): Date => {
+        const parts = period.split(" - ")[0].split(" ");
+        const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+        const month = months.indexOf(parts[0]);
+        const year = parseInt(parts[1]);
+        return new Date(year, month, 1);
+      };
+      
+      return getDate(b.period).getTime() - getDate(a.period).getTime();
+    });
+  };
+
+  // Ajusta o objeto experiences para usar a linguagem correta e ordena
+  const sortedExperiences = sortExperiences(experiences);
+  const localizedExperiences = sortedExperiences.map((exp) => ({
     ...exp,
   
     // Tradução do cargo
@@ -450,6 +581,24 @@ export default function About() {
             .replace("Jul 2023 - Present", "Jul 2023 - Atual")
             .replace("Mar 2025 - Oct 2025", "Jul 2023 - Atual")
         : exp.period,
+    
+    // Traduções de modalidade
+    modality:
+      language === "pt"
+        ? exp.modality === "Presencial"
+          ? "Presencial"
+          : exp.modality === "Remoto"
+          ? "Remoto"
+          : exp.modality === "Híbrido"
+          ? "Híbrido"
+          : exp.modality
+        : exp.modality === "Presencial"
+        ? "On-site"
+        : exp.modality === "Remoto"
+        ? "Remote"
+        : exp.modality === "Híbrido"
+        ? "Hybrid"
+        : exp.modality,
   
     // Descrição PT-BR
     description:
@@ -487,6 +636,20 @@ export default function About() {
                 "Desenvolvimento de sites institucionais com WordPress para clientes, garantindo a satisfação e a entrega de soluções digitais completas e funcionais.",
               ]
           : exp.description
+        : exp.company === "Starke Vision"
+        ? [
+            "I implement complex automation flows via n8n, integrating CRMs and communication tools such as Chatwoot and EvolutionAPI.",
+            "I actively participate in Scrum rituals, collaborating in sprint planning and task organization via agile management.",
+            "I manage PostgreSQL databases and cache optimization with Redis to ensure application scalability.",
+            "I deploy and manage services using Easypanel.",
+            "I develop institutional websites with WordPress for clients, ensuring satisfaction and delivery of complete and functional digital solutions.",
+          ]
+        : exp.company === "Carboon Cycle"
+        ? [
+            "I developed responsive and interactive user interfaces for web applications using React and TailwindCSS.",
+            "I collaborated with designers and back-end developers to implement complete features, ensuring seamless integration between front-end and back-end.",
+            "I actively participated in code reviews and testing to ensure software quality.",
+          ]
         : exp.description,
   
     // Skills traduzidas
@@ -701,18 +864,77 @@ export default function About() {
           )}
 
           {/* Cargo / Empresa / Período */}
-          <div>
-            <h3 className="text-xl font-bold dark:text-red-500 text-red-500">
-              {exp.role}
-            </h3>
+          <div className="flex-1">
+            <div className="flex items-start justify-between gap-3 mb-2">
+              <div className="flex-1">
+                <h3 className="text-xl font-bold dark:text-red-500 text-red-500">
+                  {exp.role}
+                </h3>
 
-            <p className="text-lg font-semibold">
-              {exp.company}
-            </p>
+                {exp.website ? (
+                  <a
+                    href={exp.website}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-lg font-semibold hover:text-red-500 dark:hover:text-red-400 transition-colors flex items-center gap-2 group/link"
+                  >
+                    {exp.company}
+                    <ExternalLink className="w-4 h-4 opacity-0 group-hover/link:opacity-100 transition-opacity" />
+                  </a>
+                ) : (
+                  <p className="text-lg font-semibold">
+                    {exp.company}
+                  </p>
+                )}
+              </div>
 
-            <p className="text-sm text-muted-foreground">
-              {exp.period}
-            </p>
+              {/* Badge de Status */}
+              {isActive(exp.period) ? (
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold border bg-green-500/10 dark:bg-green-500/20 text-green-700 dark:text-green-400 border-green-500/30 dark:border-green-500/40 shrink-0">
+                  <CheckCircle2 className="w-3 h-3" />
+                  {language === "pt" ? "Em andamento" : "In Progress"}
+                </span>
+              ) : (
+                <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold border bg-gray-500/10 dark:bg-gray-500/20 text-gray-700 dark:text-gray-400 border-gray-500/30 dark:border-gray-500/40 shrink-0">
+                  <CheckCircle2 className="w-3 h-3" />
+                  {language === "pt" ? "Concluído" : "Completed"}
+                </span>
+              )}
+            </div>
+
+            <div className="space-y-2 mt-2">
+              <p className="text-sm text-muted-foreground flex items-center gap-2">
+                <Clock className="w-4 h-4 shrink-0" />
+                <span>{exp.period}</span>
+                {calculateDuration(exp.period, language) && (
+                  <span className="text-xs text-muted-foreground/70">
+                    ({calculateDuration(exp.period, language)})
+                  </span>
+                )}
+              </p>
+              
+              {/* Modalidade e Localização */}
+              <div className="flex flex-wrap items-center gap-3">
+                {exp.modality && (
+                  <span className="text-xs text-muted-foreground flex items-center gap-1.5">
+                    {exp.modality === "Remoto" || exp.modality === "Remote" ? (
+                      <Home className="w-3.5 h-3.5 text-red-500 dark:text-red-400" />
+                    ) : exp.modality === "Híbrido" || exp.modality === "Hybrid" ? (
+                      <Building2 className="w-3.5 h-3.5 text-red-500 dark:text-red-400" />
+                    ) : (
+                      <Building2 className="w-3.5 h-3.5 text-red-500 dark:text-red-400" />
+                    )}
+                    {exp.modality}
+                  </span>
+                )}
+                {exp.location && (
+                  <span className="text-xs text-muted-foreground flex items-center gap-1.5">
+                    <MapPin className="w-3.5 h-3.5 text-red-500 dark:text-red-400" />
+                    {exp.location}
+                  </span>
+                )}
+              </div>
+            </div>
           </div>
         </div>
 
