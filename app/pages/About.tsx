@@ -569,8 +569,8 @@ export default function About() {
                   <IoIosArrowForward className="w-5 h-5 dark:text-red-500 text-red-500 flex-shrink-0 mt-1" />
                   <span>
                     {language === "pt"
-                      ? "Nascido e crescido em Pernambuco, agora se aventurando no Ceará."
-                      : "Born and raised in Pernambuco, now venturing into Ceará."}
+                      ? "Nascido e crescido em Pernambuco, de volta às origens após uma temporada no Ceará."
+                      : "Born and raised in Pernambuco, back to my roots after a period in Ceará."}
                   </span>
                 </p>
               </div>
