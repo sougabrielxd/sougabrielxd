@@ -16,7 +16,7 @@ import {
   Workflow,
   Clock,
 } from "lucide-react";
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 
 // ============================================================
 // TYPES & CONSTANTS
@@ -269,10 +269,31 @@ export default function Projects() {
 
   const handleCloseProjectModal = () => {
     setSelectedProject(null);
+    setIsLightboxOpen(false);
     if (typeof document !== "undefined") {
       document.body.style.overflow = "unset"; // Restaura o scroll do body
     }
   };
+
+  // Fechar modal com tecla ESC
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        if (isLightboxOpen) {
+          setIsLightboxOpen(false);
+        } else if (selectedProject !== null) {
+          handleCloseProjectModal();
+        }
+      }
+    };
+
+    if (selectedProject !== null || isLightboxOpen) {
+      document.addEventListener("keydown", handleEscape);
+      return () => {
+        document.removeEventListener("keydown", handleEscape);
+      };
+    }
+  }, [selectedProject, isLightboxOpen]);
   
   // CSS para esconder a barra de rolagem (solução cross-browser)
   const scrollbarHideStyle = `
@@ -526,9 +547,17 @@ export default function Projects() {
 
       {/* Project Modal */}
       {selectedProject !== null && (
-        <div className="fixed inset-0 bg-black/80 z-[9999] flex items-center justify-center p-4 transition-opacity duration-300" style={{ opacity: selectedProject ? 1 : 0 }}>
+        <div 
+          className="fixed inset-0 bg-black/80 z-[9999] flex items-center justify-center p-4 transition-opacity duration-300" 
+          style={{ opacity: selectedProject ? 1 : 0 }}
+          onClick={handleCloseProjectModal}
+        >
           <style>{scrollbarHideStyle}</style>
-          <div className="bg-background border border-red-500/30 dark:border-red-500/30 rounded-lg max-w-6xl w-full max-h-[95vh] transition-transform duration-300 ease-out relative" style={{ transform: selectedProject ? 'scale(1)' : 'scale(0.95)' }}>
+          <div 
+            className="bg-background border border-red-500/30 dark:border-red-500/30 rounded-lg max-w-6xl w-full max-h-[95vh] transition-transform duration-300 ease-out relative" 
+            style={{ transform: selectedProject ? 'scale(1)' : 'scale(0.95)' }}
+            onClick={(e) => e.stopPropagation()}
+          >
             {/* Modal Header */}
             <div className="sticky top-0 flex items-center justify-between p-6 border-b border-red-500/10 dark:border-red-500/10 bg-background z-10">
               <h2 className="text-2xl font-bold text-red-500 dark:text-white">{selectedProject.title}</h2>
@@ -851,7 +880,10 @@ export default function Projects() {
                 };
 
                 return (
-                  <div className="relative max-w-5xl w-full max-h-[90vh] flex items-center justify-center">
+                  <div 
+                    className="relative max-w-5xl w-full max-h-[90vh] flex items-center justify-center"
+                    onClick={(e) => e.stopPropagation()}
+                  >
                     <button
                       onClick={handleClose}
                       className="absolute top-4 right-4 p-2 rounded-full bg-black/70 hover:bg-black/90 text-white transition-colors"
