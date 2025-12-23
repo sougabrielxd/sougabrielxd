@@ -3,7 +3,6 @@
 import Image from "next/image";
 import { useLanguage } from "@/contexts/LanguageContext";
 import {
-  Award,
   BookOpen,
   Briefcase,
   Code,
@@ -25,7 +24,6 @@ import {
 } from "lucide-react";
 import { getTechIcon } from "@/lib/techIcons";
 import { IoIosArrowForward } from "react-icons/io";
-import { Button } from "@/components/ui/button";
 import { cloneElement, isValidElement } from "react";
 
 // ============================================================
@@ -1115,30 +1113,9 @@ export default function About() {
               }
             </span>
           </div>
-          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 mb-10">
-            <p className="text-base sm:text-xl text-muted-foreground">
-              {certificatesData[language].subtitle}
-            </p>
-            <a href="/docs/Certificado.rar" download className="cursor-pointer w-full sm:w-auto">
-              <Button
-                variant="outline"
-                className="w-full sm:w-auto bg-transparent border-red-500/30 dark:border-red-500/30 hover:bg-red-500/10 dark:hover:bg-red-500/10 transition-colors duration-300 cursor-pointer text-sm sm:text-base"
-                aria-label={language === "pt" ? "Baixar todos os certificados" : "Download all certificates"}
-              >
-                <Award className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                <span className="hidden sm:inline">
-                  {language === "pt"
-                    ? "Download Certificados"
-                    : "Download Certificates"}
-                </span>
-                <span className="sm:hidden">
-                  {language === "pt"
-                    ? "Download Todos"
-                    : "Download All"}
-                </span>
-              </Button>
-            </a>
-          </div>
+          <p className="text-base sm:text-xl text-muted-foreground mb-10">
+            {certificatesData[language].subtitle}
+          </p>
 
 	          <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
             {certificatesData[language].items.map((cert, certIdx) => (
