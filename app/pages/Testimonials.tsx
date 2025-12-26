@@ -27,8 +27,8 @@ interface Testimonial {
 const testimonialsData: Testimonial[] = [
   {
     id: "1",
-    name: "Luciana Carrilho",
-    role: "Cartorária",
+    name: "",
+    role: "",
     company: "Cartório Alto Longá",
     text: {
       pt: "Gabriel desenvolveu nosso site institucional com excelência. Profissionalismo, atenção aos detalhes e entrega dentro do prazo. O resultado superou nossas expectativas e trouxe uma presença digital moderna e confiável para nosso cartório.",
@@ -42,9 +42,10 @@ const testimonialsData: Testimonial[] = [
     name: "André Arraes",
     role: "Desenvolvedor Full-Stack",
     company: "Freelancer",
+    avatar: "/testimonials/andre.jpeg",
     text: {
-      pt: "Trabalhei com Gabriel no projeto CONECC e fiquei impressionado com sua capacidade técnica e comprometimento. Código limpo, bem estruturado e sempre disposto a colaborar. Recomendo sem hesitação.",
-      en: "I worked with Gabriel on the CONECC project and was impressed by his technical ability and commitment. Clean, well-structured code and always willing to collaborate. I recommend without hesitation.",
+      pt: "Trabalhei com Gabriel em vários projetos freelancer como CONECC e Cartório Alto Longá e fiquei impressionado com sua capacidade técnica e comprometimento. Código limpo, bem estruturado e sempre disposto a colaborar. Recomendo sem hesitação.",
+      en: "I worked with Gabriel on the CONECC and Cartório Alto Longá projects and was impressed by his technical ability and commitment. Clean, well-structured code and always willing to collaborate. I recommend without hesitation.",
     },
     rating: 5,
   },
@@ -53,24 +54,25 @@ const testimonialsData: Testimonial[] = [
     name: "Vinícius Souza",
     role: "CTO",
     company: "Carboon Cycle",
+    avatar: "/testimonials/vinicius.jpeg",
     text: {
-      pt: "Gabriel é um desenvolvedor excepcional. Sua expertise em WordPress e automação nos ajudou a otimizar processos internos e melhorar significativamente nossa produtividade. Sempre disponível e proativo.",
-      en: "Gabriel is an exceptional developer. His expertise in WordPress and automation helped us optimize internal processes and significantly improve our productivity. Always available and proactive.",
+      pt: "Tive o prazer de acompanhar Gabriel Lucas em projetos de desenvolvimento web, Destaca-se pela criatividade, excelente comunicação e postura profissional madura, além do interesse constante em aprender e colaborar ativamente. Demonstra iniciativa, visão prática e entrega soluções eficientes, agregando valor real aos projetos. Recomendo com confiança.",
+      en: "I had the pleasure of working with Gabriel Lucas on web development projects. He stands out for his creativity, excellent communication and mature professional demeanor, as well as his constant interest in learning and actively collaborating. He demonstrates initiative, practical vision and delivers efficient solutions, adding real value to projects. I recommend with confidence.",
     },
     rating: 5,
   },
   {
-    id: "4",
-    name: "Carlos Mendes",
-    role: "Diretor de Marketing",
-    company: "Agência Digital",
+      id: "4",
+    name: "Sabrina Dias",
+    role: "Diretora",
+    company: "CONECC",
     text: {
-      pt: "Gabriel é um desenvolvedor excepcional. Sua expertise em WordPress e automação nos ajudou a otimizar processos internos e melhorar significativamente nossa produtividade. Sempre disponível e proativo.",
-      en: "Gabriel is an exceptional developer. His expertise in WordPress and automation helped us optimize internal processes and significantly improve our productivity. Always available and proactive.",
+      pt: "Gostei bastante do resultado. O trabalho foi muito bem executado, com excelente organização, clareza nas informações e um visual profissional. Além disso, a entrega foi realizada antes do prazo, demonstrando comprometimento, responsabilidade e alto nível técnico.",
+      en: "I liked the result very much. The work was executed very well, with excellent organization, clarity in the information and a professional visual. In addition, the delivery was done before the deadline, demonstrating commitment, responsibility and high technical level.",
     },
     rating: 5,
   },
-  {
+  /*{
     id: "5",
     name: "Ana Paula",
     role: "Empreendedora",
@@ -91,7 +93,7 @@ const testimonialsData: Testimonial[] = [
       en: "Gabriel demonstrated great technical knowledge and ability to solve complex problems. His methodological approach and attention to detail make him a trusted professional for any project.",
     },
     rating: 5,
-  },
+  }, */
 ];
 
 // ============================================================
@@ -101,6 +103,7 @@ const testimonialsData: Testimonial[] = [
 export default function Testimonials() {
   const { language } = useLanguage();
   const [visibleTestimonials, setVisibleTestimonials] = useState<number[]>([]);
+  const [imageErrors, setImageErrors] = useState<Set<string>>(new Set());
   const sectionRef = useRef<HTMLElement>(null);
 
   // Separar depoimento destacado dos demais
@@ -161,20 +164,28 @@ export default function Testimonials() {
 
   // Renderizar avatar com fallback
   const renderAvatar = (testimonial: Testimonial) => {
-    if (testimonial.avatar) {
+    const hasError = imageErrors.has(testimonial.id);
+    
+    if (testimonial.avatar && !hasError) {
       return (
-        <Image
-          src={testimonial.avatar}
-          alt={testimonial.name}
-          width={64}
-          height={64}
-          className="w-16 h-16 rounded-full object-cover border-2 border-red-500/30 dark:border-red-500/50"
-          loading="lazy"
-        />
+        <div className="relative w-16 h-16 shrink-0">
+          <Image
+            src={testimonial.avatar}
+            alt={testimonial.name}
+            width={64}
+            height={64}
+            className="w-16 h-16 rounded-full object-cover border-2 border-red-500/30 dark:border-red-500/50"
+            loading="lazy"
+            unoptimized
+            onError={() => {
+              setImageErrors((prev) => new Set(prev).add(testimonial.id));
+            }}
+          />
+        </div>
       );
     }
     return (
-      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-red-500/20 to-red-400/20 dark:from-red-500/30 dark:to-red-400/30 border-2 border-red-500/30 dark:border-red-500/50 flex items-center justify-center">
+      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-red-500/20 to-red-400/20 dark:from-red-500/30 dark:to-red-400/30 border-2 border-red-500/30 dark:border-red-500/50 flex items-center justify-center shrink-0">
         <User className="w-8 h-8 text-red-500 dark:text-red-400" />
       </div>
     );

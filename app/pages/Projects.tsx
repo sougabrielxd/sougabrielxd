@@ -15,6 +15,10 @@ import {
   AlertTriangle,
   Workflow,
   Clock,
+  Calendar,
+  Building,
+  ArrowRight,
+  Wrench,
 } from "lucide-react";
 import { useState, useMemo, useEffect } from "react";
 
@@ -33,6 +37,7 @@ interface Project {
   status: string;
   featured: boolean;
   year: number;
+  month?: number; // Mês do projeto (1-12, opcional)
   images?: string[];
   role: string;
   challenges: string;
@@ -71,6 +76,7 @@ const projects: Project[] = [
     status: "Em desenvolvimento",
     featured: false,
     year: 2025,
+    month: 12,
     images: ["https://ik.imagekit.io/o8urkd2xn/starkevision1"],
     role: "Desenvolvedor WordPress",
     challenges: "",
@@ -91,6 +97,7 @@ const projects: Project[] = [
     status: "Em desenvolvimento",
     featured: true,
     year: 2025,
+    month: 12,
     images: ["https://ik.imagekit.io/o8urkd2xn/svnexus1"],
     role: "Desenvolvedor WordPress",
     challenges: "",
@@ -111,6 +118,7 @@ const projects: Project[] = [
     status: "Em desenvolvimento",
     featured: false,
     year: 2025,
+    month: 12,
     images: ["https://ik.imagekit.io/o8urkd2xn/arcarnia1.png"],
     role: "Desenvolvedor WordPress",
     challenges:
@@ -133,6 +141,7 @@ const projects: Project[] = [
     status: "Em desenvolvimento",
     featured: false,
     year: 2025,
+    month: 11,
     images: ["https://ik.imagekit.io/o8urkd2xn/conecc1"],
     role: "Desenvolvedor Front-end",
     challenges: "Garantir um design moderno e responsivo alinhado à identidade visual do cartório, que é tradicional.",
@@ -153,6 +162,7 @@ const projects: Project[] = [
     status: "Em desenvolvimento",
     featured: false,
     year: 2025,
+    month: 10,
     images: ["https://ik.imagekit.io/o8urkd2xn/cartorio-lcm.png"], //"https://ik.imagekit.io/o8urkd2xn/cartorio-lcm2.png"
     role: "UI/UX Designer e Desenvolvedor Front-end",
     challenges: "Garantir um design moderno e responsivo alinhado à identidade visual do cartório, que é tradicional.",
@@ -173,6 +183,7 @@ const projects: Project[] = [
     status: "Não participo mais",
     featured: false,
     year: 2025,
+    month: 4,
     images: ["https://ik.imagekit.io/o8urkd2xn/learnskills3.jpg", "https://ik.imagekit.io/o8urkd2xn/learnskills2.jpg"],
     role: "Desenvolvedor Full-Stack",
     challenges: "Integrar front-end moderno (React/Vite) com back-end em Laravel (PHP) e criar um sistema robusto de submissão de materiais.",
@@ -193,6 +204,7 @@ const projects: Project[] = [
     status: "Não participo mais",
     featured: false,
     year: 2024,
+    month: 8,
     images: ["https://ik.imagekit.io/o8urkd2xn/Cowatch.png", "https://ik.imagekit.io/o8urkd2xn/Cowatch2.png", "https://ik.imagekit.io/o8urkd2xn/Cowatch3.png"],
     role: "Desenvolvedor Front-end Colaborador",
     challenges: "Ajustar a responsividade do menu mobile em um projeto legado e integrar nova seção de acesso ao portal sem quebrar o layout existente.",
@@ -213,6 +225,7 @@ const projects: Project[] = [
     status: "Concluído",
     featured: false,
     year: 2024,
+    month: 9,
     images: ["https://ik.imagekit.io/o8urkd2xn/logos.png"],
     role: "Desenvolvedor Front-end Freelancer",
     challenges: "Criar uma Landing Page de alta conversão com foco em SEO e performance para um cliente do setor industrial.",
@@ -429,44 +442,68 @@ export default function Projects() {
               {language === "pt" ? "Projeto Destaque" : "Featured Project"}
             </h2>
             <div
-              className="border border-red-500/50 dark:border-red-500/50 rounded-lg p-4 sm:p-6 md:p-8 
-              bg-gradient-to-br dark:from-red-500/10 dark:to-red-400/10 
-              dark:hover:border-red-500 dark:hover:from-red-500/20 dark:hover:to-red-400/20
-              from-red-500/10 to-red-400/10 hover:border-red-500 hover:from-red-500/20 hover:to-red-400/20
-              transition-all duration-300 
-              hover:shadow-lg dark:hover:shadow-red-500/20 hover:shadow-black/20
-              cursor-pointer"
+              className="bg-white dark:bg-card rounded-xl border border-red-500/30 dark:border-red-500/30 hover:border-red-500/60 dark:hover:border-red-500/60 transition-all duration-300 hover:shadow-xl hover:shadow-red-500/10 dark:hover:shadow-red-500/10 overflow-hidden cursor-pointer group"
               onClick={() => handleOpenProjectModal(featuredProject)}
             >
-              <div className="flex flex-col md:flex-row gap-4 sm:gap-6">
-                <div className="md:w-1/3 flex-shrink-0">
-                  <img
-                    src={featuredProject.images?.[0] || PLACEHOLDER_IMAGE}
-                    alt={featuredProject.title}
-                    className="w-full h-40 sm:h-48 object-cover rounded-lg shadow-lg"
-                  />
+              {/* Imagem de destaque no topo */}
+              <div className="relative w-full h-64 sm:h-80 md:h-96 overflow-hidden">
+                <Image
+                  src={featuredProject.images?.[0] || PLACEHOLDER_IMAGE}
+                  alt={featuredProject.title}
+                  width={1200}
+                  height={384}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  loading="lazy"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              </div>
+
+              {/* Conteúdo do card */}
+              <div className="p-6 sm:p-8 md:p-10 flex flex-col">
+                {/* Título */}
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 text-gray-900 dark:text-white group-hover:text-red-500 dark:group-hover:text-red-400 transition-colors">
+                  {featuredProject.title}
+                </h3>
+
+                {/* Descrição */}
+                <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-5">
+                  {featuredProject.description}
+                </p>
+
+                {/* Informações de data e cliente */}
+                <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 mb-5 text-sm sm:text-base text-gray-500 dark:text-gray-500">
+                  <div className="flex items-center gap-2">
+                    <Calendar className="w-5 h-5 text-red-500 dark:text-red-400" />
+                    <span>
+                      {language === "pt" 
+                        ? new Date(featuredProject.year, (featuredProject.month || 1) - 1).toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' })
+                        : new Date(featuredProject.year, (featuredProject.month || 1) - 1).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
+                      }
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Building className="w-5 h-5 text-red-500 dark:text-red-400" />
+                    <span>{featuredProject.title}</span>
+                  </div>
                 </div>
-                <div className="md:w-2/3">
-                  <h3 className="text-2xl sm:text-3xl font-bold mb-2">
-                    {featuredProject.title}
-                  </h3>
-                  <p className="text-sm sm:text-base text-muted-foreground mb-3 sm:mb-4">
-                    {featuredProject.description}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-3 sm:mb-4">
+
+                  {/* Badges de tecnologias */}
+                  <div className="flex flex-wrap gap-2 mb-4">
                     {featuredProject.tags.map((tag, tagIdx) => (
                       <span
                         key={tagIdx}
-                        className="px-3 py-1 rounded-full text-xs flex items-center gap-2 bg-gradient-to-r dark:from-red-500/20 dark:to-red-400/20 border dark:border-red-500/50 dark:hover:border-red-500 text-gray-800 dark:text-white from-red-500/20 to-red-400/20 border-red-500/50 hover:border-red-500 transition-all duration-300"
+                        className="px-3 py-1.5 rounded-md text-sm font-medium bg-red-500/10 dark:bg-red-500/20 text-red-600 dark:text-red-400 border border-red-500/20 dark:border-red-500/30 flex items-center gap-2"
                       >
                         {getTechIcon(tag)}
                         {tag}
                       </span>
                     ))}
                   </div>
-                  <div className="flex flex-wrap gap-2 items-center">
+
+                  {/* Tags de status */}
+                  <div className="flex flex-wrap gap-2 mb-6">
                     <span
-                      className={`px-3 py-1 rounded-full text-sm font-semibold border ${getStatusColor(
+                      className={`px-3 py-1.5 rounded-md text-sm font-semibold border ${getStatusColor(
                         featuredProject.status
                       )}`}
                     >
@@ -474,14 +511,25 @@ export default function Projects() {
                     </span>
                     {featuredProject.noLongerInvolved && (
                       <span
-                        className={`px-3 py-1 rounded-full text-xs font-semibold border flex items-center gap-1.5 ${getInvolvementTagColor()}`}
+                        className={`px-3 py-1.5 rounded-md text-sm font-semibold border flex items-center gap-1.5 ${getInvolvementTagColor()}`}
                       >
-                        <Clock className="w-3 h-3" />
+                        <Clock className="w-4 h-4" />
                         {language === "pt" ? "Não participo mais" : "No longer involved"}
                       </span>
                     )}
                   </div>
-                </div>
+
+                  {/* Botão Ver Detalhes */}
+                <button
+                  className="mt-auto w-full sm:w-auto px-6 py-3 rounded-lg border-2 border-red-500 dark:border-red-500 text-red-600 dark:text-red-400 font-semibold text-base hover:bg-red-500 hover:text-white dark:hover:bg-red-500 dark:hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group/btn"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleOpenProjectModal(featuredProject);
+                  }}
+                >
+                  {language === "pt" ? "Ver Detalhes" : "View Details"}
+                  <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                </button>
               </div>
             </div>
           </section>
@@ -496,51 +544,117 @@ export default function Projects() {
             {otherProjects.map((project, idx) => (
               <div
                 key={idx}
-                className="p-4 sm:p-6 rounded-lg border border-red-500/30 dark:border-red-500/30 bg-gradient-to-br from-red-500/10 to-red-400/10 dark:from-red-500/10 dark:to-red-500/10 hover:border-red-500/60 dark:hover:border-red-500/60 transition-all duration-300 hover:shadow-lg hover:shadow-red-500/20 dark:hover:shadow-red-500/10 cursor-pointer"
+                className="bg-white dark:bg-card rounded-xl border border-red-500/20 dark:border-red-500/20 hover:border-red-500/50 dark:hover:border-red-500/50 transition-all duration-300 hover:shadow-xl hover:shadow-red-500/10 dark:hover:shadow-red-500/10 overflow-hidden cursor-pointer group"
                 onClick={() => handleOpenProjectModal(project)}
               >
-                <Image
-                  src={project.images?.[0] || PLACEHOLDER_IMAGE}
-                  alt={project.title}
-                  width={400}
-                  height={160}
-                  className="w-full h-32 sm:h-40 object-cover rounded-lg mb-3 sm:mb-4 shadow-md"
-                  loading="lazy"
-                />
-                <h3 className="text-lg sm:text-xl font-bold mb-2">{project.title}</h3>
-                <p className="text-xs sm:text-sm text-muted-foreground mb-3 sm:mb-4 line-clamp-3">
-                  {project.description}
-                </p>
-                <div className="flex flex-wrap gap-2 mb-3 sm:mb-4">
-                  {project.tags.map((tag, tagIdx) => (
-                    <span
-                      key={tagIdx}
-                      className="px-3 py-1 rounded-full text-xs flex items-center gap-2 bg-gradient-to-r dark:from-red-500/20 dark:to-red-400/20 border dark:border-red-500/50 dark:hover:border-red-500 text-gray-800 dark:text-white from-red-500/20 to-red-400/20 border-red-500/50 hover:border-red-500 transition-all duration-300"
-                    >
-                      {getTechIcon(tag)}
-                      {tag}
-                    </span>
-                  ))}
+                {/* Imagem de destaque no topo */}
+                <div className="relative w-full h-48 sm:h-56 overflow-hidden">
+                  <Image
+                    src={project.images?.[0] || PLACEHOLDER_IMAGE}
+                    alt={project.title}
+                    width={400}
+                    height={224}
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
-                <div className="flex flex-wrap gap-2 items-center">
-                  <span
-                    className={`px-3 py-1 rounded-full text-xs font-semibold border ${getStatusColor(
-                      project.status
-                    )}`}
-                  >
-                    {project.status}
-                  </span>
-                  {project.noLongerInvolved && (
+
+                {/* Conteúdo do card */}
+                <div className="p-5 sm:p-6 flex flex-col">
+                  {/* Título */}
+                  <h3 className="text-xl sm:text-2xl font-bold mb-2 text-gray-900 dark:text-white group-hover:text-red-500 dark:group-hover:text-red-400 transition-colors">
+                    {project.title}
+                  </h3>
+
+                  {/* Descrição */}
+                  <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-4 line-clamp-2">
+                    {project.description}
+                  </p>
+
+                  {/* Informações de data e cliente */}
+                  <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4 text-xs sm:text-sm text-gray-500 dark:text-gray-500">
+                    <div className="flex items-center gap-1.5">
+                      <Calendar className="w-4 h-4 text-red-500 dark:text-red-400" />
+                      <span>
+                        {language === "pt" 
+                          ? new Date(project.year, (project.month || 1) - 1).toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' })
+                          : new Date(project.year, (project.month || 1) - 1).toLocaleDateString('en-US', { month: 'long', year: 'numeric' })
+                        }
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-1.5">
+                      <Building className="w-4 h-4 text-red-500 dark:text-red-400" />
+                      <span className="truncate">{project.title}</span>
+                    </div>
+                  </div>
+
+                  {/* Badges de tecnologias */}
+                  <div className="flex flex-wrap gap-2 mb-3">
+                    {project.tags.slice(0, 3).map((tag, tagIdx) => (
+                      <span
+                        key={tagIdx}
+                        className="px-2.5 py-1 rounded-md text-xs font-medium bg-red-500/10 dark:bg-red-500/20 text-red-600 dark:text-red-400 border border-red-500/20 dark:border-red-500/30 flex items-center gap-1.5"
+                      >
+                        {getTechIcon(tag)}
+                        {tag}
+                      </span>
+                    ))}
+                    {project.tags.length > 3 && (
+                      <span className="px-2.5 py-1 rounded-md text-xs font-medium bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400 border border-gray-200 dark:border-gray-700">
+                        +{project.tags.length - 3}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Tags de status */}
+                  <div className="flex flex-wrap gap-2 mb-4">
                     <span
-                      className={`px-3 py-1 rounded-full text-xs font-semibold border flex items-center gap-1.5 ${getInvolvementTagColor()}`}
+                      className={`px-2.5 py-1 rounded-md text-xs font-semibold border ${getStatusColor(
+                        project.status
+                      )}`}
                     >
-                      <Clock className="w-3 h-3" />
-                      {language === "pt" ? "Não participo mais" : "No longer involved"}
+                      {project.status}
                     </span>
-                  )}
+                    {project.noLongerInvolved && (
+                      <span
+                        className={`px-2.5 py-1 rounded-md text-xs font-semibold border flex items-center gap-1.5 ${getInvolvementTagColor()}`}
+                      >
+                        <Clock className="w-3 h-3" />
+                        {language === "pt" ? "Não participo mais" : "No longer involved"}
+                      </span>
+                    )}
+                  </div>
+
+                  {/* Botão Ver Detalhes */}
+                  <button
+                    className="mt-auto w-full sm:w-auto px-4 py-2.5 rounded-lg border-2 border-red-500 dark:border-red-500 text-red-600 dark:text-red-400 font-semibold text-sm hover:bg-red-500 hover:text-white dark:hover:bg-red-500 dark:hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group/btn"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      handleOpenProjectModal(project);
+                    }}
+                  >
+                    {language === "pt" ? "Ver Detalhes" : "View Details"}
+                    <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                  </button>
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Novos projetos em desenvolvimento */}
+          <div className="mt-12 sm:mt-16 md:mt-20 text-center">
+            <div className="flex items-center justify-center gap-2 mb-3">
+              <Wrench className="w-5 h-5 text-red-500 dark:text-red-400" />
+              <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 italic">
+                {language === "pt" ? "Novos projetos em desenvolvimento..." : "New projects in development..."}
+              </p>
+            </div>
+            <div className="flex items-center justify-center gap-1.5">
+              <div className="w-2 h-2 rounded-full bg-red-500 dark:bg-red-400 animate-pulse" style={{ animationDelay: '0s' }}></div>
+              <div className="w-2 h-2 rounded-full bg-red-500 dark:bg-red-400 animate-pulse" style={{ animationDelay: '0.2s' }}></div>
+              <div className="w-2 h-2 rounded-full bg-red-500 dark:bg-red-400 animate-pulse" style={{ animationDelay: '0.4s' }}></div>
+            </div>
           </div>
         </section>
       </div>
