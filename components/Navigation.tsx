@@ -22,7 +22,7 @@ export default function Navigation({
   const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
-    const sections = ["home", "about", "projects", "contact"];
+    const sections = ["home", "about", "projects", "testimonials", "contact"];
     
     const observer = new IntersectionObserver(
       (entries) => {
@@ -49,10 +49,10 @@ export default function Navigation({
   }, []);
 
   const navItems = language === "pt" 
-    ? ["Início", "Sobre", "Projetos", "Contato"]
-    : ["Home", "About", "Projects", "Contact"];
+    ? ["Início", "Sobre", "Projetos", "Depoimentos", "Contato"]
+    : ["Home", "About", "Projects", "Testimonials", "Contact"];
 
-  const sections = ["home", "about", "projects", "contact"];
+  const sections = ["home", "about", "projects", "testimonials", "contact"];
 
   const handleNavClick = (section: string, idx: number) => {
     setActiveSection(section);

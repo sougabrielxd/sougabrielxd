@@ -30,6 +30,7 @@ export default function MobileMenu({
     { id: "home", label: language === "pt" ? "Início" : "Home" },
     { id: "about", label: language === "pt" ? "Sobre" : "About" },
     { id: "projects", label: language === "pt" ? "Projetos" : "Projects" },
+    { id: "testimonials", label: language === "pt" ? "Depoimentos" : "Testimonials" },
     { id: "contact", label: language === "pt" ? "Contato" : "Contact" },
   ];
 

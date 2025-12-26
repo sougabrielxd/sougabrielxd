@@ -24,6 +24,7 @@ import { FileText, Github, Instagram, Linkedin } from "lucide-react";
 import About from "./About";
 import Contact from "./Contact";
 import Projects from "./Projects";
+import Testimonials from "./Testimonials";
 
 export default function Home() {
   const { theme } = useTheme();
@@ -178,6 +179,7 @@ export default function Home() {
         {/* Sections */}
         <About />
         <Projects />
+        <Testimonials />
         <Contact />
       </main>
 
