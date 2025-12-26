@@ -42,13 +42,13 @@ export default function Home() {
     pt: [
       "Desenvolvedor Full-Stack especializado em automação e IA",
       "Transformo ideias em soluções escaláveis",
-      "Especialista em WordPress e desenvolvimento web",
+      "Especialista em desenvolvimento web",
       "Criando experiências digitais excepcionais",
     ],
     en: [
       "Full-Stack Developer specialized in automation and AI",
       "I transform ideas into scalable solutions",
-      "WordPress and web development specialist",
+      "Web development specialist",
       "Creating exceptional digital experiences",
     ],
   };
