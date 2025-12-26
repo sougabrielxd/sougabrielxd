@@ -17,6 +17,9 @@ import LanguageButton from "@/components/LanguageButton";
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useTheme } from "@/contexts/ThemeContext";
 
+// Hooks
+import { useTypewriter } from "@/hooks/useTypewriter";
+
 // Icons
 import { FileText, Github, Instagram, Linkedin } from "lucide-react";
 
@@ -33,6 +36,33 @@ export default function Home() {
   const [isOpen, setIsOpen] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+
+  // Textos para o efeito de digitação
+  const typewriterTexts = {
+    pt: [
+      "Desenvolvedor Full-Stack especializado em automação e IA",
+      "Transformo ideias em soluções escaláveis",
+      "Especialista em WordPress e desenvolvimento web",
+      "Criando experiências digitais excepcionais",
+    ],
+    en: [
+      "Full-Stack Developer specialized in automation and AI",
+      "I transform ideas into scalable solutions",
+      "WordPress and web development specialist",
+      "Creating exceptional digital experiences",
+    ],
+  };
+
+  // Efeito de digitação com delay do loading screen (2000ms + 800ms fade = 2800ms)
+  const { text: typewriterText, cursor } = useTypewriter({
+    texts: typewriterTexts[language],
+    typingSpeed: 50,
+    pauseDelay: 2500,
+    deleteSpeed: 30,
+    loop: true,
+    startDelay: 2800, // Delay do loading screen
+    showCursor: true,
+  });
 
   useEffect(() => {
     const handleScroll = () => {
@@ -121,10 +151,24 @@ export default function Home() {
               <span className="block text-red-500">Gabriel Lucas</span>
             </h1>
 
-            <p className="text-sm sm:text-base md:text-xl lg:text-2xl text-muted-foreground mb-6 md:mb-8 px-2 leading-relaxed">
-              {language === "pt"
-                ? "Desenvolvedor Full-Stack especializado em automação e IA | Transformo ideias em soluções escaláveis"
-                : "Full-Stack Developer specialized in automation and AI | I transform ideas into scalable solutions"}
+            <p className="text-sm sm:text-base md:text-xl lg:text-2xl text-muted-foreground mb-6 md:mb-8 px-2 leading-relaxed min-h-10 sm:min-h-12 md:min-h-14 lg:min-h-16 flex items-center justify-center">
+              <span className="inline-block">
+                {typewriterText}
+                <span
+                  className={`inline-block ml-1 ${
+                    cursor ? "animate-pulse" : ""
+                  }`}
+                  aria-hidden="true"
+                >
+                  {cursor}
+                </span>
+              </span>
+              {/* Texto completo para acessibilidade (oculto visualmente) */}
+              <span className="sr-only">
+                {language === "pt"
+                  ? "Desenvolvedor Full-Stack especializado em automação e IA. Transformo ideias em soluções escaláveis."
+                  : "Full-Stack Developer specialized in automation and AI. I transform ideas into scalable solutions."}
+              </span>
             </p>
 
             <div className="flex flex-col sm:flex-row justify-center items-center gap-3 md:gap-4 px-4">
