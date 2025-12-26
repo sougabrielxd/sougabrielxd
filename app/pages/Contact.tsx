@@ -276,7 +276,7 @@ export default function Contact() {
             {/* Availability Status */}
             <div className="mb-6 pb-6 border-b border-gray-200 dark:border-gray-700">
               <div className="flex items-center gap-2 mb-2">
-                <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                <div className="w-3 h-3 bg-green-500 rounded-full animate-pulse" style={{ animationDuration: '2s' }}></div>
                 <p className="font-bold text-gray-900 dark:text-white text-sm sm:text-base">
                   {language === "pt" ? "Disponível para novos projetos" : "Available for new projects"}
                 </p>
