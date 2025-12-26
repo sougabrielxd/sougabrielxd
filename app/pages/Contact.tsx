@@ -250,15 +250,16 @@ export default function Contact() {
   return (
     <section id="contact" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 relative overflow-x-hidden">
       <div className="max-w-7xl mx-auto w-full">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-red-500 dark:text-white">
-          {language === "pt" ? "Contato" : "Contact"}
-        </h1>
-
-        <p className="text-base sm:text-lg text-muted-foreground mb-8 sm:mb-10 md:mb-12">
-          {language === "pt"
-            ? "Vamos construir algo incrível juntos! Entre em contato."
-            : "Let's build something amazing together! Get in touch."}
-        </p>
+        <div className="text-center mb-6 sm:mb-8 md:mb-10">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 sm:mb-3 text-red-500 dark:text-white">
+            {language === "pt" ? "Contato" : "Contact"}
+          </h1>
+          <p className="text-base sm:text-lg text-muted-foreground">
+            {language === "pt"
+              ? "Vamos construir algo incrível juntos! Entre em contato."
+              : "Let's build something amazing together! Get in touch."}
+          </p>
+        </div>
 
         <div className="grid md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 mb-12">
           {/* Left Card - Availability & Services */}

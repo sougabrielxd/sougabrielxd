@@ -686,14 +686,16 @@ export default function About() {
   return (
     <section id="about" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 relative overflow-x-hidden">
       <div className="max-w-7xl mx-auto w-full">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-red-500 dark:text-white">
-          {language === "pt" ? "Sobre Mim" : "About Me"}
-        </h1>
-        <p className="text-base sm:text-lg text-muted-foreground mb-8 sm:mb-10 md:mb-12">
-          {language === "pt"
-            ? "Um pouco sobre minha jornada, habilidades e formação."
-            : "A little about my journey, skills, and background."}
-        </p>
+        <div className="text-center mb-6 sm:mb-8 md:mb-10">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 sm:mb-3 text-red-500 dark:text-white">
+            {language === "pt" ? "Sobre Mim" : "About Me"}
+          </h1>
+          <p className="text-base sm:text-lg text-muted-foreground">
+            {language === "pt"
+              ? "Um pouco sobre minha jornada, habilidades e formação."
+              : "A little about my journey, skills, and background."}
+          </p>
+        </div>
         <div className="grid md:grid-cols-2 gap-8 sm:gap-10 md:gap-12 items-start mb-12 sm:mb-16 md:mb-20">
             {/* Text Content */}
             <div className="space-y-4 sm:space-y-6 text-base sm:text-lg text-muted-foreground leading-relaxed animate-slide-up">
@@ -766,12 +768,14 @@ export default function About() {
 
         {/* Skills Section */}
         <section className="mb-12 sm:mb-16 md:mb-20">
-          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 md:mb-12 text-red-500 dark:text-white">
-            {skillsData[language].title}
-          </h2>
-          <p className="text-lg sm:text-xl text-muted-foreground mb-6 sm:mb-8 md:mb-10">
-            {skillsData[language].subtitle}
-          </p>
+          <div className="text-center mb-6 sm:mb-8 md:mb-10">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-3 text-red-500 dark:text-white">
+              {skillsData[language].title}
+            </h2>
+            <p className="text-lg sm:text-xl text-muted-foreground">
+              {skillsData[language].subtitle}
+            </p>
+          </div>
 
           <div className="grid md:grid-cols-3 gap-6 sm:gap-8">
             <div className="md:col-span-2 grid sm:grid-cols-2 gap-4 sm:gap-6">
@@ -855,15 +859,16 @@ export default function About() {
 
 {/* Experience Section */}
 <section className="mb-12 sm:mb-16 md:mb-20">
-  <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 sm:mb-8 md:mb-12 text-red-500 dark:text-white">
-    {language === "pt" ? "Experiência Profissional" : "Professional Experience"}
-  </h2>
-
-  <p className="text-lg sm:text-xl text-muted-foreground mb-6 sm:mb-8 md:mb-10">
-    {language === "pt"
-      ? "Minha trajetória no mundo da tecnologia."
-      : "My journey in the world of technology."}
-  </p>
+  <div className="text-center mb-6 sm:mb-8 md:mb-10">
+    <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-3 text-red-500 dark:text-white">
+      {language === "pt" ? "Experiência Profissional" : "Professional Experience"}
+    </h2>
+    <p className="text-lg sm:text-xl text-muted-foreground">
+      {language === "pt"
+        ? "Minha trajetória no mundo da tecnologia."
+        : "My journey in the world of technology."}
+    </p>
+  </div>
 
   <div className="space-y-6 sm:space-y-8 md:space-y-10">
     {localizedExperiences.map((exp, expIdx) => (
@@ -1006,13 +1011,14 @@ export default function About() {
 
 {/* Education Section */}
 <section className="mb-20">
-  <h2 className="text-3xl md:text-4xl font-bold mb-12 text-red-500 dark:text-white">
-    {educationData[language].title}
-  </h2>
-
-  <p className="text-xl text-muted-foreground mb-10">
-    {educationData[language].subtitle}
-  </p>
+  <div className="text-center mb-6 sm:mb-8 md:mb-10">
+    <h2 className="text-3xl md:text-4xl font-bold mb-2 sm:mb-3 text-red-500 dark:text-white">
+      {educationData[language].title}
+    </h2>
+    <p className="text-xl text-muted-foreground">
+      {educationData[language].subtitle}
+    </p>
+  </div>
 
   <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
     {educationData[language].items.map((item, itemIdx) => {
@@ -1104,20 +1110,22 @@ export default function About() {
 
         {/* Certificates Section */}
         <section className="mb-20">
-          <div className="flex items-center justify-between mb-4">
-            <h2 className="text-2xl md:text-4xl font-bold text-red-500 dark:text-white">
-              {certificatesData[language].title}
-            </h2>
-            <span className="text-sm md:text-base text-muted-foreground">
-              {language === "pt" 
-                ? `${certificatesData[language].items.length} certificado${certificatesData[language].items.length !== 1 ? 's' : ''}`
-                : `${certificatesData[language].items.length} certificate${certificatesData[language].items.length !== 1 ? 's' : ''}`
-              }
-            </span>
+          <div className="text-center mb-6 sm:mb-8 md:mb-10">
+            <div className="flex items-center justify-center gap-3 mb-2 sm:mb-3">
+              <h2 className="text-2xl md:text-4xl font-bold text-red-500 dark:text-white">
+                {certificatesData[language].title}
+              </h2>
+              <span className="text-sm md:text-base text-muted-foreground">
+                {language === "pt" 
+                  ? `${certificatesData[language].items.length} certificado${certificatesData[language].items.length !== 1 ? 's' : ''}`
+                  : `${certificatesData[language].items.length} certificate${certificatesData[language].items.length !== 1 ? 's' : ''}`
+                }
+              </span>
+            </div>
+            <p className="text-base sm:text-xl text-muted-foreground">
+              {certificatesData[language].subtitle}
+            </p>
           </div>
-          <p className="text-base sm:text-xl text-muted-foreground mb-10">
-            {certificatesData[language].subtitle}
-          </p>
 
 	          <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3">
             {certificatesData[language].items.map((cert, certIdx) => (

@@ -418,22 +418,24 @@ export default function Projects() {
   return (
     <section id="projects" className="py-12 sm:py-16 md:py-20 px-4 sm:px-6 relative overflow-x-hidden">
       <div className="max-w-7xl mx-auto w-full">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-3 sm:mb-4 text-red-500 dark:text-white">
-          {language === "pt" ? "Projetos" : "Projects"}
-        </h1>
-        <p className="text-base sm:text-lg text-muted-foreground mb-6 sm:mb-8">
-          {language === "pt"
-            ? "Confira alguns dos projetos em que "
-            : "Check out some of the projects I've "}
-          <span className="text-black dark:text-red-500 font-semibold">
+        <div className="text-center mb-6 sm:mb-8 md:mb-10">
+          <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 sm:mb-3 text-red-500 dark:text-white">
+            {language === "pt" ? "Projetos" : "Projects"}
+          </h1>
+          <p className="text-base sm:text-lg text-muted-foreground">
             {language === "pt"
-              ? "atuei e contribuí "
-              : "worked on and contributed"}
-          </span>{" "}
-          {language === "pt"
-            ? "ao longo da minha trajetória profissional."
-            : "to throughout my professional career."}
-        </p>
+              ? "Confira alguns dos projetos em que "
+              : "Check out some of the projects I've "}
+            <span className="text-black dark:text-red-500 font-semibold">
+              {language === "pt"
+                ? "atuei e contribuí "
+                : "worked on and contributed"}
+            </span>{" "}
+            {language === "pt"
+              ? "ao longo da minha trajetória profissional."
+              : "to throughout my professional career."}
+          </p>
+        </div>
 
         {/* Featured Project */}
         {featuredProject && (
