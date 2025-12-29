@@ -1,5 +1,6 @@
 import { X, Github, Linkedin, Instagram, Mail } from "lucide-react";
 import { ReactNode } from "react";
+import DiscordIcon from "./DiscordIcon";
 
 interface MobileMenuProps {
   isOpen: boolean;
@@ -11,6 +12,7 @@ interface MobileMenuProps {
     linkedin?: string;
     instagram?: string;
     email?: string;
+    discord?: string;
   };
 }
 
@@ -24,6 +26,7 @@ export default function MobileMenu({
     linkedin: "https://linkedin.com/in/gabriellucasafb",
     instagram: "https://instagram.com/gabriellucasafb",
     email: "https://mail.google.com/mail/u/0/?fs=1&to=gabriellucasafb@gmail.com&su=Contato+do+Portf%C3%B3lio&body=Ol%C3%A1,+vim+pelo+seu+Portf%C3%B3lio+e+gostaria+de+falar+sobre...&tf=cm",
+    discord: "https://discord.gg/7gvSUSFzxc",
   },
 }: MobileMenuProps) {
   const menuItems = [
@@ -66,6 +69,11 @@ export default function MobileMenu({
       icon: <Instagram className="w-5 h-5" />,
       href: socialLinks.instagram,
       label: "Instagram",
+    },
+    {
+      icon: <DiscordIcon className="w-5 h-5" />,
+      href: socialLinks.discord,
+      label: "Discord",
     }, 
     {
       icon: <Mail className="w-5 h-5" />,

@@ -4,6 +4,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 import { Button } from "@/components/ui/button";
 import { Mail, Phone, Linkedin, Instagram, Github, Send, CheckCircle2, AlertCircle, Loader2, Check, MapPin } from "lucide-react";
 import LattesIcon from "@/components/LattesIcon";
+import DiscordIcon from "@/components/DiscordIcon";
 import { useState, useMemo } from "react";
 import { z } from "zod";
 
@@ -76,6 +77,11 @@ const socialLinks = [
     icon: Linkedin,
     label: "LinkedIn",
     href: "https://www.linkedin.com/in/gabriellucasafb/",
+  },
+  {
+    icon: DiscordIcon,
+    label: "Discord",
+    href: "https://discord.gg/7gvSUSFzxc",
   },
 ];
 
