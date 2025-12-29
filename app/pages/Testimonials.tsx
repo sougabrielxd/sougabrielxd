@@ -27,8 +27,8 @@ interface Testimonial {
 const testimonialsData: Testimonial[] = [
   {
     id: "1",
-    name: "",
-    role: "",
+    name: "Luciana",
+    role: "Titular",
     company: "Cartório Alto Longá",
     text: {
       pt: "Gabriel desenvolveu nosso site institucional com excelência. Profissionalismo, atenção aos detalhes e entrega dentro do prazo. O resultado superou nossas expectativas e trouxe uma presença digital moderna e confiável para nosso cartório.",
