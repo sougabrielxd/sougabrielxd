@@ -67,8 +67,8 @@ const testimonialsData: Testimonial[] = [
     role: "Diretora",
     company: "CONECC",
     text: {
-      pt: "Gostei bastante do resultado. O trabalho foi muito bem executado, com excelente organização, clareza nas informações e um visual profissional. Além disso, a entrega foi realizada antes do prazo, demonstrando comprometimento, responsabilidade e alto nível técnico.",
-      en: "I liked the result very much. The work was executed very well, with excellent organization, clarity in the information and a professional visual. In addition, the delivery was done before the deadline, demonstrating commitment, responsibility and high technical level.",
+      pt: "Gostaria de te agradecer pelo trabalho realizado na landing page do congresso. Fiquei extremamente satisfeita com o resultado. O layout está muito organizado, delicado e transmite exatamente a identidade que eu imaginava para o evento. Ficou realmente muito lindo e totalmente alinhado ao meu gosto e à proposta do congresso. Obrigada pelo cuidado, atenção aos detalhes e profissionalismo. Seu trabalho foi maravilhoso!",
+      en: "I would like to thank you for the work you did on the congress landing page. I was extremely satisfied with the result. The layout is very organized, delicate and transmits exactly the identity I imagined for the event. It looks really beautiful and totally aligned with my taste and the proposal of the congress. Thank you for the care, attention to detail and professionalism. Your work was wonderful!",
     },
     rating: 5,
   },
