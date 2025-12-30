@@ -235,6 +235,13 @@ const certificatesData = {
         file: "English_Certificate_B1.pdf",
         category: "Languages",
       },
+      {
+        name: "Mini Curso de Figma",
+        institution: "Centro Universitário Paraíso",
+        year: 2024,
+        file: "mini_curso_figma.jpg",
+        category: "Figma",
+      },
     ],
   },
   en: {
