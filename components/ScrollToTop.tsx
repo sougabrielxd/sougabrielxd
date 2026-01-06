@@ -45,7 +45,7 @@ const ScrollToTop: React.FC = () => {
         <button
           onClick={scrollToTop}
           className={`
-            fixed bottom-8 right-8 z-40
+            cursor-pointer fixed bottom-8 right-8 z-40
             w-10 h-10 rounded-full
             flex items-center justify-center
             transition-all duration-300 ease-out
