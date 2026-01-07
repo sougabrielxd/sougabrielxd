@@ -71,7 +71,7 @@ const projects: Project[] = [
     fullDescription:
       "Myra Bot é um bot de discord para auxiliar na gestão de um servidor de discord com IA integrada e landing page para o bot.",
     tags: ["Discord" , "TypeScript","JavaScript", "Next.js", "TailwindCSS", "Vercel"],
-    link: "#",
+    link: "https://myrasite.vercel.app/",
     github: "https://github.com/empt1xz/myrasite/",
     status: "Em desenvolvimento",
     featured: true,

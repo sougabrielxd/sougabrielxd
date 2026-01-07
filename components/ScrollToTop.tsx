@@ -60,14 +60,14 @@ const ScrollToTop: React.FC = () => {
             }
             sm:bottom-6 sm:right-6
             max-sm:bottom-4 max-sm:right-4
-            max-sm:w-11 max-sm:h-11
+            max-sm:w-6 max-sm:h-6
             landscape:bottom-4 landscape:right-4
           `}
           aria-label="Scroll to top"
           title="Scroll to top"
         >
           {/* Arrow up icon from lucide-react */}
-          <ArrowUp size={24} strokeWidth={2.5} className="max-sm:w-5 max-sm:h-5" />
+          <ArrowUp size={24} strokeWidth={2.5} className="max-sm:w-3.5 max-sm:h-3.5" />
         </button>
       )}
     </>
