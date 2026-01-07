@@ -869,7 +869,7 @@ export default function Projects() {
                         rel="noopener noreferrer"
                         className="flex-1"
                       >
-                        <button className="w-full px-3 py-1.5 rounded-lg bg-red-500 hover:bg-red-600 text-white font-semibold text-sm transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center gap-2 shadow-md">
+                        <button className="w-full px-3 py-1.5  cursor-pointer rounded-lg bg-red-500 hover:bg-red-600 text-white font-semibold text-sm transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center gap-2 shadow-md">
                           <ExternalLink className="w-3.5 h-3.5" />
                           {language === "pt" ? "Ver Projeto" : "View Project"}
                         </button>
