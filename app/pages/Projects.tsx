@@ -461,7 +461,7 @@ export default function Projects() {
 
         {/* Featured Project */}
         {featuredProject && (
-          <section className="mb-12 sm:mb-16 md:mb-20">
+          <section className="mb-8 sm:mb-12 md:mb-16">
             <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-red-500 dark:text-white">
               {language === "pt" ? "Projeto Destaque" : "Featured Project"}
             </h2>
@@ -470,7 +470,7 @@ export default function Projects() {
               onClick={() => handleOpenProjectModal(featuredProject)}
             >
               {/* Imagem de destaque no topo */}
-              <div className="relative w-full h-64 sm:h-80 md:h-96 overflow-hidden">
+              <div className="relative w-full h-48 sm:h-56 md:h-64 overflow-hidden">
                 <Image
                   src={featuredProject.images?.[0] || PLACEHOLDER_IMAGE}
                   alt={featuredProject.title}
@@ -483,21 +483,21 @@ export default function Projects() {
               </div>
 
               {/* Conteúdo do card */}
-              <div className="p-6 sm:p-8 md:p-10 flex flex-col">
+              <div className="p-4 sm:p-6 md:p-8 flex flex-col">
                 {/* Título */}
-                <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-3 text-gray-900 dark:text-white group-hover:text-red-500 dark:group-hover:text-red-400 transition-colors">
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 text-gray-900 dark:text-white group-hover:text-red-500 dark:group-hover:text-red-400 transition-colors">
                   {featuredProject.title}
                 </h3>
 
                 {/* Descrição */}
-                <p className="text-base sm:text-lg text-gray-600 dark:text-gray-400 mb-5">
+                <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400 mb-5">
                   {featuredProject.description}
                 </p>
 
                 {/* Informações de data e cliente */}
-                <div className="flex flex-col sm:flex-row sm:items-center gap-3 sm:gap-6 mb-5 text-sm sm:text-base text-gray-500 dark:text-gray-500">
-                  <div className="flex items-center gap-2">
-                    <Calendar className="w-5 h-5 text-red-500 dark:text-red-400" />
+                <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mb-4 text-xs sm:text-sm text-gray-500 dark:text-gray-500">
+                  <div className="flex items-center gap-1.5">
+                    <Calendar className="w-4 h-4 text-red-500 dark:text-red-400" />
                     <span>
                       {language === "pt" 
                         ? new Date(featuredProject.year, (featuredProject.month || 1) - 1).toLocaleDateString('pt-BR', { month: 'long', year: 'numeric' })
@@ -505,18 +505,18 @@ export default function Projects() {
                       }
                     </span>
                   </div>
-                  <div className="flex items-center gap-2">
-                    <Building className="w-5 h-5 text-red-500 dark:text-red-400" />
+                  <div className="flex items-center gap-1.5">
+                    <Building className="w-4 h-4 text-red-500 dark:text-red-400" />
                     <span>{featuredProject.title}</span>
                   </div>
                 </div>
 
                   {/* Badges de tecnologias */}
-                  <div className="flex flex-wrap gap-2 mb-4">
+                  <div className="flex flex-wrap gap-2 mb-3">
                     {featuredProject.tags.map((tag, tagIdx) => (
                       <span
                         key={tagIdx}
-                        className="px-3 py-1.5 rounded-md text-sm font-medium bg-red-500/10 dark:bg-red-500/20 text-red-600 dark:text-red-400 border border-red-500/20 dark:border-red-500/30 flex items-center gap-2"
+                        className="px-2.5 py-1 rounded-md text-xs font-medium bg-red-500/10 dark:bg-red-500/20 text-red-600 dark:text-red-400 border border-red-500/20 dark:border-red-500/30 flex items-center gap-1.5"
                       >
                         {getTechIcon(tag)}
                         {tag}
@@ -525,9 +525,9 @@ export default function Projects() {
                   </div>
 
                   {/* Tags de status */}
-                  <div className="flex flex-wrap gap-2 mb-6">
+                  <div className="flex flex-wrap gap-2 mb-4">
                     <span
-                      className={`px-3 py-1.5 rounded-md text-sm font-semibold border ${getStatusColor(
+                      className={`px-2.5 py-1 rounded-md text-xs font-semibold border ${getStatusColor(
                         featuredProject.status
                       )}`}
                     >
@@ -535,9 +535,9 @@ export default function Projects() {
                     </span>
                     {featuredProject.noLongerInvolved && (
                       <span
-                        className={`px-3 py-1.5 rounded-md text-sm font-semibold border flex items-center gap-1.5 ${getInvolvementTagColor()}`}
+                        className={`px-2.5 py-1 rounded-md text-xs font-semibold border flex items-center gap-1.5 ${getInvolvementTagColor()}`}
                       >
-                        <Clock className="w-4 h-4" />
+                        <Clock className="w-3 h-3" />
                         {language === "pt" ? "Não participo mais" : "No longer involved"}
                       </span>
                     )}
@@ -545,14 +545,14 @@ export default function Projects() {
 
                   {/* Botão Ver Detalhes */}
                 <button
-                  className="mt-auto w-full sm:w-auto px-6 py-3 rounded-lg border-2 border-red-500 dark:border-red-500 text-red-600 dark:text-red-400 font-semibold text-base hover:bg-red-500 hover:text-white dark:hover:bg-red-500 dark:hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group/btn"
+                  className="mt-auto w-full sm:w-auto px-4 py-2.5 rounded-lg border-2 border-red-500 dark:border-red-500 text-red-600 dark:text-red-400 font-semibold text-sm hover:bg-red-500 hover:text-white dark:hover:bg-red-500 dark:hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group/btn"
                   onClick={(e) => {
                     e.stopPropagation();
                     handleOpenProjectModal(featuredProject);
                   }}
                 >
                   {language === "pt" ? "Ver Detalhes" : "View Details"}
-                  <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover/btn:translate-x-1" />
+                  <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover/btn:translate-x-1" />
                 </button>
               </div>
             </div>
