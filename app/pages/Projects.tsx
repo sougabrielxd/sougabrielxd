@@ -64,6 +64,27 @@ import { getTechIcon } from "@/lib/techIcons";
 
 const projects: Project[] = [
   {
+    id: "myra-bot",
+    title: "Myra Bot",
+    description:
+      "Bot de discord para auxiliar na gestão de um servidor de discord com IA integrada e landing page para o bot.",
+    fullDescription:
+      "Myra Bot é um bot de discord para auxiliar na gestão de um servidor de discord com IA integrada e landing page para o bot.",
+    tags: ["Discord" , "TypeScript","JavaScript", "Next.js", "TailwindCSS", "Vercel"],
+    link: "#",
+    github: "https://github.com/empt1xz/myrasite/",
+    status: "Em desenvolvimento",
+    featured: true,
+    year: 2025,
+    month: 12,
+    images: ["https://ik.imagekit.io/o8urkd2xn/myrabot1", "https://ik.imagekit.io/o8urkd2xn/myrabot2"],
+    role: "Desenvolvedor Front-end",
+    challenges: "Nunca desenvolvi um bot de discord complexo antes, então quis ter esse novo desafio, para me aprimorar e aprender novas habilidades e tecnologias.",
+    solutions: "",
+    developmentProcess: "",
+    results: "",
+  },
+  {
     id: "starke-vision",
     title: "Starke Vision",
     description:
@@ -81,28 +102,7 @@ const projects: Project[] = [
     role: "Desenvolvedor WordPress",
     challenges: "",
     solutions: "",
-    developmentProcess: "Desenvolvimento com WordPress, gestão de projeto.",
-    results: "Atualização do Site feita com sucesso.",
-  },
-  {
-    id: "sv-nexus",
-    title: "SV Nexus",
-    description:
-      "Plataforma WordPress para afiliados com páginas otimizadas para conversão, integração de marketing digital e alta performance.",
-    fullDescription:
-      "A SV Nexus é uma plataforma digital voltada para afiliados e produtores de conteúdo, criada para facilitar a estruturação de páginas web com foco em conversão e performance no marketing digital. No projeto, atuo como Desenvolvedor WordPress, sendo responsável pelo desenvolvimento, customização e manutenção das páginas da plataforma. Desenvolvo templates customizados para diferentes tipos de páginas de afiliados, garantindo alta taxa de conversão através de layouts otimizados, CTAs estratégicos e elementos de urgência. Realizo ajustes na identidade visual, organização da estrutura do site e garantia de responsividade completa em todos os dispositivos. Implemento e configuro funcionalidades essenciais para o negócio, incluindo integração com ferramentas de marketing digital (Google Analytics, Facebook Pixel, Hotjar), sistemas de tracking de conversões, formulários de captura de leads e integração com CRMs. Trabalho em otimizações de performance incluindo cache avançado, CDN, otimização de banco de dados e compressão de assets. Realizo manutenções de segurança, atualizações regulares de plugins e temas, backups automatizados e monitoramento de estabilidade do ambiente. O objetivo do trabalho é entregar uma solução funcional, escalável e alinhada às necessidades do mercado de afiliados, garantindo alta performance e conversão.",
-    tags: ["WordPress"],
-    link: "https://svnexus.com.br/",
-    github: "#",
-    status: "Em desenvolvimento",
-    featured: true,
-    year: 2025,
-    month: 12,
-    images: ["https://ik.imagekit.io/o8urkd2xn/svnexus1"],
-    role: "Desenvolvedor WordPress",
-    challenges: "",
-      solutions: "",
-      developmentProcess: "Desenvolvimento com WordPress, gestão de projeto.",
+    developmentProcess: "",
     results: "Atualização do Site feita com sucesso.",
   },
   {
@@ -275,18 +275,40 @@ export default function Projects() {
   const handleOpenProjectModal = (project: Project) => {
     setSelectedProject(project);
     setCurrentImageIndex(0); // Reset image index when opening new modal
-    if (typeof document !== "undefined") {
-      document.body.style.overflow = "hidden"; // Bloqueia o scroll do body
-    }
   };
 
   const handleCloseProjectModal = () => {
     setSelectedProject(null);
     setIsLightboxOpen(false);
-    if (typeof document !== "undefined") {
-      document.body.style.overflow = "unset"; // Restaura o scroll do body
-    }
   };
+
+  // Bloqueia o scroll do body quando o modal está aberto
+  useEffect(() => {
+    if (selectedProject !== null || isLightboxOpen) {
+      // Salva a posição atual do scroll
+      const scrollY = window.scrollY;
+      
+      // Bloqueia o scroll do body
+      document.body.style.position = "fixed";
+      document.body.style.top = `-${scrollY}px`;
+      document.body.style.width = "100%";
+      document.body.style.overflow = "hidden";
+      
+      return () => {
+        // Restaura o scroll quando o modal fecha
+        const bodyTop = document.body.style.top;
+        document.body.style.position = "";
+        document.body.style.top = "";
+        document.body.style.width = "";
+        document.body.style.overflow = "";
+        
+        // Restaura a posição do scroll
+        if (bodyTop) {
+          window.scrollTo(0, parseInt(bodyTop || "0") * -1);
+        }
+      };
+    }
+  }, [selectedProject, isLightboxOpen]);
 
   // Fechar modal com tecla ESC
   useEffect(() => {
@@ -664,33 +686,33 @@ export default function Projects() {
       {/* Project Modal */}
       {selectedProject !== null && (
         <div 
-          className="fixed inset-0 bg-black/80 z-[9999] flex items-center justify-center p-4 transition-opacity duration-300" 
+          className="fixed inset-0 bg-black/80 z-[9999] flex items-center justify-center p-2 sm:p-4 transition-opacity duration-300" 
           style={{ opacity: selectedProject ? 1 : 0 }}
           onClick={handleCloseProjectModal}
         >
           <style>{scrollbarHideStyle}</style>
           <div 
-            className="bg-background border border-red-500/30 dark:border-red-500/30 rounded-lg max-w-6xl w-full max-h-[95vh] transition-transform duration-300 ease-out relative" 
+            className="bg-background border border-red-500/30 dark:border-red-500/30 rounded-lg max-w-5xl w-full max-h-[90vh] transition-transform duration-300 ease-out relative flex flex-col" 
             style={{ transform: selectedProject ? 'scale(1)' : 'scale(0.95)' }}
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
-            <div className="sticky top-0 flex items-center justify-between p-6 border-b border-red-500/10 dark:border-red-500/10 bg-background z-10">
-              <h2 className="text-2xl font-bold text-red-500 dark:text-white">{selectedProject.title}</h2>
+            <div className="flex items-center justify-between p-4 border-b border-red-500/10 dark:border-red-500/10 bg-background z-10 flex-shrink-0">
+              <h2 className="text-xl font-bold text-red-500 dark:text-white">{selectedProject.title}</h2>
               <button
                 onClick={handleCloseProjectModal}
                 className="p-2 hover:bg-black/10 dark:hover:bg-red-500/10 cursor-pointer rounded-lg transition-colors"
                 aria-label={language === "pt" ? "Fechar modal" : "Close modal"}
               >
-                <X className="w-6 h-6" />
+                <X className="w-5 h-5" />
               </button>
             </div>
 
             {/* Modal Content - Mini Case Study Layout */}
-            <div className="p-6 space-y-8 overflow-y-auto max-h-[calc(95vh-6rem)] scrollbar-hide">
+            <div className="p-4 space-y-4 overflow-y-auto flex-1 scrollbar-hide">
               {/* 1. Galeria de Imagens (Hero Section) */}
-              <div className="space-y-4">
-                <div className="relative h-96 rounded-xl overflow-hidden bg-black/10 dark:bg-red-500/10 shadow-xl">
+              <div className="space-y-2">
+                <div className="relative h-48 sm:h-56 rounded-lg overflow-hidden bg-black/10 dark:bg-red-500/10 shadow-xl">
                   {(() => {
                     const images =
                       selectedProject.images && selectedProject.images.length > 0
@@ -718,10 +740,10 @@ export default function Projects() {
                                     (prev - 1 + images.length) % images.length
                                 )
                               }
-                              className="absolute left-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/50 hover:bg-black/70 text-white transition-all duration-300 transform hover:scale-110"
+                              className="absolute left-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 hover:bg-black/70 text-white transition-all duration-300 transform hover:scale-110"
                               aria-label={language === "pt" ? "Imagem anterior" : "Previous image"}
                             >
-                              <ChevronLeft className="w-6 h-6" />
+                              <ChevronLeft className="w-4 h-4" />
                             </button>
                             <button
                               onClick={() =>
@@ -729,10 +751,10 @@ export default function Projects() {
                                   (prev: number) => (prev + 1) % images.length
                                 )
                               }
-                              className="absolute right-4 top-1/2 -translate-y-1/2 p-3 rounded-full bg-black/50 hover:bg-black/70 text-white transition-all duration-300 transform hover:scale-110"
+                              className="absolute right-2 top-1/2 -translate-y-1/2 p-2 rounded-full bg-black/50 hover:bg-black/70 text-white transition-all duration-300 transform hover:scale-110"
                               aria-label={language === "pt" ? "Próxima imagem" : "Next image"}
                             >
-                              <ChevronRight className="w-6 h-6" />
+                              <ChevronRight className="w-4 h-4" />
                             </button>
                           </>
                         )}
@@ -749,12 +771,12 @@ export default function Projects() {
 
                   return (
                     images.length > 1 && (
-                      <div className="flex gap-3 overflow-x-auto p-1">
+                      <div className="flex gap-2 overflow-x-auto p-1">
                         {images.map((img: string, idx: number) => (
                           <button
                             key={idx}
                             onClick={() => setCurrentImageIndex(idx)}
-                            className={`w-24 h-16 rounded-lg overflow-hidden flex-shrink-0 border-2 transition-all ${
+                            className={`w-16 h-12 rounded-md overflow-hidden flex-shrink-0 border-2 transition-all ${
                               currentImageIndex === idx
                                 ? "border-red-500 shadow-md"
                                 : "border-red-500/20 dark:border-red-500/20 hover:border-red-500/50"
@@ -763,8 +785,8 @@ export default function Projects() {
                             <Image
                               src={img || PLACEHOLDER_IMAGE}
                               alt={`Thumbnail ${idx + 1}`}
-                              width={96}
-                              height={64}
+                              width={64}
+                              height={48}
                               className="w-full h-full object-cover"
                               loading="lazy"
                             />
@@ -777,36 +799,36 @@ export default function Projects() {
               </div>
 
               {/* 2. Visão Geral e Links */}
-              <div className="grid md:grid-cols-3 gap-6 border-b pb-6 border-red-500/10 dark:border-red-500/10">
+              <div className="grid md:grid-cols-3 gap-4 border-b pb-4 border-red-500/10 dark:border-red-500/10">
                 {/* Coluna 1: Papel e Status */}
-                <div className="space-y-4">
+                <div className="space-y-2">
                   {/* Papel */}
-                  <div className="flex items-center gap-3 p-3 rounded-lg bg-gray-100/50 dark:bg-gray-800/50 border border-red-500/10 dark:border-red-500/10">
-                    <User className="w-5 h-5 text-red-500" />
-                    <div>
+                  <div className="flex items-center gap-2 p-2 rounded-lg bg-gray-100/50 dark:bg-gray-800/50 border border-red-500/10 dark:border-red-500/10">
+                    <User className="w-4 h-4 text-red-500 flex-shrink-0" />
+                    <div className="min-w-0">
                       <p className="text-xs font-medium text-muted-foreground">
                         {language === "pt" ? "Meu Papel" : "My Role"}
                       </p>
-                      <p className="font-semibold">{selectedProject.role}</p>
+                      <p className="font-semibold text-sm">{selectedProject.role}</p>
                     </div>
                   </div>
                   {/* Status */}
-                  <div className="flex flex-col gap-2 p-3 rounded-lg bg-gray-100/50 dark:bg-gray-800/50 border border-red-500/10 dark:border-red-500/10">
-                    <div className="flex items-center gap-3">
+                  <div className="flex flex-col gap-2 p-2 rounded-lg bg-gray-100/50 dark:bg-gray-800/50 border border-red-500/10 dark:border-red-500/10">
+                    <div className="flex items-center gap-2 flex-wrap">
                       <span
-                        className={`px-3 py-1 rounded-full text-sm font-semibold border ${getStatusColor(
+                        className={`px-2 py-1 rounded-full text-xs font-semibold border ${getStatusColor(
                           selectedProject.status
                         )}`}
                       >
                         {selectedProject.status}
                       </span>
-                      <span className="text-sm text-muted-foreground">
+                      <span className="text-xs text-muted-foreground">
                         {selectedProject.year}
                       </span>
                     </div>
                     {selectedProject.noLongerInvolved && (
                       <span
-                        className={`px-3 py-1 rounded-full text-xs font-semibold border flex items-center gap-1.5 w-fit ${getInvolvementTagColor()}`}
+                        className={`px-2 py-1 rounded-full text-xs font-semibold border flex items-center gap-1.5 w-fit ${getInvolvementTagColor()}`}
                       >
                         <Clock className="w-3 h-3" />
                         {language === "pt" ? "Não participo mais" : "No longer involved"}
@@ -816,20 +838,20 @@ export default function Projects() {
                 </div>
 
                 {/* Coluna 2 & 3: Tecnologias e Links */}
-                <div className="md:col-span-2 space-y-4">
+                <div className="md:col-span-2 space-y-3">
                   {/* Tecnologias */}
                   <div>
-                    <h3 className="text-lg font-bold mb-3 flex items-center gap-2">
-                      <Code className="w-5 h-5 text-red-500" />
+                    <h3 className="text-base font-bold mb-2 flex items-center gap-2">
+                      <Code className="w-4 h-4 text-red-500" />
                       {language === "pt"
                         ? "Tecnologias Utilizadas"
                         : "Technologies Used"}
                     </h3>
-                    <div className="flex flex-wrap gap-2">
+                    <div className="flex flex-wrap gap-1.5">
                       {selectedProject.tags.map((tag: string, idx: number) => (
                         <span
                           key={idx}
-                          className="px-3 py-1 rounded-full text-xs flex items-center gap-2 bg-gradient-to-r dark:from-red-500/20 dark:to-red-400/20 border dark:border-red-500/50 dark:hover:border-red-500 text-gray-800 dark:text-white from-red-500/20 to-red-400/20 border-red-500/50 hover:border-red-500 transition-all duration-300"
+                          className="px-2 py-1 rounded-full text-xs flex items-center gap-1.5 bg-gradient-to-r dark:from-red-500/20 dark:to-red-400/20 border dark:border-red-500/50 dark:hover:border-red-500 text-gray-800 dark:text-white from-red-500/20 to-red-400/20 border-red-500/50 hover:border-red-500 transition-all duration-300"
                         >
                           {getTechIcon(tag)}
                           {tag}
@@ -839,7 +861,7 @@ export default function Projects() {
                   </div>
 
                   {/* Links */}
-                  <div className="flex gap-3 pt-2">
+                  <div className="flex gap-2">
                     {selectedProject.link && selectedProject.link !== "#" && (
                       <a
                         href={selectedProject.link}
@@ -847,8 +869,8 @@ export default function Projects() {
                         rel="noopener noreferrer"
                         className="flex-1"
                       >
-                        <button className="w-full px-4 py-2 rounded-lg bg-red-500 hover:bg-red-600 text-white font-semibold transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center gap-2 shadow-md">
-                          <ExternalLink className="w-4 h-4" />
+                        <button className="w-full px-3 py-1.5 rounded-lg bg-red-500 hover:bg-red-600 text-white font-semibold text-sm transition-all duration-300 transform hover:scale-[1.02] flex items-center justify-center gap-2 shadow-md">
+                          <ExternalLink className="w-3.5 h-3.5" />
                           {language === "pt" ? "Ver Projeto" : "View Project"}
                         </button>
                       </a>
@@ -860,10 +882,10 @@ export default function Projects() {
                         rel="noopener noreferrer"
                       >
                         <button 
-                          className="px-4 py-2 rounded-lg border border-red-500/30 cursor-pointer dark:border-red-500/30 hover:bg-red-500/10 dark:hover:bg-red-500/10 transition-colors shadow-md"
+                          className="px-3 py-1.5 rounded-lg border border-red-500/30 cursor-pointer dark:border-red-500/30 hover:bg-red-500/10 dark:hover:bg-red-500/10 transition-colors shadow-md"
                           aria-label={language === "pt" ? "Ver código no GitHub" : "View code on GitHub"}
                         >
-                          <Github className="w-4 h-4 text-gray-800 dark:text-white" />
+                          <Github className="w-3.5 h-3.5 text-gray-800 dark:text-white" />
                         </button>
                       </a>
                     )}
@@ -872,68 +894,76 @@ export default function Projects() {
               </div>
 
               {/* 3. Visão Geral (Full Description) */}
-              <section className="space-y-4">
-                <h2 className="text-2xl font-bold flex items-center gap-2">
-                  <User className="w-6 h-6 text-red-500" />
+              <section className="space-y-2">
+                <h2 className="text-lg font-bold flex items-center gap-2">
+                  <User className="w-4 h-4 text-red-500" />
                   {language === "pt" ? "Visão Geral do Projeto" : "Project Overview"}
                 </h2>
-                <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
+                <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
                   {selectedProject.fullDescription}
                 </p>
               </section>
 
               {/* 4. Desafios e Soluções (Core Case Study) */}
-              <div className="grid md:grid-cols-2 gap-6">
-                {/* Desafios */}
-                <section className="space-y-4 p-4 rounded-xl bg-yellow-500/10 border border-yellow-500/20">
-                  <h2 className="text-xl font-bold flex items-center gap-2 text-yellow-600 dark:text-yellow-400">
-                    <AlertTriangle className="w-5 h-5" />
-                    {language === "pt" ? "Desafios" : "Challenges"}
-                  </h2>
-                  <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
-                    {selectedProject.challenges}
-                  </p>
-                </section>
+              {(selectedProject.challenges?.trim() || selectedProject.solutions?.trim()) && (
+                <div className={`grid gap-3 ${selectedProject.challenges?.trim() && selectedProject.solutions?.trim() ? 'md:grid-cols-2' : ''}`}>
+                  {/* Desafios */}
+                  {selectedProject.challenges?.trim() && (
+                    <section className="space-y-2 p-3 rounded-lg bg-yellow-500/10 border border-yellow-500/20">
+                      <h2 className="text-base font-bold flex items-center gap-2 text-yellow-600 dark:text-yellow-400">
+                        <AlertTriangle className="w-4 h-4" />
+                        {language === "pt" ? "Desafios" : "Challenges"}
+                      </h2>
+                      <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
+                        {selectedProject.challenges}
+                      </p>
+                    </section>
+                  )}
 
-                {/* Soluções */}
-                <section className="space-y-4 p-4 rounded-xl bg-green-500/10 border border-green-500/20">
-                  <h2 className="text-xl font-bold flex items-center gap-2 text-green-600 dark:text-green-400">
-                    <Zap className="w-5 h-5" />
-                    {language === "pt" ? "Soluções Implementadas" : "Solutions Implemented"}
-                  </h2>
-                  <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
-                    {selectedProject.solutions}
-                  </p>
-                </section>
-              </div>
+                  {/* Soluções */}
+                  {selectedProject.solutions?.trim() && (
+                    <section className="space-y-2 p-3 rounded-lg bg-green-500/10 border border-green-500/20">
+                      <h2 className="text-base font-bold flex items-center gap-2 text-green-600 dark:text-green-400">
+                        <Zap className="w-4 h-4" />
+                        {language === "pt" ? "Soluções Implementadas" : "Solutions Implemented"}
+                      </h2>
+                      <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
+                        {selectedProject.solutions}
+                      </p>
+                    </section>
+                  )}
+                </div>
+              )}
 
               {/* 5. Processo de Desenvolvimento */}
-              <section className="space-y-4">
-                <h2 className="text-2xl font-bold flex items-center gap-2">
-                  <Workflow className="w-6 h-6 text-red-500" />
-                  {language === "pt" ? "Processo de Desenvolvimento" : "Development Process"}
-                </h2>
-                <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
-                  {selectedProject.developmentProcess}
-                </p>
-              </section>
+              {selectedProject.developmentProcess?.trim() && (
+                <section className="space-y-2">
+                  <h2 className="text-lg font-bold flex items-center gap-2">
+                    <Workflow className="w-4 h-4 text-red-500" />
+                    {language === "pt" ? "Processo de Desenvolvimento" : "Development Process"}
+                  </h2>
+                  <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
+                    {selectedProject.developmentProcess}
+                  </p>
+                </section>
+              )}
 
               {/* 6. Métricas (se disponível) */}
               {selectedProject.metrics && Object.keys(selectedProject.metrics).length > 0 && (
-                <section className="space-y-4">
-                  <h2 className="text-2xl font-bold flex items-center gap-2">
-                    <Trophy className="w-6 h-6 text-red-500" />
+                <section className="space-y-2">
+                  <h2 className="text-lg font-bold flex items-center gap-2">
+                    <Trophy className="w-4 h-4 text-red-500" />
                     {language === "pt" ? "Métricas de Impacto" : "Impact Metrics"}
                   </h2>
-                  <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-2 md:grid-cols-3 gap-2">
                     {Object.entries(selectedProject.metrics).map(([key, value]) => (
                       value && (
                         <div
                           key={key}
-                          className="p-4 rounded-lg bg-gradient-to-br from-red-500/10 to-red-400/10 border border-red-500/20"
+                          className="p-2 rounded-lg bg-gradient-to-br from-red-500/10 to-red-400/10 border border-red-500/20"
                         >
-                          <p className="text-2xl font-bold text-red-500">{value}</p>
-                          <p className="text-sm text-muted-foreground capitalize">
+                          <p className="text-lg font-bold text-red-500">{value}</p>
+                          <p className="text-xs text-muted-foreground capitalize">
                             {key === "users" && (language === "pt" ? "Usuários" : "Users")}
                             {key === "performance" && (language === "pt" ? "Performance" : "Performance")}
                             {key === "materials" && (language === "pt" ? "Materiais" : "Materials")}
@@ -948,19 +978,18 @@ export default function Projects() {
               )}
 
               {/* 7. Resultados */}
-              <section className="space-y-4">
-                <h2 className="text-2xl font-bold flex items-center gap-2">
-                  <Trophy className="w-6 h-6 text-red-500" />
-                  {language === "pt" ? "Resultados e Impacto" : "Results and Impact"}
-                </h2>
-                <p className="text-muted-foreground leading-relaxed whitespace-pre-line">
-                  {selectedProject.results}
-                </p>
-              </section>
+              {selectedProject.results?.trim() && (
+                <section className="space-y-2">
+                  <h2 className="text-lg font-bold flex items-center gap-2">
+                    <Trophy className="w-4 h-4 text-red-500" />
+                    {language === "pt" ? "Resultados e Impacto" : "Results and Impact"}
+                  </h2>
+                  <p className="text-sm text-muted-foreground leading-relaxed whitespace-pre-line">
+                    {selectedProject.results}
+                  </p>
+                </section>
+              )}
             </div>
-            
-            {/* Scroll Fade-out Indicator */}
-            <div className="absolute bottom-0 left-0 right-0 h-16 pointer-events-none rounded-b-lg bg-gradient-to-t from-white dark:from-gray-900 to-transparent"></div>
           </div>
 
           {/* Lightbox Overlay */}
