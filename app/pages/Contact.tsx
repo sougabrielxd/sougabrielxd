@@ -17,8 +17,8 @@ const mainContactMethods = [
   {
     icon: Mail,
     label: "Email",
-    value: "gabriellucasafb@gmail.com",
-    href: "mailto:gabriellucasafb@gmail.com?subject=Contato%20do%20Portfólio&body=Olá,%20vim%20pelo%20seu%20Portfólio%20e%20gostaria%20de%20falar%20sobre...",
+    value: "contato@gabriellucasafb.com.br",
+    href: "mailto:contato@gabriellucasafb.com.br?subject=Contato%20do%20Portfólio&body=Olá,%20vim%20pelo%20seu%20Portfólio%20e%20gostaria%20de%20falar%20sobre...",
     description: {
       pt: "Respondido em até 24 horas",
       en: "Responded within 24 hours"
@@ -220,7 +220,7 @@ export default function Contact() {
       formDataToSend.append("email", formData.email);
       formDataToSend.append("message", formData.message);
 
-      const response = await fetch("https://formspree.io/f/xzdpprjk", {
+      const response = await fetch("https://formspree.io/f/xeeoylwr", {
         method: "POST",
         body: formDataToSend,
         headers: {
