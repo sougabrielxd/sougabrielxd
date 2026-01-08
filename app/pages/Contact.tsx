@@ -322,13 +322,13 @@ export default function Contact() {
                   target={method.href !== "#" ? "_blank" : undefined}
                   rel={method.href !== "#" ? "noopener noreferrer" : undefined}
                   onClick={method.href === "#" ? (e) => e.preventDefault() : undefined}
-                  className={`group flex items-start gap-4 p-4 sm:p-5 rounded-lg border-2 border-red-500/30 dark:border-red-700/80
+                  className={`group flex items-center gap-4 p-4 sm:p-5 rounded-lg border-2 border-red-500/30 dark:border-red-700/80
                     bg-gradient-to-r from-red-500/5 to-transparent dark:from-red-500/5 
                     hover:from-red-500/10 hover:to-red-500/5 dark:hover:from-red-500/10 
                     transition-all duration-300 transform hover:scale-105 hover:-translate-y-1
                     hover:shadow-lg hover:shadow-red-500/20 dark:hover:shadow-red-500/20`}
                 >
-                  <Icon className="w-5 h-5 sm:w-6 sm:h-6 mr-3 sm:mr-4 dark:text-red-500 text-red-500 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 flex-shrink-0" />
+                  <Icon className="w-5 h-5 sm:w-6 sm:h-6 dark:text-red-500 text-red-500 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 flex-shrink-0" />
                   <div className="flex-1 min-w-0">
                     <p className="text-xs sm:text-sm text-gray-600 dark:text-muted-foreground transition-colors duration-300 group-hover:text-gray-800 dark:group-hover:text-gray-200">
                       {method.label}
@@ -488,7 +488,7 @@ export default function Contact() {
               <Button
                 type="submit"
                 disabled={loading || Object.values(fieldErrors).some(error => error && error.length > 0)}
-                className="w-full rounded-lg px-4 py-2.5 sm:py-2 bg-gradient-to-r from-red-500 to-red-600 dark:from-red-500 dark:to-red-700 hover:from-red-600 hover:to-red-700 dark:hover:to-red-800 text-white border-0 shadow-sm hover:shadow-xl hover:shadow-red-500/20 dark:hover:shadow-red-500/20 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none text-sm sm:text-base flex items-center justify-center gap-2"
+                className="w-full rounded-lg px-4 py-2.5 sm:py-2 bg-gradient-to-r cursor-pointer from-red-500 to-red-600 dark:from-red-500 dark:to-red-700 hover:from-red-600 hover:to-red-700 dark:hover:to-red-800 text-white border-0 shadow-sm hover:shadow-xl hover:shadow-red-500/20 dark:hover:shadow-red-500/20 transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:transform-none text-sm sm:text-base flex items-center justify-center gap-2"
               >
                 {loading ? (
                   <>

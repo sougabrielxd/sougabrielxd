@@ -77,6 +77,7 @@ const testimonialsData: Testimonial[] = [
     name: "Ian Caleb",
     role: "Desenvolvedor Full-Stack",
     company: "NexTI UniFAP",
+    avatar: "/testimonials/ian.jpeg",
     text: {
       pt: "Tive a oportunidade de trabalhar com Gabriel no projeto Learn Skills, iniciado do zero com tecnologias novas para a equipe. Ele demonstrou um aprendizado rápido, grande eficiência e capricho em tudo que desenvolveu. Sua capacidade de entender regras de negócio e aplicar isso no front-end e no back-end foi essencial para o avanço do projeto. Com certeza é um profissional que agrega valor a qualquer equipe.   ",
       en: "I had the opportunity to work with Gabriel on the Learn Skills project, started from scratch with new technologies for the team. He demonstrated rapid learning, great efficiency and attention to detail in everything he developed. His ability to understand business rules and apply them in the front-end and back-end was essential for the advancement of the project. Certainly a professional who adds value to any team.",
@@ -265,12 +266,12 @@ export default function Testimonials() {
         )}
 
         {/* Other Testimonials Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6 md:gap-7">
+        <div className="columns-1 md:columns-2 lg:columns-3 gap-5 sm:gap-6 md:gap-7 ">
           {otherTestimonials.map((testimonial, index) => (
             <article
               key={testimonial.id}
               data-testimonial-index={index}
-              className="transition-all duration-700 opacity-100 translate-y-0"
+              className="break-inside-avoid mb-5 sm:mb-6 md:mb-7 transition-all duration-700 opacity-100 translate-y-0"
               style={{ transitionDelay: `${index * 100}ms` }}
             >
               <div className="bg-white dark:bg-card rounded-xl p-6 sm:p-7 md:p-8 shadow-lg border border-red-500/20 dark:border-red-500/20 hover:border-red-500/50 dark:hover:border-red-500/50 hover:shadow-xl transition-all duration-300 flex flex-col">
@@ -326,7 +327,7 @@ export default function Testimonials() {
                 : "Let's work together and create something amazing for your business."}
             </p>
             <a href="#contact">
-              <Button className="bg-red-500 hover:bg-red-600 text-white font-semibold py-2.5 sm:py-3 px-6 sm:px-8 text-sm sm:text-base rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg shadow-red-500/30">
+              <Button className="bg-red-500 hover:bg-red-600 text-white font-semibold cursor-pointer py-2.5 sm:py-3 px-6 sm:px-8 text-sm sm:text-base rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg shadow-red-500/30">
                 {language === "pt" ? "Entre em Contato" : "Get in Touch"}
               </Button>
             </a>

@@ -545,7 +545,7 @@ export default function Projects() {
 
                   {/* Botão Ver Detalhes */}
                 <button
-                  className="mt-auto w-full sm:w-auto px-4 py-2.5 rounded-lg border-2 border-red-500 dark:border-red-500 text-red-600 dark:text-red-400 font-semibold text-sm hover:bg-red-500 hover:text-white dark:hover:bg-red-500 dark:hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group/btn"
+                  className="mt-auto w-full cursor-pointer sm:w-auto px-4 py-2.5 rounded-lg border-2 border-red-500 dark:border-red-500 text-red-600 dark:text-red-400 font-semibold text-sm hover:bg-red-500 hover:text-white dark:hover:bg-red-500 dark:hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group/btn"
                   onClick={(e) => {
                     e.stopPropagation();
                     handleOpenProjectModal(featuredProject);
@@ -652,7 +652,7 @@ export default function Projects() {
 
                   {/* Botão Ver Detalhes */}
                   <button
-                    className="mt-auto w-full sm:w-auto px-4 py-2.5 rounded-lg border-2 border-red-500 dark:border-red-500 text-red-600 dark:text-red-400 font-semibold text-sm hover:bg-red-500 hover:text-white dark:hover:bg-red-500 dark:hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group/btn"
+                    className="mt-auto w-full cursor-pointer sm:w-auto px-4 py-2.5 rounded-lg border-2 border-red-500 dark:border-red-500 text-red-600 dark:text-red-400 font-semibold text-sm hover:bg-red-500 hover:text-white dark:hover:bg-red-500 dark:hover:text-white transition-all duration-300 flex items-center justify-center gap-2 group/btn"
                     onClick={(e) => {
                       e.stopPropagation();
                       handleOpenProjectModal(project);

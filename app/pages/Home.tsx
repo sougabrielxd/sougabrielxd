@@ -173,7 +173,7 @@ export default function Home() {
 
             <div className="flex flex-col sm:flex-row justify-center items-center gap-3 md:gap-4 px-4">
               <a href="#contact" className="w-full sm:w-auto">
-                <Button className="w-full sm:w-auto bg-red-500 hover:bg-red-600 text-white font-semibold py-2.5 md:py-3 px-4 md:px-6 text-sm md:text-base rounded-lg transition-colors duration-300 transform hover:scale-105 shadow-lg shadow-red-500/30">
+                <Button className="w-full cursor-pointer sm:w-auto bg-red-500 hover:bg-red-600 text-white font-semibold py-2.5 md:py-3 px-4 md:px-6 text-sm md:text-base rounded-lg transition-colors duration-300 transform hover:scale-105 shadow-lg shadow-red-500/30">
                   {language === "pt" ? "Vamos automatizar seu processo?" : "Let's automate your process?"}
                 </Button>
               </a>
@@ -181,7 +181,7 @@ export default function Home() {
               <a href="/Curriculo.pdf" download className="w-full sm:w-auto">
                 <Button
                   variant="outline"
-                  className="w-full sm:w-auto bg-transparent border-red-500/50 dark:border-red-500/50 hover:bg-red-500/10 dark:hover:bg-red-500/10 text-red-600 dark:text-white font-semibold py-2.5 md:py-3 px-4 md:px-6 text-sm md:text-base rounded-lg transition-colors duration-300 transform hover:scale-105"
+                  className="w-full cursor-pointer sm:w-auto bg-transparent border-red-500/50 dark:border-red-500/50 hover:bg-red-500/10 dark:hover:bg-red-500/10 text-red-600 dark:text-white font-semibold py-2.5 md:py-3 px-4 md:px-6 text-sm md:text-base rounded-lg transition-colors duration-300 transform hover:scale-105"
                 >
                   <FileText className="w-4 h-4 md:w-5 md:h-5 mr-2" />
                   {language === "pt" ? "Baixar CV" : "Download CV"}
