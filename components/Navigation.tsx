@@ -65,18 +65,18 @@ export default function Navigation({
         className={`fixed top-6 left-6 z-[9999] flex gap-6 transition-all duration-300 ease-in-out ${
           isVisible 
             ? "opacity-100 translate-y-0" 
-            : "opacity-0 -translate-y-2 pointer-events-none"
+            : "opacity-0 -translate-y-2 pointer-events-none dark:pointer-events-auto"
         }`}
       >
-        <div className="hidden md:flex gap-8">
+        <div className="hidden md:flex gap-6 cursor-pointer ">
           {navItems.map((item, idx) => (
             <button
               key={idx}
               onClick={() => handleNavClick(sections[idx], idx)}
               className={`text-sm transition-colors font-semibold ${
                 activeSection === sections[idx]
-                  ? "text-red-500"
-                  : "text-black dark:text-white hover:text-red-500 dark:hover:text-red-500"
+                  ? "text-red-500 cursor-pointer"
+                  : "text-black dark:text-white hover:text-red-500 dark:hover:text-red-500 cursor-pointer"
               }`}
             >
               {item}

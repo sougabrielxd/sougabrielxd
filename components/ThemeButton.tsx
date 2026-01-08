@@ -20,6 +20,7 @@ export function ThemeButton() {
         transition-all duration-300 transform hover:scale-110 
         hover:shadow-lg hover:shadow-red-500/40 dark:hover:shadow-red-500/40 
         group
+        cursor-pointer
       "
     >
       {theme === "dark" ? (
