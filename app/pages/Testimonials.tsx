@@ -72,17 +72,18 @@ const testimonialsData: Testimonial[] = [
     },
     rating: 5,
   },
-  /*{
+  {
     id: "5",
-    name: "Ana Paula",
-    role: "Empreendedora",
-    company: "E-commerce",
+    name: "Ian Caleb",
+    role: "Desenvolvedor Full-Stack",
+    company: "NexTI UniFAP",
     text: {
-      pt: "O trabalho do Gabriel transformou nossa presença online. Desenvolveu uma plataforma completa, responsiva e com excelente performance. Comunicação clara durante todo o projeto e entrega impecável.",
-      en: "Gabriel's work transformed our online presence. He developed a complete, responsive platform with excellent performance. Clear communication throughout the project and impeccable delivery.",
+      pt: "Tive a oportunidade de trabalhar com Gabriel no projeto Learn Skills, iniciado do zero com tecnologias novas para a equipe. Ele demonstrou um aprendizado rápido, grande eficiência e capricho em tudo que desenvolveu. Sua capacidade de entender regras de negócio e aplicar isso no front-end e no back-end foi essencial para o avanço do projeto. Com certeza é um profissional que agrega valor a qualquer equipe.   ",
+      en: "I had the opportunity to work with Gabriel on the Learn Skills project, started from scratch with new technologies for the team. He demonstrated rapid learning, great efficiency and attention to detail in everything he developed. His ability to understand business rules and apply them in the front-end and back-end was essential for the advancement of the project. Certainly a professional who adds value to any team.",
     },
     rating: 5,
   },
+  /*{
   {
     id: "6",
     name: "Roberto Santos",
