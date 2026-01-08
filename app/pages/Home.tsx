@@ -13,6 +13,7 @@ import LoadingScreen from "@/components/LoadingScreen";
 import ThemeButton from "@/components/ThemeButton";
 import LanguageButton from "@/components/LanguageButton";
 
+
 // Contexts
 import { useLanguage } from "@/contexts/LanguageContext";
 import { useTheme } from "@/contexts/ThemeContext";
@@ -22,6 +23,7 @@ import { useTypewriter } from "@/hooks/useTypewriter";
 
 // Icons
 import { FileText, Github, Instagram, Linkedin } from "lucide-react";
+import DiscordIcon from "@/components/DiscordIcon";
 
 // Sections
 import About from "./About";
@@ -215,6 +217,14 @@ export default function Home() {
                 className="text-black dark:text-white hover:text-red-500 dark:hover:text-red-500 transition-colors"
               >
                 <Instagram className="w-6 h-6" />
+              </a>
+              <a
+                href="https://discord.gg/7gvSUSFzxc"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-black dark:text-white hover:text-red-500 dark:hover:text-red-500 transition-colors"
+              >
+                <DiscordIcon className="w-6 h-6" />
               </a>
             </div>
           </div>
