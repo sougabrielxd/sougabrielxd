@@ -6,12 +6,13 @@
 
 <table width="100%"> 
  
-<div width="30%">    
-<h3> Olá, Seja Bem-vindo(a) ao meu perfil, eu sou o Gabriel.</h3>  
-
+<div width="30%">   
+    
+[![Typing SVG](https://readme-typing-svg.herokuapp.com?font=Fira+Code&pause=1000&color=F70000&width=435&lines=Ol%C3%A1%2C+Seja+Bem-vindo(a)+ao+meu+perfil%2C+eu+sou+o+Gabriel.;Developer+Full-Stack)](https://git.io/typing-svg)
+    
 <b>No que estou trabalhando atualmente? 🍂 </b>
 
->_Estou cursando o 5º período de Analise e desenvolvimento de sistemas pela UniFap-CE._ <br/>
+>_Estou cursando o 5º período de Analise e desenvolvimento de sistemas pela uniCesumar._ <br/>
 _Estou focado nos estudos de n8n e automação._ <br/>
 _Minhas principais habilidades são: Python, React, HTML, CSS, Javascript, MySQL, Figma e UI/UX._
 ><br/>
