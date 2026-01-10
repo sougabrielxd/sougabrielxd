@@ -758,7 +758,7 @@ export default function About() {
             <div className="flex flex-col items-center md:items-end animate-float w-full max-w-sm md:max-w-none">
               <div className="relative w-full max-w-[280px] sm:max-w-[320px] md:w-[340px] aspect-[340/360] rounded-2xl overflow-hidden shadow-lg shadow-red-500/30 dark:shadow-red-500/30 border border-red-500/40 dark:border-red-500/40 bg-gradient-to-br from-red-500/20 via-red-500/10 to-red-500/20 dark:from-red-500/20 dark:via-red-400/10 dark:to-red-500/20 transition-all duration-300 hover:shadow-red-500 dark:hover:shadow-red-500 hover:scale-105 mb-4">
                 <Image
-                  src="/img/photo.jpg"
+                  src="/img/photo.png"
                   alt="Foto de perfil"
                   width={340}
                   height={360}
