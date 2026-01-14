@@ -37,14 +37,14 @@ interface Project {
   status: string;
   featured: boolean;
   year: number;
-  month?: number; // Mês do projeto (1-12, opcional)
+  month?: number; 
   images?: string[];
   role: string;
   challenges: string;
   solutions: string;
   developmentProcess: string;
   results: string;
-  noLongerInvolved?: boolean; // Indica se não participa mais do projeto
+  noLongerInvolved?: boolean;
   metrics?: {
     users?: string;
     performance?: string;
@@ -138,7 +138,7 @@ const projects: Project[] = [
     tags: ["React", "TypeScript", "Vite", "TailwindCSS"],
     link: "https://www.conecc.com.br/",
     github: "https://github.com/andrearraesDev/conecc-landing",
-    status: "Em desenvolvimento",
+    status: "Concluído",
     featured: false,
     year: 2025,
     month: 11,
@@ -159,7 +159,7 @@ const projects: Project[] = [
     tags: ["TypeScript", "Next.js", "TailwindCSS"],
     link: "https://cartorio-lcm.vercel.app/",
     github: "https://github.com/sougabrielxd/cartorio-lcm",
-    status: "Em desenvolvimento",
+    status: "Concluído",
     featured: false,
     year: 2025,
     month: 10,
