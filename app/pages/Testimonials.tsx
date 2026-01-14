@@ -22,6 +22,7 @@ interface Testimonial {
   avatar?: string;
   rating?: number;
   featured?: boolean;
+  link?: string;
 }
 
 const testimonialsData: Testimonial[] = [
@@ -41,6 +42,7 @@ const testimonialsData: Testimonial[] = [
     id: "2",
     name: "André Arraes",
     role: "Desenvolvedor Full-Stack",
+    link: "https://www.linkedin.com/in/andrearraes/",
     company: "Freelancer",
     avatar: "/testimonials/andre.jpeg",
     text: {
@@ -54,6 +56,7 @@ const testimonialsData: Testimonial[] = [
     name: "Vinícius Souza",
     role: "CTO",
     company: "Carboon Cycle",
+    link: "https://www.linkedin.com/in/viniszofx/",
     avatar: "/testimonials/vinicius.jpeg",
     text: {
       pt: "Tive o prazer de acompanhar Gabriel Lucas em projetos de desenvolvimento web, Destaca-se pela criatividade, excelente comunicação e postura profissional madura, além do interesse constante em aprender e colaborar ativamente. Demonstra iniciativa, visão prática e entrega soluções eficientes, agregando valor real aos projetos. Recomendo com confiança.",
@@ -78,24 +81,39 @@ const testimonialsData: Testimonial[] = [
     role: "Desenvolvedor Full-Stack",
     company: "NexTI UniFAP",
     avatar: "/testimonials/ian.jpeg",
+    link: "https://www.linkedin.com/in/ian-caleb-batista-fernandes-36b73727b/",
     text: {
       pt: "Tive a oportunidade de trabalhar com Gabriel no projeto Learn Skills, iniciado do zero com tecnologias novas para a equipe. Ele demonstrou um aprendizado rápido, grande eficiência e capricho em tudo que desenvolveu. Sua capacidade de entender regras de negócio e aplicar isso no front-end e no back-end foi essencial para o avanço do projeto. Com certeza é um profissional que agrega valor a qualquer equipe.   ",
       en: "I had the opportunity to work with Gabriel on the Learn Skills project, started from scratch with new technologies for the team. He demonstrated rapid learning, great efficiency and attention to detail in everything he developed. His ability to understand business rules and apply them in the front-end and back-end was essential for the advancement of the project. Certainly a professional who adds value to any team.",
     },
     rating: 5,
   },
-  /*{
   {
     id: "6",
-    name: "Roberto Santos",
-    role: "CTO",
-    company: "Tech Solutions",
+    name: "Paulo Cesar",
+    role: "Analista de TI",
+    avatar: "/testimonials/paulo.jpeg",
+    company: "Evogard",
+    link: "https://www.linkedin.com/in/paulo-cesar-b073881a0/",
     text: {
-      pt: "Gabriel demonstrou grande conhecimento técnico e capacidade de resolver problemas complexos. Sua abordagem metodológica e atenção aos detalhes fazem dele um profissional de confiança para qualquer projeto.",
-      en: "Gabriel demonstrated great technical knowledge and ability to solve complex problems. His methodological approach and attention to detail make him a trusted professional for any project.",
+      pt: "Gabriel demonstra sólido conhecimento técnico e grande capacidade de resolver problemas complexos. Sua abordagem estruturada, aliada à atenção aos detalhes e ao pensamento analítico, faz dele um profissional confiável e altamente qualificado para atuar em projetos desafiadores.",
+      en: "Gabriel demonstrates solid technical knowledge and great ability to solve complex problems. His structured approach, combined with attention to detail and analytical thinking, makes him a reliable and highly qualified professional to work on challenging projects.",
     },
     rating: 5,
-  }, */
+  },
+  {
+    id: "7",
+    name: "Daniel Afonso Silva ",
+    role: "CEO",
+    avatar: "/testimonials/daniel.jpeg",
+    company: "Carbon Cycle",
+    link: "https://www.linkedin.com/in/dani-afonso/",
+    text: {
+      pt: "Gabriel demonstra sólido conhecimento técnico e grande capacidade de resolver problemas complexos. Sua abordagem estruturada, aliada à atenção aos detalhes e ao pensamento analítico, faz dele um profissional confiável e altamente qualificado para atuar em projetos desafiadores.",
+      en: "Gabriel demonstrates solid technical knowledge and great ability to solve complex problems. His structured approach, combined with attention to detail and analytical thinking, makes him a reliable and highly qualified professional to work on challenging projects.",
+    },
+    rating: 5,
+  }, 
 ];
 
 // ============================================================
@@ -245,9 +263,20 @@ export default function Testimonials() {
                   <div className="flex items-center gap-3 sm:gap-4">
                     {renderAvatar(featuredTestimonial)}
                     <div>
-                      <p className="font-bold text-gray-900 dark:text-white text-sm sm:text-base md:text-lg">
-                        {featuredTestimonial.name}
-                      </p>
+                      {featuredTestimonial.link ? (
+                        <a
+                          href={featuredTestimonial.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="font-bold text-gray-900 dark:text-white text-sm sm:text-base md:text-lg hover:text-red-500 dark:hover:text-red-400 transition-colors duration-200 cursor-pointer underline-offset-2 hover:underline"
+                        >
+                          {featuredTestimonial.name}
+                        </a>
+                      ) : (
+                        <p className="font-bold text-gray-900 dark:text-white text-sm sm:text-base md:text-lg">
+                          {featuredTestimonial.name}
+                        </p>
+                      )}
                       <p className="text-sm sm:text-base text-gray-600 dark:text-gray-400">
                         {featuredTestimonial.role}
                         {featuredTestimonial.company && (
@@ -294,9 +323,20 @@ export default function Testimonials() {
                 <div className="flex items-center gap-3 pt-4 sm:pt-5 border-t border-gray-200 dark:border-gray-700">
                   {renderAvatar(testimonial)}
                   <div className="min-w-0 flex-1">
-                    <p className="font-semibold text-gray-900 dark:text-white text-sm sm:text-base md:text-lg break-words">
-                      {testimonial.name}
-                    </p>
+                    {testimonial.link ? (
+                      <a
+                        href={testimonial.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="font-semibold text-gray-900 dark:text-white text-sm sm:text-base md:text-lg break-words hover:text-red-500 dark:hover:text-red-400 transition-colors duration-200 cursor-pointer"
+                      >
+                        {testimonial.name}
+                      </a>
+                    ) : (
+                      <p className="font-semibold text-gray-900 dark:text-white text-sm sm:text-base md:text-lg break-words">
+                        {testimonial.name}
+                      </p>
+                    )}
                     <p className="text-xs sm:text-sm md:text-base text-gray-600 dark:text-gray-400 break-words">
                       {testimonial.role}
                       {testimonial.company && (
