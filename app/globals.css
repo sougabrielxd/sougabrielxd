@@ -120,5 +120,59 @@
   body {
     @apply bg-background text-foreground overflow-x-hidden;
   }
+  
+  /* Smooth theme transitions - Optimized for theme changes only */
+  html.theme-transition,
+  html.theme-transition *,
+  html.theme-transition *::before,
+  html.theme-transition *::after {
+    transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 200ms;
+  }
+  
+  /* Faster transitions for interactive elements during theme change */
+  html.theme-transition button,
+  html.theme-transition a,
+  html.theme-transition input,
+  html.theme-transition textarea,
+  html.theme-transition select,
+  html.theme-transition [role="button"] {
+    transition-duration: 150ms;
+  }
+  
+  /* Ensure smooth transitions for CSS custom properties */
+  html.theme-transition {
+    transition: background-color 200ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Enhanced focus states for accessibility */
+  *:focus-visible {
+    @apply outline-2 outline-offset-2 outline-red-500 dark:outline-red-400;
+  }
+  
+  /* Skip link styles */
+  .sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+  
+  .sr-only:focus {
+    position: static;
+    width: auto;
+    height: auto;
+    padding: inherit;
+    margin: inherit;
+    overflow: visible;
+    clip: auto;
+    white-space: normal;
+  }
 }
 

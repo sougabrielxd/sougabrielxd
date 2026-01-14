@@ -30,6 +30,7 @@ import About from "./About";
 import Contact from "./Contact";
 import Projects from "./Projects";
 import Testimonials from "./Testimonials";
+import SkipLink from "@/components/SkipLink";
 
 export default function Home() {
   const { theme } = useTheme();
@@ -106,6 +107,7 @@ export default function Home() {
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <SkipLink />
       <LoadingScreen autoHide autoHideDelay={2000} />
       <Particles />
       <ScrollToTop />

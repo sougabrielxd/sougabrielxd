@@ -10,7 +10,7 @@ import Home from "../app/pages/Home";
 export default function ClientApp() {
   return (
     <ErrorBoundary>
-      <ThemeProvider defaultTheme="dark" switchable={true}>
+      <ThemeProvider defaultTheme="light" switchable={true}>
         <LanguageProvider>
           <TooltipProvider>
             <Toaster />

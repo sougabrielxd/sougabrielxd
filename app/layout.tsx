@@ -104,6 +104,30 @@ export default function RootLayout({
   return (
     <html lang="pt-BR">
       <head>
+        {/* Theme Detection Script - Prevents FOUC (Flash of Unstyled Content) */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  // 1. Check for manual user preference (localStorage)
+                  const stored = localStorage.getItem('theme');
+                  if (stored === 'light' || stored === 'dark') {
+                    document.documentElement.classList.toggle('dark', stored === 'dark');
+                    return;
+                  }
+                  
+                  // 2. Fallback to system preference
+                  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                  document.documentElement.classList.toggle('dark', prefersDark);
+                } catch (e) {
+                  // Fallback to light theme if anything fails
+                  document.documentElement.classList.remove('dark');
+                }
+              })();
+            `,
+          }}
+        />
         {/* Open Graph / Facebook Meta Tags - Todas explícitas */}
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://gabriellucas.com.br" />
