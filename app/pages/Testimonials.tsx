@@ -109,8 +109,8 @@ const testimonialsData: Testimonial[] = [
     company: "Carbon Cycle",
     link: "https://www.linkedin.com/in/dani-afonso/",
     text: {
-      pt: "Gabriel demonstra sólido conhecimento técnico e grande capacidade de resolver problemas complexos. Sua abordagem estruturada, aliada à atenção aos detalhes e ao pensamento analítico, faz dele um profissional confiável e altamente qualificado para atuar em projetos desafiadores.",
-      en: "Gabriel demonstrates solid technical knowledge and great ability to solve complex problems. His structured approach, combined with attention to detail and analytical thinking, makes him a reliable and highly qualified professional to work on challenging projects.",
+      pt: "Gabriel possui uma base técnica consistente e se destaca pela habilidade em analisar cenários complexos e encontrar soluções eficientes. Sua forma organizada de trabalhar, somada ao cuidado com a qualidade das entregas e ao raciocínio lógico, o torna um profissional preparado para contribuir de forma segura em projetos de maior complexidade.",
+      en: "Gabriel has a consistent technical base and stands out for his ability to analyze complex scenarios and find efficient solutions. His organized approach, combined with attention to the quality of deliveries and logical reasoning, makes him a professional prepared to contribute safely to projects of greater complexity.",
     },
     rating: 5,
   }, 
