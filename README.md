@@ -77,6 +77,7 @@ _Minhas principais habilidades são: Python, React, HTML, CSS, Javascript, MySQL
  <div>
 <a href="https://www.linkedin.com/in/gabriellucasafb/" target="_blank"><img src="https://img.shields.io/badge/Linkedin-000000?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a>
 <a href="https://www.instagram.com/gabriellucasafb/" target="_blank"><img src="https://img.shields.io/badge/Instagram-000000?style=for-the-badge&logo=instagram&logoColor=white" target="_blank"></a>
+<a href="https://discord.gg/7gvSUSFzxc" target="_blank"><img src="https://img.shields.io/badge/Discord-000000?style=for-the-badge&logo=discord&logoColor=white" target="_blank"></a>
 <a href = "https://mail.google.com/mail/?view=cm&fs=1&to=gabriellucasafb@gmail.com&su=Contato%20do%20GitHub&body=Olá,%20vim%20pelo%20seu%20github%20e%20gostaria%20de%20falar%20sobre..."><img src="https://img.shields.io/badge/Gmail-000000?style=for-the-badge&logo=gmail&logoColor=white" target="_blank"></a>
 <a href="gitlab.com/sougabrielxd" target="_blank"><img src="https://img.shields.io/badge/GitLab-000000?style=for-the-badge&logo=gitlab&logoColor=white" target="_blank"></a>
 </div>
