@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 
 // Components
-import MobileMenu from "@/components/MobileMenu";
 import Particles from "@/components/Particles";
 import { Button } from "@/components/ui/button";
 import Navigation from "@/components/Navigation";
@@ -30,6 +29,7 @@ import About from "./About";
 import Contact from "./Contact";
 import Projects from "./Projects";
 import Testimonials from "./Testimonials";
+import Footer from "./sections/Footer";
 import SkipLink from "@/components/SkipLink";
 
 export default function Home() {
@@ -239,13 +239,8 @@ export default function Home() {
         <Contact />
       </main>
 
-      <footer className="py-8 px-4 border-t border-red-500/20 dark:border-red-500/20 text-center">
-        <p className="text-gray-700 dark:text-muted-foreground">
-          {language === "pt"
-            ? "© 2025 Gabriel Lucas. Todos os direitos reservados."
-            : "© 2025 Gabriel Lucas. All rights reserved."}
-        </p>
-      </footer>
+      {/* Footer */}
+      <Footer scrollToSection={scrollToSection} />
     </div>
   );
 }
