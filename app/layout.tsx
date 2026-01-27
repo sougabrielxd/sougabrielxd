@@ -65,7 +65,7 @@ export const metadata: Metadata = {
       "Desenvolvedor Full-Stack especializado em React, Next.js e automação",
     images: [
       {
-        url: "/img/og-image.png",
+        url: ogImageUrl,
         width: 1200,
         height: 630,
         alt: "Gabriel Lucas - Desenvolvedor Full-Stack",
@@ -79,7 +79,7 @@ export const metadata: Metadata = {
     title: "Gabriel Lucas | Desenvolvedor Full-Stack",
     description:
       "Desenvolvedor Full-Stack especializado em React, Next.js e automação",
-    images: ["/img/og-image.png"],
+    images: [ogImageUrl],
     creator: "@gabriellucasafb",
   },
 
@@ -130,13 +130,13 @@ export default function RootLayout({
         />
         {/* Open Graph / Facebook Meta Tags - Todas explícitas */}
         <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://gabriellucas.com.br" />
+        <meta property="og:url" content={baseUrl} />
         <meta property="og:title" content="Gabriel Lucas | Desenvolvedor Full-Stack & Especialista em IA" />
         <meta property="og:description" content="Desenvolvedor Full-Stack com 2+ anos de experiência em React, Next.js, Python e automação. Especializado em criar soluções escaláveis e interfaces modernas." />
         <meta property="og:locale" content="pt_BR" />
         <meta property="og:site_name" content="Gabriel Lucas Portfolio" />
-        <meta property="og:image" content="https://gabriellucas.com.br/img/og-image.png" />
-        <meta property="og:image:secure_url" content="https://gabriellucas.com.br/img/og-image.png" />
+        <meta property="og:image" content={ogImageUrl} />
+        <meta property="og:image:secure_url" content={ogImageUrl} />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />

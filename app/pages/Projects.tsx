@@ -64,6 +64,27 @@ import { getTechIcon } from "@/lib/techIcons";
 
 const projects: Project[] = [
   {
+    id: "digigesso",
+    title: "Digi Gesso ARARIPE",
+    description:
+      "Sistema de gestão de produção de gesso no Araripe",
+    fullDescription:
+      "Sistema de gestão de produção de gesso no Araripe, que seja eficiente e fácil de usar, com um design moderno e responsivo.",
+    tags: ["Laravel" , "Vue.js","PostgreSQL", "Redis", "Docker", "TailwindCSS", "Inertia.js"],
+    link: "",
+    github: "",
+    status: "Em desenvolvimento",
+    featured: true,
+    year: 2026,
+    month: 1,
+    images: ["https://ik.imagekit.io/o8urkd2xn/Digigesso", "https://ik.imagekit.io/o8urkd2xn/Digigesso2"],
+    role: "Desenvolvedor Full-Stack",
+    challenges: "Criar um sistema de gestão de produção de gesso no Araripe, que seja eficiente e fácil de usar, com um design moderno e responsivo.",
+    solutions: "",
+    developmentProcess: "",
+    results: "",
+  },
+  {
     id: "myra-bot",
     title: "Myra Bot",
     description:
@@ -74,7 +95,7 @@ const projects: Project[] = [
     link: "https://myrasite.vercel.app/",
     github: "https://github.com/empt1xz/myrasite/",
     status: "Em desenvolvimento",
-    featured: true,
+    featured: false,
     year: 2026,
     month: 1,
     images: ["https://ik.imagekit.io/o8urkd2xn/myrabot1", "https://ik.imagekit.io/o8urkd2xn/myrabot2"],
