@@ -136,7 +136,7 @@ const projects: Project[] = [
     tags: ["WordPress"],
     link: "https://arcania.academy/",
     github: "#",
-    status: "Em desenvolvimento",
+    status: "Concluído",
     featured: false,
     year: 2025,
     month: 12,
@@ -279,6 +279,22 @@ const getStatusColor = (status: string) => {
   }
 };
 
+// Tradução padronizada de status para inglês
+const translateStatusToEn = (status: string) => {
+  switch (status) {
+    case "Em produção":
+      return "In production";
+    case "Concluído":
+      return "Completed";
+    case "Em desenvolvimento":
+      return "In development";
+    case "Não participo mais":
+      return "No longer involved";
+    default:
+      return status;
+  }
+};
+
 const getInvolvementTagColor = () => {
   return "border-orange-500 text-orange-600 dark:text-orange-400 bg-orange-500/10 dark:bg-orange-500/10";
 };
@@ -365,10 +381,32 @@ export default function Projects() {
   // Localiza os dados do projeto (otimizado com useMemo)
   const localizedProjects: Project[] = useMemo(() => {
     return projects.map((project) => {
-    if (language === "en") {
-      // Mapeamento manual de tradução para os projetos
-      const enProject = { ...project };
-      switch (project.id) {
+      if (language === "en") {
+        // Mapeamento manual de tradução para os projetos
+        const enProject = { ...project, status: translateStatusToEn(project.status) };
+        switch (project.id) {
+          case "digigesso":
+            enProject.title = "Digi Gesso ARARIPE";
+            enProject.description =
+              "Gypsum production management system for the Araripe region.";
+            enProject.fullDescription =
+              "Gypsum production management system for the Araripe region, designed to be efficient and easy to use, with a modern and responsive interface.";
+            enProject.status = "In development";
+            enProject.role = "Full-Stack Developer";
+            enProject.challenges =
+              "Create a complete management system for gypsum production in the Araripe region, centralizing processes and making daily operations more efficient.";
+            break;
+          case "myra-bot":
+            enProject.title = "Myra Bot";
+            enProject.description =
+              "Discord bot to help manage a server, with integrated AI and a landing page for the bot.";
+            enProject.fullDescription =
+              "Myra Bot is a Discord bot created to help manage a server, with integrated AI features and a dedicated landing page. The project involves both the bot development and the web interface for presentation and onboarding.";
+            enProject.status = "In development";
+            enProject.role = "Front-end Developer";
+            enProject.challenges =
+              "I had never developed a complex Discord bot before, so I took on this challenge to improve my skills and learn new technologies and patterns.";
+            break;
         case "starke-vision":
           enProject.description =
             "WordPress institutional website with responsiveness, performance, and digital marketing integration.";
@@ -394,7 +432,7 @@ export default function Projects() {
             "WordPress site for applied AI academy. Focus on conversion and modern design without clichés.";
           enProject.fullDescription =
             "I work as a WordPress Developer in the conception and development of the institutional website and landing page for ArcanIA, a training program focused on the practical application of artificial intelligence and automation. The project involves complete definition of information architecture, structuring a conversion-oriented landing page, and developing a modern, clear, and responsive interface in WordPress. I developed a custom design system with reusable components, ensuring visual consistency throughout the site. I implemented strategic sections including a hero section with highlighted call-to-action, presentation of course methodology and modules, benefits and differentiators area, plan comparison table, student testimonials, interactive FAQ, and optimized enrollment form. I applied advanced WordPress techniques including custom post types for content management, custom fields for flexibility, and performance-optimized plugins. The website objectively presents the training proposal, methodology, modules, benefits, plans, and educational content, prioritizing clarity, performance, accessibility, and SEO. I implemented performance optimizations, semantic HTML5 structure, appropriate meta tags, and schema markup for better search engine indexing.";
-          enProject.status = "In development";
+          enProject.status = "Completed";
           enProject.role = "WordPress Developer";
           enProject.challenges =
             "Taking responsibility for updating ArcanIA's visual identity, defining a clearer, more modern, and coherent visual language with the training proposal. The main challenge is aligning aesthetics, educational clarity, and technical positioning, ensuring that the visual communicates practical AI application without resorting to clichés. Additionally, it is necessary to structure a landing page with a large volume of technical content while maintaining readability, visual hierarchy, and conversion focus. Transforming technical content about AI and automation into a clear and didactic experience, maintaining focus on conversion, performance, and visual identity, without resorting to technology clichés.";
@@ -408,7 +446,7 @@ export default function Projects() {
             "Landing page for CONECC medical event. Built with React, TypeScript, and TailwindCSS, focused on conversion and UX.";
           enProject.fullDescription =
             "I worked as a Front-end Developer in creating the institutional landing page for CONECC (Nursing and Health Sciences Congress), a medical event that brings together healthcare professionals and students for scientific updates, experience exchange, and networking. The project involved the complete development of a modern, responsive, and conversion-optimized interface, using React 18 with TypeScript, Vite as bundler, and TailwindCSS for styling. I developed reusable and modular components, ensuring code maintainability and scalability. I implemented strategic sections including a hero section with highlighted call-to-action, event schedule with interactive timeline, information about speakers and workshops, registration area with validated form, integrated location map, and contact section. I applied performance optimization techniques such as code splitting, lazy loading of images and components, and asset optimization. The design was created to be fully responsive, ensuring excellent experience on mobile devices, tablets, and desktops. I implemented subtle animations and smooth transitions to improve user experience, in addition to ensuring accessibility following WCAG standards. The project was developed with a focus on SEO, using appropriate meta tags, semantic HTML structure, and content optimization for search engines. The landing page was hosted on Vercel, taking advantage of automatic deployment and global CDN for optimized performance.";
-          enProject.status = "In development";
+          enProject.status = "Completed";
           enProject.role = "Front-end Developer";
           enProject.challenges = "Ensuring a modern and responsive design aligned with the notary's visual identity, which is traditional.";
           enProject.solutions = "Using a sober color palette and modern typography, focusing on accessibility and performance (React + TailwindCSS).";
@@ -420,7 +458,7 @@ export default function Projects() {
             "Complete institutional website with UI/UX design and Next.js/TypeScript development, modernizing notary's digital presence.";
           enProject.fullDescription =
             "I worked as a UI/UX Designer and Front-end Developer in the complete creation of the institutional website for Cartório Luciana Carrilho de Moraes Marinho, located in Alto Longá, Piauí. The project started with the design phase, where I created wireframes and high-fidelity prototypes in Figma, defining information architecture, visual hierarchy, and navigation flow. The main challenge was balancing modernity and tradition, creating a visual identity that respected the seriousness and trust expected from a notary office, but with a contemporary and accessible aesthetic. I developed a complete design system with a sober color palette (shades of blue and gray), modern and readable typography, and reusable components. In the development phase, I used Next.js 14 with TypeScript to take advantage of features such as Server-Side Rendering (SSR), automatic image optimization, and efficient routing. I implemented TailwindCSS for styling, creating a consistent and responsive design system. The website includes strategic sections: hero section with institutional presentation, services page detailing all notary services offered, team section with professional profiles, location information with integrated map, contact form with real-time validation, and news and updates area. I implemented performance optimizations such as lazy loading, automatic code splitting from Next.js, image optimization with next/image, and asset compression. I ensured full responsiveness, testing on various devices and browsers. The project was managed via Trello, organizing tasks in sprints and ensuring incremental deliveries. The website was hosted on Vercel, taking advantage of native GitHub integration for continuous deployment. We also focused on local SEO, optimizing for searches related to notary services in the Alto Longá region.";
-          enProject.status = "In development";
+          enProject.status = "Completed";
           enProject.role = "UI/UX Designer and Front-end Developer";
           enProject.challenges = "Ensuring a modern and responsive design aligned with the notary's visual identity, which is traditional.";
           enProject.solutions = "Using a sober color palette and modern typography, focusing on accessibility and performance (React + TailwindCSS).";
@@ -439,7 +477,7 @@ export default function Projects() {
             "Livestock management platform. Front-end contribution with responsive mobile menu, portal section, and form pages.";
           enProject.fullDescription =
             "CoWatch is an innovative livestock management platform that leverages cutting-edge technology to monitor and optimize the feeding of each animal. With an intuitive interface and detailed reports, it enables users to make data-driven decisions to maximize productivity. I participated in front-end development as a collaborator, making significant contributions to the project. I completely refactored the mobile menu (navbar) to ensure full responsiveness on different devices, implementing a functional hamburger menu with smooth animations and optimized transitions. I developed the 'Access Portal' section from scratch, creating an isolated and reusable component that integrates perfectly with the existing layout without breaking functionalities. I collaborated on creating the form page, implementing real-time validation, visual feedback for users, and error handling. I used semantic HTML5, modern CSS3 with Flexbox and Grid, and vanilla JavaScript to ensure performance and compatibility. I worked following the main project guidelines, maintaining code consistency and established standards. Contributions were made via Pull Requests on GitHub, following versioning best practices and code review.";
-          enProject.status = "In production";
+          enProject.status = "No longer involved";
           break;
         case "logos":
           enProject.description =
@@ -448,10 +486,10 @@ export default function Projects() {
             "Logos is a freelance landing page project developed for an engine repair company, focusing on conversion and professional presentation of services offered. The project started with a detailed briefing with the client to understand needs and objectives. I created prototypes in Figma defining the visual structure and navigation flow. I developed the landing page using semantic HTML5 and TailwindCSS, ensuring clean, maintainable, and accessible code. I implemented strategic sections including a hero section with highlighted call-to-action, presentation of engine repair services, gallery of completed work, client testimonials, contact form with validation, and location information. I applied performance optimization techniques such as image compression, lazy loading, and asset minification. The design was fully responsive, tested on various devices to ensure excellent user experience. I implemented on-page SEO with appropriate meta tags, semantic HTML structure, title and description optimization, and schema markup for better indexing. The landing page was hosted on GitHub Pages, taking advantage of free hosting and simplified deployment. The project resulted in a significant increase in contacts via form, demonstrating effectiveness in converting visitors into qualified leads.";
           enProject.status = "Completed";
           break;
+        }
+        return enProject;
       }
-      return enProject;
-    }
-    return project;
+      return project;
     });
   }, [language]);
 
