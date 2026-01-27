@@ -529,7 +529,7 @@ export default function Projects() {
               onClick={() => handleOpenProjectModal(featuredProject)}
             >
               {/* Imagem de destaque no topo */}
-              <div className="relative w-full h-48 sm:h-56 md:h-64 overflow-hidden">
+              <div className="relative w-full h-40 sm:h-44 md:h-48 overflow-hidden">
                 <Image
                   src={featuredProject.images?.[0] || PLACEHOLDER_IMAGE}
                   alt={featuredProject.title}
@@ -542,7 +542,7 @@ export default function Projects() {
               </div>
 
               {/* Conteúdo do card */}
-              <div className="p-4 sm:p-6 md:p-8 flex flex-col">
+              <div className="p-4 sm:p-5 md:p-6 flex flex-col">
                 {/* Título */}
                 <h3 className="text-xl sm:text-2xl md:text-3xl font-bold mb-3 text-gray-900 dark:text-white group-hover:text-red-500 dark:group-hover:text-red-400 transition-colors">
                   {featuredProject.title}
@@ -623,7 +623,7 @@ export default function Projects() {
           <h2 className="text-xl sm:text-2xl font-bold mb-4 sm:mb-6 text-red-500 dark:text-white">
             {language === "pt" ? "Outros Projetos" : "Other Projects"}
           </h2>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
             {otherProjects.map((project, idx) => (
               <div
                 key={idx}
@@ -631,7 +631,7 @@ export default function Projects() {
                 onClick={() => handleOpenProjectModal(project)}
               >
                 {/* Imagem de destaque no topo */}
-                <div className="relative w-full h-48 sm:h-56 overflow-hidden">
+                <div className="relative w-full h-40 sm:h-44 overflow-hidden">
                   <Image
                     src={project.images?.[0] || PLACEHOLDER_IMAGE}
                     alt={project.title}
@@ -644,7 +644,7 @@ export default function Projects() {
                 </div>
 
                 {/* Conteúdo do card */}
-                <div className="p-5 sm:p-6 flex flex-col">
+                <div className="p-4 sm:p-5 flex flex-col">
                   {/* Título */}
                   <h3 className="text-xl sm:text-2xl font-bold mb-2 text-gray-900 dark:text-white group-hover:text-red-500 dark:group-hover:text-red-400 transition-colors">
                     {project.title}
