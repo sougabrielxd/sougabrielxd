@@ -66,7 +66,7 @@
 
 ##
 
-<b>🌐 Redes Sociais: </b>
+<b>🌐 Social Media: </b>
  
  <div>
 <a href="https://www.linkedin.com/in/gabriellucasafb/" target="_blank"><img src="https://img.shields.io/badge/Linkedin-000000?style=for-the-badge&logo=linkedin&logoColor=white" target="_blank"></a>
