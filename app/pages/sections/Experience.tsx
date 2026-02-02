@@ -8,7 +8,7 @@ import { getTechIcon } from "@/lib/techIcons";
 const experiences = [
   {
     company: "Starke Vision",
-    role: "AI Systems Development Intern",
+    role: "AI Systems Developer",
     period: "Dec 2025 - Present",
     modality: "Presencial",
     location: "Araripina - PE",
@@ -37,7 +37,7 @@ const experiences = [
   }, 
   {
     company: "Freelancer",
-    role: "Front-End Developer and UI/UX Designer",
+    role: "Full-Stack Developer",
     period: "Jul 2023 - Present",
     modality: "Remoto",
     location: null,
@@ -246,10 +246,10 @@ export default function Experience() {
           ? "Desenvolvedor Front-End"
           : exp.role === "Full-Stack Developer"
           ? "Desenvolvedor Full-Stack"
-          : exp.role === "Front-End Developer and UI/UX Designer"
-          ? "Desenvolvedor Front-End and UI/UX Designer"
-          : exp.role === "AI Systems Development Intern"
-          ? "Estagiário de Desenvolvimento de Sistemas de IA"
+          : exp.role === "Full-Stack Developer"
+          ? "Desenvolvedor Full-Stack"
+          : exp.role === "Desenvolvedor de Sistemas de IA"
+          ? "Desenvolvedor de Sistemas de IA"
           : exp.role
         : exp.role,
     // Traduções de período
