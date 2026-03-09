@@ -8,7 +8,7 @@ import { getTechIcon } from "@/lib/techIcons";
 const experiences = [
   {
     company: "Starke Vision",
-    role: "AI Systems Developer",
+    role: "Software Engineer",
     period: "Dec 2025 - Present",
     modality: "Presencial",
     location: "Araripina - PE",
