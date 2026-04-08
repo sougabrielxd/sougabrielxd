@@ -1,0 +1,49 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: #ffffff;
+    --foreground: #171717;
+
+    --font-sans: "Dosis", system-ui, sans-serif;
+
+    --color-bg: var(--background);
+    --color-surface: #ffffff;
+    --color-surface-muted: #ebe1bb;
+    --color-text-primary: var(--foreground);
+    --color-text-secondary: #525252;
+    --color-text-tertiary: #3f3f3f;
+    --color-border: rgba(31, 29, 24, 0.12);
+    --color-border-hover: rgba(31, 29, 24, 0.24);
+    --color-accent: #0004ff;
+
+    --padding-x: 1.75rem;
+    --padding-x-mobile: 1.1rem;
+  }
+
+  /* Site só em tema claro: alinha scrollbars/controles nativos ao fundo claro. Dark mode não está no escopo. */
+  html {
+    color-scheme: light;
+    font-size: 18px;
+    -webkit-text-size-adjust: 100%;
+    tab-size: 4;
+    line-height: 1.5;
+    @apply scroll-smooth text-base antialiased [text-rendering:optimizeLegibility];
+  }
+
+  body {
+    @apply font-sans bg-canvas text-ink min-h-dvh;
+    line-height: 1.7;
+    font-family: var(--font-sans);
+  }
+
+  a {
+    @apply text-inherit no-underline;
+  }
+
+  img {
+    @apply block max-w-full h-auto;
+  }
+}
