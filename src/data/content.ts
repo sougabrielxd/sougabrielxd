@@ -46,6 +46,8 @@ export const meta = {
   },
 }
 
+export type ProjectImageOrientation = "landscape" | "portrait"
+
 export type Project = {
   slug: string
   title: string
@@ -58,6 +60,23 @@ export type Project = {
   period: string
   /** Opcional: `/public/projects/...` */
   image?: string
+  /**
+   * Orientação da imagem principal.
+   * "landscape" (padrão) → aspect-[16/10], full-width
+   * "portrait"           → aspect-[3/4], centralizado com max-w menor
+   */
+  imageOrientation?: ProjectImageOrientation
+  /** Capturas ou fotos extras abaixo da imagem principal. */
+  gallery?: string[]
+  /**
+   * Orientação das imagens da gallery, por índice.
+   * "portrait" → aspect-[3/4] | "landscape" → aspect-[16/10]
+   */
+  galleryOrientation?: ProjectImageOrientation[]
+  /** CSS object-position da imagem principal. Ex: "center", "top", "bottom". */
+  imagePosition?: string
+  /** CSS object-position por índice de gallery. Ex: ["top", "bottom"]. */
+  galleryPosition?: string[]
   links?: {
     demo?: string
     github?: string
@@ -90,6 +109,15 @@ export const projects: Project[] = [
     role: "Desenvolvedor",
     lead: "Plataforma de saúde ocupacional para o complexo hospitalar da UPE.",
     period: "2026",
+    image: "/projects/vitawork-login-sala.png",
+    imageOrientation: "portrait",
+    imagePosition: "bottom",          // mostra a tela do VitaWork, não o teto
+    gallery: [
+      "/projects/vitawork-seciti-pernambuco.png",
+      "/projects/vitawork-equipe.png",
+    ],
+    galleryOrientation: ["portrait", "portrait"],
+    galleryPosition: ["top", "top"],
   },
   {
     slug: "delegacia-5-0",
@@ -98,6 +126,9 @@ export const projects: Project[] = [
     lead: "Apoio técnico a iniciativa digital da Polícia Civil de Pernambuco.",
     hint: "Ocorrências e validação da assistente Aurora.",
     period: "2025",
+    image: "/projects/delegacia-pernambuco-digital.png",
+    imageOrientation: "landscape",
+    imagePosition: "center",
   },
   {
     slug: "digigesso-araripe",
@@ -106,6 +137,16 @@ export const projects: Project[] = [
     lead: "Sistema para gestão de produção e custos em ambiente industrial.",
     hint: "Ambiente industrial com conectividade instável, polo gesseiro do Araripe.",
     period: "2026",
+    image: "/projects/digigesso-painel-produtos.png",
+    imageOrientation: "portrait",
+    imagePosition: "top",
+    gallery: [
+      "/projects/digigesso-login-mobile.png",
+      "/projects/digigesso-equipe-sistema.png",
+      "/projects/digigesso-visita-industrial.png",
+    ],
+    galleryOrientation: ["portrait", "portrait", "portrait"],
+    galleryPosition: ["top", "top", "top"],
   },
 ]
 

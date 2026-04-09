@@ -1,26 +1,13 @@
-import Image from "next/image"
 import {
   minorProjects,
   projects,
   type MinorProject,
   type Project,
 } from "@/data/content"
+import { ProjectCarousel } from "@/components/ProjectCarousel"
 
 function ProjectMedia({ project }: { project: Project }) {
-  if (!project.image) return null
-
-  return (
-    <div className="relative mx-auto aspect-[16/10] w-full max-w-[40rem] overflow-hidden rounded border border-line bg-surface-muted">
-      <Image
-        src={project.image}
-        alt={project.title}
-        fill
-        sizes="(max-width: 768px) 100vw, 680px"
-        className="object-cover"
-        priority={false}
-      />
-    </div>
-  )
+  return <ProjectCarousel project={project} />
 }
 
 function ProjectCard({ project }: { project: Project }) {
