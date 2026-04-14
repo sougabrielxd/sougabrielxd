@@ -113,7 +113,7 @@ export function Hero() {
 
       <div className="max-w-[42rem]">
         <h1 className="mb-4 max-w-[60ch] font-sans text-base font-normal leading-relaxed tracking-tight text-ink sm:text-lg">
-          Olá! Meu nome é{" "}
+          oi, sou o{" "}
           <span className="text-ink underline decoration-purple-700 decoration-1 underline-offset-[3px]">
             {firstName}
           </span>

@@ -18,8 +18,8 @@ export const meta = {
   introParagraphs: [
     [
       "",
-      { strong: "Software Engineer" },
-      " no sertão do Nordeste, construindo sistemas em produção para indústria, saúde ocupacional e IA aplicada. Atualmente na ",
+      { strong: "software engineer" },
+      " no sertão do nordeste, construindo sistemas em produção para indústria, saúde ocupacional e IA aplicada. Atualmente na ",
       {
         text: "Starke Vision",
         href: "https://starkevision.com.br/",
@@ -29,7 +29,7 @@ export const meta = {
         text: "Receita Federal",
         href: "https://www.gov.br/receitafederal/pt-br/canais_atendimento/fale-conosco/presencial/ce/juazeiro-do-norte",
       },
-      ". Projetos institucionais relevantes incluem Delegacia 5.0 (IA para a Polícia Civil de PE) e VitaWork (saúde pública, Desafios.Gov/PE). No industrial, lidera iniciativas aprovadas pela FACEPE no polo gesseiro do Araripe com automação e monitoramento em tempo real. Interesse crescente em inteligência artificial, LLMs e pesquisas.",
+      ". projetos institucionais relevantes incluem delegacia 5.0 (IA para a Polícia Civil de PE) e vitawork (saúde pública, Desafios.Gov). no industrial, lidera iniciativas aprovadas pela FACEPE no polo gesseiro do araripe com automação e monitoramento em tempo real. interesse crescente em inteligência artificial, llms e pesquisas.",
     ],
   ] satisfies IntroSegment[][],
   links: {
@@ -139,7 +139,7 @@ export const projects: Project[] = [
     period: "2026",
     image: "/projects/digigesso-painel-produtos.png",
     imageOrientation: "portrait",
-    imagePosition: "top",
+    imagePosition: "bottom",
     gallery: [
       "/projects/digigesso-login-mobile.png",
       "/projects/digigesso-equipe-sistema.png",
