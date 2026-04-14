@@ -17,19 +17,19 @@ export const meta = {
   /** Parágrafos do resumo (após a saudação): strings, `{ strong }` ou `{ text, href }`. */
   introParagraphs: [
     [
-      "Sou ",
+      "",
       { strong: "Software Engineer" },
       " no sertão do Nordeste, construindo sistemas em produção para indústria, saúde ocupacional e IA aplicada. Atualmente na ",
       {
         text: "Starke Vision",
         href: "https://starkevision.com.br/",
       },
-      ". Antes, estágio na ",
+      "; passagem anterior pela ",
       {
         text: "Receita Federal",
         href: "https://www.gov.br/receitafederal/pt-br/canais_atendimento/fale-conosco/presencial/ce/juazeiro-do-norte",
       },
-      ". Interesse crescente em pesquisa e sistemas inteligentes.",
+      ". Projetos institucionais relevantes incluem Delegacia 5.0 (IA para a Polícia Civil de PE) e VitaWork (saúde pública, Desafios.Gov/PE). No industrial, lidera iniciativas aprovadas pela FACEPE no polo gesseiro do Araripe com automação e monitoramento em tempo real. Interesse crescente em inteligência artificial, LLMs e pesquisas.",
     ],
   ] satisfies IntroSegment[][],
   links: {
