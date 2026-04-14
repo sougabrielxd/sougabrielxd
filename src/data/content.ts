@@ -33,7 +33,7 @@ export const meta = {
     ],
   ] satisfies IntroSegment[][],
   links: {
-    github: "https://github.com/sougabrielxd",
+    github: "https://github.com/gabriellucasafb",
     linkedin: "https://linkedin.com/in/gabriellucasafb",
     resume: "/resume.pdf",
     lattes: "https://lattes.cnpq.br/8033615391408980",
@@ -152,6 +152,13 @@ export const projects: Project[] = [
 
 /** Projetos de menor escopo — `href` (link) e `github` opcionais. */
 export const minorProjects: MinorProject[] = [
+  {
+    title: "Perfil GitHub (README)",
+    role: "Desenvolvedor",
+    description:
+      "README de perfil com apresentação pessoal, links e identidade profissional.",
+    github: "https://github.com/gabriellucasafb/gabriellucasafb",
+  },
   {
     title: "Manivis",
     role: "Desenvolvedor",
