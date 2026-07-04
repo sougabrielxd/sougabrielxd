@@ -3,7 +3,7 @@ import Image from "next/image"
 import { meta, type IntroSegment } from "@/data/content"
 
 const introLinkClass =
-  "spray-hover text-sub underline decoration-[#7c3aed] decoration-1 underline-offset-[3px] transition-[text-decoration-color,color] duration-150 ease-[ease] hover:text-ink hover:decoration-transparent"
+  "spray-hover text-sub underline decoration-mark decoration-1 underline-offset-[3px] transition-[text-decoration-color,color] duration-150 ease-[ease] hover:text-ink hover:decoration-transparent"
 
 function IntroPieces({ segments }: { segments: IntroSegment[] }) {
   return (
@@ -12,7 +12,10 @@ function IntroPieces({ segments }: { segments: IntroSegment[] }) {
         typeof segment === "string" ? (
           <Fragment key={i}>{segment}</Fragment>
         ) : "strong" in segment ? (
-          <strong key={i} className="font-bold text-sub">
+          <strong
+            key={i}
+            className="bg-[var(--color-accent-soft)] px-[3px] font-bold text-sub [box-decoration-break:clone]"
+          >
             {segment.strong}
           </strong>
         ) : (
@@ -89,13 +92,36 @@ export function Hero() {
           </div>
 
           <div className="max-w-[min(100%,22rem)] pt-[4px]">
-            <p className="mb-0 font-sans text-[length:var(--text-xl)] font-bold leading-none tracking-tight sm:text-[length:var(--text-2xl)]">
+            <p className="mb-[8px] font-sans text-[length:var(--text-xl)] font-bold leading-none tracking-tight sm:text-[length:var(--text-2xl)]">
               <span className="group relative inline-block cursor-default">
-                <span className="font-[family-name:var(--font-display)] font-normal text-mark transition-opacity duration-150 group-hover:opacity-0">
+                <span className="relative inline-block font-[family-name:var(--font-display)] font-normal text-mark transition-opacity duration-150 group-hover:opacity-0">
                   {name}
+                  {/* risco de tag sob o nome */}
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 120 14"
+                    preserveAspectRatio="none"
+                    className="absolute -bottom-[8px] left-[-4px] h-[12px] w-[calc(100%+8px)]"
+                  >
+                    <path
+                      d="M2 9 C 28 3.5 66 12 118 5.5"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                    />
+                    <path
+                      d="M10 12.5 C 32 10 50 13.5 68 11"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      opacity="0.65"
+                    />
+                  </svg>
                 </span>
                 <span
-                  className="pointer-events-none absolute left-0 top-0 whitespace-nowrap font-mono text-purple-700 opacity-0 transition-opacity duration-150 group-hover:opacity-100"
+                  className="pointer-events-none absolute left-0 top-0 whitespace-nowrap font-mono text-mark opacity-0 transition-opacity duration-150 group-hover:opacity-100"
                   aria-hidden="true"
                 >
                   {nameHover}
@@ -130,7 +156,7 @@ export function Hero() {
       <div className="max-w-[42rem]">
         <h1 className="mb-[16px] max-w-[60ch] font-sans text-base font-normal leading-relaxed tracking-tight text-ink">
           oi, sou o{" "}
-          <span className="text-ink underline decoration-purple-700 decoration-1 underline-offset-[3px]">
+          <span className="text-ink underline decoration-mark decoration-1 underline-offset-[3px]">
             {firstName}
           </span>
           .

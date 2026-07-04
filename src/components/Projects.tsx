@@ -56,7 +56,7 @@ function ProjectCard({ project }: { project: Project }) {
             {project.caseStudy ? (
               <Link
                 href={`/projects/${project.slug}`}
-                className="spray-hover w-fit whitespace-nowrap border-b border-line pb-px text-[length:var(--text-sm)] text-sub transition-colors duration-150 ease-[ease] hover:border-transparent hover:text-ink"
+                className="spray-hover w-fit whitespace-nowrap border-b border-line pb-px text-[length:var(--text-sm)] font-medium text-mark transition-colors duration-150 ease-[ease] hover:border-transparent hover:text-ink"
               >
                 → case study
               </Link>
@@ -139,7 +139,7 @@ export function Projects() {
           >
             <span
               aria-hidden="true"
-              className="mr-[8px] font-mono text-[length:var(--text-sm)] font-normal tracking-normal text-hint"
+              className="mr-[8px] font-mono text-[length:var(--text-sm)] font-normal tracking-normal text-mark"
             >
               *01
             </span>
@@ -165,7 +165,7 @@ export function Projects() {
           >
             <span
               aria-hidden="true"
-              className="mr-[8px] font-mono text-[length:var(--text-sm)] font-normal tracking-normal text-hint"
+              className="mr-[8px] font-mono text-[length:var(--text-sm)] font-normal tracking-normal text-mark"
             >
               *02
             </span>

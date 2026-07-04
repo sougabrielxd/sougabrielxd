@@ -143,7 +143,7 @@ export function ProjectCarousel({ project }: { project: Project }) {
             <button
               type="button"
               aria-label="Slide anterior"
-              className="absolute left-2 top-1/2 z-20 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full border border-[rgba(124,58,237,0.2)] bg-white/90 text-purple-700 shadow-sm backdrop-blur-sm transition-all duration-150 opacity-0 group-hover/carousel:opacity-100 focus-visible:opacity-100 hover:bg-white hover:shadow-md hover:border-[rgba(124,58,237,0.4)] focus-visible:outline-none"
+              className="absolute left-2 top-1/2 z-20 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full border border-[rgba(126,34,206,0.2)] bg-white/90 text-mark shadow-sm backdrop-blur-sm transition-all duration-150 opacity-0 group-hover/carousel:opacity-100 focus-visible:opacity-100 hover:bg-white hover:shadow-md hover:border-[rgba(126,34,206,0.4)] focus-visible:outline-none"
               onClick={() => go(-1)}
             >
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
@@ -153,7 +153,7 @@ export function ProjectCarousel({ project }: { project: Project }) {
             <button
               type="button"
               aria-label="Próximo slide"
-              className="absolute right-2 top-1/2 z-20 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full border border-[rgba(124,58,237,0.2)] bg-white/90 text-purple-700 shadow-sm backdrop-blur-sm transition-all duration-150 opacity-0 group-hover/carousel:opacity-100 focus-visible:opacity-100 hover:bg-white hover:shadow-md hover:border-[rgba(124,58,237,0.4)] focus-visible:outline-none"
+              className="absolute right-2 top-1/2 z-20 flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full border border-[rgba(126,34,206,0.2)] bg-white/90 text-mark shadow-sm backdrop-blur-sm transition-all duration-150 opacity-0 group-hover/carousel:opacity-100 focus-visible:opacity-100 hover:bg-white hover:shadow-md hover:border-[rgba(126,34,206,0.4)] focus-visible:outline-none"
               onClick={() => go(1)}
             >
               <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden>
@@ -181,7 +181,7 @@ export function ProjectCarousel({ project }: { project: Project }) {
                 aria-label={`Ir para slide ${i + 1} de ${count}`}
                 className={[
                   "h-1.5 rounded-full transition-all duration-200",
-                  i === index ? "w-4 bg-purple-700" : "w-1.5 bg-purple-200 hover:bg-purple-300",
+                  i === index ? "w-4 bg-mark" : "w-1.5 bg-purple-200 hover:bg-purple-300",
                 ].join(" ")}
                 onClick={() => setIndex(i)}
               />

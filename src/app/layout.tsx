@@ -69,6 +69,32 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
         {children}
+        <footer className="relative overflow-hidden px-[var(--padding-x)] pb-[32px] pt-[16px] max-[480px]:px-[var(--padding-x-mobile)]">
+          {/* textura de concreto do rodapé */}
+          <svg
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 -z-10 h-full w-full opacity-[0.04]"
+          >
+            <filter id="footer-concrete">
+              <feTurbulence
+                type="fractalNoise"
+                baseFrequency="0.9"
+                numOctaves="4"
+                stitchTiles="stitch"
+              />
+              <feColorMatrix type="saturate" values="0" />
+            </filter>
+            <rect width="100%" height="100%" filter="url(#footer-concrete)" />
+          </svg>
+          <div className="mx-auto flex max-w-container items-baseline justify-between gap-[16px] border-t border-line pt-[16px]">
+            <span className="font-[family-name:var(--font-display)] text-[length:var(--text-md)] leading-none text-mark">
+              {meta.name}
+            </span>
+            <span className="font-mono text-[length:var(--text-xs)] uppercase tracking-[0.12em] text-hint">
+              {meta.role}
+            </span>
+          </div>
+        </footer>
       </body>
     </html>
   )
