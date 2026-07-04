@@ -65,11 +65,16 @@ export default function RootLayout({
     <html lang="pt-BR" className={`${dosis.variable} ${sedgwick.variable}`}>
       <body className="font-sans">
         <script
+          dangerouslySetInnerHTML={{
+            __html: "document.documentElement.classList.add('js')",
+          }}
+        />
+        <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
         {children}
-        <footer className="relative overflow-hidden px-[var(--padding-x)] pb-[32px] pt-[16px] max-[480px]:px-[var(--padding-x-mobile)]">
+        <footer className="relative overflow-hidden pb-[32px]">
           {/* textura de concreto do rodapé */}
           <svg
             aria-hidden="true"
@@ -86,7 +91,36 @@ export default function RootLayout({
             </filter>
             <rect width="100%" height="100%" filter="url(#footer-concrete)" />
           </svg>
-          <div className="mx-auto flex max-w-container items-baseline justify-between gap-[16px] border-t border-line pt-[16px]">
+
+          {/* faixa marquee de assinatura */}
+          <div
+            aria-hidden="true"
+            className="overflow-hidden border-y border-line py-[8px]"
+          >
+            <div className="marquee-track">
+              {[0, 1].map((group) => (
+                <div key={group} className="flex shrink-0 items-center">
+                  {Array.from({ length: 4 }).map((_, i) => (
+                    <span
+                      key={i}
+                      className="whitespace-nowrap px-[16px] font-[family-name:var(--font-display)] text-[length:var(--text-md)] leading-none text-mark"
+                    >
+                      {meta.name}{" "}
+                      <span className="font-mono text-[length:var(--text-sm)] text-hint">
+                        *
+                      </span>{" "}
+                      {meta.role}{" "}
+                      <span className="font-mono text-[length:var(--text-sm)] text-hint">
+                        *
+                      </span>
+                    </span>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="mx-auto mt-[16px] flex max-w-container items-baseline justify-between gap-[16px] px-[var(--padding-x)] max-[480px]:px-[var(--padding-x-mobile)]">
             <span className="font-[family-name:var(--font-display)] text-[length:var(--text-md)] leading-none text-mark">
               {meta.name}
             </span>

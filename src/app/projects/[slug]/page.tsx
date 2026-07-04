@@ -4,6 +4,7 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 import { meta, projects } from "@/data/content"
 import { ProjectCarousel } from "@/components/ProjectCarousel"
+import { Reveal } from "@/components/Reveal"
 
 export const dynamicParams = false
 
@@ -61,10 +62,12 @@ function Section({
   children: React.ReactNode
 }) {
   return (
-    <section>
-      <h2 className={sectionHeadingClass}>{heading}</h2>
-      {children}
-    </section>
+    <Reveal>
+      <section>
+        <h2 className={sectionHeadingClass}>{heading}</h2>
+        {children}
+      </section>
+    </Reveal>
   )
 }
 

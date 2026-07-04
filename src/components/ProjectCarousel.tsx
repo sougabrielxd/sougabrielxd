@@ -127,7 +127,7 @@ export function ProjectCarousel({ project }: { project: Project }) {
                   : "(max-width: 768px) 100vw, 640px"
               }
               className={[
-                "object-cover transition-opacity duration-300",
+                "object-cover transition-[opacity,transform] duration-300 group-hover/carousel:scale-[1.02]",
                 i === index ? "opacity-100" : "opacity-0",
               ].join(" ")}
               style={{ objectPosition: slide.position ?? "center" }}

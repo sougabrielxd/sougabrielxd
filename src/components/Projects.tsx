@@ -6,6 +6,7 @@ import {
 } from "@/data/content"
 import Link from "next/link"
 import { ProjectCarousel } from "@/components/ProjectCarousel"
+import { Reveal } from "@/components/Reveal"
 
 function ProjectMedia({ project }: { project: Project }) {
   return <ProjectCarousel project={project} />
@@ -164,7 +165,9 @@ export function Projects() {
 
           <div className="flex flex-col gap-[40px] max-[480px]:gap-[32px]">
             {projects.map((project) => (
-              <ProjectCard key={project.slug} project={project} />
+              <Reveal key={project.slug}>
+                <ProjectCard project={project} />
+              </Reveal>
             ))}
           </div>
         </section>
@@ -204,14 +207,16 @@ export function Projects() {
               </svg>
             </span>
           </h2>
-          <ul className="list-none divide-y divide-line p-0">
-            {minorProjects.map((item) => (
-              <MinorProjectCard
-                key={item.title}
-                item={item}
-              />
-            ))}
-          </ul>
+          <Reveal>
+            <ul className="list-none divide-y divide-line p-0">
+              {minorProjects.map((item) => (
+                <MinorProjectCard
+                  key={item.title}
+                  item={item}
+                />
+              ))}
+            </ul>
+          </Reveal>
         </section>
       ) : null}
     </>

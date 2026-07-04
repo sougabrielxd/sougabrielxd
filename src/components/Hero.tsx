@@ -1,6 +1,7 @@
 import { Fragment } from "react"
 import Image from "next/image"
 import { meta, type IntroSegment } from "@/data/content"
+import { Reveal } from "@/components/Reveal"
 
 const introLinkClass =
   "spray-hover text-sub underline decoration-mark decoration-1 underline-offset-[3px] transition-[text-decoration-color,color] duration-150 ease-[ease] hover:text-ink hover:decoration-transparent"
@@ -92,7 +93,7 @@ export function Hero() {
           </div>
 
           <div className="max-w-[min(100%,22rem)] pt-[4px]">
-            <p className="mb-[8px] font-sans text-[length:var(--text-xl)] font-bold leading-none tracking-tight sm:text-[length:var(--text-2xl)]">
+            <p className="mb-[8px] font-sans text-[length:var(--text-xl)] font-bold leading-none tracking-tight sm:text-[length:var(--text-3xl)]">
               <span className="group relative inline-block cursor-default">
                 <span className="relative inline-block font-[family-name:var(--font-display)] font-normal text-mark transition-opacity duration-150 group-hover:opacity-0">
                   {name}
@@ -153,23 +154,25 @@ export function Hero() {
         </nav>
       </div>
 
-      <div className="max-w-[42rem]">
-        <h1 className="mb-[16px] max-w-[60ch] font-sans text-base font-normal leading-relaxed tracking-tight text-ink">
-          oi, sou o{" "}
-          <span className="text-ink underline decoration-mark decoration-1 underline-offset-[3px]">
-            {firstName}
-          </span>
-          .
-        </h1>
-        {introParagraphs.map((segments, index) => (
-          <p
-            key={index}
-            className="mb-[16px] max-w-[60ch] text-base leading-relaxed tracking-tight text-sub last:mb-0"
-          >
-            <IntroPieces segments={segments} />
-          </p>
-        ))}
-      </div>
+      <Reveal delay={100}>
+        <div className="max-w-[42rem]">
+          <h1 className="mb-[16px] max-w-[60ch] font-sans text-base font-normal leading-relaxed tracking-tight text-ink">
+            oi, sou o{" "}
+            <span className="text-ink underline decoration-mark decoration-1 underline-offset-[3px]">
+              {firstName}
+            </span>
+            .
+          </h1>
+          {introParagraphs.map((segments, index) => (
+            <p
+              key={index}
+              className="mb-[16px] max-w-[60ch] text-base leading-relaxed tracking-tight text-sub last:mb-0"
+            >
+              <IntroPieces segments={segments} />
+            </p>
+          ))}
+        </div>
+      </Reveal>
     </section>
   )
 }
