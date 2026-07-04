@@ -55,9 +55,9 @@ export function Hero() {
   ]
 
   return (
-    <section className="mb-8 sm:mb-10">
-      <div className="mb-1 flex flex-col gap-4 sm:mb-1.5 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
-        <div className="flex items-start gap-3.5">
+    <section className="mb-[48px] sm:mb-[64px]">
+      <div className="mb-[8px] flex flex-col gap-[16px] sm:flex-row sm:items-start sm:justify-between sm:gap-[24px]">
+        <div className="flex items-start gap-[16px]">
           <div
             className="group/logo inline-flex shrink-0 cursor-default overflow-visible p-0.5"
             aria-hidden="true"
@@ -72,8 +72,8 @@ export function Hero() {
             />
           </div>
 
-          <div className="max-w-[min(100%,22rem)] pt-[0.1rem]">
-            <p className="mb-0 font-sans text-3xl font-bold leading-none tracking-tight sm:text-4xl">
+          <div className="max-w-[min(100%,22rem)] pt-[4px]">
+            <p className="mb-0 font-sans text-[length:var(--text-xl)] font-bold leading-none tracking-tight sm:text-[length:var(--text-2xl)]">
               <span className="group relative inline-block cursor-default">
                 <span className="text-purple-700 transition-opacity duration-150 group-hover:opacity-0">
                   {name}
@@ -86,14 +86,14 @@ export function Hero() {
                 </span>
               </span>
             </p>
-            <p className="mt-0 text-xs font-medium leading-tight tracking-wide text-sub sm:text-sm">
+            <p className="mt-0 text-[length:var(--text-sm)] font-medium leading-tight tracking-wide text-sub">
               {role}
             </p>
           </div>
         </div>
 
         <nav
-          className="flex w-full shrink-0 flex-col items-end gap-0.5 sm:w-auto"
+          className="flex w-full shrink-0 flex-col items-end gap-[4px] sm:w-auto"
           aria-label="Links externos"
         >
           {navLinks.map((link) => (
@@ -112,7 +112,7 @@ export function Hero() {
       </div>
 
       <div className="max-w-[42rem]">
-        <h1 className="mb-4 max-w-[60ch] font-sans text-base font-normal leading-relaxed tracking-tight text-ink sm:text-lg">
+        <h1 className="mb-[16px] max-w-[60ch] font-sans text-base font-normal leading-relaxed tracking-tight text-ink">
           oi, sou o{" "}
           <span className="text-ink underline decoration-purple-700 decoration-1 underline-offset-[3px]">
             {firstName}
@@ -122,7 +122,7 @@ export function Hero() {
         {introParagraphs.map((segments, index) => (
           <p
             key={index}
-            className="mb-4 max-w-[60ch] text-base leading-relaxed tracking-tight text-sub last:mb-0 sm:text-lg"
+            className="mb-[16px] max-w-[60ch] text-base leading-relaxed tracking-tight text-sub last:mb-0"
           >
             <IntroPieces segments={segments} />
           </p>

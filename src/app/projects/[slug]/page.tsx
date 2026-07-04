@@ -48,10 +48,10 @@ export async function generateMetadata({
 }
 
 const sectionHeadingClass =
-  "mb-2 font-sans text-xs font-medium uppercase tracking-[0.12em] text-hint sm:text-sm"
+  "mb-[8px] font-mono text-[length:var(--text-sm)] font-medium uppercase tracking-[0.12em] text-hint"
 
 const bodyTextClass =
-  "max-w-[60ch] text-base leading-relaxed text-sub sm:text-lg"
+  "max-w-[65ch] text-base leading-relaxed text-sub"
 
 function Section({
   heading,
@@ -102,21 +102,21 @@ export default async function ProjectPage({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <div className="mx-auto flex max-w-container flex-col gap-8 max-[480px]:gap-7">
+      <div className="mx-auto flex max-w-container flex-col gap-[40px] max-[480px]:gap-[32px]">
         <div>
           <Link
             href="/"
-            className="w-fit whitespace-nowrap border-b border-line pb-px text-sm text-sub transition-colors duration-150 ease-[ease] hover:border-line-hover hover:text-ink sm:text-base"
+            className="w-fit whitespace-nowrap border-b border-line pb-px text-[length:var(--text-sm)] text-sub transition-colors duration-150 ease-[ease] hover:border-line-hover hover:text-ink"
           >
             ← voltar
           </Link>
         </div>
 
         <header>
-          <h1 className="mb-2 text-2xl font-medium tracking-tight text-ink sm:text-3xl">
+          <h1 className="mb-[8px] text-[length:var(--text-xl)] font-medium tracking-tight text-ink">
             {project.title}
           </h1>
-          <p className="mb-3 font-sans text-xs font-medium uppercase tracking-[0.12em] text-hint sm:text-sm">
+          <p className="mb-[16px] font-mono text-[length:var(--text-sm)] font-medium uppercase tracking-[0.12em] text-hint">
             {project.role} · {project.period}
           </p>
           <p className={bodyTextClass}>{project.lead}</p>
@@ -171,7 +171,7 @@ export default async function ProjectPage({
 
         {caseStudy.keyDecisions?.length ? (
           <Section heading="decisões-chave">
-            <ul className="flex list-disc flex-col gap-2 pl-5">
+            <ul className="flex list-disc flex-col gap-[8px] pl-5">
               {caseStudy.keyDecisions.map((item) => (
                 <li key={item} className={bodyTextClass}>
                   {item}
@@ -183,7 +183,7 @@ export default async function ProjectPage({
 
         {caseStudy.tradeoffs?.length ? (
           <Section heading="trade-offs">
-            <ul className="flex list-disc flex-col gap-2 pl-5">
+            <ul className="flex list-disc flex-col gap-[8px] pl-5">
               {caseStudy.tradeoffs.map((item) => (
                 <li key={item} className={bodyTextClass}>
                   {item}
@@ -198,7 +198,7 @@ export default async function ProjectPage({
         </Section>
 
         {metaLine ? (
-          <p className="border-t border-line/80 pt-4 font-sans text-xs font-medium uppercase tracking-[0.12em] text-hint sm:text-sm">
+          <p className="border-t border-line/80 pt-[16px] font-mono text-[length:var(--text-sm)] font-medium uppercase tracking-[0.12em] text-hint">
             {metaLine}
           </p>
         ) : null}

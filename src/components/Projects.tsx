@@ -27,34 +27,36 @@ function ProjectCard({ project }: { project: Project }) {
         : null
 
   return (
-    <article className="flex flex-col gap-3">
+    <article className="flex flex-col gap-[16px]">
       <ProjectMedia project={project} />
 
       <div className="mx-auto w-full max-w-[40rem] text-left">
-        <p className="mb-2 font-sans text-xs font-medium uppercase tracking-[0.12em] text-hint sm:text-sm">
-          {project.period}
-        </p>
-        <h2 className="mb-1 text-xl font-medium leading-snug tracking-tight text-ink sm:text-2xl">
-          {project.title}
-        </h2>
-        <p className="mb-2 font-sans text-sm font-medium text-hint sm:text-base">
+        <div className="mb-[4px] flex items-baseline justify-between gap-[16px]">
+          <h2 className="text-[length:var(--text-md)] font-medium leading-snug tracking-tight text-ink">
+            {project.title}
+          </h2>
+          <span className="shrink-0 font-mono text-[length:var(--text-sm)] text-hint">
+            {project.period}
+          </span>
+        </div>
+        <p className="mb-[8px] font-sans text-[length:var(--text-sm)] font-medium text-hint">
           {project.role}
         </p>
-        <p className="max-w-[52ch] text-base leading-relaxed text-sub sm:text-lg">
+        <p className="max-w-[52ch] text-base leading-relaxed text-sub">
           {project.lead}
         </p>
         {project.hint ? (
-          <p className="mt-2 max-w-[48ch] text-sm leading-relaxed text-hint sm:text-base">
+          <p className="mt-[8px] max-w-[48ch] text-[length:var(--text-sm)] leading-relaxed text-hint">
             {project.hint}
           </p>
         ) : null}
 
         {(primaryLink && linkLabel) || project.caseStudy ? (
-          <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 border-t border-line/80 pt-4">
+          <div className="mt-[16px] flex flex-wrap gap-x-5 gap-y-[8px] border-t border-line/80 pt-[16px]">
             {project.caseStudy ? (
               <Link
                 href={`/projects/${project.slug}`}
-                className="w-fit whitespace-nowrap border-b border-line pb-px text-sm text-sub transition-colors duration-150 ease-[ease] hover:border-line-hover hover:text-ink sm:text-base"
+                className="w-fit whitespace-nowrap border-b border-line pb-px text-[length:var(--text-sm)] text-sub transition-colors duration-150 ease-[ease] hover:border-line-hover hover:text-ink"
               >
                 → case study
               </Link>
@@ -64,7 +66,7 @@ function ProjectCard({ project }: { project: Project }) {
                 href={primaryLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-fit whitespace-nowrap border-b border-line pb-px text-sm text-sub transition-colors duration-150 ease-[ease] hover:border-line-hover hover:text-ink sm:text-base"
+                className="w-fit whitespace-nowrap border-b border-line pb-px text-[length:var(--text-sm)] text-sub transition-colors duration-150 ease-[ease] hover:border-line-hover hover:text-ink"
               >
                 {linkLabel}
               </a>
@@ -77,24 +79,24 @@ function ProjectCard({ project }: { project: Project }) {
 }
 
 const minorLinkClass =
-  "border-b border-line pb-px text-xs text-sub transition-colors duration-150 hover:border-line-hover hover:text-ink sm:text-sm"
+  "border-b border-line pb-px text-[length:var(--text-sm)] text-sub transition-colors duration-150 hover:border-line-hover hover:text-ink"
 
 function MinorProjectCard({ item }: { item: MinorProject }) {
   const hasOutbound = Boolean(item.href || item.github)
 
   return (
-    <li className="rounded border border-line/90 px-4 py-4 sm:px-5 sm:py-5">
-      <h3 className="mb-1 text-lg font-medium leading-snug tracking-tight text-ink sm:text-xl">
+    <li className="py-[16px]">
+      <h3 className="mb-[4px] text-base font-medium leading-snug tracking-tight text-ink">
         {item.title}
       </h3>
       {item.role ? (
-        <p className="mb-1.5 font-sans text-sm font-medium text-hint">{item.role}</p>
+        <p className="mb-[4px] font-sans text-[length:var(--text-sm)] font-medium text-hint">{item.role}</p>
       ) : null}
-      <p className="max-w-[48ch] text-sm leading-relaxed text-sub sm:text-base">
+      <p className="max-w-[60ch] text-[length:var(--text-sm)] leading-relaxed text-sub">
         {item.description}
       </p>
       {hasOutbound ? (
-        <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2">
+        <div className="mt-[8px] flex flex-wrap gap-x-5 gap-y-[8px]">
           {item.href ? (
             <a
               href={item.href}
@@ -133,12 +135,12 @@ export function Projects() {
         <section className="pt-0" aria-labelledby="projects-heading">
           <h2
             id="projects-heading"
-            className="mb-2 text-2xl font-medium tracking-tight text-ink sm:mb-2.5 sm:text-3xl"
+            className="mb-[16px] text-[length:var(--text-lg)] font-medium tracking-tight text-ink"
           >
             Projetos
           </h2>
 
-          <div className="flex flex-col gap-8 max-[480px]:gap-7">
+          <div className="flex flex-col gap-[40px] max-[480px]:gap-[32px]">
             {projects.map((project) => (
               <ProjectCard key={project.slug} project={project} />
             ))}
@@ -148,16 +150,16 @@ export function Projects() {
 
       {hasMinor ? (
         <section
-          className={hasMain ? "pt-4 max-[480px]:pt-3" : "pt-0"}
+          className={hasMain ? "pt-[48px] sm:pt-[64px]" : "pt-0"}
           aria-labelledby="minor-projects-heading"
         >
           <h2
             id="minor-projects-heading"
-            className="mb-2 text-xl font-medium tracking-tight text-ink sm:mb-2.5 sm:text-2xl"
+            className="mb-[8px] text-[length:var(--text-lg)] font-medium tracking-tight text-ink"
           >
             Outros projetos
           </h2>
-          <ul className="grid list-none gap-3 p-0 sm:grid-cols-2 sm:gap-4">
+          <ul className="list-none divide-y divide-line p-0">
             {minorProjects.map((item) => (
               <MinorProjectCard
                 key={item.title}

@@ -3,6 +3,9 @@ import { publications, type Publication } from "@/data/content"
 const titleLinkClass =
   "border-b border-line pb-px text-inherit transition-colors duration-150 hover:border-line-hover"
 
+const publicationHeadingClass =
+  "mb-[8px] text-[length:var(--text-lg)] font-medium tracking-tight text-ink"
+
 function PublicationCard({ item }: { item: Publication }) {
   const titleEl = item.url ? (
     <a
@@ -18,11 +21,11 @@ function PublicationCard({ item }: { item: Publication }) {
   )
 
   return (
-    <li className="rounded border border-line/90 px-4 py-4 sm:px-5 sm:py-5">
-      <h3 className="mb-1 text-lg font-medium leading-snug tracking-tight text-ink sm:text-xl">
+    <li className="py-[16px]">
+      <h3 className="mb-[4px] text-base font-medium leading-snug tracking-tight text-ink">
         {titleEl}
       </h3>
-      <p className="text-sm leading-relaxed text-sub sm:text-base">
+      <p className="text-[length:var(--text-sm)] leading-relaxed text-sub">
         <span className="text-hint">{item.venue}</span>
         <span className="text-hint"> · </span>
         {item.year}
@@ -36,16 +39,16 @@ export function Publications() {
 
   return (
     <section
-      className="pt-4 max-[480px]:pt-3"
+      className="pt-[48px] sm:pt-[64px]"
       aria-labelledby="publications-heading"
     >
       <h2
         id="publications-heading"
-        className="mb-2 text-xl font-medium tracking-tight text-ink sm:mb-2.5 sm:text-2xl"
+        className={publicationHeadingClass}
       >
         Publicações e produções
       </h2>
-      <ul className="grid list-none gap-3 p-0 sm:grid-cols-2 sm:gap-4">
+      <ul className="list-none divide-y divide-line p-0">
         {publications.map((item) => (
           <PublicationCard
             key={`${item.title}-${item.venue}-${item.year}`}

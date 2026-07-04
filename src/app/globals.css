@@ -21,6 +21,15 @@
 
     --padding-x: 1.75rem;
     --padding-x-mobile: 1.1rem;
+
+    /* Escala tipográfica modular — razão 1.2, base 1rem (18px) */
+    --text-xs: 0.694rem;
+    --text-sm: 0.833rem;
+    --text-base: 1rem;
+    --text-md: 1.2rem;
+    --text-lg: 1.44rem;
+    --text-xl: 1.728rem;
+    --text-2xl: 2.074rem;
   }
 
   /* Site só em tema claro: alinha scrollbars/controles nativos ao fundo claro. Dark mode não está no escopo. */
