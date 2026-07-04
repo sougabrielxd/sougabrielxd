@@ -1,0 +1,92 @@
+/* Página 404 throw-up — única exceção decorativa do site. */
+
+.wall {
+  position: relative;
+  display: flex;
+  min-height: 100dvh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  overflow: hidden;
+  padding: 32px var(--padding-x);
+  background: var(--color-bg);
+  text-align: center;
+}
+
+.noise {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.1;
+  pointer-events: none;
+}
+
+.piece {
+  position: relative;
+  transform: rotate(-4deg);
+}
+
+.fourofour {
+  display: block;
+  font-family: var(--font-display), cursive;
+  font-size: clamp(7rem, 30vw, 15rem);
+  line-height: 1;
+  /* fallback sólido para navegadores sem text-stroke */
+  color: var(--color-accent);
+}
+
+@supports (-webkit-text-stroke: 1px black) {
+  .fourofour {
+    color: transparent;
+    -webkit-text-stroke: 4px var(--color-accent);
+  }
+}
+
+.drip {
+  position: absolute;
+  top: 72%;
+  width: 6px;
+  background: var(--color-accent);
+  border-radius: 0 0 3px 3px;
+}
+
+.dripA {
+  left: 16%;
+  height: 56px;
+}
+
+.dripB {
+  left: 49%;
+  height: 32px;
+}
+
+.dripC {
+  left: 81%;
+  height: 72px;
+}
+
+.note {
+  margin: 0;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  font-size: var(--text-sm);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  color: var(--color-text-secondary);
+}
+
+.back {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  font-size: var(--text-sm);
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 150ms ease;
+}
+
+.back:hover {
+  color: var(--color-text-primary);
+}

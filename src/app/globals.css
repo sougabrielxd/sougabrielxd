@@ -17,10 +17,20 @@
     --color-text-tertiary: #3f3f3f;
     --color-border: rgba(31, 29, 24, 0.12);
     --color-border-hover: rgba(31, 29, 24, 0.24);
-    --color-accent: #0004ff;
+    --color-accent: #7e22ce;
+    --color-accent-soft: rgba(126, 34, 206, 0.12);
 
     --padding-x: 1.75rem;
     --padding-x-mobile: 1.1rem;
+
+    /* Escala tipográfica modular — razão 1.2, base 1rem */
+    --text-xs: 0.694rem;
+    --text-sm: 0.833rem;
+    --text-base: 1rem;
+    --text-md: 1.2rem;
+    --text-lg: 1.44rem;
+    --text-xl: 1.728rem;
+    --text-2xl: 2.074rem;
   }
 
   /* Site só em tema claro: alinha scrollbars/controles nativos ao fundo claro. Dark mode não está no escopo. */
@@ -45,5 +55,16 @@
 
   img {
     @apply block max-w-full h-auto;
+  }
+}
+
+@layer utilities {
+  /* Underline spray: única variação de traço irregular, repetida em x.
+     Aparece somente no hover; cor fixa do token mark (#7e22ce). */
+  .spray-hover:hover {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='5' viewBox='0 0 28 5'%3E%3Cpath d='M0 3 C 5 1.6 9 4.3 14 3.1 S 23 1.7 28 3' fill='none' stroke='%237e22ce' stroke-width='1.4' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-position: left bottom;
+    background-size: 28px 5px;
   }
 }

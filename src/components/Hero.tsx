@@ -3,7 +3,7 @@ import Image from "next/image"
 import { meta, type IntroSegment } from "@/data/content"
 
 const introLinkClass =
-  "text-sub underline decoration-[#7c3aed] decoration-1 underline-offset-[3px] transition-[text-decoration-color,color] duration-150 ease-[ease] hover:text-ink hover:decoration-[#6d28d9]"
+  "spray-hover text-sub underline decoration-mark decoration-1 underline-offset-[3px] transition-[text-decoration-color,color] duration-150 ease-[ease] hover:text-ink hover:decoration-transparent"
 
 function IntroPieces({ segments }: { segments: IntroSegment[] }) {
   return (
@@ -12,7 +12,10 @@ function IntroPieces({ segments }: { segments: IntroSegment[] }) {
         typeof segment === "string" ? (
           <Fragment key={i}>{segment}</Fragment>
         ) : "strong" in segment ? (
-          <strong key={i} className="font-bold text-sub">
+          <strong
+            key={i}
+            className="bg-[var(--color-accent-soft)] px-[3px] font-bold text-sub [box-decoration-break:clone]"
+          >
             {segment.strong}
           </strong>
         ) : (
@@ -55,9 +58,25 @@ export function Hero() {
   ]
 
   return (
-    <section className="mb-8 sm:mb-10">
-      <div className="mb-1 flex flex-col gap-4 sm:mb-1.5 sm:flex-row sm:items-start sm:justify-between sm:gap-6">
-        <div className="flex items-start gap-3.5">
+    <section className="mb-[48px] sm:mb-[64px]">
+      <div className="relative mb-[8px] flex flex-col gap-[16px] sm:flex-row sm:items-start sm:justify-between sm:gap-[24px]">
+        {/* textura de concreto — só atrás do bloco de identidade, nunca do texto corrido */}
+        <svg
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 -z-10 h-full w-full opacity-[0.04]"
+        >
+          <filter id="hero-concrete">
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency="0.9"
+              numOctaves="4"
+              stitchTiles="stitch"
+            />
+            <feColorMatrix type="saturate" values="0" />
+          </filter>
+          <rect width="100%" height="100%" filter="url(#hero-concrete)" />
+        </svg>
+        <div className="flex items-start gap-[16px]">
           <div
             className="group/logo inline-flex shrink-0 cursor-default overflow-visible p-0.5"
             aria-hidden="true"
@@ -72,28 +91,51 @@ export function Hero() {
             />
           </div>
 
-          <div className="max-w-[min(100%,22rem)] pt-[0.1rem]">
-            <p className="mb-0 font-sans text-3xl font-bold leading-none tracking-tight sm:text-4xl">
+          <div className="max-w-[min(100%,22rem)] pt-[4px]">
+            <p className="mb-[8px] font-sans text-[length:var(--text-xl)] font-bold leading-none tracking-tight sm:text-[length:var(--text-2xl)]">
               <span className="group relative inline-block cursor-default">
-                <span className="text-purple-700 transition-opacity duration-150 group-hover:opacity-0">
+                <span className="relative inline-block font-[family-name:var(--font-display)] font-normal text-mark transition-opacity duration-150 group-hover:opacity-0">
                   {name}
+                  {/* risco de tag sob o nome */}
+                  <svg
+                    aria-hidden="true"
+                    viewBox="0 0 120 14"
+                    preserveAspectRatio="none"
+                    className="absolute -bottom-[8px] left-[-4px] h-[12px] w-[calc(100%+8px)]"
+                  >
+                    <path
+                      d="M2 9 C 28 3.5 66 12 118 5.5"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                    />
+                    <path
+                      d="M10 12.5 C 32 10 50 13.5 68 11"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      opacity="0.65"
+                    />
+                  </svg>
                 </span>
                 <span
-                  className="pointer-events-none absolute left-0 top-0 whitespace-nowrap text-purple-700 opacity-0 transition-opacity duration-150 group-hover:opacity-100"
+                  className="pointer-events-none absolute left-0 top-0 whitespace-nowrap font-mono text-mark opacity-0 transition-opacity duration-150 group-hover:opacity-100"
                   aria-hidden="true"
                 >
                   {nameHover}
                 </span>
               </span>
             </p>
-            <p className="mt-0 text-xs font-medium leading-tight tracking-wide text-sub sm:text-sm">
+            <p className="mt-0 text-[length:var(--text-sm)] font-medium leading-tight tracking-wide text-sub">
               {role}
             </p>
           </div>
         </div>
 
         <nav
-          className="flex w-full shrink-0 flex-col items-end gap-0.5 sm:w-auto"
+          className="flex w-full shrink-0 flex-col items-end gap-[4px] sm:w-auto"
           aria-label="Links externos"
         >
           {navLinks.map((link) => (
@@ -112,9 +154,9 @@ export function Hero() {
       </div>
 
       <div className="max-w-[42rem]">
-        <h1 className="mb-4 max-w-[60ch] font-sans text-base font-normal leading-relaxed tracking-tight text-ink sm:text-lg">
-          Olá! Meu nome é{" "}
-          <span className="text-ink underline decoration-purple-700 decoration-1 underline-offset-[3px]">
+        <h1 className="mb-[16px] max-w-[60ch] font-sans text-base font-normal leading-relaxed tracking-tight text-ink">
+          oi, sou o{" "}
+          <span className="text-ink underline decoration-mark decoration-1 underline-offset-[3px]">
             {firstName}
           </span>
           .
@@ -122,7 +164,7 @@ export function Hero() {
         {introParagraphs.map((segments, index) => (
           <p
             key={index}
-            className="mb-4 max-w-[60ch] text-base leading-relaxed tracking-tight text-sub last:mb-0 sm:text-lg"
+            className="mb-[16px] max-w-[60ch] text-base leading-relaxed tracking-tight text-sub last:mb-0"
           >
             <IntroPieces segments={segments} />
           </p>
