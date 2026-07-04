@@ -18,7 +18,7 @@ export const meta = {
   introParagraphs: [
     [
       { strong: "software engineer" },
-      " no sertão do nordeste, construindo sistemas em produção para indústria, saúde ocupacional e IA aplicada. Atualmente na ",
+      " no sertão do nordeste, construindo sistemas em produção para indústria, saúde ocupacional e IA aplicada. atualmente na ",
       {
         text: "Starke Vision",
         href: "https://starkevision.com.br/",
@@ -26,7 +26,7 @@ export const meta = {
       "; passagem anterior pela ",
       {
         text: "Receita Federal",
-        href: "https://www.gov.br/receitafederal/pt-br/canais_atendimento/fale-conosco/presencial/ce/juazeiro-do-norte",
+        href: "https://www.gov.br/receitafederal/pt-br",
       },
       ". projetos institucionais relevantes incluem delegacia 5.0 (IA para a Polícia Civil de PE) e vitawork (saúde pública, Desafios.Gov). no industrial, lidera iniciativas aprovadas pela FACEPE no polo gesseiro do araripe com automação e monitoramento em tempo real. interesse crescente em inteligência artificial, llms e pesquisas.",
     ],
@@ -47,6 +47,20 @@ export const meta = {
 }
 
 export type ProjectImageOrientation = "landscape" | "portrait"
+
+export type CaseStudy = {
+  /** Contexto e problema que motivou o projeto. */
+  problem: string
+  /** Resultado observável. Case study sem resultado não publica. */
+  result: string
+  stack?: string[]
+  architecture?: string
+  tradeoffs?: string[]
+  keyDecisions?: string[]
+  myRole?: string
+  duration?: string
+  team?: string
+}
 
 export type Project = {
   slug: string
@@ -82,6 +96,8 @@ export type Project = {
     github?: string
     npm?: string
   }
+  /** Presença deste objeto habilita a rota /projects/[slug]. */
+  caseStudy?: CaseStudy
 }
 
 export type MinorProject = {
@@ -107,11 +123,12 @@ export const projects: Project[] = [
     slug: "vitawork-upe",
     title: "VitaWork UPE",
     role: "Desenvolvedor",
-    lead: "Plataforma de saúde ocupacional para o complexo hospitalar da UPE.",
+    lead: "Plataforma que unifica os sistemas de saúde ocupacional do complexo hospitalar da UPE.",
+    hint: "Desenvolvimento solo, em produção incremental.",
     period: "2026",
     image: "/projects/vitawork-login-sala.png",
     imageOrientation: "portrait",
-    imagePosition: "bottom",          // mostra a tela do VitaWork, não o teto
+    imagePosition: "bottom",
     gallery: [
       "/projects/vitawork-seciti-pernambuco.png",
       "/projects/vitawork-equipe.png",
@@ -123,8 +140,8 @@ export const projects: Project[] = [
     slug: "delegacia-5-0",
     title: "Delegacia 5.0",
     role: "Colaborador técnico",
-    lead: "Apoio técnico a iniciativa digital da Polícia Civil de Pernambuco.",
-    hint: "Ocorrências e validação da assistente Aurora.",
+    lead: "Testes, infraestrutura e validação da assistente de IA Aurora na Polícia Civil de PE.",
+    hint: "Iniciativa de produtividade no registro e análise de ocorrências.",
     period: "2025",
     image: "/projects/delegacia-pernambuco-digital.png",
     imageOrientation: "landscape",
@@ -134,8 +151,8 @@ export const projects: Project[] = [
     slug: "digigesso-araripe",
     title: "DigiGesso Araripe",
     role: "Desenvolvedor",
-    lead: "Sistema para gestão de produção e custos em ambiente industrial.",
-    hint: "Ambiente industrial com conectividade instável, polo gesseiro do Araripe.",
+    lead: "Sistema de gestão de produção e custos operando com conectividade instável.",
+    hint: "Desenvolvimento solo, polo gesseiro do Araripe.",
     period: "2026",
     image: "/projects/digigesso-painel-produtos.png",
     imageOrientation: "portrait",
@@ -147,36 +164,34 @@ export const projects: Project[] = [
     ],
     galleryOrientation: ["portrait", "portrait", "portrait"],
     galleryPosition: ["top", "top", "top"],
+    caseStudy: {
+      problem:
+        "O apontamento de produção era inteiramente manual: a quantidade produzida era anotada em um quadro no chão de fábrica e a conferência exigia contagem física das placas. Não havia rastreabilidade nem histórico confiável, e o ambiente industrial opera com conectividade instável.",
+      result:
+        "O registro passou a acontecer no momento da produção, em totem no chão de fábrica: cada placa produzida é apontada na hora, com histórico consultável. A contagem física deixou de ser o mecanismo de controle. Métricas quantitativas serão adicionadas após o relatório de operação.",
+      myRole:
+        "Desenvolvedor único do sistema, do levantamento com a operação ao deploy em produção.",
+      team: "4 pessoas no projeto, 1 desenvolvedor",
+    },
   },
-
-{
-  slug: "smartgesso",
-  title: "SmartGesso",
-  role: "Mapeamento de Processo",
-  lead: "Sistema de automação e gestão industrial com balança inteligente, sensor de temperatura e rastreabilidade em tempo real.",
-  hint: "Polo gesseiro do Araripe.",
-  period: "2026",
-  imageOrientation: "portrait",
-  imagePosition: "bottom",
-},
-{
-  slug: "controlgesso",
-  title: "ControlGesso",
-  role: "Mapeamento de Processo",
-  lead: "Sistema de gestão industrial com balança inteligente e rastreabilidade de insumos por lote.",
-  hint: "Polo gesseiro do Araripe.",
-  period: "2026",
-  image: "/projects/mapeamento-control.jpeg",
-  imageOrientation: "portrait",
-  imagePosition: "bottom",
-  gallery: [
-    "/projects/mapeamento-control1.jpeg",
-    "/projects/mapeamento-control2.jpeg",
-    "/projects/mapeamento-control3.jpeg",
-  ],
-  galleryOrientation: ["portrait", "portrait", "portrait"],
-  galleryPosition: ["top", "top", "top"],
-},
+  {
+    slug: "smartgesso-controlgesso",
+    title: "SmartGesso & ControlGesso",
+    role: "Mapeamento de processos e deploy",
+    lead: "Mapeamento de processos e deploy de dois sistemas de automação industrial com balança inteligente.",
+    hint: "Rastreabilidade de insumos por lote, polo gesseiro do Araripe.",
+    period: "2026",
+    image: "/projects/mapeamento-control.jpeg",
+    imageOrientation: "portrait",
+    imagePosition: "bottom",
+    gallery: [
+      "/projects/mapeamento-control1.jpeg",
+      "/projects/mapeamento-control2.jpeg",
+      "/projects/mapeamento-control3.jpeg",
+    ],
+    galleryOrientation: ["portrait", "portrait", "portrait"],
+    galleryPosition: ["top", "top", "top"],
+  },
 ]
 
 /** Projetos de menor escopo — `href` (link) e `github` opcionais. */
@@ -185,7 +200,7 @@ export const minorProjects: MinorProject[] = [
     title: "Manihot",
     role: "Desenvolvedor",
     description:
-      "Landing institucional para projeto de soluções com manipueira e valor da proposta.",
+      "Landing institucional apresentando a proposta de aproveitamento da manipueira.",
     href: "https://manihot-three.vercel.app/",
     github: "https://github.com/manihot1/manihot",
   },
@@ -193,7 +208,7 @@ export const minorProjects: MinorProject[] = [
     title: "Manivis",
     role: "Desenvolvedor",
     description:
-      "Landing institucional para startup de soluções com manipueira e valor da proposta.",
+      "Landing da startup de soluções com manipueira, com aprofundamento técnico no conteúdo.",
     href: "https://manivis-ureg.vercel.app/",
     github: "https://github.com/manivispe/manivis",
   },
