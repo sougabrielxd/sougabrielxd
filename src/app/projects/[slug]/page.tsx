@@ -116,9 +116,12 @@ export default async function ProjectPage({
           <h1 className="mb-[8px] text-[length:var(--text-xl)] font-medium tracking-tight text-ink">
             {project.title}
           </h1>
-          <p className="mb-[16px] font-mono text-[length:var(--text-sm)] font-medium uppercase tracking-[0.12em] text-hint">
-            {project.role} · {project.period}
-          </p>
+          <div className="mb-[16px] flex flex-wrap items-center gap-[12px]">
+            <p className="font-mono text-[length:var(--text-sm)] font-medium uppercase tracking-[0.12em] text-hint">
+              {project.role}
+            </p>
+            <span className="sticker">{project.period}</span>
+          </div>
           <p className={bodyTextClass}>{project.lead}</p>
         </header>
 

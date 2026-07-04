@@ -44,27 +44,24 @@
   }
 }
 
-.drip {
+.drips {
   position: absolute;
-  top: 72%;
-  width: 6px;
-  background: var(--color-accent);
-  border-radius: 0 0 3px 3px;
+  top: 68%;
+  left: 8%;
+  width: 84%;
+  height: auto;
+  color: var(--color-accent);
+  pointer-events: none;
 }
 
-.dripA {
-  left: 16%;
-  height: 56px;
-}
-
-.dripB {
-  left: 49%;
-  height: 32px;
-}
-
-.dripC {
-  left: 81%;
-  height: 72px;
+.wallTag {
+  position: absolute;
+  font-family: var(--font-display), cursive;
+  color: var(--color-text-tertiary);
+  opacity: 0.16;
+  white-space: nowrap;
+  user-select: none;
+  pointer-events: none;
 }
 
 .note {

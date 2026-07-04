@@ -59,6 +59,26 @@
 }
 
 @layer utilities {
+  /* Slap sticker: etiqueta rotacionada com borda, endireita no hover. */
+  .sticker {
+    display: inline-block;
+    rotate: -2deg;
+    border: 1px solid var(--color-border-hover);
+    background: var(--color-surface);
+    padding: 2px 8px;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+      "Liberation Mono", "Courier New", monospace;
+    font-size: var(--text-xs);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--color-text-secondary);
+    transition: rotate 150ms ease;
+  }
+
+  .sticker:hover {
+    rotate: 0deg;
+  }
+
   /* Underline spray: única variação de traço irregular, repetida em x.
      Aparece somente no hover; cor fixa do token mark (#7e22ce). */
   .spray-hover:hover {

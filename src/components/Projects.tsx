@@ -31,13 +31,11 @@ function ProjectCard({ project }: { project: Project }) {
       <ProjectMedia project={project} />
 
       <div className="mx-auto w-full max-w-[40rem] text-left">
-        <div className="mb-[4px] flex items-baseline justify-between gap-[16px]">
+        <div className="mb-[4px] flex items-center justify-between gap-[16px]">
           <h2 className="text-[length:var(--text-md)] font-medium leading-snug tracking-tight text-ink">
             {project.title}
           </h2>
-          <span className="shrink-0 font-mono text-[length:var(--text-sm)] text-hint">
-            {project.period}
-          </span>
+          <span className="sticker shrink-0">{project.period}</span>
         </div>
         <p className="mb-[8px] font-sans text-[length:var(--text-sm)] font-medium text-hint">
           {project.role}
@@ -143,7 +141,25 @@ export function Projects() {
             >
               *01
             </span>
-            Projetos
+            <span className="relative inline-block">
+              Projetos
+              {/* traço de spray atravessando o heading */}
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 100 8"
+                preserveAspectRatio="none"
+                className="pointer-events-none absolute -left-[4px] top-[54%] h-[7px] w-[72%] text-mark"
+              >
+                <path
+                  d="M1 5 C 20 2.5 45 6.5 99 3.5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  opacity="0.8"
+                />
+              </svg>
+            </span>
           </h2>
 
           <div className="flex flex-col gap-[40px] max-[480px]:gap-[32px]">
@@ -169,7 +185,24 @@ export function Projects() {
             >
               *02
             </span>
-            Outros projetos
+            <span className="relative inline-block">
+              Outros projetos
+              <svg
+                aria-hidden="true"
+                viewBox="0 0 100 8"
+                preserveAspectRatio="none"
+                className="pointer-events-none absolute -left-[4px] top-[54%] h-[7px] w-[72%] text-mark"
+              >
+                <path
+                  d="M1 5 C 20 2.5 45 6.5 99 3.5"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2.2"
+                  strokeLinecap="round"
+                  opacity="0.8"
+                />
+              </svg>
+            </span>
           </h2>
           <ul className="list-none divide-y divide-line p-0">
             {minorProjects.map((item) => (
