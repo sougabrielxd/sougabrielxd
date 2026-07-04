@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Dosis } from "next/font/google"
+import { Dosis, Sedgwick_Ave_Display } from "next/font/google"
 import { meta } from "@/data/content"
 import "./globals.css"
 
@@ -7,6 +7,14 @@ const dosis = Dosis({
   subsets: ["latin"],
   weight: "variable",
   variable: "--font-sans",
+  display: "swap",
+})
+
+/* Fonte display de rua — uso restrito ao nome no header e à página 404. */
+const sedgwick = Sedgwick_Ave_Display({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-display",
   display: "swap",
 })
 
@@ -54,7 +62,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="pt-BR" className={dosis.variable}>
+    <html lang="pt-BR" className={`${dosis.variable} ${sedgwick.variable}`}>
       <body className="font-sans">
         <script
           type="application/ld+json"

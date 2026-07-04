@@ -3,7 +3,7 @@ import Image from "next/image"
 import { meta, type IntroSegment } from "@/data/content"
 
 const introLinkClass =
-  "text-sub underline decoration-[#7c3aed] decoration-1 underline-offset-[3px] transition-[text-decoration-color,color] duration-150 ease-[ease] hover:text-ink hover:decoration-[#6d28d9]"
+  "spray-hover text-sub underline decoration-[#7c3aed] decoration-1 underline-offset-[3px] transition-[text-decoration-color,color] duration-150 ease-[ease] hover:text-ink hover:decoration-transparent"
 
 function IntroPieces({ segments }: { segments: IntroSegment[] }) {
   return (
@@ -56,7 +56,23 @@ export function Hero() {
 
   return (
     <section className="mb-[48px] sm:mb-[64px]">
-      <div className="mb-[8px] flex flex-col gap-[16px] sm:flex-row sm:items-start sm:justify-between sm:gap-[24px]">
+      <div className="relative mb-[8px] flex flex-col gap-[16px] sm:flex-row sm:items-start sm:justify-between sm:gap-[24px]">
+        {/* textura de concreto — só atrás do bloco de identidade, nunca do texto corrido */}
+        <svg
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 -z-10 h-full w-full opacity-[0.04]"
+        >
+          <filter id="hero-concrete">
+            <feTurbulence
+              type="fractalNoise"
+              baseFrequency="0.9"
+              numOctaves="4"
+              stitchTiles="stitch"
+            />
+            <feColorMatrix type="saturate" values="0" />
+          </filter>
+          <rect width="100%" height="100%" filter="url(#hero-concrete)" />
+        </svg>
         <div className="flex items-start gap-[16px]">
           <div
             className="group/logo inline-flex shrink-0 cursor-default overflow-visible p-0.5"
@@ -75,11 +91,11 @@ export function Hero() {
           <div className="max-w-[min(100%,22rem)] pt-[4px]">
             <p className="mb-0 font-sans text-[length:var(--text-xl)] font-bold leading-none tracking-tight sm:text-[length:var(--text-2xl)]">
               <span className="group relative inline-block cursor-default">
-                <span className="text-purple-700 transition-opacity duration-150 group-hover:opacity-0">
+                <span className="font-[family-name:var(--font-display)] font-normal text-mark transition-opacity duration-150 group-hover:opacity-0">
                   {name}
                 </span>
                 <span
-                  className="pointer-events-none absolute left-0 top-0 whitespace-nowrap text-purple-700 opacity-0 transition-opacity duration-150 group-hover:opacity-100"
+                  className="pointer-events-none absolute left-0 top-0 whitespace-nowrap font-mono text-purple-700 opacity-0 transition-opacity duration-150 group-hover:opacity-100"
                   aria-hidden="true"
                 >
                   {nameHover}

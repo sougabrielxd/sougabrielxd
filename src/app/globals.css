@@ -22,7 +22,7 @@
     --padding-x: 1.75rem;
     --padding-x-mobile: 1.1rem;
 
-    /* Escala tipográfica modular — razão 1.2, base 1rem (18px) */
+    /* Escala tipográfica modular — razão 1.2, base 1rem */
     --text-xs: 0.694rem;
     --text-sm: 0.833rem;
     --text-base: 1rem;
@@ -54,5 +54,16 @@
 
   img {
     @apply block max-w-full h-auto;
+  }
+}
+
+@layer utilities {
+  /* Underline spray: única variação de traço irregular, repetida em x.
+     Aparece somente no hover; cor fixa do token mark (#0004ff). */
+  .spray-hover:hover {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='5' viewBox='0 0 28 5'%3E%3Cpath d='M0 3 C 5 1.6 9 4.3 14 3.1 S 23 1.7 28 3' fill='none' stroke='%230004ff' stroke-width='1.4' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: repeat-x;
+    background-position: left bottom;
+    background-size: 28px 5px;
   }
 }

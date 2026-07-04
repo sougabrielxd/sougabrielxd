@@ -56,7 +56,7 @@ function ProjectCard({ project }: { project: Project }) {
             {project.caseStudy ? (
               <Link
                 href={`/projects/${project.slug}`}
-                className="w-fit whitespace-nowrap border-b border-line pb-px text-[length:var(--text-sm)] text-sub transition-colors duration-150 ease-[ease] hover:border-line-hover hover:text-ink"
+                className="spray-hover w-fit whitespace-nowrap border-b border-line pb-px text-[length:var(--text-sm)] text-sub transition-colors duration-150 ease-[ease] hover:border-transparent hover:text-ink"
               >
                 → case study
               </Link>
@@ -66,7 +66,7 @@ function ProjectCard({ project }: { project: Project }) {
                 href={primaryLink}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-fit whitespace-nowrap border-b border-line pb-px text-[length:var(--text-sm)] text-sub transition-colors duration-150 ease-[ease] hover:border-line-hover hover:text-ink"
+                className="spray-hover w-fit whitespace-nowrap border-b border-line pb-px text-[length:var(--text-sm)] text-sub transition-colors duration-150 ease-[ease] hover:border-transparent hover:text-ink"
               >
                 {linkLabel}
               </a>
@@ -79,7 +79,7 @@ function ProjectCard({ project }: { project: Project }) {
 }
 
 const minorLinkClass =
-  "border-b border-line pb-px text-[length:var(--text-sm)] text-sub transition-colors duration-150 hover:border-line-hover hover:text-ink"
+  "spray-hover border-b border-line pb-px text-[length:var(--text-sm)] text-sub transition-colors duration-150 hover:border-transparent hover:text-ink"
 
 function MinorProjectCard({ item }: { item: MinorProject }) {
   const hasOutbound = Boolean(item.href || item.github)
@@ -137,6 +137,12 @@ export function Projects() {
             id="projects-heading"
             className="mb-[16px] text-[length:var(--text-lg)] font-medium tracking-tight text-ink"
           >
+            <span
+              aria-hidden="true"
+              className="mr-[8px] font-mono text-[length:var(--text-sm)] font-normal tracking-normal text-hint"
+            >
+              *01
+            </span>
             Projetos
           </h2>
 
@@ -157,6 +163,12 @@ export function Projects() {
             id="minor-projects-heading"
             className="mb-[8px] text-[length:var(--text-lg)] font-medium tracking-tight text-ink"
           >
+            <span
+              aria-hidden="true"
+              className="mr-[8px] font-mono text-[length:var(--text-sm)] font-normal tracking-normal text-hint"
+            >
+              *02
+            </span>
             Outros projetos
           </h2>
           <ul className="list-none divide-y divide-line p-0">
