@@ -11,7 +11,10 @@ const dosis = Dosis({
 })
 
 export const metadata: Metadata = {
-  title: meta.seo.title,
+  title: {
+    default: meta.seo.title,
+    template: "%s · gabriel lucas",
+  },
   description: meta.seo.description,
   metadataBase: new URL(meta.seo.url),
   icons: {
@@ -36,6 +39,15 @@ export const metadata: Metadata = {
   },
 }
 
+const personJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: meta.name,
+  url: meta.seo.url,
+  jobTitle: meta.role,
+  sameAs: [meta.links.github, meta.links.linkedin, meta.links.lattes],
+}
+
 export default function RootLayout({
   children,
 }: {
@@ -43,7 +55,13 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR" className={dosis.variable}>
-      <body className="font-sans">{children}</body>
+      <body className="font-sans">
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
+        />
+        {children}
+      </body>
     </html>
   )
 }

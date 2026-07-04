@@ -4,6 +4,7 @@ import {
   type MinorProject,
   type Project,
 } from "@/data/content"
+import Link from "next/link"
 import { ProjectCarousel } from "@/components/ProjectCarousel"
 
 function ProjectMedia({ project }: { project: Project }) {
@@ -48,16 +49,26 @@ function ProjectCard({ project }: { project: Project }) {
           </p>
         ) : null}
 
-        {primaryLink && linkLabel ? (
-          <div className="mt-5 border-t border-line/80 pt-4">
-            <a
-              href={primaryLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-fit whitespace-nowrap border-b border-line pb-px text-sm text-sub transition-colors duration-150 ease-[ease] hover:border-line-hover hover:text-ink sm:text-base"
-            >
-              {linkLabel}
-            </a>
+        {(primaryLink && linkLabel) || project.caseStudy ? (
+          <div className="mt-5 flex flex-wrap gap-x-5 gap-y-2 border-t border-line/80 pt-4">
+            {project.caseStudy ? (
+              <Link
+                href={`/projects/${project.slug}`}
+                className="w-fit whitespace-nowrap border-b border-line pb-px text-sm text-sub transition-colors duration-150 ease-[ease] hover:border-line-hover hover:text-ink sm:text-base"
+              >
+                → case study
+              </Link>
+            ) : null}
+            {primaryLink && linkLabel ? (
+              <a
+                href={primaryLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-fit whitespace-nowrap border-b border-line pb-px text-sm text-sub transition-colors duration-150 ease-[ease] hover:border-line-hover hover:text-ink sm:text-base"
+              >
+                {linkLabel}
+              </a>
+            ) : null}
           </div>
         ) : null}
       </div>
