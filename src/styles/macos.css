@@ -1,0 +1,159 @@
+/*
+ * Sistema visual "em construção" — usado só pelas rotas / e /en
+ * (grupos de rota (coming-soon-pt) e (coming-soon-en)).
+ *
+ * Layout flat, sem cartão/vidro/segmented control/moldura de janela — a
+ * pedido, substituindo a composição macOS anterior por algo mais direto:
+ * legenda de status pequena, mensagem em destaque, links simples.
+ * Tipografia (tamanhos/pesos/alturas de linha) e cores continuam
+ * extraídas do "Apple macOS 27 UI Kit" em design-reference/ — cada valor
+ * abaixo cita o artboard/estilo de origem. Nada do kit é copiado ou
+ * importado como asset em runtime.
+ */
+
+.ms-root {
+  color-scheme: light dark;
+
+  /*
+   * Fonte — pilha do sistema primeiro (-apple-system/BlinkMacSystemFont
+   * resolve para SF Pro em Mac/iOS/Safari sem baixar nenhum arquivo da
+   * Apple); Inter (SIL Open Font License, auto-hospedado via
+   * src/styles/fonts.ts/next/font) como substituta visual mais próxima
+   * fora do ecossistema Apple.
+   */
+  --ms-font: -apple-system, BlinkMacSystemFont, var(--font-inter),
+    "Segoe UI", sans-serif;
+  --ms-font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace;
+  --ms-weight-regular: 400;
+  --ms-weight-semibold: 600; /* SFPro-Semibold */
+  --ms-weight-bold: 700; /* SFPro-Bold */
+
+  /* document.json → layerTextStyles — tamanho/altura de linha exatos */
+  --ms-title-1-size: 22px; /* "02 Title1/Emphasized" */
+  --ms-title-1-leading: 26px;
+  --ms-footnote-size: 10px; /* "09 Footnote/Default" */
+  --ms-footnote-leading: 13px;
+  --ms-callout-size: 12px; /* "07 Callout/Default" */
+  --ms-callout-leading: 15px;
+
+  /*
+   * Cor de texto (Label) — sharedSwatches "Labels/Light/1..3" (claro) e
+   * "Labels/Dark/1..3" (escuro, no bloco @media abaixo).
+   */
+  --ms-label-primary: rgb(0 0 0 / 0.85);
+  --ms-label-secondary: rgb(0 0 0 / 0.5);
+  --ms-label-tertiary: rgb(0 0 0 / 0.25);
+
+  /* Window Backgrounds — sharedSwatches "Window Backgrounds/Light Background" */
+  --ms-window-bg: rgb(255 255 255);
+}
+
+@media (prefers-color-scheme: dark) {
+  .ms-root {
+    /* sharedSwatches "Labels/Dark/1..3" */
+    --ms-label-primary: rgb(255 255 255);
+    --ms-label-secondary: rgb(255 255 255 / 0.55);
+    --ms-label-tertiary: rgb(255 255 255 / 0.25);
+
+    /* sharedSwatches "Window Backgrounds/Dark Background" */
+    --ms-window-bg: rgb(30 30 30);
+  }
+}
+
+.ms-page {
+  display: flex;
+  min-height: 100dvh;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 32px 20px;
+  background: var(--ms-window-bg);
+  font-family: var(--ms-font);
+  color: var(--ms-label-primary);
+  text-align: center;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.ms-status {
+  margin: 0;
+  font-family: var(--ms-font-mono);
+  font-size: var(--ms-footnote-size);
+  line-height: var(--ms-footnote-leading);
+  letter-spacing: 0.02em;
+  color: var(--ms-label-tertiary);
+}
+
+.ms-thanks {
+  margin: 0;
+  font-size: var(--ms-title-1-size);
+  line-height: var(--ms-title-1-leading);
+  font-weight: var(--ms-weight-bold); /* "02 Title1/Emphasized" */
+  color: var(--ms-label-primary);
+}
+
+.ms-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.ms-links a {
+  font-family: var(--ms-font);
+  font-size: var(--ms-callout-size);
+  line-height: var(--ms-callout-leading);
+  font-weight: var(--ms-weight-regular);
+  color: var(--ms-label-secondary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 120ms ease;
+}
+
+.ms-links a:hover,
+.ms-links a:focus-visible {
+  color: var(--ms-label-primary);
+}
+
+/* seletor de idioma — canto superior direito, discreto */
+.ms-lang-switch {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  gap: 6px;
+  font-family: var(--ms-font-mono);
+  font-size: var(--ms-footnote-size);
+  line-height: var(--ms-footnote-leading);
+}
+
+.ms-lang-switch a,
+.ms-lang-switch span {
+  color: var(--ms-label-tertiary);
+  text-decoration: none;
+}
+
+.ms-lang-switch a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 120ms ease;
+}
+
+.ms-lang-switch a:hover,
+.ms-lang-switch a:focus-visible {
+  color: var(--ms-label-primary);
+}
+
+.ms-lang-switch [aria-current="true"] {
+  color: var(--ms-label-primary);
+  font-weight: var(--ms-weight-semibold);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ms-links a,
+  .ms-lang-switch a {
+    transition: none;
+  }
+}
