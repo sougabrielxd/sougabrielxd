@@ -84,7 +84,7 @@
   font-size: var(--ms-footnote-size);
   line-height: var(--ms-footnote-leading);
   letter-spacing: 0.02em;
-  color: var(--ms-label-tertiary);
+  color: var(--ms-label-secondary);
 }
 
 .ms-thanks {
