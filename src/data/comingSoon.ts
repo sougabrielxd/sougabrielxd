@@ -17,7 +17,7 @@ export const comingSoon = {
     thanks: "me acompanhe por aqui por enquanto 👨‍💻",
     langSwitchLabel: "Idioma",
     seo: {
-      title: "Gabriel Lucas — Em construção",
+      title: "Coming Soon",
       description:
         "O novo portfólio de Gabriel Lucas, engenheiro de software, está a caminho. Acompanhe atualizações no GitHub, LinkedIn, Lattes e Instagram.",
     },
@@ -30,7 +30,7 @@ export const comingSoon = {
     thanks: "in the meantime, find me here 👨‍💻",
     langSwitchLabel: "Language",
     seo: {
-      title: "Gabriel Lucas — Coming soon",
+      title: "Coming Soon",
       description:
         "Gabriel Lucas's new portfolio, a software engineer, is on its way. Follow updates on GitHub, LinkedIn, Lattes and Instagram.",
     },
