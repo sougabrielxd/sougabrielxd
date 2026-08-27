@@ -4,6 +4,21 @@
   "buildCommand": "pnpm run build",
   "outputDirectory": "out",
   "framework": null,
+  "redirects": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept-language",
+          "value": "^(?!.*\\bpt\\b).*\\ben\\b.*"
+        }
+      ],
+      "missing": [{ "type": "cookie", "key": "lang" }],
+      "destination": "/en/",
+      "permanent": false
+    }
+  ],
   "headers": [
     {
       "source": "/(.*)",
