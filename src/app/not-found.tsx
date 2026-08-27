@@ -2,6 +2,14 @@ import Link from "next/link"
 import { projects } from "@/data/content"
 import styles from "./not-found.module.css"
 
+/*
+ * 404 de nível superior: herda html/body/fontes de app/layout.tsx (o
+ * único root layout "genérico" do projeto). É o que o Next.js usa para
+ * gerar a rota especial /_not-found → out/404.html na exportação
+ * estática, então precisa ficar fora dos grupos (coming-soon-pt),
+ * (coming-soon-en) e (portfolio), que têm seus próprios root layouts.
+ */
+
 /* posições das tags de fundo — "outros writers" na parede */
 const TAG_SPOTS: React.CSSProperties[] = [
   { top: "10%", left: "6%", transform: "rotate(-8deg)", fontSize: "1.5rem" },

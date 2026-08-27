@@ -36,6 +36,7 @@ export const meta = {
     linkedin: "https://linkedin.com/in/gabriellucasafb",
     resume: "/resume.pdf",
     lattes: "https://lattes.cnpq.br/8033615391408980",
+    instagram: "https://instagram.com/sougabrielxd",
   },
   seo: {
     title: "Gabriel Lucas — Engenheiro de software",
